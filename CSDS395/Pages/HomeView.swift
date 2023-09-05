@@ -39,7 +39,7 @@ struct HomeView: View {
                         HStack{ // to center text
                             Spacer()
                             NavigationLink{
-                                ModuleView(name: "Quick Lesson")
+                                ModuleView(name: "Quick Lesson", blocks: [])
                             } label: {
                                 VStack{
                                     Text("Today's Quick Lesson:") .foregroundColor(.cyan.opacity(0.7)).font(.title2).fontWeight(.heavy)
@@ -56,7 +56,7 @@ struct HomeView: View {
                         ForEach(controller.moduleNames, id: \.self) { moduleName in
                             // individual module
                             NavigationLink(moduleName){
-                                ModuleView(name: moduleName)
+                                ModuleView(name: moduleName, blocks: controller.getBlocks(name: moduleName))
                             }
                             .foregroundColor(.indigo.opacity(0.7)).font(.title3).fontWeight(.heavy)
                             .padding([.bottom], 50)

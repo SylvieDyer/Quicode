@@ -38,6 +38,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A11AD3C2AA79D3100F7C594 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				5A9D808A2AA2E4E700F9677C /* HomeView.swift */,
+				5A9D809D2AA2F36900F9677C /* ModuleView.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
 		5A9D807C2AA2E4E700F9677C = {
 			isa = PBXGroup;
 			children = (
@@ -57,10 +66,9 @@
 		5A9D80872AA2E4E700F9677C /* CSDS395 */ = {
 			isa = PBXGroup;
 			children = (
+				5A11AD3C2AA79D3100F7C594 /* Pages */,
 				5A9D809B2AA2EC8900F9677C /* AppController.swift */,
-				5A9D809D2AA2F36900F9677C /* ModuleView.swift */,
 				5A9D80882AA2E4E700F9677C /* CSDS395App.swift */,
-				5A9D808A2AA2E4E700F9677C /* HomeView.swift */,
 				5A9D808C2AA2E4E900F9677C /* Assets.xcassets */,
 				5A9D80932AA2E4E900F9677C /* CSDS395.xcdatamodeld */,
 				5A9D808E2AA2E4E900F9677C /* Preview Content */,
