@@ -18,7 +18,7 @@ struct HomeView: View {
         VStack {
             // header
             HStack(alignment: .lastTextBaseline, spacing:0){
-                Text("CodeU").font(.largeTitle).bold().padding(.leading, 15)
+                Text("QUICCODE").font(.largeTitle).bold().padding(.leading, 15)
                     .fontWidth(.expanded)
                     .font(.callout)
                 Spacer()
