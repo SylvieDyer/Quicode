@@ -47,9 +47,9 @@ struct ModuleView: View {
     }
 }
 
-
-struct View_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(controller: AppController())
-    }
-}
+// for testing when developing 
+//struct View_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView(controller: AppController())
+//    }
+//}
