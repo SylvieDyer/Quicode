@@ -11,10 +11,11 @@ import SwiftUI
 struct ModuleView: View {
   
     let name: String
-    let blocks: [String]
+    let controller: AppController
     
     @State private var showOverview = false
     var body: some View {
+        
         
         HStack {
             // Module Title
@@ -34,11 +35,10 @@ struct ModuleView: View {
         // the blocks associated witht he module
         List{
             // iterate through list of blocks
-            ForEach(blocks, id: \.self) { blockName in
+            ForEach(controller.getBlocks(name: name), id: \.self) { blockName in
                 // individual module
                 NavigationLink(blockName){
-                    Text(blockName).font(.title2)
-                    // some content (redirect to questions / some other view
+                    QuestionView(question: controller.getQuestions(name: blockName)[0]) //controller.getQuestions(name: blockName)[0].questionText
                 }
                 .foregroundColor(.indigo.opacity(0.7)).font(.title3).fontWeight(.heavy)
                 .padding([.bottom], 50)

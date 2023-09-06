@@ -8,7 +8,23 @@
 import Foundation
 class AppController: NSObject, ObservableObject {
     // TODO: HARDCODED- Connect to DB
-    var moduleNames: [String] = ["CS Foundations", "Basic Java", "Basic Python"]
+    private var moduleNames: [String] = ["CS Foundations", "Basic Java", "Basic Python"]
+    
+    func getModuleNames() -> [String] {
+        return moduleNames
+    }
+    
+    //TODO: HARDCODED - Connect to DB
+    private var questions: [String: [Question]] = [
+        "Data Types and Variables": [
+            Question("This is a Data Types and Variables multiSelect", QuestionType.multiSelect, ["Option 1", "Option 2"])],
+        "Operators": [
+            Question("This is a Operators multiSelect", QuestionType.multiSelect, ["Option 1", "Option 2"])],
+    ]
+    
+    func getQuestions(name: String) -> [Question] {
+        return questions[name] ?? [Question("Unset question", QuestionType.multiSelect, [])]
+    }
     
     func getBlocks(name: String) -> [String] {
         switch name {
