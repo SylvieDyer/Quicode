@@ -16,21 +16,29 @@ struct ModuleView: View {
     @State private var showOverview = false
     var body: some View {
         
-        
-        HStack {
-            // Module Title
-            Text(name).foregroundColor(.indigo).font(.title2).fontWeight(.heavy)
-            Spacer()
-            // Help Button
-            Button(action: {showOverview.toggle()}) {
-                // help icon
-                Label("", systemImage: "questionmark").foregroundColor(.gray)
-            }
-            // pop-up
-            .sheet(isPresented: $showOverview) {
-                DescView(name: name)    // view with content
-            }
-        }.padding(.horizontal, 50)
+        VStack{
+            HStack {
+                // Module Title
+                Text(name).foregroundColor(.indigo).font(.title2).fontWeight(.heavy)
+                Spacer()
+                // Help Button
+                Button(action: {showOverview.toggle()}) {
+                    // help icon
+                    Label("", systemImage: "questionmark").foregroundColor(.gray)
+                }
+                // pop-up
+                .sheet(isPresented: $showOverview) {
+                    DescView(name: name)    // view with content
+                }
+            }.padding(.horizontal, 50)
+            HStack{
+                ForEach(controller.getBlocks(name: name), id: \.self) { blockName in
+                    // TODO: Connect with user-status
+                    // if blockName associated with complete , "star.fill"
+                    Image(systemName: "star")
+                }
+            }.padding(.top, 10)
+        }
         
         // the blocks associated witht he module
         List{

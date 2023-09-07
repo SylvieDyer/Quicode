@@ -65,11 +65,27 @@ struct HomeView: View {
                             // iterate through list of modules
                             ForEach(controller.getModuleNames(), id: \.self) { moduleName in
                                 // individual module
-                                NavigationLink(moduleName){
+                                NavigationLink(){
                                     ModuleView(name: moduleName, controller: controller)
+                                } label: {
+                                    VStack{
+                                        Text(moduleName).padding(.top, 10)
+                                        Spacer()
+                                        // progress Bar
+                                        HStack{
+                                            Spacer()
+                                            ForEach(controller.getBlocks(name: moduleName), id: \.self) { blockName in
+                                                // TODO: Connect with user-status
+                                                // if blockName associated with complete , "star.fill"
+                                                Image(systemName: "star").foregroundColor(.gray)
+                                            }
+                                            Spacer()
+                                        }
+                                    }
                                 }
+                                
                                 .foregroundColor(.indigo.opacity(0.7)).font(.title3).fontWeight(.heavy)
-                                .padding([.bottom], 50)
+                                .padding([.bottom], 30)
                             }
                         }
                     }.listStyle(InsetGroupedListStyle()) // (remove drop down option for list sectoins)
