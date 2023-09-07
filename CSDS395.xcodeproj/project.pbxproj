@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F8D87D52AAA3EA20057E8C3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8D87D42AAA3EA20057E8C3 /* LoginView.swift */; };
 		5A82B1422AA7A306003F1486 /* DescView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A82B1412AA7A306003F1486 /* DescView.swift */; };
 		5A82B1442AA7A68D003F1486 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A82B1432AA7A68D003F1486 /* UserView.swift */; };
 		5A9D80892AA2E4E700F9677C /* CSDS395App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9D80882AA2E4E700F9677C /* CSDS395App.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F8D87D42AAA3EA20057E8C3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		5A82B1412AA7A306003F1486 /* DescView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescView.swift; sourceTree = "<group>"; };
 		5A82B1432AA7A68D003F1486 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		5A9D80852AA2E4E700F9677C /* CSDS395.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSDS395.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +59,7 @@
 				5A82B1412AA7A306003F1486 /* DescView.swift */,
 				5A82B1432AA7A68D003F1486 /* UserView.swift */,
 				9427248C2AA8271E006F0DBF /* QuestionView.swift */,
+				2F8D87D42AAA3EA20057E8C3 /* LoginView.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				5A9D80952AA2E4E900F9677C /* CSDS395.xcdatamodeld in Sources */,
 				5A9D809E2AA2F36900F9677C /* ModuleView.swift in Sources */,
 				5A9D80892AA2E4E700F9677C /* CSDS395App.swift in Sources */,
+				2F8D87D52AAA3EA20057E8C3 /* LoginView.swift in Sources */,
 				5A82B1422AA7A306003F1486 /* DescView.swift in Sources */,
 				5A82B1442AA7A68D003F1486 /* UserView.swift in Sources */,
 			);
