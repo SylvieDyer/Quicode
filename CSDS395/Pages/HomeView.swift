@@ -28,6 +28,12 @@ struct HomeView: View {
                     
                     // user page navigation
                     NavigationLink {
+                        LoginView()
+                    } label: {
+                        Image(systemName: "arrow.down.left.circle.fill").foregroundColor(.gray).padding(25)
+                    }
+                    // user page navigation
+                    NavigationLink {
                         UserView()
                     } label: {
                         Image(systemName: "person").foregroundColor(.gray).padding(25)

@@ -20,6 +20,7 @@
 		5AB04A132AA951B4007BA4DF /* MultipleQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB04A122AA951B4007BA4DF /* MultipleQView.swift */; };
 		9427248D2AA8271E006F0DBF /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9427248C2AA8271E006F0DBF /* QuestionView.swift */; };
 		9427248F2AA82CC6006F0DBF /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9427248E2AA82CC6006F0DBF /* Questions.swift */; };
+		FD4E07362AAD2D6C0032FC13 /* SignInWithApple.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4E07352AAD2D6C0032FC13 /* SignInWithApple.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		5AB04A122AA951B4007BA4DF /* MultipleQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleQView.swift; sourceTree = "<group>"; };
 		9427248C2AA8271E006F0DBF /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		9427248E2AA82CC6006F0DBF /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
+		FD4E07342AAD29DD0032FC13 /* CSDS395.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CSDS395.entitlements; sourceTree = "<group>"; };
+		FD4E07352AAD2D6C0032FC13 /* SignInWithApple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithApple.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +86,10 @@
 		5A9D80872AA2E4E700F9677C /* CSDS395 */ = {
 			isa = PBXGroup;
 			children = (
+				FD4E07342AAD29DD0032FC13 /* CSDS395.entitlements */,
 				5A11AD3C2AA79D3100F7C594 /* Pages */,
 				5A9D809B2AA2EC8900F9677C /* AppController.swift */,
+				FD4E07352AAD2D6C0032FC13 /* SignInWithApple.swift */,
 				5A9D80882AA2E4E700F9677C /* CSDS395App.swift */,
 				9427248E2AA82CC6006F0DBF /* Questions.swift */,
 				5A9D808C2AA2E4E900F9677C /* Assets.xcassets */,
@@ -190,6 +195,7 @@
 				5A9D80892AA2E4E700F9677C /* CSDS395App.swift in Sources */,
 				2F8D87D52AAA3EA20057E8C3 /* LoginView.swift in Sources */,
 				5A82B1422AA7A306003F1486 /* DescView.swift in Sources */,
+				FD4E07362AAD2D6C0032FC13 /* SignInWithApple.swift in Sources */,
 				5A82B1442AA7A68D003F1486 /* UserView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,10 +322,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CSDS395/CSDS395.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CSDS395/Preview Content\"";
-				DEVELOPMENT_TEAM = L86FF63ZZ9;
+				DEVELOPMENT_TEAM = D3Z862B54W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -345,10 +352,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CSDS395/CSDS395.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CSDS395/Preview Content\"";
-				DEVELOPMENT_TEAM = L86FF63ZZ9;
+				DEVELOPMENT_TEAM = D3Z862B54W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
