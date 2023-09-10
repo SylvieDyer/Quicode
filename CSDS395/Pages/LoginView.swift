@@ -7,19 +7,19 @@
 
 import SwiftUI
 import _AuthenticationServices_SwiftUI
+import AuthenticationServices
 
 struct SignInWithAppleSwiftUIButton: View {
     @Environment(\.colorScheme) var colorScheme
-
     var body: some View {
-      if colorScheme.self == .dark {
-          SignInButton(SignInWithAppleButton.Style.whiteOutline)
-      }
-      else {
-          SignInButton(SignInWithAppleButton.Style.black)
-      }
+        if colorScheme.self == .dark {
+            SignInButton(SignInWithAppleButton.Style.whiteOutline)
+        }
+        else {
+            SignInButton(SignInWithAppleButton.Style.black)
+        }
     }
-
+    
     func SignInButton(_ type: SignInWithAppleButton.Style) -> some View{
         return SignInWithAppleButton(.signIn) { request in
             request.requestedScopes = [.fullName, .email]
@@ -27,6 +27,7 @@ struct SignInWithAppleSwiftUIButton: View {
             switch result {
             case .success(let authResults):
                 print("Authorisation successful \(authResults)")
+                PrintResults(authResults: authResults)
             case .failure(let error):
                 print("Authorisation failed: \(error.localizedDescription)")
             }
@@ -34,12 +35,28 @@ struct SignInWithAppleSwiftUIButton: View {
         .frame(width: 280, height: 60, alignment: .center)
         .signInWithAppleButtonStyle(type)
     }
+    
+    func PrintResults(authResults: ASAuthorization) -> Void{
+        switch authResults.credential {
+        case let appleIdCredential as ASAuthorizationAppleIDCredential:
+            print(appleIdCredential.email ?? "Email not available.")
+            print(appleIdCredential.fullName?.givenName ?? "givenName not available")
+            print(appleIdCredential.fullName?.familyName ?? "Familyname not available")
+            print(appleIdCredential.user)  // This is a user identifier
+        case let passwordCredential as ASPasswordCredential:
+            print("\n ** ASPasswordCredential ** \n")
+            print(passwordCredential.user)  // This is a user identifier
+            print(passwordCredential.password) //The password
+            break
+            
+        default:
+            break
+        }
+    }
 }
 
 struct LoginView: View {
-    @State private var username: String = ""
-    @State private var password: String = ""
-    
+    @State var res: String = ""
     
     var body: some View {
         VStack{
@@ -60,39 +77,13 @@ struct LoginView: View {
                     .fontWeight(.semibold)
                     .padding(.horizontal, 12)
                     .padding(.top, 30)
-    
+                
             }
-
-            // username and password fields (commednted out)
+            
             // sign in with apple auth
             VStack(alignment: .center, spacing: 15){
-                    SignInWithAppleSwiftUIButton()
+                SignInWithAppleSwiftUIButton()
                 
-//                HStack{
-//                    TextField("", text: $username, prompt: Text("username").foregroundColor(.gray))
-//                        .frame(height: 40)
-//                        .padding(5)
-//                        .foregroundColor(.black)
-//                        .overlay{
-//                            (RoundedRectangle(cornerRadius: 10))
-//                            .stroke(Color.black, lineWidth: 1)
-//                            .background(Color.white)
-//                        }
-//                        .padding(.horizontal)
-//                }
-//
-//                HStack{
-//                    TextField("", text: $password, prompt: Text("password").foregroundColor(.gray))
-//                        .frame(height: 40)
-//                        .foregroundColor(.black)
-//                        .padding(5)
-//                        .overlay{
-//                            (RoundedRectangle(cornerRadius: 10))
-//                            .stroke(Color.black, lineWidth: 1)
-//                            .background(Color.white)
-//                        }
-//                        .padding(.horizontal)
-//                }
                 Spacer()
             }
         }
@@ -103,6 +94,21 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
-        
     }
 }
+
+//                switch authResults.credential {
+//                case let appleIdCredential as ASAuthorizationAppleIDCredential:
+//                    let email = appleIdCredential.email
+//                    let givenName = appleIdCredential.fullName?.givenName
+//                    let familyName = appleIdCredential.fullName?.familyName
+//                    let userIdentifier = appleIdCredential.user  // This is a user identifier
+//                    print("email" + email + "givenname" + givenName + "familyname" + familyName + "userIdent" + userIdentifier)
+
+//TODO:
+//                case let passwordCredential as ASPasswordCredential:
+//                    let user = (passwordCredential.user)  // This is a user identifier
+//                    let password = (passwordCredential.password) //The password
+//                    DispatchQueue.main.async {
+//                        self.showPasswordCredentialAlert(username: user, password: password)
+//                    }
