@@ -39,10 +39,12 @@ struct SignInWithAppleSwiftUIButton: View {
     func PrintResults(authResults: ASAuthorization) -> Void{
         switch authResults.credential {
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
+            //these will only be printed the first time user login
             print(appleIdCredential.email ?? "Email not available.")
             print(appleIdCredential.fullName?.givenName ?? "givenName not available")
             print(appleIdCredential.fullName?.familyName ?? "Familyname not available")
-            print(appleIdCredential.user)  // This is a user identifier
+            //this will be printed everytime the user login
+            print("user " + appleIdCredential.user)  // This is a user identifier
         case let passwordCredential as ASPasswordCredential:
             print("\n ** ASPasswordCredential ** \n")
             print(passwordCredential.user)  // This is a user identifier
