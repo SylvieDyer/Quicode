@@ -26,7 +26,7 @@ struct HomeView: View {
                         .font(.callout)
                     Spacer()
                     
-                    // user page navigation
+                    // sign in with apple page
                     NavigationLink {
                         LoginView()
                     } label: {

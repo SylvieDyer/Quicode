@@ -36,6 +36,7 @@ struct SignInWithAppleSwiftUIButton: View {
         .signInWithAppleButtonStyle(type)
     }
     
+    //print user info in command line
     func PrintResults(authResults: ASAuthorization) -> Void{
         switch authResults.credential {
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
@@ -69,7 +70,6 @@ struct LoginView: View {
                     .font(.callout)
                 Spacer()
             }
-            
             Spacer()
             
             VStack(alignment: .center, spacing: 15){
@@ -79,38 +79,19 @@ struct LoginView: View {
                     .fontWeight(.semibold)
                     .padding(.horizontal, 12)
                     .padding(.top, 30)
-                
             }
             
             // sign in with apple auth
             VStack(alignment: .center, spacing: 15){
                 SignInWithAppleSwiftUIButton()
-                
                 Spacer()
             }
         }
     }
 }
 
-
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
     }
 }
-
-//                switch authResults.credential {
-//                case let appleIdCredential as ASAuthorizationAppleIDCredential:
-//                    let email = appleIdCredential.email
-//                    let givenName = appleIdCredential.fullName?.givenName
-//                    let familyName = appleIdCredential.fullName?.familyName
-//                    let userIdentifier = appleIdCredential.user  // This is a user identifier
-//                    print("email" + email + "givenname" + givenName + "familyname" + familyName + "userIdent" + userIdentifier)
-
-//TODO:
-//                case let passwordCredential as ASPasswordCredential:
-//                    let user = (passwordCredential.user)  // This is a user identifier
-//                    let password = (passwordCredential.password) //The password
-//                    DispatchQueue.main.async {
-//                        self.showPasswordCredentialAlert(username: user, password: password)
-//                    }
