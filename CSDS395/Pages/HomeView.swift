@@ -26,6 +26,12 @@ struct HomeView: View {
                         .font(.callout)
                     Spacer()
                     
+                    // sign in with apple page
+                    NavigationLink {
+                        LoginView()
+                    } label: {
+                        Image(systemName: "arrow.down.left.circle.fill").foregroundColor(.gray).padding(25)
+                    }
                     // user page navigation
                     NavigationLink {
                         UserView()
