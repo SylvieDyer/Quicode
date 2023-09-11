@@ -11,6 +11,7 @@ import AuthenticationServices
 
 struct SignInWithAppleSwiftUIButton: View {
     @Environment(\.colorScheme) var colorScheme
+    @Binding var isLogin : Bool
     var body: some View {
         if colorScheme.self == .dark {
             SignInButton(SignInWithAppleButton.Style.whiteOutline)
@@ -28,8 +29,10 @@ struct SignInWithAppleSwiftUIButton: View {
             case .success(let authResults):
                 print("Authorisation successful \(authResults)")
                 PrintResults(authResults: authResults)
+                isLogin = true
             case .failure(let error):
                 print("Authorisation failed: \(error.localizedDescription)")
+                isLogin = false
             }
         }
         .frame(width: 280, height: 60, alignment: .center)
@@ -60,6 +63,7 @@ struct SignInWithAppleSwiftUIButton: View {
 
 struct LoginView: View {
     @State var res: String = ""
+    @Binding var isLogin : Bool
     
     var body: some View {
         VStack{
@@ -83,15 +87,34 @@ struct LoginView: View {
             
             // sign in with apple auth
             VStack(alignment: .center, spacing: 15){
-                SignInWithAppleSwiftUIButton()
+                SignInWithAppleSwiftUIButton(isLogin : $isLogin)
                 Spacer()
             }
         }
     }
 }
 
+struct IsLoginView : View{
+    @State var isLogin = false
+    
+    var body : some View{
+        HStack{
+            if (isLogin){
+                NavigationView {
+                    HomeView(controller: AppController())
+                }
+                
+            }
+            else{
+                LoginView(isLogin : $isLogin)
+            }
+        }
+        
+    }
+}
+
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        IsLoginView()
     }
 }
