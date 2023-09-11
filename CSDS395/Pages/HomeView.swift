@@ -28,7 +28,7 @@ struct HomeView: View {
                     
                     // sign in with apple page
                     NavigationLink {
-                        LoginView()
+                        IsLoginView()
                     } label: {
                         Image(systemName: "arrow.down.left.circle.fill").foregroundColor(.gray).padding(25)
                     }
