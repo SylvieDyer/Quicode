@@ -34,7 +34,7 @@ struct HomeView: View {
                     }
                     // user page navigation
                     NavigationLink {
-                        UserView()
+                        UserView(controller: controller)
                     } label: {
                         Image(systemName: "person").foregroundColor(.gray).padding(25)
                     }
