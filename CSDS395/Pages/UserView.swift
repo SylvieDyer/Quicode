@@ -24,62 +24,60 @@ struct UserView: View {
     var controller: AppController
     
     var body:some View {
-        NavigationStack{
-            List{
-                // welcome section
-                Section{
-                    Text("User Profile")
-                        .font(.title2)
-                        .fontWeight(.heavy)
-                }
-                //profile section
-                Section{
-                    Text("Name")
-                }
-                // "quick code" section
-                Section{
-                    HStack{ // to center text
-                        Spacer()
-                        NavigationLink{
-                            ModuleView(name: "Quick Lesson", controller: controller)
-                        } label: {
-                            VStack{
-                                Text("Today's Quick Lesson:") .foregroundColor(.cyan.opacity(0.7)).font(.title2).fontWeight(.heavy)
-                                Text("Common Mistakes") .foregroundColor(.red.opacity(0.7)).font(.title3).fontWeight(.heavy)
-                            }
-                        }
-                        .padding(20)
-                        Spacer()
+        NavigationView{
+            VStack{
+                // header
+                HStack(alignment: .lastTextBaseline, spacing:0){
+                    // sign in with apple page
+                    NavigationLink {
+                        HomeView(controller: controller).navigationBarBackButtonHidden(true)
+                    } label: {
+                        Image(systemName: "house").foregroundColor(.gray).padding(25)
+                    }.frame(alignment:.leading)
+                    Text("User Profile").font(.title3).bold().padding(.leading, 15)
+                        .font(.callout).multilineTextAlignment(.center)
+                    // user page navigation
+                    NavigationLink {
+                        IsLoginView()
+                    } label: {
+                        Image(systemName: "arrow.down.left.circle.fill").foregroundColor(.gray).padding(25)
                     }
+                    
                 }
-                
-                Section{
-                    // iterate through list of modules
-                    ForEach(controller.getModuleNames(), id: \.self) { moduleName in
-                        // individual module
-                        NavigationLink(){
-                            ModuleView(name: moduleName, controller: controller)
-                        } label: {
-                            VStack{
-                                Text(moduleName).padding(.top, 10)
-                                Spacer()
-                                // progress Bar
-                                HStack{
-                                    Spacer()
-                                    ForEach(controller.getBlocks(name: moduleName), id: \.self) { blockName in
-                                        // TODO: Connect with user-status
-                                        // if blockName associated with complete , "star.fill"
-                                        Image(systemName: "star").foregroundColor(.gray)
-                                    }
-                                    Spacer()
+                List{
+                    //profile section
+                    VStack{
+                        Text("Ana Perez").font(.headline).multilineTextAlignment(.leading)
+                        //TODO: take from user name
+                        Text("alp133@case.edu").font(.caption).multilineTextAlignment(.leading)
+                    }
+                    //Progress Tracking Section
+                    Section{
+                        Text("Progress") .foregroundColor(.green.opacity(0.6)).font(.title2).fontWeight(.heavy)
+                        //get user's last module and how far they've gotten
+                        // iterate through list of modules
+                        ForEach(controller.getModuleNames(), id: \.self) { moduleName in
+                            // individual module
+                            Text(moduleName).padding(.top, 10)
+                            // progress Bar
+                            HStack{
+                                ForEach(controller.getBlocks(name: moduleName), id: \.self) { blockName in
+                                    // TODO: Connect with user-status
+                                    // if blockName associated with complete , "star.fill"
+                                    Image(systemName: "star").foregroundColor(.gray)
                                 }
                             }
+                            .foregroundColor(.indigo.opacity(0.7)).font(.title3).fontWeight(.heavy)
                         }
-                        
-                        .foregroundColor(.indigo.opacity(0.7)).font(.title3).fontWeight(.heavy)
-                        .padding([.bottom], 30)
                     }
-                }
+                    Section{
+                        Text("Preferences") .foregroundColor(.purple.opacity(0.6)).font(.title2).fontWeight(.heavy)
+                        //get user's last module and how far they've gotten
+                        // iterate through list of modules
+                        Text("Sign Out").padding(10) //TODO
+                            .foregroundColor(.indigo.opacity(0.7)).font(.headline)
+                    }
+                }.listStyle(InsetGroupedListStyle())
             }
         }
     }
