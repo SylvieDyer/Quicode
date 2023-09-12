@@ -28,7 +28,7 @@ struct SignInWithAppleSwiftUIButton: View {
             switch result {
             case .success(let authResults):
                 print("Authorisation successful \(authResults)")
-                PrintResults(authResults: authResults)
+                CreateUser(authResults: authResults)
                 isLogin = true
             case .failure(let error):
                 print("Authorisation failed: \(error.localizedDescription)")
@@ -39,16 +39,15 @@ struct SignInWithAppleSwiftUIButton: View {
         .signInWithAppleButtonStyle(type)
     }
     
-    //print user info in command line
-    func PrintResults(authResults: ASAuthorization) -> Void{
+    func CreateUser(authResults: ASAuthorization) -> Void{
         switch authResults.credential {
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
             //these will only be printed the first time user login
-            print(appleIdCredential.email ?? "Email not available.")
-            print(appleIdCredential.fullName?.givenName ?? "givenName not available")
-            print(appleIdCredential.fullName?.familyName ?? "Familyname not available")
-            //this will be printed everytime the user login
-            print("user " + appleIdCredential.user)  // This is a user identifier
+            let userEmail = appleIdCredential.email ?? "Email not available."
+            let userLastName = appleIdCredential.fullName?.familyName ?? "Familyname not available"
+            let userFirstName = appleIdCredential.fullName?.givenName ?? "GivenName not available"
+            let user = User(id: appleIdCredential.user, email: userEmail , lastname: userLastName , firstname: userFirstName)
+            print(user)
         case let passwordCredential as ASPasswordCredential:
             print("\n ** ASPasswordCredential ** \n")
             print(passwordCredential.user)  // This is a user identifier
