@@ -28,15 +28,17 @@ struct UserView: View {
             VStack{
                 // header
                 HStack(alignment: .lastTextBaseline, spacing:0){
-                    // sign in with apple page
+                    // home page
                     NavigationLink {
                         HomeView(controller: controller).navigationBarBackButtonHidden(true)
                     } label: {
                         Image(systemName: "house").foregroundColor(.gray).padding(25)
-                    }.frame(alignment:.leading)
+                    }
+                    Spacer()
                     Text("User Profile").font(.title3).bold().padding(.leading, 15)
                         .font(.callout).multilineTextAlignment(.center)
-                    // user page navigation
+                    Spacer()
+                    // login page navigation
                     NavigationLink {
                         IsLoginView()
                     } label: {
