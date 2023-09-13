@@ -14,7 +14,7 @@ struct MultipleQView: View {
         // use some sort of variable to track which option was selected (will have to higlight multiple if multi select
         var isSelected = false
         
-        var options = question.questionOptions
+        let options: [String] = question.questionOptions
         var answer = question.questionAnswer
         
         VStack{
@@ -31,51 +31,18 @@ struct MultipleQView: View {
                 
             VStack{
                 // options
-                HStack{
+                ForEach(options, id: \.self) { option in
                     Button(action: {}){
-                            RoundedRectangle(cornerRadius: 25)
-                            .foregroundColor(Color.cyan.opacity(0.2))
-                            .padding(10)
-                            .frame(height: 200)
-                            .overlay(Text("1").font(.title3).foregroundColor(.black))
-                    }
-                    
-                    Button(action: {}){
-                            RoundedRectangle(cornerRadius: 25)
-                            .foregroundColor(Color.cyan.opacity(0.2))
-                            .padding(10)
-                            .frame(height: 200)
-                            .overlay(Text("2").font(.title3).foregroundColor(.black))
+                        Text(option).font(.title3).foregroundColor(.black).padding(10)
+                            .frame(width: 400, height: 100)
+                            .background(RoundedRectangle(cornerRadius: 25)
+                                .foregroundColor(Color.cyan.opacity(0.2))
+                                .padding(10)
+                                .frame(width:400, height: 100))
                     }
                 }
-                HStack{
-                    Button(action: {}){
-                            RoundedRectangle(cornerRadius: 25)
-                            .foregroundColor(Color.cyan.opacity(0.2))
-                            .padding(10)
-                            .frame(height: 200)
-                            .overlay(Text("3").font(.title3).foregroundColor(.black))
-                    }
-                    
-                    Button(action: {}){
-                            RoundedRectangle(cornerRadius: 25)
-                            .foregroundColor(Color.cyan.opacity(0.2))
-                            .padding(10)
-                            .frame(height: 200)
-                            .overlay(Text("4").font(.title3).foregroundColor(.black))
-                    }
-                }
-                
-            }
+            }.padding(10)
             Spacer()
-        }.padding()
+        }
     }
 }
-    
-
-
-//struct MultipleQView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MultipleQView()
-//    }
-//}
