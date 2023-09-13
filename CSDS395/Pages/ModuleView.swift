@@ -61,3 +61,9 @@ struct ModuleView: View {
 //        HomeView(controller: AppController())
 //    }
 //}
+
+struct Previews_ModuleView_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    }
+}
