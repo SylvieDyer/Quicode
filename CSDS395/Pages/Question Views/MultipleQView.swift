@@ -65,9 +65,9 @@ struct MultipleQView: View {
 }
     
 
-
-struct MultipleQView_Previews: PreviewProvider {
-    static var previews: some View {
-        MultipleQView()
-    }
-}
+//
+//struct MultipleQView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MultipleQView()
+//    }
+//}

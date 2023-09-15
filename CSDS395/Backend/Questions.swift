@@ -22,4 +22,9 @@ public class Question {
         self.questionType = questionType
         self.questionOptions = questionOptions
     }
+    
+    func getID() -> UUID {
+        return UUID()
+    }
+    
 }
