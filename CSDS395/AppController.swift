@@ -15,15 +15,15 @@ class AppController: NSObject, ObservableObject {
     }
     
     //TODO: HARDCODED - Connect to DB
-    private var questions: [String: [Question]] = [
-        "Data Types and Variables": [
-            Question("This is a Data Types and Variables multiSelect", QuestionType.multiSelect, ["Option 1", "Option 2", "Option 3", "Option 4"], ["Option 1"])],
-        "Operators": [
-            Question("This is a Operators multiSelect", QuestionType.multiSelect, ["Option 1", "Option 2", "Option 3", "Option 4"], ["Option 2", "Option 3s"])],
+    private var questions: [String: Question] = [
+        "Data Types and Variables":
+            Question("This is a Data Types and Variables multiSelect", QuestionType.multiSelect, ["Option 1", "Option 2", "Option 3", "Option 4"], ["Option 1"], Question("This is a Data Types and Variables multiSelect2", QuestionType.multiSelect, ["Option 5", "Option 6", "Option 77", "Option 8"], ["Option 1"], nil)),
+        "Operators":
+            Question("This is a Operators multiSelect", QuestionType.multiSelect, ["Option 1", "Option 2", "Option 3", "Option 4"], ["Option 2", "Option 3s"], nil),
     ]
     
-    func getQuestions(name: String) -> [Question] {
-        return questions[name] ?? [Question("Unset question", QuestionType.multiSelect, [], [])]
+    func getQuestions(name: String) -> Question {
+        return questions[name] ?? Question("Unset question", QuestionType.multiSelect, [], [], nil)
     }
     
     func getBlocks(name: String) -> [String] {

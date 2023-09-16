@@ -17,11 +17,13 @@ public class Question {
     let questionType: QuestionType
     let questionOptions: [String]
     let questionAnswer: [String]
+    let nextQuestion: Question? //LinkedList type structure
     
-    init(_ questionText: String, _ questionType: QuestionType, _ questionOptions: [String], _ questionAnswer:[String]) {
+    init(_ questionText: String, _ questionType: QuestionType, _ questionOptions: [String], _ questionAnswer:[String], _ nextQuestion: Question?) {
         self.questionText = questionText
         self.questionType = questionType
         self.questionOptions = questionOptions
         self.questionAnswer = questionAnswer
+        self.nextQuestion = nextQuestion
     }
 }
