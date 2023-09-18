@@ -8,15 +8,43 @@
 import SwiftUI
 
 struct QuestionView: View {
-    let question: Question
+    @State var question: Question?
+    @State private var currentQuestionIndex = 0
+    @State var shouldNavigateToNextQuestion = false
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
-        switch question.questionType {
-        case QuestionType.multiSelect:
-            MultipleQView(question: question)
-        case QuestionType.multipleChoice:
-            MultipleQView(question: question)
-        default:
-            Text("**\(question.questionText)**").font(.title2).fontWeight(.bold)
+        displayQuestion()
+            .onAppear {
+                do {
+                    print(question?.questionText)
+                } catch {
+                    print("Error: \(error.localizedDescription)")
+                }
+                
+            }
+    }
+    
+    @ViewBuilder
+    private func displayMumboJumbo() -> some View {
+        Text("mumbo jumbo")
+    }
+    
+    // Function to display the appropriate view based on question type
+    @ViewBuilder
+    private func displayQuestion() -> some View {
+        if(question != nil) {
+            switch question?.questionType {
+            case .multiSelect, .multipleChoice:
+                MultipleQView(question: question!)
+            default:
+                Text("**\(question!.questionText)**").font(.title2).fontWeight(.bold)
+            }
         }
     }
 }
+    
+//    // Callback function to move to the next question
+//    private func moveToNextQuestion() {
+//        question = question.nextQuestion!
+//    }

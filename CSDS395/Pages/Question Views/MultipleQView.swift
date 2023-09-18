@@ -11,7 +11,10 @@ import SwiftUI
 // for multiple choice and multi-select questions
 struct MultipleQView: View {
     @State var question: Question
-    @State var didTapOption: [String:Bool] = [:]
+    @State var didTapIncorrectOption: [String:Bool] = [:]
+    @State var shouldNavigateToNextQuestion: Bool = false // Binding to the state in the parent view
+    @Environment(\.dismiss) private var dismiss
+
     
     var body: some View {
         // use some sort of variable to track which option was selected (will have to higlight multiple if multi select
@@ -27,25 +30,40 @@ struct MultipleQView: View {
                     .padding(50)
                     .frame(width:400, height: 300))
                 
-            ScrollView{
-                // options
-                ForEach(question.questionOptions, id: \.self) { option in
-                    Button(action: {
-                        if(option != question.questionAnswer[0]) {
-                            didTapOption[option] = true
-                            print(option+" "+String(didTapOption[option] ?? false))
+            NavigationLink(
+                destination: QuestionView(question: question.nextQuestion ?? nil), // Pass the answer to the AnswerView
+                isActive: $shouldNavigateToNextQuestion,
+                label: {
+                    ScrollView{
+                        // options
+                        ForEach(question.questionOptions, id: \.self) { option in
+                            Button(action: {
+                                do {
+                                    if(!question.questionAnswer.contains(option)) {
+                                        didTapIncorrectOption[option] = true
+                                    } else {
+                                        if(question.nextQuestion == nil) {
+                                            dismiss()
+                                        } else {
+                                            shouldNavigateToNextQuestion = true;
+                                        }
+                                    }
+                                } catch {
+                                    print("Error: \(error.localizedDescription)")
+                                }
+                            }){
+                                Text(option).font(.title3).foregroundColor(.black).padding(10)
+                                    .frame(width: 400, height: 100)
+                                    .background(RoundedRectangle(cornerRadius: 25)
+                                        .foregroundColor(didTapIncorrectOption[option] ?? false ? Color.red.opacity(0.2) : Color.cyan.opacity(0.2))
+                                        .padding(10)
+                                        .frame(width:350, height: 100)
+                                        )
+                            }
                         }
-                    }){
-                        Text(option).font(.title3).foregroundColor(.black).padding(10)
-                            .frame(width: 400, height: 100)
-                            .background(RoundedRectangle(cornerRadius: 25)
-                                .foregroundColor(didTapOption[option] ?? false ? Color.red.opacity(0.2) : Color.cyan.opacity(0.2))
-                                .padding(10)
-                                .frame(width:350, height: 100)
-                                )
                     }
                 }
-            }
+            )
 //            Spacer()
         }
     }

@@ -19,7 +19,7 @@ public class Question {
     let questionAnswer: [String]
     let nextQuestion: Question? //LinkedList type structure
     
-    init(_ questionText: String, _ questionType: QuestionType, _ questionOptions: [String], _ questionAnswer:[String], _ nextQuestion: Question?) {
+    init(_ questionText: String, _ questionType: QuestionType, _ questionOptions: [String], _ questionAnswer:[String], _ nextQuestion: Question? = nil) {
         self.questionText = questionText
         self.questionType = questionType
         self.questionOptions = questionOptions
