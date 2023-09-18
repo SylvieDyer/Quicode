@@ -11,7 +11,11 @@ import AuthenticationServices
 
 struct SignInWithAppleSwiftUIButton: View {
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.managedObjectContext) var moc
     @Binding var isLogin : Bool
+    @Binding var user : User?
+    @FetchRequest(sortDescriptors: []) var users: FetchedResults<User>
+
     var body: some View {
         if colorScheme.self == .dark {
             SignInButton(SignInWithAppleButton.Style.whiteOutline)
@@ -43,11 +47,21 @@ struct SignInWithAppleSwiftUIButton: View {
         switch authResults.credential {
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
             //these will only be printed the first time user login
-            let userEmail = appleIdCredential.email ?? "Email not available."
-            let userLastName = appleIdCredential.fullName?.familyName ?? "Familyname not available"
-            let userFirstName = appleIdCredential.fullName?.givenName ?? "GivenName not available"
-            let user = User(id: appleIdCredential.user, email: userEmail , lastname: userLastName , firstname: userFirstName)
-            print(user)
+            let userEmail = appleIdCredential.email ?? "Email"
+            let userLastName = appleIdCredential.fullName?.familyName ?? "Last Name"
+            let userFirstName = appleIdCredential.fullName?.givenName ?? "First Name"
+            user = User(context : moc)
+            user?.id = appleIdCredential.user
+            user?.email = userEmail
+            user?.firstname = userFirstName
+            user?.lastname = userLastName
+            
+            do {
+                try? moc.save()
+                isLogin = true
+                print("User saved to Core Data.")
+            }
+            
         case let passwordCredential as ASPasswordCredential:
             print("\n ** ASPasswordCredential ** \n")
             print(passwordCredential.user)  // This is a user identifier
@@ -63,7 +77,8 @@ struct SignInWithAppleSwiftUIButton: View {
 struct LoginView: View {
     @State var res: String = ""
     @Binding var isLogin : Bool
-    
+    @Binding var user : User?
+        
     var body: some View {
         VStack{
             HStack(alignment: .top, spacing: 0) {
@@ -86,7 +101,7 @@ struct LoginView: View {
             
             // sign in with apple auth
             VStack(alignment: .center, spacing: 15){
-                SignInWithAppleSwiftUIButton(isLogin : $isLogin)
+                SignInWithAppleSwiftUIButton(isLogin : $isLogin, user: $user)
                 Spacer()
             }
         }
@@ -95,20 +110,21 @@ struct LoginView: View {
 
 struct IsLoginView : View{
     @State var isLogin = false
-    
+    @State var user: User?
+
     var body : some View{
         HStack{
             if (isLogin){
                 NavigationView {
-                    HomeView(controller: AppController())
+                    HomeView(controller: AppController(), user: user)
                 }
-                
+
             }
             else{
-                LoginView(isLogin : $isLogin)
+                LoginView(isLogin : $isLogin, user: $user)
             }
         }
-        
+
     }
 }
 

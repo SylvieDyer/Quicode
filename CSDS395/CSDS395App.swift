@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct CSDS395App: App {
+    @StateObject private var userController = UserController()
 
     var body: some Scene {
         WindowGroup {
-         HomeView(controller: AppController())
+//         HomeView(controller: AppController())
+         IsLoginView().environment(\.managedObjectContext, userController.container.viewContext)
         }
     }
 }
