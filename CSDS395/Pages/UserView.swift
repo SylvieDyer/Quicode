@@ -22,6 +22,7 @@ import SwiftUI
 
 struct UserView: View {
     var controller: AppController
+    @State var user: User?
     
     var body:some View {
         NavigationView{
@@ -30,7 +31,7 @@ struct UserView: View {
                 HStack(alignment: .lastTextBaseline, spacing:0){
                     // home page
                     NavigationLink {
-                        HomeView(controller: controller).navigationBarBackButtonHidden(true)
+                        HomeView(controller: controller, user : user).navigationBarBackButtonHidden(true)
                     } label: {
                         Image(systemName: "house").foregroundColor(.gray).padding(25)
                     }
@@ -49,9 +50,9 @@ struct UserView: View {
                 List{
                     //profile section
                     VStack{
-                        Text("Ana Perez").font(.headline).multilineTextAlignment(.leading)
+                        Text("\(user?.firstname ?? "First Name") \(user?.lastname ?? "Last Name")").font(.headline).multilineTextAlignment(.leading)
                         //TODO: take from user name
-                        Text("alp133@case.edu").font(.caption).multilineTextAlignment(.leading)
+                        Text("\(user?.email ?? "Email")").font(.caption).multilineTextAlignment(.leading)
                     }
                     //Progress Tracking Section
                     Section{

@@ -36,7 +36,7 @@ struct HomeView: View {
                     }
                     // user page navigation
                     NavigationLink {
-                        UserView(controller: controller).navigationBarBackButtonHidden(true)
+                        UserView(controller: controller, user: user).navigationBarBackButtonHidden(true)
                     } label: {
                         Image(systemName: "person").foregroundColor(.gray).padding(25)
                     }
@@ -48,7 +48,7 @@ struct HomeView: View {
                         // welcome section
                         Section{
                             // will be dynamic with user name -- Text("Welcome Back, \(user.name)")
-                            Text("Welcome Back, \(user?.firstname ?? "Hi")").bold().font(.title2)
+                            Text("Welcome Back, \(user?.firstname ?? "User")").bold().font(.title2)
                             // can include streak here?
                         }
                         
