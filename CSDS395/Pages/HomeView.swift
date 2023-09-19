@@ -14,6 +14,8 @@ struct HomeView: View {
     // stores module names
     var controller: AppController
     
+    @State var user : User?
+    
     var body: some View {
         // wraps app in navigation to switch to user-screen
         NavigationView{
@@ -34,7 +36,7 @@ struct HomeView: View {
                     }
                     // user page navigation
                     NavigationLink {
-                        UserView(controller: controller).navigationBarBackButtonHidden(true)
+                        UserView(controller: controller, user: user).navigationBarBackButtonHidden(true)
                     } label: {
                         Image(systemName: "person").foregroundColor(.gray).padding(25)
                     }
@@ -45,9 +47,8 @@ struct HomeView: View {
                     List{
                         // welcome section
                         Section{
-                            // will be dynamic with user name -- Text("Welcome Back, \(user.name)")
-                            Text("Welcome Back, USER").bold().font(.title2).padding(3)
-                            
+                            // will be dynamic with user name -- Text("Welcome Back, \(user.name)
+                            Text("Welcome Back, \(user?.firstname ?? "User")").bold().font(.title2)
                             // can include streak here?
                         }
                         .listRowBackground(
