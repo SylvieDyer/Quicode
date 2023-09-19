@@ -10,6 +10,8 @@ import SwiftUI
 
 // for multiple choice and multi-select questions
 struct MultipleQView: View {
+    let moduleName: String
+let controller: AppController
     @State var question: Question
     @State var didTapIncorrectOption: [String:Bool] = [:]
     @State var shouldNavigateToNextQuestion: Bool = false // Binding to the state in the parent view
@@ -31,7 +33,7 @@ struct MultipleQView: View {
                     .frame(width:400, height: 300))
                 
             NavigationLink(
-                destination: QuestionView(question: question.nextQuestion ?? nil), // Pass the answer to the AnswerView
+                destination: QuestionView(moduleName: moduleName, controller: controller, question: question.nextQuestion ?? nil), // Pass the answer to the AnswerView
                 isActive: $shouldNavigateToNextQuestion,
                 label: {
                     ScrollView{
@@ -42,14 +44,8 @@ struct MultipleQView: View {
                                     if(!question.questionAnswer.contains(option)) {
                                         didTapIncorrectOption[option] = true
                                     } else {
-                                        if(question.nextQuestion == nil) {
-                                            dismiss()
-                                        } else {
-                                            shouldNavigateToNextQuestion = true;
-                                        }
+                                        shouldNavigateToNextQuestion = true
                                     }
-                                } catch {
-                                    print("Error: \(error.localizedDescription)")
                                 }
                             }){
                                 Text(option).font(.title3).foregroundColor(.black).padding(10)
@@ -63,14 +59,9 @@ struct MultipleQView: View {
                         }
                     }
                 }
-            )
+            ).navigationBarBackButtonHidden(true)
 //            Spacer()
         }
-    }
-//    @IBAction func buttonTappesd(sender: AnyObject) {}
-
-    func showText() {
-        
     }
 }
 

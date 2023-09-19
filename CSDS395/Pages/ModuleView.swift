@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+//TODO: fix navigation after questions have been answered
+//question: Do we want to just have our own navigation, screw the back button?
+
 // template for module pages 
 struct ModuleView: View {
   
@@ -46,7 +49,7 @@ struct ModuleView: View {
             ForEach(controller.getBlocks(name: name), id: \.self) { blockName in
                 // individual module
                 NavigationLink(blockName){
-                    QuestionView(question: controller.getQuestions(name: blockName)) //controller.getQuestions(name: blockName)[0].questionText
+                    QuestionView(moduleName: name, controller: controller, question: controller.getQuestions(name: blockName))
                 }
                 .foregroundColor(.indigo.opacity(0.7)).font(.title3).fontWeight(.heavy)
                 .padding([.bottom], 50)

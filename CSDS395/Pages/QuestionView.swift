@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct QuestionView: View {
+    let moduleName: String
+    let controller: AppController
     @State var question: Question?
     @State private var currentQuestionIndex = 0
     @State var shouldNavigateToNextQuestion = false
@@ -15,19 +17,6 @@ struct QuestionView: View {
     
     var body: some View {
         displayQuestion()
-            .onAppear {
-                do {
-                    print(question?.questionText)
-                } catch {
-                    print("Error: \(error.localizedDescription)")
-                }
-                
-            }
-    }
-    
-    @ViewBuilder
-    private func displayMumboJumbo() -> some View {
-        Text("mumbo jumbo")
     }
     
     // Function to display the appropriate view based on question type
@@ -36,10 +25,12 @@ struct QuestionView: View {
         if(question != nil) {
             switch question?.questionType {
             case .multiSelect, .multipleChoice:
-                MultipleQView(question: question!)
+                MultipleQView(moduleName: moduleName, controller: controller, question: question!)
             default:
                 Text("**\(question!.questionText)**").font(.title2).fontWeight(.bold)
             }
+        } else {
+            ModuleView(name: moduleName, controller: controller)
         }
     }
 }
