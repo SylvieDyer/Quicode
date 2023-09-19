@@ -94,8 +94,8 @@ struct DragAndDropView: View {
     }
 }
 
-struct DragAndDropView_Previews: PreviewProvider {
-    static var previews: some View {
-        DragAndDropView(question: Question("h", QuestionType.dragAndDrop, ["h"]))
-    }
-}
+//struct DragAndDropView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DragAndDropView(question: Question("h", QuestionType.dragAndDrop, ["h"]))
+//    }
+//}
