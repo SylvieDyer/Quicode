@@ -6,15 +6,23 @@
 //
 
 import SwiftUI
+import UIKit
 
 @main
 struct CSDS395App: App {
-    @StateObject private var userController = UserController()
+    // for core data
+    let persistenceController = PersistenceController.shared
+
 
     var body: some Scene {
         WindowGroup {
+           
+            MainView(appController: AppController())
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+        
+            
 //         HomeView(controller: AppController())
-         IsLoginView().environment(\.managedObjectContext, userController.container.viewContext)
+//         IsLoginView().environment(\.managedObjectContext, userController.container.viewContext)
         }
     }
 }

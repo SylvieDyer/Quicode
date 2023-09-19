@@ -58,13 +58,15 @@ struct ModuleView: View {
     }
 }
 
-// for testing when developing
-struct View_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(controller: AppController())
-    }
-}
+//// for testing when developing
+//struct View_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView(controller: AppController())
+//    }
+//}
 //
+
+
 //struct Previews_ModuleView_Previews: PreviewProvider {
 //    static var previews: some View {
 ////        Text("Hello, World!")
