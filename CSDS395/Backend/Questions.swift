@@ -16,11 +16,15 @@ public class Question {
     let questionText: String
     let questionType: QuestionType
     let questionOptions: [String]
+    let questionAnswer: [String]
+    let nextQuestion: Question? //LinkedList type structure
     
-    init(_ questionText: String, _ questionType: QuestionType, _ questionOptions: [String]) {
+    init(_ questionText: String, _ questionType: QuestionType, _ questionOptions: [String], _ questionAnswer:[String], _ nextQuestion: Question? = nil) {
         self.questionText = questionText
         self.questionType = questionType
         self.questionOptions = questionOptions
+        self.questionAnswer = questionAnswer
+        self.nextQuestion = nextQuestion
     }
     
     func getID() -> UUID {
