@@ -66,3 +66,9 @@ let controller: AppController
 }
 
 
+//
+//struct MultipleQView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MultipleQView()
+//    }
+//}

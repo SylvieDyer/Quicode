@@ -26,4 +26,9 @@ public class Question {
         self.questionAnswer = questionAnswer
         self.nextQuestion = nextQuestion
     }
+    
+    func getID() -> UUID {
+        return UUID()
+    }
+    
 }
