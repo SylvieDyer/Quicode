@@ -37,19 +37,20 @@ struct DragAndDropView: View {
                             Text(word)
                         }
                     }
-                    HStack{
-                        ForEach(questionOptions, id: \.self) { option in
-                            DragView(id: UUID()) { dragInfo in
-                                Text(option)
-                                    .padding()
-                                    .background{
-                                        dragInfo.isDragging ? Color.blue : Color.mint
-                                    }
-                            }
+                }
+                HStack{
+                    ForEach(questionOptions, id: \.self) { option in
+                        DragView(id: UUID()) { dragInfo in
+                            Text(option)
+                                .padding()
+                                .background{
+                                    dragInfo.isDragging ? Color.blue : Color.mint
+                                }
                         }
                     }
                 }
             }
+            
         }
     }
 }
