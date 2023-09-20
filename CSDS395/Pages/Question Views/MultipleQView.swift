@@ -11,7 +11,7 @@ import SwiftUI
 // for multiple choice and multi-select questions
 struct MultipleQView: View {
     let moduleName: String
-let controller: AppController
+    let controller: AppController
     @State var question: Question
     @State var didTapIncorrectOption: [String:Bool] = [:]
     @State var shouldNavigateToNextQuestion: Bool = false // Binding to the state in the parent view

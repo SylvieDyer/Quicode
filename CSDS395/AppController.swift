@@ -45,6 +45,19 @@ extension AppController {
         var java = false
         var python = false
     }
+    
+    /// PLACE HOLDER FOR DND FUNCTIONALITY 
+    class DND: ObservableObject{
+        var map : [String: UUID] = [:]
+        
+        func setVal(word: String, id: UUID){
+            self.map[word] = id
+        }
+        
+        func getWord(word:String) -> UUID {
+            return self.map[word]!
+        }
+    }
 }
 
 

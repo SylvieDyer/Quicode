@@ -16,6 +16,8 @@ struct CSDS395App: App {
 
     var body: some Scene {
         WindowGroup {
+            // for testing Drag and Drop
+//            DragAndDropView(DNDCLASS: AppController.DND())
            
             MainView(appController: AppController())
                 .environment(\.managedObjectContext, userDataController.container.viewContext)

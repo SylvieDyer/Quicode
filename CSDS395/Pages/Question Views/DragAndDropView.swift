@@ -10,9 +10,11 @@ import DragAndDrop
 
 struct DragAndDropView: View {
     
+    @ObservedObject var DNDCLASS : AppController.DND
+    
     //    var question: Question
     // PLACE HOLDER FOR QUESTION
-    let questionText = ["A", "BLANK1", "IS", "A", "BLANK4"]
+    let questionText = ["A", "BLANK1", "IS", "ONE", "BLANK4"]
     let questionAnswers = ["Integer", "Type"]
     let questionOptions = ["Variable", "Cow", "Type", "Pencil", "Integer"]
     
@@ -23,14 +25,14 @@ struct DragAndDropView: View {
                     ForEach(Array(questionText.enumerated()), id: \.offset) { index, word in
                         if (word == "BLANK" + String(index)){
                             DropView { dropInfo in
-                                Text(dropInfo.didDrop ? "DROPPED" : "BLANK")
+                                Text(dropInfo.didDrop ? DNDCLASS.getWord(word: word).uuidString : "BLANK")
                                     .padding()
                                     .background{
                                         dropInfo.isColliding ? Color.green : Color.red
                                     }
                             }
                             .onDragViewReceived { receivingViewID in
-                                Text(receivingViewID.uuidString)
+                                DNDCLASS.setVal(word: word, id: receivingViewID)
                             }
                         }
                         else {
@@ -50,13 +52,12 @@ struct DragAndDropView: View {
                     }
                 }
             }
-            
         }
     }
 }
-
-struct DragAndDropView_Previews: PreviewProvider {
-    static var previews: some View {
-        DragAndDropView()
-    }
-}
+//
+//struct DragAndDropView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DragAndDropView()
+//    }
+//}
