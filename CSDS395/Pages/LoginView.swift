@@ -92,6 +92,7 @@ struct LoginView: View {
             user.email = appleIdCredential.email ?? "NO EMAIL GIVEN"
             user.firstName = appleIdCredential.fullName?.givenName ?? "ERROR: NO NAME GIVEN"
             user.lastName = appleIdCredential.fullName?.familyName ?? "ERROR: NO NAME GIVEN"
+            user.id = UUID()        // TODO: dont want to recreate everytime user logs in though ... TBD 
 
             // try to save with core data
             do {
