@@ -46,7 +46,7 @@ extension AppController {
         var python = false
     }
     
-    /// PLACE HOLDER FOR DND FUNCTIONALITY 
+    /// PLACE HOLDER FOR DND FUNCTIONALITY
     class DND: ObservableObject{
         var map : [String: UUID] = [:]
         
