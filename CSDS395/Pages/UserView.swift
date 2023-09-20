@@ -19,10 +19,12 @@ import SwiftUI
  preferences
  Choose default language
  */
+import CoreData
 
 struct UserView: View {
     var controller: AppController
-    @State var user: User?
+//    var viewContext: NSManagedObjectContext
+    var user : User
     
     var body:some View {
         NavigationView{
@@ -40,19 +42,19 @@ struct UserView: View {
                         .font(.callout).multilineTextAlignment(.center)
                     Spacer()
                     // login page navigation
-                    NavigationLink {
-                        IsLoginView()
-                    } label: {
-                        Image(systemName: "arrow.down.left.circle.fill").foregroundColor(.gray).padding(25)
-                    }
+//                    NavigationLink {
+//                        IsLoginView()
+//                    } label: {
+//                        Image(systemName: "arrow.down.left.circle.fill").foregroundColor(.gray).padding(25)
+//                    }
                     
                 }
                 List{
                     //profile section
                     VStack{
-                        Text("\(user?.firstname ?? "First Name") \(user?.lastname ?? "Last Name")").font(.headline).multilineTextAlignment(.leading)
+                        Text("\(user.firstName ?? "First Name") \(user.lastName ?? "Last Name")").font(.headline).multilineTextAlignment(.leading)
                         //TODO: take from user name
-                        Text("\(user?.email ?? "Email")").font(.caption).multilineTextAlignment(.leading)
+                        Text("\(user.email ?? "Email")").font(.caption).multilineTextAlignment(.leading)
                     }
                     //Progress Tracking Section
                     Section{
@@ -87,14 +89,11 @@ struct UserView: View {
 }
 
 
-// for testing when developing
-struct UserView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserView(controller: AppController())
-    }
-}
+// 
+////// for testing when developing
 //struct UserView_Previews: PreviewProvider {
+//
 //    static var previews: some View {
-//        HomeView(controller: <#T##AppController#>())
+//        UserView(controller: AppController(), user: User())
 //    }
 //}

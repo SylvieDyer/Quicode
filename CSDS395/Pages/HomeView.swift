@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  CSDS395
 //
 //  Created by Sylvie Dyer on 9/1/23.
@@ -9,12 +9,12 @@ import SwiftUI
 import CoreData
 
 struct HomeView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    
     // stores module names
-    var controller: AppController
+    @ObservedObject var controller: AppController
     
-    @State var user : User?
+//    var viewContext: NSManagedObjectContext
+    var user : User
+   
     
     var body: some View {
         // wraps app in navigation to switch to user-screen
@@ -28,12 +28,15 @@ struct HomeView: View {
                         .font(.callout)
                     Spacer()
                     
+                    /// commented out for now... will be log out button in UserPage?
                     // sign in with apple page
-                    NavigationLink {
-                        IsLoginView()
-                    } label: {
-                        Image(systemName: "arrow.down.left.circle.fill").foregroundColor(.gray).padding(25)
-                    }
+                    /*
+                                        NavigationLink {
+                                            IsLoginView()
+                                        } label: {
+                                            Image(systemName: "arrow.down.left.circle.fill").foregroundColor(.gray).padding(25)
+                     */
+                    
                     // user page navigation
                     NavigationLink {
                         UserView(controller: controller, user: user).navigationBarBackButtonHidden(true)
@@ -48,8 +51,8 @@ struct HomeView: View {
                         // welcome section
                         Section{
                             // will be dynamic with user name -- Text("Welcome Back, \(user.name)
-                            Text("Welcome Back, \(user?.firstname ?? "User")").bold().font(.title2)
-                            // can include streak here?
+                            Text("Welcome Back, \(user.firstName ?? "User")").bold().font(.title2)
+                            
                         }
                         .listRowBackground(
                             Capsule()
@@ -104,23 +107,27 @@ struct HomeView: View {
                         .listRowBackground(
                             RoundedRectangle(cornerRadius: 40)
                                 .fill(Color.init(hex: "#B2D4AB"))
-                            /// janky border.... TODO
-                            //                                .overlay(
-                            //                                    RoundedRectangle(cornerRadius: 50)
-                            //                                        .stroke(Color.init(hex: "#93BEA4"), lineWidth: 10)
-                            //                                )
-                            
-                        )
+                        ) // color each list section
                         
                     }.listStyle(InsetGroupedListStyle()) // (remove drop down option for list sectoins)
-                    
                 }
             }
         }
+        
     }
+    
+    /// attempt to work around the preview issue... 
+//    struct TestUser {
+//        var firstName = "HELLO"
+//        var lastName = "BYE"
+//        var email = "hi@gmail.com"
+//    }
 }
-//    .listRowBackground(Color.init(red: 0x93, green: 0xBE, blue: 0xA4))
-  
+
+
+
+// TODO: may want to move elsewhere
+// to allow for custon hex-code colors
 extension Color {
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
@@ -149,8 +156,18 @@ extension Color {
 }
 
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(controller: AppController())
-    }
-}
+// TODO: can't preview home - will need a workaround or simulator to view
+//struct HomeView_Previews: PreviewProvider {
+//
+//    // for core data
+////    let userDataController = UserDataController.shared
+//
+//    static var previews: some View {
+//        // for core data
+//        let userDataController = UserDataController.shared
+//        // preview enter in MainView
+//        MainView(appController: AppController())
+//            .environment(\.managedObjectContext, userDataController.container.viewContext)
+//
+//    }
+//}

@@ -6,21 +6,23 @@
 //
 
 import SwiftUI
+import UIKit
 
 @main
 struct CSDS395App: App {
-    @StateObject private var userController = UserController()
+    // for core data
+    let userDataController = UserDataController.shared
+
 
     var body: some Scene {
         WindowGroup {
+           
+            MainView(appController: AppController())
+                .environment(\.managedObjectContext, userDataController.container.viewContext)
+        
+            
 //         HomeView(controller: AppController())
-         IsLoginView().environment(\.managedObjectContext, userController.container.viewContext)
+//         IsLoginView().environment(\.managedObjectContext, userController.container.viewContext)
         }
-    }
-}
-
-struct Previews_CSDS395App_Previews: PreviewProvider {
-    static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }
