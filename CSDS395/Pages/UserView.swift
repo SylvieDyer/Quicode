@@ -23,7 +23,7 @@ import CoreData
 
 struct UserView: View {
     var controller: AppController
-    var viewContext: NSManagedObjectContext
+//    var viewContext: NSManagedObjectContext
     var user : User
     
     var body:some View {
@@ -33,7 +33,7 @@ struct UserView: View {
                 HStack(alignment: .lastTextBaseline, spacing:0){
                     // home page
                     NavigationLink {
-                        HomeView(controller: controller, viewContext: viewContext, user : user).navigationBarBackButtonHidden(true)
+                        HomeView(controller: controller, user : user).navigationBarBackButtonHidden(true)
                     } label: {
                         Image(systemName: "house").foregroundColor(.gray).padding(25)
                     }

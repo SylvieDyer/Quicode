@@ -27,7 +27,7 @@ struct MainView: View {
         }
         // otherwise, check that they are not new
         else if (users.first!.newUser == false){
-            HomeView(controller: appController,  viewContext: viewContext, user: users.first!)
+            HomeView(controller: appController, user: users.first!)
         }
             
     }

@@ -9,12 +9,10 @@ import SwiftUI
 import CoreData
 
 struct HomeView: View {
-    
-
     // stores module names
     @ObservedObject var controller: AppController
     
-    var viewContext: NSManagedObjectContext
+//    var viewContext: NSManagedObjectContext
     var user : User
     
     var body: some View {
@@ -38,7 +36,7 @@ struct HomeView: View {
                 }
                 // user page navigation
                 NavigationLink {
-                    UserView(controller: controller, viewContext: viewContext, user: user).navigationBarBackButtonHidden(true)
+                    UserView(controller: controller, user: user).navigationBarBackButtonHidden(true)
                 } label: {
                     Image(systemName: "person").foregroundColor(.gray).padding(25)
                 }
@@ -51,7 +49,7 @@ struct HomeView: View {
                     Section{
                         // will be dynamic with user name -- Text("Welcome Back, \(user.name)
                         Text("Welcome Back, \(user.firstName ?? "User")").bold().font(.title2)
-                        // can include streak here?
+                        
                     }
                     .listRowBackground(
                         Capsule()
@@ -77,7 +75,7 @@ struct HomeView: View {
                     
                     
                     // iterate through list of modules
-                    ForEach(controller.getModuleNames(), id: \.self) { moduleName in
+                    ForEach(controller.getModuleNames(), id: \.self) { moduleName in  
                         Section{
                             // individual module
                             NavigationLink(){
@@ -154,9 +152,11 @@ extension Color {
 }
 
 
-//// to view home (no user)
-//struct HomeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeView(controller: AppController(), viewContext: PersistenceController.preview, user: User())
-//    }
-//}
+// to view home (no user)
+struct HomeView_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        HomeView(controller: AppController(),  user: User())
+    
+    }
+}

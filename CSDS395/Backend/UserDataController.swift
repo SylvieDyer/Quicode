@@ -1,5 +1,5 @@
 //
-//  PersistenceController.swift
+//  UserDataController.swift
 //  CSDS395
 //
 //  Created by Sylvie Dyer on 9/19/23.
@@ -9,12 +9,12 @@ import Foundation
 import CoreData
  
 // main file for core data
-struct PersistenceController {
+struct UserDataController {
     
-    static let shared = PersistenceController()
+    static let shared = UserDataController()
     
-    static var preview: PersistenceController = {
-        let result = PersistenceController(inMemory: true)
+    static var preview: UserDataController = {
+        let result = UserDataController(inMemory: true)
         let viewContext = result.container.viewContext
         
         let user = User(context: viewContext)
