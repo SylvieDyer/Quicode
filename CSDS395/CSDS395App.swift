@@ -6,17 +6,28 @@
 //
 
 import SwiftUI
+import UIKit
 
 import Foundation
 import SotoS3
 
 @main
 struct CSDS395App: App {
+    // for core data
+    let userDataController = UserDataController.shared
+
 
     var body: some Scene {
         WindowGroup {
-         HomeView(controller: AppController())
-//           LoginView()
+            // for testing Drag and Drop
+//            DragAndDropView(DNDCLASS: AppController.DND())
+           
+            MainView(appController: AppController())
+                .environment(\.managedObjectContext, userDataController.container.viewContext)
+        
+            
+//         HomeView(controller: AppController())
+//         IsLoginView().environment(\.managedObjectContext, userController.container.viewContext)
         }
     }
 //    static func main() {
@@ -45,10 +56,4 @@ struct CSDS395App: App {
         
     //}
     
-}
-
-struct Previews_CSDS395App_Previews: PreviewProvider {
-    static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
-    }
 }

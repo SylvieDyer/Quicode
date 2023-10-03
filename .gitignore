@@ -5,6 +5,7 @@
 
 ## User settings
 xcuserdata/
+xcshareddata/
 
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint
@@ -89,3 +90,4 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+CSDS395.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved

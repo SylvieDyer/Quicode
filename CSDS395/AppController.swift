@@ -15,15 +15,15 @@ class AppController: NSObject, ObservableObject {
     }
     
     //TODO: HARDCODED - Connect to DB
-    private var questions: [String: [Question]] = [
-        "Data Types and Variables": [
-            Question("This is a Data Types and Variables multiSelect", QuestionType.multiSelect, ["Option 1", "Option 2"])],
-        "Operators": [
-            Question("This is a Operators multiSelect", QuestionType.multiSelect, ["Option 1", "Option 2"])],
+    private var questions: [String: Question] = [
+        "Data Types and Variables":
+            Question("This is a Data Types and Variables multiSelect", QuestionType.multiSelect, ["Option 1", "Option 2", "Option 3", "Option 4"], ["Option 1"], Question("This is a Data Types and Variables multiSelect2", QuestionType.multiSelect, ["Option 5", "Option 6", "Option 7", "Option 8"], ["Option 5"], nil)),
+        "Operators":
+            Question("This is a Operators multiSelect", QuestionType.multiSelect, ["Option 1", "Option 2", "Option 3", "Option 4"], ["Option 2", "Option 3"], nil),
     ]
     
-    func getQuestions(name: String) -> [Question] {
-        return questions[name] ?? [Question("Unset question", QuestionType.multiSelect, [])]
+    func getQuestions(name: String) -> Question {
+        return questions[name] ?? Question("Unset question", QuestionType.multiSelect, [], [])
     }
     
     func getBlocks(name: String) -> [String] {
@@ -44,6 +44,19 @@ extension AppController {
         var foundataions = false
         var java = false
         var python = false
+    }
+    
+    /// PLACE HOLDER FOR DND FUNCTIONALITY
+    class DND: ObservableObject{
+        var map : [String: UUID] = [:]
+        
+        func setVal(word: String, id: UUID){
+            self.map[word] = id
+        }
+        
+        func getWord(word:String) -> UUID {
+            return self.map[word]!
+        }
     }
 }
 
