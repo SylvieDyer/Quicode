@@ -74,6 +74,10 @@ public class QuestionList {
         return nil
     }
     
+    func peekNext() -> Question? {
+        return getQuestionAtIndex(index: currentPos + 1)
+    }
+    
     // Returns nil if at first question
     func getLast() -> Question? {
         if (currentPos > 0) {
@@ -85,13 +89,21 @@ public class QuestionList {
     
     // Returns nil if at first question
     func peekLast() -> Question? {
-        if (currentPos > 0) {
-            return qlist[currentPos - 1]
-        }
-        return nil
+        return getQuestionAtIndex(index: currentPos - 1)
     }
     
     func isLast() -> Bool {
         return currentPos >= qlist.count - 1
+    }
+    
+    func getQuestionAtIndex(index: Int) -> Question? {
+        if (index < qlist.count && index >= 0) {
+            return qlist[index]
+        }
+        return nil
+    }
+    
+    func getRandomQuestion() -> Question? {
+        return getQuestionAtIndex(index: Int.random(in: 0..<qlist.count))
     }
 }
