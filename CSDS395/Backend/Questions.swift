@@ -36,7 +36,21 @@ public class MultipleQ: Question {
     func getID() -> UUID {
         return self.id
     }
+}
 
+public class BlankQ: Question {
+    var questionText: String = "UNSET"
+    var questionOptions: [String] = []
+    var questionAnswer: [String] = []
+    var id: UUID
+    
+    init() {
+        self.id = UUID()
+    }
+    
+    func getId() -> UUID {
+        return self.id
+    }
 }
 
 public class QuestionList {

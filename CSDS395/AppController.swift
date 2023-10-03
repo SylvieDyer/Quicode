@@ -15,15 +15,14 @@ class AppController: NSObject, ObservableObject {
     }
     
     //TODO: HARDCODED - Connect to DB
-    private var questions: [String: Question] = [
-        "Data Types and Variables":
-            Question("This is a Data Types and Variables multiSelect", QuestionType.multiSelect, ["Option 1", "Option 2", "Option 3", "Option 4"], ["Option 1"], Question("This is a Data Types and Variables multiSelect2", QuestionType.multiSelect, ["Option 5", "Option 6", "Option 7", "Option 8"], ["Option 5"], nil)),
-        "Operators":
-            Question("This is a Operators multiSelect", QuestionType.multiSelect, ["Option 1", "Option 2", "Option 3", "Option 4"], ["Option 2", "Option 3"], nil),
+    
+    private var questions: [String: QuestionList] = [
+        "Data Types and Variables": QuestionList(qlist: [MultipleQ(questionText: "This is a Data Types and Variables multiSelect",  questionOptions: ["Option 1", "Option 2", "Option 3", "Option 4"], questionAnswer: ["Option 1"]), MultipleQ(questionText: "This is a Data Types and Variables multiSelect2",  questionOptions: ["Option 5", "Option 6", "Option 7", "Option 8"], questionAnswer: ["Option 7"]), MultipleQ(questionText: "This is a Data Types and Variables multiSelect3",  questionOptions: ["Option 1", "Option 2", "Option 3", "Option 4"], questionAnswer: ["Option 2", "Option 3"])]),
+        "Operators": QuestionList(qlist: [MultipleQ(questionText: "This is an Operators multiSelect",  questionOptions: ["Option 1", "Option 2", "Option 3", "Option 4"], questionAnswer: ["Option 1"])])
     ]
     
-    func getQuestions(name: String) -> Question {
-        return questions[name] ?? Question("Unset question", QuestionType.multiSelect, [], [])
+    func getQuestions(name: String) -> QuestionList {
+        return questions[name] ?? QuestionList(qlist:[BlankQ()])
     }
     
     func getBlocks(name: String) -> [String] {
