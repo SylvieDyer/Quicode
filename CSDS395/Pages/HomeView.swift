@@ -12,7 +12,7 @@ import CoreData
 struct HomeView: View {
     // stores module names
     @ObservedObject var controller: AppController
-    
+    var awsManager : AWSManager = AWSManager()
 //    var viewContext: NSManagedObjectContext
     var user : User
    
@@ -21,7 +21,9 @@ struct HomeView: View {
         // wraps app in navigation to switch to user-screen
         NavigationView{
             VStack {
-                
+                Button(action: awsManager.main){
+                    Text("testing")
+                }
                 // header
                 HStack(alignment: .lastTextBaseline, spacing:0){
                     Text("QUICCODE").font(.largeTitle).bold().padding(.leading, 15)

@@ -16,7 +16,7 @@ struct CSDS395App: App {
     // for core data
     let userDataController = UserDataController.shared
 
-
+    
     var body: some Scene {
         WindowGroup {
             // for testing Drag and Drop
@@ -40,7 +40,7 @@ struct CSDS395App: App {
 //        )
 //        let s3 = S3(client: client, region: .useast2)
 //
-//
+//        
 //        let uploadRequest = S3.PutObjectRequest(
 //            bucket: "quicode",
 //            key: "example.png"
@@ -52,8 +52,15 @@ struct CSDS395App: App {
 //        } catch {
 //            print("Error uploading object: \(error)")
 //        }
+//        
+//        do {
+//            try s3.putObject(uploadRequest).wait()
+//            print("Object uploaded successfully!")
+//        } catch {
+//            print("Error uploading object: \(error)")
+//        }
 //
-        
-    //}
-    
+//        
+//    }
+//    
 }
