@@ -91,3 +91,4 @@ fastlane/test_output
 
 iOSInjectionProject/
 CSDS395.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+CSDS395/.DS_Store
