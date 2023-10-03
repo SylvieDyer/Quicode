@@ -12,6 +12,7 @@ import SwiftUI
 struct MultipleQView: View {
     let moduleName: String
     let controller: AppController
+    @State var questionList: QuestionList
     @State var question: Question
     @State var didTapIncorrectOption: [String:Bool] = [:]
     @State var shouldNavigateToNextQuestion: Bool = false // Binding to the state in the parent view
@@ -33,7 +34,7 @@ struct MultipleQView: View {
                     .frame(width:400, height: 300))
                 
             NavigationLink(
-                destination: QuestionView(moduleName: moduleName, controller: controller, question: question.nextQuestion ?? nil), // Pass the answer to the AnswerView
+                destination: QuestionView(moduleName: moduleName, controller: controller, questionList: questionList, currQuestion: questionList.getNext()), // Pass the answer to the AnswerView
                 isActive: $shouldNavigateToNextQuestion,
                 label: {
                     ScrollView{

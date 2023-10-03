@@ -49,7 +49,7 @@ struct ModuleView: View {
             ForEach(controller.getBlocks(name: name), id: \.self) { blockName in
                 // individual module
                 NavigationLink(blockName){
-                    QuestionView(moduleName: name, controller: controller, question: controller.getQuestions(name: blockName))
+                    QuestionView(moduleName: name, controller: controller, questionList: controller.getQuestions(name: blockName), currQuestion: controller.getQuestions(name: blockName).getCurrent())
                 }
                 .foregroundColor(.indigo.opacity(0.7)).font(.title3).fontWeight(.heavy)
                 .padding([.bottom], 50)

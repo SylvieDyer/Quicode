@@ -10,7 +10,8 @@ import SwiftUI
 struct QuestionView: View {
     let moduleName: String
     let controller: AppController
-    @State var question: Question?
+    @State var questionList: QuestionList
+    @State var currQuestion: Question?
     @State private var currentQuestionIndex = 0
     @State var shouldNavigateToNextQuestion = false
     @Environment(\.dismiss) private var dismiss
@@ -22,12 +23,12 @@ struct QuestionView: View {
     // Function to display the appropriate view based on question type
     @ViewBuilder
     private func displayQuestion() -> some View {
-        if(question != nil) {
-            switch question?.questionType {
-            case .multiSelect, .multipleChoice:
-                MultipleQView(moduleName: moduleName, controller: controller, question: question!)
+        if(currQuestion != nil) {
+            switch type(of:currQuestion) {
+            case is MultipleQ:
+                MultipleQView(moduleName: moduleName, controller: controller, questionList: questionList, question: (currQuestion!))
             default:
-                Text("**\(question!.questionText)**").font(.title2).fontWeight(.bold)
+                Text("**\(currQuestion!.questionText)**").font(.title2).fontWeight(.bold)
             }
         } else {
             ModuleView(name: moduleName, controller: controller)
