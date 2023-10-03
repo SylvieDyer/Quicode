@@ -10,9 +10,11 @@ public enum QuestionType {
     case multiSelect
     case multipleChoice
     case dragAndDrop
+    case blank
 }
 
 protocol Question {
+    var questionType: QuestionType { get }
     var questionText: String { get set }
     var questionOptions: [String] { get set }
     var questionAnswer: [String] { get set }
@@ -20,6 +22,7 @@ protocol Question {
 }
 
 public class MultipleQ: Question {
+    var questionType: QuestionType
     var questionText: String
     var questionOptions: [String]
     var questionAnswer: [String]
@@ -27,6 +30,7 @@ public class MultipleQ: Question {
     
     
     init(questionText: String, questionOptions: [String], questionAnswer:[String]) {
+        self.questionType = QuestionType.multiSelect
         self.questionText = questionText
         self.questionOptions = questionOptions
         self.questionAnswer = questionAnswer
@@ -39,12 +43,14 @@ public class MultipleQ: Question {
 }
 
 public class BlankQ: Question {
+    var questionType: QuestionType
     var questionText: String = "UNSET"
     var questionOptions: [String] = []
     var questionAnswer: [String] = []
     var id: UUID
     
     init() {
+        self.questionType = QuestionType.blank
         self.id = UUID()
     }
     
@@ -54,19 +60,22 @@ public class BlankQ: Question {
 }
 
 public class QuestionList {
-    var currentPos: Int = 0
+    var currentPos: Int
     var qlist: [Question]
     
     init(qlist: [Question]) {
+        self.currentPos = 0
         self.qlist = qlist
     }
     
     func getCurrent() -> Question {
+        print("get current: " + String(currentPos))
         return qlist[currentPos]
     }
     
     // Returns nil if at last question
     func getNext() -> Question? {
+        print(currentPos)
         if (currentPos < qlist.count - 1) {
             currentPos += 1
             return getCurrent()

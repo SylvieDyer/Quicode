@@ -12,6 +12,7 @@ import SwiftUI
 struct MultipleQView: View {
     let moduleName: String
     let controller: AppController
+    @State var nextQuestion: Question? = nil
     @State var questionList: QuestionList
     @State var question: Question
     @State var didTapIncorrectOption: [String:Bool] = [:]
@@ -34,7 +35,7 @@ struct MultipleQView: View {
                     .frame(width:400, height: 300))
                 
             NavigationLink(
-                destination: QuestionView(moduleName: moduleName, controller: controller, questionList: questionList, currQuestion: questionList.getNext()), // Pass the answer to the AnswerView
+                destination: QuestionView(moduleName: moduleName, controller: controller, questionList: questionList, currQuestion: nextQuestion), // Pass the answer to the AnswerView
                 isActive: $shouldNavigateToNextQuestion,
                 label: {
                     ScrollView{
@@ -45,6 +46,7 @@ struct MultipleQView: View {
                                     if(!question.questionAnswer.contains(option)) {
                                         didTapIncorrectOption[option] = true
                                     } else {
+                                        nextQuestion = questionList.getNext()
                                         shouldNavigateToNextQuestion = true
                                     }
                                 }

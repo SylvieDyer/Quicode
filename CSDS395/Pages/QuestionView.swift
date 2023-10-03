@@ -24,8 +24,8 @@ struct QuestionView: View {
     @ViewBuilder
     private func displayQuestion() -> some View {
         if(currQuestion != nil) {
-            switch type(of:currQuestion) {
-            case is MultipleQ:
+            switch currQuestion?.questionType {
+            case .multiSelect:
                 MultipleQView(moduleName: moduleName, controller: controller, questionList: questionList, question: (currQuestion!))
             default:
                 Text("**\(currQuestion!.questionText)**").font(.title2).fontWeight(.bold)
