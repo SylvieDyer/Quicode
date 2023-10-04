@@ -23,7 +23,7 @@ import CoreData
 
 struct UserView: View {
     var controller: AppController
-//    var viewContext: NSManagedObjectContext
+    var viewContext: NSManagedObjectContext
     var user : User
     
     var body:some View {
@@ -33,7 +33,7 @@ struct UserView: View {
                 HStack(alignment: .lastTextBaseline, spacing:0){
                     // home page
                     NavigationLink {
-                        HomeView(controller: controller, user : user).navigationBarBackButtonHidden(true)
+                        HomeView(controller: controller, viewContext: viewContext, user : user).navigationBarBackButtonHidden(true)
                     } label: {
                         Image(systemName: "house").foregroundColor(.gray).padding(25)
                     }
@@ -79,8 +79,15 @@ struct UserView: View {
                         Text("Preferences") .foregroundColor(.purple.opacity(0.6)).font(.title2).fontWeight(.heavy)
                         //get user's last module and how far they've gotten
                         // iterate through list of modules
-                        Text("Sign Out").padding(10) //TODO
-                            .foregroundColor(.indigo.opacity(0.7)).font(.headline)
+                        
+                        // TODO: Save JSON & Upload to S3
+                        
+                        //Text("Sign Out").padding(10) //TODO
+                            //.foregroundColor(.indigo.opacity(0.7)).font(.headline)
+                    }
+                    NavigationLink(destination: LoginView(appController: controller, viewContext: viewContext).navigationBarBackButtonHidden(true)){
+                        Text("Sign Out").padding(10).foregroundColor(.indigo.opacity(0.7)).font(.headline)
+                        // take user to login after clicking logout
                     }
                 }.listStyle(InsetGroupedListStyle())
             }
