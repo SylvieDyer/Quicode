@@ -21,14 +21,16 @@ struct HomeView: View {
         // wraps app in navigation to switch to user-screen
         NavigationView{
             VStack {
+                /// directly calling AWS MAnager
                 Button(action: {
                     Task {
                         do {
                             print("button hit")
-                            var x = await awsManager.main()
-                            print(x)
+//                            var x = await awsManager.getFile(fileName: "ModuleNames.json")
+                            await controller.setAppInfo(awsManager: awsManager)
+     
                         }
-                        
+
                        }
                 }){
                     Text("testing")
@@ -87,8 +89,7 @@ struct HomeView: View {
                                 Spacer()
                             }
                         }
-                        
-                        
+                    
                         // iterate through list of modules
                         ForEach(controller.getModuleNames(), id: \.self) { moduleName in
                             Section{
