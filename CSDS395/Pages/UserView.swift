@@ -82,8 +82,6 @@ struct UserView: View {
                         
                         // TODO: Save JSON & Upload to S3
                         
-                        //Text("Sign Out").padding(10) //TODO
-                            //.foregroundColor(.indigo.opacity(0.7)).font(.headline)
                     }
                     NavigationLink(destination: LoginView(appController: controller, viewContext: viewContext).navigationBarBackButtonHidden(true)){
                         Text("Sign Out").padding(10).foregroundColor(.indigo.opacity(0.7)).font(.headline)
