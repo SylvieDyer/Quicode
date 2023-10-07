@@ -26,6 +26,8 @@ struct UserView: View {
     var viewContext: NSManagedObjectContext
     var user : User
     
+    @State private var isActive = false
+    
     var body:some View {
         NavigationView{
             VStack{
@@ -83,13 +85,26 @@ struct UserView: View {
                         // TODO: Save JSON & Upload to S3
                         
                     }
-                    NavigationLink(destination: LoginView(appController: controller, viewContext: viewContext).navigationBarBackButtonHidden(true)){
-                        Text("Sign Out").padding(10).foregroundColor(.indigo.opacity(0.7)).font(.headline)
-                        // take user to login after clicking logout
+                    NavigationLink(destination: MainView(appController: controller).navigationBarBackButtonHidden(), isActive: $isActive) {
+                        Button {
+                            // remove user from core data
+                            RemoveUser()
+                            isActive = true
+                        } label: {
+                            Text("Sign Out").padding(10).foregroundColor(.indigo.opacity(0.7)).font(.headline)
+                        }
                     }
+                        
+                    
                 }.listStyle(InsetGroupedListStyle())
             }
         }
+    }
+    
+    //Remove User from Core Data after log out
+    func RemoveUser() -> Void {
+        viewContext.delete(user)
+        print(viewContext.deletedObjects)
     }
 }
 
