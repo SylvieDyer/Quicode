@@ -21,7 +21,16 @@ struct HomeView: View {
         // wraps app in navigation to switch to user-screen
         NavigationView{
             VStack {
-                Button(action: awsManager.main){
+                Button(action: {
+                    Task {
+                        do {
+                            print("button hit")
+                            var x = await awsManager.main()
+                            print(x)
+                        }
+                        
+                       }
+                }){
                     Text("testing")
                 }
                 // header
