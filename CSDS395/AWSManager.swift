@@ -28,9 +28,11 @@ struct AWSManager {
         return client
     }
     
-    func uploadToAWS(client: AWSClient ,bucket: String, filename: String) async {
+    func uploadToAWS(client: AWSClient ,bucket: String, filename: String, body: Data) async {
         let s3 = S3(client: client, region: .useast2)
+        let payload = AWSPayload.byteBuffer(ByteBufferAllocator().buffer(bytes: body))
         let uploadRequest = S3.PutObjectRequest(
+           body: payload,
            bucket: bucket,
            key: filename
        )

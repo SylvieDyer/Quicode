@@ -22,7 +22,9 @@ func writeJson<T: Encodable>(destPath: String, data: T) {
         jsonData = try jsonEncoder.encode(data)
         print(jsonData)
         try jsonData.write(to: fileURL)
+        print(fileURL)
     } catch {
         print("Error encoding object to JSON: \(error)")
     }
+    
 }

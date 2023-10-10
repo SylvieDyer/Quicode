@@ -97,17 +97,6 @@ struct LoginView: View {
             user.lastName = appleIdCredential.fullName?.familyName ?? "ERROR: NO NAME GIVEN"
             user.id = UUID()        // TODO: dont want to recreate everytime user logs in though ... TBD
             
-            do {
-                let email = user.email!
-                let firstname = user.firstName!
-                let lastname = user.lastName!
-                let id = user.id
-                let userJson = Users(id: id!, email: email, firstname: firstname, lastname: lastname)
-                try writeJson(destPath: "\(id).json", data: userJson)
-            }
-            catch {
-                print("cannot write to json")
-            }
 
             // try to save with core data
             do {
@@ -135,9 +124,18 @@ struct LoginView: View {
     }
     
     func uploadUser(user: User) async {
+        let email = user.email!
+        let firstname = user.firstName!
+        let lastname = user.lastName!
+        let id = user.id
+        let userJson = Users(id: id!, email: email, firstname: firstname, lastname: lastname)
+        
         do {
             let client = awsManager.initAWS()
-            try await awsManager.uploadToAWS(client: client, bucket: "quicode", filename: "\(user.id).json")
+            let jsonEncoder = JSONEncoder()
+            jsonEncoder.outputFormatting = .prettyPrinted
+            let jsonData = try jsonEncoder.encode(userJson)
+            try await awsManager.uploadToAWS(client: client, bucket: "quicode", filename: "\(user.id!).json", body: jsonData)
         }
         catch {
             print("cannot upload user")
