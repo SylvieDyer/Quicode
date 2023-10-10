@@ -33,7 +33,7 @@
 
 /* Begin PBXFileReference section */
 		2F8D87D42AAA3EA20057E8C3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		2F8D87DC2AAF7A370057E8C3 /* JsonFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFileManager.swift; sourceTree = "<group>"; };
+		2F8D87DC2AAF7A370057E8C3 /* JsonFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JsonFileManager.swift; path = ../jsons/JsonFileManager.swift; sourceTree = "<group>"; };
 		2F8D87DE2AAFF5160057E8C3 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		2F8D87E52AD497800057E8C3 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		5A82B1412AA7A306003F1486 /* DescView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescView.swift; sourceTree = "<group>"; };
@@ -72,6 +72,7 @@
 		2F8D87DB2AAF79CD0057E8C3 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				2F8D87DC2AAF7A370057E8C3 /* JsonFileManager.swift */,
 				2F8D87DE2AAFF5160057E8C3 /* UserController.swift */,
 				9427248E2AA82CC6006F0DBF /* Questions.swift */,
 				5A94ABC02ABA1170009BA3D3 /* UserDataController.swift */,
@@ -148,7 +149,6 @@
 		94DC7DB22AB9CF33003D9564 /* jsons */ = {
 			isa = PBXGroup;
 			children = (
-				2F8D87DC2AAF7A370057E8C3 /* JsonFileManager.swift */,
 			);
 			path = jsons;
 			sourceTree = "<group>";
