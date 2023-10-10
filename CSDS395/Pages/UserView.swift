@@ -103,8 +103,26 @@ struct UserView: View {
     
     //Remove User from Core Data after log out
     func RemoveUser() -> Void {
-        viewContext.delete(user)
-        print(viewContext.deletedObjects)
+        let fetchRequest : NSFetchRequest<User> = User.fetchRequest()
+        //Try to delete the object from context
+        do {
+            let objects = try viewContext.fetch(fetchRequest)
+            for object in objects {
+                print(object)
+                viewContext.delete(object)
+            }
+        } catch let error as NSError {
+            print("Error fetching objects: \(error), \(error.userInfo)")
+        }
+        //Save the context
+        do {
+            try viewContext.save()
+        } catch let error as NSError {
+            print("Error saving context after deletion: \(error), \(error.userInfo)")
+        }
+        
+
+
     }
 }
 
