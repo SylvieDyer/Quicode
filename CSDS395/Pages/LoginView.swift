@@ -13,6 +13,7 @@ import CoreData
 // log in view
 struct LoginView: View {
     @ObservedObject var appController: AppController
+    var awsManager : AWSManager = AWSManager()
     var viewContext: NSManagedObjectContext
 
     // new user
@@ -69,9 +70,10 @@ struct LoginView: View {
             case .success(let authResults):
                 print("Authorisation successful \(authResults)")
                 // creates the user object
-                CreateUser(authResults: authResults)
-                // TODO: SendtoS3() method?
-              
+                let user = CreateUser(authResults: authResults)
+                Task{
+                    await uploadUser(user: user)
+                }
             case .failure(let error):
                 print("Authorisation failed: \(error.localizedDescription)")
                
@@ -81,18 +83,31 @@ struct LoginView: View {
         .signInWithAppleButtonStyle(type)
     }
     
+
+    
     // to create the user and store with core data
-    func CreateUser(authResults: ASAuthorization) -> Void{
+    func CreateUser(authResults: ASAuthorization) -> User{
+        let user = User(context: viewContext)
         switch authResults.credential {
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
             // create new user object
-            let user = User(context: viewContext)
-            
             user.newUser = false
             user.email = appleIdCredential.email ?? "NO EMAIL GIVEN"
             user.firstName = appleIdCredential.fullName?.givenName ?? "ERROR: NO NAME GIVEN"
             user.lastName = appleIdCredential.fullName?.familyName ?? "ERROR: NO NAME GIVEN"
-            user.id = UUID()        // TODO: dont want to recreate everytime user logs in though ... TBD 
+            user.id = UUID()        // TODO: dont want to recreate everytime user logs in though ... TBD
+            
+            do {
+                let email = user.email!
+                let firstname = user.firstName!
+                let lastname = user.lastName!
+                let id = user.id
+                let userJson = Users(id: id!, email: email, firstname: firstname, lastname: lastname)
+                try writeJson(destPath: "\(id).json", data: userJson)
+            }
+            catch {
+                print("cannot write to json")
+            }
 
             // try to save with core data
             do {
@@ -104,6 +119,7 @@ struct LoginView: View {
                 // fatalError() will crash app
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
+            
         
         case let passwordCredential as ASPasswordCredential:
             print("\n ** ASPasswordCredential ** \n")
@@ -114,6 +130,19 @@ struct LoginView: View {
         default:
             break
         }
+        
+        return user
+    }
+    
+    func uploadUser(user: User) async {
+        do {
+            let client = awsManager.initAWS()
+            try await awsManager.uploadToAWS(client: client, bucket: "quicode", filename: "\(user.id).json")
+        }
+        catch {
+            print("cannot upload user")
+        }
+        
     }
 }
 //

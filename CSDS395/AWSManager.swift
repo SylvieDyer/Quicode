@@ -9,6 +9,38 @@ import Foundation
 import SotoS3
 
 struct AWSManager {
+    func initAWS() -> AWSClient{
+        let client = AWSClient(
+            credentialProvider: .static(accessKeyId: "AKIA2ARVCSNBIO4SS2HU", secretAccessKey: "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"),
+            httpClientProvider: .createNew
+        )
+        print("Made Client")
+        return client
+    }
+    
+    func uploadToAWS(client: AWSClient ,bucket: String, filename: String) async {
+        let s3 = S3(client: client, region: .useast2)
+        let uploadRequest = S3.PutObjectRequest(
+           bucket: bucket,
+           key: filename
+       )
+       print("Upload Request Created")
+
+       do {
+           try s3.putObject(uploadRequest).wait()
+           print("Object uploaded successfully!")
+       } catch {
+           print("Error uploading object: \(error)")
+       }
+        
+        do {
+            try await s3.client.shutdown()
+        }
+        catch {
+            print("Error shutting down")
+        }
+    }
+    
     func main() async -> Data {
         
         let bucket = "quicode"
@@ -63,7 +95,7 @@ struct AWSManager {
 //            } else {
 //                print("No object data received.")
 //            }
-//            
+//
 //            do {
 //                try await s3.client.shutdown()
 //            }
