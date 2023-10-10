@@ -58,6 +58,19 @@ extension AppController {
             return self.map[word]!
         }
     }
+    
+    static func start() {
+            // Call pullJson for testing
+            if let questionList = pullJson(from: "sample.json") {
+                // Successfully parsed the JSON file into a QuestionList object.
+                // You can now work with the questions using methods from the QuestionList class.
+                // For example, you can print the first question's text:
+                let firstQuestion = questionList.getCurrent()
+                print("First question: \(firstQuestion.questionText)")
+            } else {
+                print("Failed to parse the JSON file.")
+            }
+        }
 }
 
 

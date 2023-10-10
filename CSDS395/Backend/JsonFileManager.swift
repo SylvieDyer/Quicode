@@ -77,18 +77,3 @@ func pullJson(from filePath: String) -> QuestionList? {
     
     return questionListObject
 }
-
-
-    // Call pullJson for testing within the main function
-    if let questionList = pullJson(from: "sample.json") {
-        // Successfully parsed the JSON file into a QuestionList object.
-        // You can now work with the questions using methods from the QuestionList class.
-        // For example, you can print the first question's text:
-        let firstQuestion = questionList.getCurrent()
-        print("First question: \(firstQuestion.questionText)")
-    } else {
-        print("Failed to parse the JSON file.")
-    }
-
-
-
