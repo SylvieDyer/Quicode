@@ -15,12 +15,13 @@ func writeJson<T: Encodable>(destPath: String, data: T) {
 
     
     let jsonEncoder = JSONEncoder()
-    jsonEncoder.outputFormatting = .prettyPrinted // For nicely formatted JSON
-    var jsonData: Data?
+    jsonEncoder.outputFormatting = .prettyPrinted
+    var jsonData: Data
 
     do {
         jsonData = try jsonEncoder.encode(data)
-        try jsonData!.write(to: fileURL)
+        print(jsonData)
+        try jsonData.write(to: fileURL)
     } catch {
         print("Error encoding object to JSON: \(error)")
     }
