@@ -8,19 +8,20 @@
 import Foundation
 
 
-//func writeJson(destPath: String, userData: User) {
-//    // Create a JSONEncoder
-//    let encoder = JSONEncoder()
-//    print(URL(fileURLWithPath: FileManager.default.currentDirectoryPath))
-//    do {
-//        // Encode the UserData instance into JSON data
-//        let jsonData = try encoder.encode(userData)
-//        let userJSONURL = URL(fileURLWithPath: FileManager.default.currentDirectoryPath).appendingPathComponent(destPath)
-//        print(userJSONURL)
-//        
-//        // Write the JSON data to the file
-//        try jsonData.write(to: userJSONURL, options: .atomic)
-//    } catch {
-//        print("Error encoding UserData to JSON: \(error)")
-//    }
-//}
+func writeJson<T: Encodable>(destPath: String, data: T) {
+    let temporaryDirectory = FileManager.default.temporaryDirectory
+    let fileURL = temporaryDirectory.appendingPathComponent(destPath)
+    print(temporaryDirectory)
+
+    
+    let jsonEncoder = JSONEncoder()
+    jsonEncoder.outputFormatting = .prettyPrinted // For nicely formatted JSON
+    var jsonData: Data?
+
+    do {
+        jsonData = try jsonEncoder.encode(data)
+        try jsonData!.write(to: fileURL)
+    } catch {
+        print("Error encoding object to JSON: \(error)")
+    }
+}
