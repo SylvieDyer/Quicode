@@ -10,8 +10,6 @@ import SotoS3
 
 struct AWSManager {
     func initAWS() -> AWSClient{
-        let bucket = "quicode"
-        
         let client = AWSClient(
             credentialProvider: .static(accessKeyId: "AKIA2ARVCSNBIO4SS2HU", secretAccessKey: "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"),
             httpClientProvider: .createNew

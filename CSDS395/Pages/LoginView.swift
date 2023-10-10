@@ -71,10 +71,9 @@ struct LoginView: View {
                 print("Authorisation successful \(authResults)")
                 // creates the user object
                 let user = CreateUser(authResults: authResults)
-                // TODO: SendtoS3() method?
-//                await uploadUser(user: user)
-                
-              
+                Task{
+                    await uploadUser(user: user)
+                }
             case .failure(let error):
                 print("Authorisation failed: \(error.localizedDescription)")
                
@@ -84,9 +83,7 @@ struct LoginView: View {
         .signInWithAppleButtonStyle(type)
     }
     
-    func SignIn(){
-        
-    }
+
     
     // to create the user and store with core data
     func CreateUser(authResults: ASAuthorization) -> User{
@@ -106,7 +103,7 @@ struct LoginView: View {
                 let lastname = user.lastName!
                 let id = user.id
                 let userJson = Users(id: id!, email: email, firstname: firstname, lastname: lastname)
-                try writeJson(destPath: "user.json", data: userJson)
+                try writeJson(destPath: "\(id).json", data: userJson)
             }
             catch {
                 print("cannot write to json")
@@ -137,22 +134,10 @@ struct LoginView: View {
         return user
     }
     
-    func uploadUser(user: User) async{
-        do {
-            let email = user.email!
-            let firstname = user.firstName!
-            let lastname = user.lastName!
-            let id = user.id
-            let userJson = Users(id: id!, email: email, firstname: firstname, lastname: lastname)
-            try writeJson(destPath: "user.json", data: userJson)
-        }
-        catch {
-            print("cannot write to json")
-        }
-        
+    func uploadUser(user: User) async {
         do {
             let client = awsManager.initAWS()
-            try await awsManager.uploadToAWS(client: client, bucket: "quicode", filename: "user.json")
+            try await awsManager.uploadToAWS(client: client, bucket: "quicode", filename: "\(user.id).json")
         }
         catch {
             print("cannot upload user")
