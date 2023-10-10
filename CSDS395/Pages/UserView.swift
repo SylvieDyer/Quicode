@@ -85,7 +85,7 @@ struct UserView: View {
                         // TODO: Save JSON & Upload to S3
                         
                     }
-                    NavigationLink(destination: MainView(appController: controller).navigationBarBackButtonHidden(), isActive: $isActive) {
+                    NavigationLink(destination: LogoutView(viewContext: viewContext, appController: controller).navigationBarBackButtonHidden(), isActive: $isActive) {
                         Button {
                             // remove user from core data
                             RemoveUser()
@@ -103,23 +103,36 @@ struct UserView: View {
     
     //Remove User from Core Data after log out
     func RemoveUser() -> Void {
-        let fetchRequest : NSFetchRequest<User> = User.fetchRequest()
-        //Try to delete the object from context
+
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+
         do {
-            let objects = try viewContext.fetch(fetchRequest)
-            for object in objects {
-                print(object)
-                viewContext.delete(object)
-            }
-        } catch let error as NSError {
-            print("Error fetching objects: \(error), \(error.userInfo)")
-        }
-        //Save the context
-        do {
+            try viewContext.execute(deleteRequest)
             try viewContext.save()
-        } catch let error as NSError {
-            print("Error saving context after deletion: \(error), \(error.userInfo)")
+        } catch {
+            print ("There was an error")
         }
+        
+        //        let fetchRequest : NSFetchRequest<User> = User.fetchRequest()
+//        fetchRequest.predicate = NSPredicate(format: "attributeName == %@", value)
+//
+//        //Try to delete the object from context
+//        do {
+//            let objects = try viewContext.fetch(fetchRequest)
+//            for object in objects {
+//                print(object)
+//                viewContext.delete(object)
+//            }
+//        } catch let error as NSError {
+//            print("Error fetching objects: \(error), \(error.userInfo)")
+//        }
+//        //Save the context
+//        do {
+//            try viewContext.save()
+//        } catch let error as NSError {
+//            print("Error saving context after deletion: \(error), \(error.userInfo)")
+//        }
         
 
 
