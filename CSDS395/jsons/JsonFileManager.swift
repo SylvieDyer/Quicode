@@ -8,7 +8,7 @@
 import Foundation
 
 
-func writeJson(destPath: String, data: Users) {
+func writeJson<T: Encodable>(destPath: String, data: T) {
     let temporaryDirectory = FileManager.default.temporaryDirectory
     let fileURL = temporaryDirectory.appendingPathComponent(destPath)
     print(temporaryDirectory)
@@ -22,6 +22,6 @@ func writeJson(destPath: String, data: Users) {
         jsonData = try jsonEncoder.encode(data)
         try jsonData!.write(to: fileURL)
     } catch {
-        print("Error encoding Users object to JSON: \(error)")
+        print("Error encoding object to JSON: \(error)")
     }
 }
