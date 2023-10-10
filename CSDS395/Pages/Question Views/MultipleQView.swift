@@ -35,7 +35,7 @@ struct MultipleQView: View {
                     .frame(width:400, height: 300))
                 
             NavigationLink(
-                destination: QuestionView(moduleName: moduleName, controller: controller, questionList: questionList, currQuestion: nextQuestion), // Pass the answer to the AnswerView
+                destination: QuestionView(moduleName: moduleName, controller: controller, questionList: questionList), // Pass the answer to the AnswerView
                 isActive: $shouldNavigateToNextQuestion,
                 label: {
                     ScrollView{
@@ -46,7 +46,7 @@ struct MultipleQView: View {
                                     if(!question.questionAnswer.contains(option)) {
                                         didTapIncorrectOption[option] = true
                                     } else {
-                                        nextQuestion = questionList.getNext()
+                                        questionList.getNext();
                                         shouldNavigateToNextQuestion = true
                                     }
                                 }
