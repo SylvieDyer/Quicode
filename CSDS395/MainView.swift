@@ -36,7 +36,7 @@ struct MainView: View {
             // if need to load from S3, show popup
             if (!loadedModules){
                 VStack {
-                    Text("Are you ready to QUICODE?!")
+                    Text("QUICk! are you ready to CODE?!?!?!")
                         .font(.title)
                         .padding(50).fontWeight(.bold)
                     HStack{
