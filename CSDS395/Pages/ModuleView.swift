@@ -52,8 +52,8 @@ struct ModuleView: View {
                     QuestionView(moduleName: name, controller: controller, questionList: controller.getQuestions(name: blockName))
                 }
                 .foregroundColor(.indigo.opacity(0.7)).font(.title3).fontWeight(.heavy)
-                .padding([.bottom], 50)
-            }
+                .padding([.bottom], 50)}
+            
         }
     }
 }

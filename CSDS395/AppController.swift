@@ -34,7 +34,6 @@ class AppController: NSObject, ObservableObject {
             print(error)
         }
         
-        
         // set the moduleNames AND blocks for each module
         for module in dict {
             /// for syntax reference:
@@ -44,7 +43,7 @@ class AppController: NSObject, ObservableObject {
             // add module names to module name list
             moduleNames.append(module.keys.first ?? "Coming Soon") // workaround for null values
                       
-            // add [moduleName, [block names]] to info -- TODO: extra [ and ] at the end due to split... will need to fix
+            // add [moduleName, [block names]] to info -- TODO: [] (JSON Format maybe?)
             blockNames.updateValue(module.values.description.components(separatedBy: CharacterSet(charactersIn: ",;")), forKey: module.keys.first ?? "ERROR")
         }
     }

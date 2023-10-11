@@ -18,40 +18,55 @@ struct MainView: View {
     )
     private var users: FetchedResults<User>
     
+    @State private var loadedModules = false
+    var awsManager : AWSManager = AWSManager()
+    
     /// SOLEY FOR TESTING PURPOSES ( content previewing)
     //    var isTestingSinglePage: Bool
     
     var body: some View {
         
-        /// THIS IS THE  FINAL CODE:
         // because first should be for THIS user (won't store more than one):
-        // if there are no users, or they're sill marked as new
+        // if there are no users, or they're sill marked as new -- ask to log in
         if (users.isEmpty || users.first!.newUser){
             LoginView(appController: appController, viewContext: viewContext)
         }
-        // otherwise, check that they are not new
+        // otherwise, check that they are not new (if they are, something went wrong
         else if (users.first!.newUser == false){
-            HomeView(controller: appController, user: users.first!)
+            // if need to load from S3, show popup
+            if (!loadedModules){
+                VStack {
+                    Text("Are you ready to QUICODE?!")
+                        .font(.title)
+                        .padding(50).fontWeight(.bold)
+                    HStack{
+                        Image(systemName: "balloon.2.fill")
+                        Image(systemName: "party.popper.fill")
+                        Image(systemName: "balloon")
+                        Image(systemName: "party.popper.fill")
+                        Image(systemName: "balloon.fill")
+                        Image(systemName: "balloon")
+                        Image(systemName: "party.popper.fill")
+                    }
+                    Button("Let's Go!",
+                           action: { getAWSData() }
+                    ).padding(50).foregroundColor(.purple).font(.title2).fontWeight(.bold)
+                }
+                
+            } else { // otherwise, load Home!
+                HomeView(controller: appController, user: users.first!)
+            }
+        }
+    }
+    
+    func getAWSData(){
+        Task{
+            do {
+                print("button hit")
+                await appController.setAppInfo(awsManager: awsManager)
+                loadedModules.toggle()
+            }
+            
         }
     }
 }
-    
-/// to make fake user?
-//    func fakeUser() -> User{
-//        let newUser = User()
-//        newUser.firstName = "FIRST NAME"
-//        newUser.lastName = "LAST NAME"
-//        newUser.email = "EMAIL"
-//        newUser.id = UUID()
-//        newUser.newUser = false
-//        return newUser
-//    }
-//}
-
-    
-    
-//struct MainView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MainView()
-//    }
-//}
