@@ -72,7 +72,6 @@
 		2F8D87DB2AAF79CD0057E8C3 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
-				94DC7DB22AB9CF33003D9564 /* jsons */,
 				2F8D87DE2AAFF5160057E8C3 /* UserController.swift */,
 				9427248E2AA82CC6006F0DBF /* Questions.swift */,
 				5A94ABC02ABA1170009BA3D3 /* UserDataController.swift */,
@@ -144,14 +143,6 @@
 				5AE7C55F2AB50B37000D51A6 /* DragAndDropView.swift */,
 			);
 			path = "Question Views";
-			sourceTree = "<group>";
-		};
-		94DC7DB22AB9CF33003D9564 /* jsons */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = jsons;
-			path = ../jsons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
