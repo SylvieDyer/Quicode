@@ -60,7 +60,8 @@ class AppController: NSObject, ObservableObject {
     //TODO: HARDCODED - Connect to DB
     
     private var questions: [String: QuestionList] = [
-        "Data Types and Variables": QuestionList(qlist: [MultipleQ(questionText: "This is a Data Types and Variables multiSelect",  questionOptions: ["Option 1", "Option 2", "Option 3", "Option 4"], questionAnswer: ["Option 1"], questionDifficulty: QuestionDifficulty.easy), MultipleQ(questionText: "This is a Data Types and Variables multiSelect2",  questionOptions: ["Option 5", "Option 6", "Option 7", "Option 8"], questionAnswer: ["Option 7"], questionDifficulty: QuestionDifficulty.medium), MultipleQ(questionText: "This is a Data Types and Variables multiSelect3",  questionOptions: ["Option 1", "Option 2", "Option 3", "Option 4"], questionAnswer: ["Option 2", "Option 3"], questionDifficulty: QuestionDifficulty.hard)]),
+        "Data Types and Variables": JsonFileManager.pullJson(from: sample.json),
+//        "Data Types and Variables": QuestionList(qlist: [MultipleQ(questionText: "This is a Data Types and Variables multiSelect",  questionOptions: ["Option 1", "Option 2", "Option 3", "Option 4"], questionAnswer: ["Option 1"], questionDifficulty: QuestionDifficulty.easy), MultipleQ(questionText: "This is a Data Types and Variables multiSelect2",  questionOptions: ["Option 5", "Option 6", "Option 7", "Option 8"], questionAnswer: ["Option 7"], questionDifficulty: QuestionDifficulty.medium), MultipleQ(questionText: "This is a Data Types and Variables multiSelect3",  questionOptions: ["Option 1", "Option 2", "Option 3", "Option 4"], questionAnswer: ["Option 2", "Option 3"], questionDifficulty: QuestionDifficulty.hard)]),
         "Operators": QuestionList(qlist: [MultipleQ(questionText: "This is an Operators multiSelect",  questionOptions: ["Option 1", "Option 2", "Option 3", "Option 4"], questionAnswer: ["Option 1"], questionDifficulty: QuestionDifficulty.easy)])
     ]
     
@@ -82,18 +83,18 @@ extension AppController {
         }
     }
     
-    static func start() {
-            // Call pullJson for testing
-            if let questionList = pullJson(from: "sample.json") {
-                // Successfully parsed the JSON file into a QuestionList object.
-                // You can now work with the questions using methods from the QuestionList class.
-                // For example, you can print the first question's text:
-                let firstQuestion = questionList.getCurrent()
-                print("First question: \(firstQuestion.questionText)")
-            } else {
-                print("Failed to parse the JSON file.")
-            }
-        }
+//    static func start() {
+//            // Call pullJson for testing
+//            if let questionList = pullJson(from: "sample.json") {
+//                // Successfully parsed the JSON file into a QuestionList object.
+//                // You can now work with the questions using methods from the QuestionList class.
+//                // For example, you can print the first question's text:
+//                let firstQuestion = questionList.getCurrent()
+//                print("First question: \(firstQuestion.questionText)")
+//            } else {
+//                print("Failed to parse the JSON file.")
+//            }
+//        }
 }
 
 
