@@ -47,8 +47,7 @@ struct JsonFileManager{
             if let questionTypeRaw = questionData["questionType"] as? String,
                let questionText = questionData["questionText"] as? String,
                let questionOptions = questionData["questionOptions"] as? [String],
-               let questionAnswer = questionData["questionAnswer"] as? [String],
-               let questionDifficulty = QuestionDifficulty.easy {
+               let questionAnswer = questionData["questionAnswer"] as? [String] {
                 
                 let questionType: QuestionType
                 switch questionTypeRaw {
@@ -64,7 +63,7 @@ struct JsonFileManager{
                 
                 let question: Question
                 if questionType == .multiSelect {
-                    question = MultipleQ(questionText: questionText, questionOptions: questionOptions, questionAnswer: questionAnswer, questionDifficulty: questionDifficulty)
+                    question = MultipleQ(questionText: questionText, questionOptions: questionOptions, questionAnswer: questionAnswer, questionDifficulty: QuestionDifficulty.easy)
                 } else {
                     question = BlankQ()
                 }
