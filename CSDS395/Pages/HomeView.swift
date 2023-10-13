@@ -13,26 +13,14 @@ struct HomeView: View {
     // stores module names
     @ObservedObject var controller: AppController
     var awsManager : AWSManager = AWSManager()
-//    var viewContext: NSManagedObjectContext
+    //    var viewContext: NSManagedObjectContext
     var user : User
-   
+    
     
     var body: some View {
         // wraps app in navigation to switch to user-screen
         NavigationView{
             VStack {
-                Button(action: {
-                    Task {
-                        do {
-                            print("button hit")
-                            var x = await awsManager.main()
-                            print(x)
-                        }
-                        
-                       }
-                }){
-                    Text("testing")
-                }
                 // header
                 HStack(alignment: .lastTextBaseline, spacing:0){
                     Text("QUICCODE").font(.largeTitle).bold().padding(.leading, 15)
@@ -43,10 +31,10 @@ struct HomeView: View {
                     /// commented out for now... will be log out button in UserPage?
                     // sign in with apple page
                     /*
-                                        NavigationLink {
-                                            IsLoginView()
-                                        } label: {
-                                            Image(systemName: "arrow.down.left.circle.fill").foregroundColor(.gray).padding(25)
+                     NavigationLink {
+                     IsLoginView()
+                     } label: {
+                     Image(systemName: "arrow.down.left.circle.fill").foregroundColor(.gray).padding(25)
                      */
                     
                     // user page navigation
@@ -88,7 +76,6 @@ struct HomeView: View {
                             }
                         }
                         
-                        
                         // iterate through list of modules
                         ForEach(controller.getModuleNames(), id: \.self) { moduleName in
                             Section{
@@ -114,7 +101,6 @@ struct HomeView: View {
                                 .foregroundColor(.black).font(.title3).fontWeight(.heavy)
                                 .padding([.bottom], 30)
                             }
-                            
                         }
                         .listRowBackground(
                             RoundedRectangle(cornerRadius: 40)
@@ -127,16 +113,7 @@ struct HomeView: View {
         }
         
     }
-    
-    /// attempt to work around the preview issue... 
-//    struct TestUser {
-//        var firstName = "HELLO"
-//        var lastName = "BYE"
-//        var email = "hi@gmail.com"
-//    }
 }
-
-
 
 // TODO: may want to move elsewhere
 // to allow for custon hex-code colors
@@ -167,8 +144,6 @@ extension Color {
     }
 }
 
-
-// TODO: can't preview home - will need a workaround or simulator to view
 //struct HomeView_Previews: PreviewProvider {
 //
 //    // for core data

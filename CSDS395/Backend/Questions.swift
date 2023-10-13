@@ -13,11 +13,18 @@ public enum QuestionType {
     case blank
 }
 
+public enum QuestionDifficulty {
+    case easy
+    case medium
+    case hard
+}
+
 protocol Question {
     var questionType: QuestionType { get }
     var questionText: String { get set }
     var questionOptions: [String] { get set }
     var questionAnswer: [String] { get set }
+    var questionDifficulty: QuestionDifficulty { get set }
     var id: UUID { get }
 }
 
@@ -26,14 +33,16 @@ public class MultipleQ: Question {
     var questionText: String
     var questionOptions: [String]
     var questionAnswer: [String]
+    var questionDifficulty: QuestionDifficulty
     var id: UUID
     
     
-    init(questionText: String, questionOptions: [String], questionAnswer:[String]) {
+    init(questionText: String, questionOptions: [String], questionAnswer:[String], questionDifficulty:QuestionDifficulty) {
         self.questionType = QuestionType.multiSelect
         self.questionText = questionText
         self.questionOptions = questionOptions
         self.questionAnswer = questionAnswer
+        self.questionDifficulty = questionDifficulty
         self.id = UUID()
     }
     
@@ -47,6 +56,7 @@ public class BlankQ: Question {
     var questionText: String = "UNSET"
     var questionOptions: [String] = []
     var questionAnswer: [String] = []
+    var questionDifficulty: QuestionDifficulty = QuestionDifficulty.easy
     var id: UUID
     
     init() {
@@ -68,16 +78,19 @@ public class QuestionList {
         self.qlist = qlist
     }
     
-    func getCurrent() -> Question {
-        print("get current: " + String(currentPos))
+    func getCurrent() -> Question? {
+//        print("get current: " + String(currentPos))
+        if(currentPos >= qlist.count) {
+            return nil
+        }
         return qlist[currentPos]
     }
     
     // Returns nil if at last question
     func getNext() -> Question? {
-        print(currentPos)
+//        print(currentPos)
+        currentPos += 1
         if (currentPos < qlist.count - 1) {
-            currentPos += 1
             return getCurrent()
         }
         return nil
