@@ -90,6 +90,8 @@ struct LoginView: View {
         let user = User(context: viewContext)
         switch authResults.credential {
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
+            print("FULL NAME")
+            print(appleIdCredential.fullName!)
             // create new user object
             user.newUser = false
             user.email = appleIdCredential.email ?? "NO EMAIL GIVEN"
@@ -131,16 +133,17 @@ struct LoginView: View {
         let userJson = Users(id: id!, email: email, firstname: firstname, lastname: lastname)
         
         do {
-            let client = awsManager.initAWS()
+//            let client = awsManager.initAWS()
             let jsonEncoder = JSONEncoder()
             jsonEncoder.outputFormatting = .prettyPrinted
             let jsonData = try jsonEncoder.encode(userJson)
-            try await awsManager.uploadToAWS(client: client, bucket: "quicode", filename: "\(user.id!).json", body: jsonData)
+            await awsManager.uploadToAWS(filename: "\(user.id!).json", body: jsonData)
+            print("after await")
         }
         catch {
             print("cannot upload user")
         }
-        
+        print("leaving uploadUser")
     }
 }
 //
