@@ -1,0 +1,15 @@
+{
+    "Boolean Expressions 1": {
+        "questionText": "This is a Boolean Expressions multiSelect1",
+        "questionType": "multiSelect",
+        "questionOptions": ["Option 1", "Option 2", "Option 3", "Option 4"],
+        "questionAnswer": ["Option 1"],
+    },
+    "Operators 2": {
+        "questionText": "This is a Boolean Expressions multiSelect2",
+        "questionType": "multiSelect",
+        "questionOptions": ["Option 1", "Option 2", "Option 3", "Option 4"],
+        "questionAnswer": ["Option 1"],
+    }
+}
+

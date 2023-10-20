@@ -60,8 +60,9 @@ class AppController: NSObject, ObservableObject {
     //TODO: HARDCODED - Connect to DB
     
     private var questions: [String: QuestionList?] = [
-        "[Data Types and Variables": JsonFileManager.pullJson(forResource: "sample", withExtension: "json"),
-        " Operators": QuestionList(qlist: [MultipleQ(questionText: "This is an Operators multiSelect",  questionOptions: ["Option 1", "Option 2", "Option 3", "Option 4"], questionAnswer: ["Option 1"], questionDifficulty: QuestionDifficulty.easy)])
+        "[Data Types and Variables": JsonFileManager.pullJson(forResource: "dataTypes", withExtension: "json"),
+        " Operators": JsonFileManager.pullJson(forResource:"operatorsSample", withExtension: "json"),
+        " Boolean Expressions": JsonFileManager.pullJson(forResource: "booleanExpressions", withExtension: "json")
     ]
     
     func getQuestions(name: String) -> QuestionList {
