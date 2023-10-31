@@ -13,7 +13,7 @@ struct HomeView: View {
     // stores module names
     @ObservedObject var controller: AppController
     var awsManager : AWSManager = AWSManager()
-    //    var viewContext: NSManagedObjectContext
+    var viewContext: NSManagedObjectContext
     var user : User
     
     

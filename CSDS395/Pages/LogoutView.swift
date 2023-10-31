@@ -23,7 +23,7 @@ struct LogoutView: View {
     var body: some View {
         // because first should be for THIS user (won't store more than one):
         // if there are no users, or they're sill marked as new
-        if (users.isEmpty || users.first!.newUser){
+        if (users.first!.isLoggedOut || users.first!.newUser){
             LoginView(appController: appController, viewContext: viewContext)
         }
         // otherwise, check that they are not new
