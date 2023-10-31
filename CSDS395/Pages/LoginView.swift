@@ -115,16 +115,12 @@ struct LoginView: View {
                     user.firstName = appleIdCredential.fullName?.givenName ?? "ERROR: NO NAME GIVEN"
                     user.lastName = appleIdCredential.fullName?.familyName ?? "ERROR: NO NAME GIVEN"
                     user.appid = appleIdCredential.user
-                    // TODO: I think we can use appleId credential to identify user, and delete the UUID
                     user.id = UUID()        // TODO: dont want to recreate everytime user logs in though ... TBD
                 }
                 else {
-                    users.first!.isLoggedOut = true
+                    users.first!.isLoggedOut = false
                 }
             }
-            
-        
-            
             
 
             // try to save with core data
