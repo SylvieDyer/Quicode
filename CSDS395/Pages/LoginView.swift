@@ -92,6 +92,8 @@ struct LoginView: View {
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
             print("FULL NAME")
             print(appleIdCredential.fullName!)
+            print("USER")
+            print(appleIdCredential.user)
             // create new user object
             user.newUser = false
             user.email = appleIdCredential.email ?? "NO EMAIL GIVEN"
