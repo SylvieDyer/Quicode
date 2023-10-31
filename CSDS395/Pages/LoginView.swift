@@ -61,7 +61,7 @@ struct LoginView: View {
         }
     }
     
-    // for sign in functionality
+    // for sign in functional
     func SignInButton(_ type: SignInWithAppleButton.Style) -> some View{
         return SignInWithAppleButton(.signIn) { request in
             request.requestedScopes = [.fullName, .email]
@@ -92,6 +92,8 @@ struct LoginView: View {
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
             print("FULL NAME")
             print(appleIdCredential.fullName!)
+            print("USER")
+            print(appleIdCredential.user)
             // create new user object
             user.newUser = false
             user.email = appleIdCredential.email ?? "NO EMAIL GIVEN"
