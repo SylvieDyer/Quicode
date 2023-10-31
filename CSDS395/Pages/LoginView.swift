@@ -92,14 +92,39 @@ struct LoginView: View {
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
             print("FULL NAME")
             print(appleIdCredential.fullName!)
+            // appleIdCredential.user if the user's Sign In with Apple Credential Remains stable
             print("USER")
             print(appleIdCredential.user)
             // create new user object
-            user.newUser = false
-            user.email = appleIdCredential.email ?? "NO EMAIL GIVEN"
-            user.firstName = appleIdCredential.fullName?.givenName ?? "ERROR: NO NAME GIVEN"
-            user.lastName = appleIdCredential.fullName?.familyName ?? "ERROR: NO NAME GIVEN"
-            user.id = UUID()        // TODO: dont want to recreate everytime user logs in though ... TBD
+            if users.isEmpty {
+                user.newUser = false
+                user.isLoggedOut = false
+                user.email = appleIdCredential.email ?? "NO EMAIL GIVEN"
+                user.firstName = appleIdCredential.fullName?.givenName ?? "ERROR: NO NAME GIVEN"
+                user.lastName = appleIdCredential.fullName?.familyName ?? "ERROR: NO NAME GIVEN"
+                user.appid = appleIdCredential.user
+                user.id = UUID()
+            }
+            else {
+                // check if user is already in core data by comparing appid
+                if user.appid != users.first!.appid {
+                    RemoveUser() // we only allow one user in core data, so if a new appid is detected, the old user in core data should be deleted
+                    user.newUser = false
+                    user.isLoggedOut = false
+                    user.email = appleIdCredential.email ?? "NO EMAIL GIVEN"
+                    user.firstName = appleIdCredential.fullName?.givenName ?? "ERROR: NO NAME GIVEN"
+                    user.lastName = appleIdCredential.fullName?.familyName ?? "ERROR: NO NAME GIVEN"
+                    user.appid = appleIdCredential.user
+                    // TODO: I think we can use appleId credential to identify user, and delete the UUID
+                    user.id = UUID()        // TODO: dont want to recreate everytime user logs in though ... TBD
+                }
+                else {
+                    users.first!.isLoggedOut = true
+                }
+            }
+            
+        
+            
             
 
             // try to save with core data
@@ -146,6 +171,19 @@ struct LoginView: View {
             print("cannot upload user")
         }
         print("leaving uploadUser")
+    }
+    
+    func RemoveUser() -> Void {
+        
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        
+        do {
+            try viewContext.execute(deleteRequest)
+            try viewContext.save()
+        } catch {
+            print ("There was an error")
+        }
     }
 }
 //

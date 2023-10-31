@@ -54,7 +54,7 @@ struct MainView: View {
                 }
                 
             } else { // otherwise, load Home!
-                HomeView(controller: appController, user: users.first!)
+                HomeView(controller: appController, viewContext: viewContext, user: users.first!)
             }
         }
     }
