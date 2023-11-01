@@ -102,7 +102,7 @@ struct DragAndDropView_Previews: PreviewProvider {
 import SwiftUI
 import UniformTypeIdentifiers
 
-struct DragAndDropView: View {
+struct DragAndDropView: View, DropDelegate {
   @State private var textInput = ""
   @State private var items = ["Apple", "Orange", "Kiwi", "Pear"]
   @State private var dragInProgress = false
@@ -124,16 +124,29 @@ struct DragAndDropView: View {
         }
       }
       .background(dragInProgress ? Color.orange : nil)
-      .onDrop(of: [UTType.plainText], isTargeted: $dragInProgress) { providers in
-        for item in providers {
-          item.loadObject(ofClass: NSString.self) { item, error in
-            if let str = item as? String {
-                items[0] = str
-            }
-          }
+      .onDrop(of: [UTType.plainText], delegate: self)
+      Spacer()
+    }
+    .padding()
+  }
+
+  func dropEntered(info: DropInfo) {
+    dragInProgress = info.hasItemsConforming(to: [UTType.plainText])
+  }
+
+  func dropExited(info: DropInfo) {
+    dragInProgress = false
+  }
+
+  func performDrop(info: DropInfo) -> Bool {
+    for item in info.itemProviders(for: [UTType.plainText]) {
+      item.loadObject(ofClass: NSString.self) { item, error in
+        if let str = item as? String {
+          items.append(str)
         }
-        return true
       }
     }
+    dragInProgress = false
+    return true
   }
 }
