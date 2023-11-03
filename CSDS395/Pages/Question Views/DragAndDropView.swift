@@ -105,28 +105,48 @@ import UniformTypeIdentifiers
 struct DragAndDropView: View, DropDelegate {
   @State private var textInput = ""
   @State private var items = ["Apple", "Orange", "Kiwi", "Pear"]
+    @State private var items2 = ["PEACHES", "BANANSA", "COCONUT", "PINAPPLE"]
+
   @State private var dragInProgress = false
 
   var body: some View {
-    VStack(alignment: .leading) {
-      Text("New fruit")
-        .onDrag {
-          NSItemProvider(object: "New fruit" as NSString)
-        } preview: {
-          Label("Add new fruit!", systemImage: "applelogo")
-        }
-
-      Text("Fruit")
-        .padding(.top, 30)
-      HStack {
-        ForEach(items, id: \.self) { fruit in
-          Text(fruit)
-        }
+      VStack(alignment: .leading) {
+          Text("HELLO2")
+              .onDrag {
+                  NSItemProvider(object: "HELLO2" as NSString)
+              } preview: {
+                  Text("HELLO2")
+              }
+          
+          
+          Text("HELLO4")
+              .onDrag {
+                  NSItemProvider(object: "HELLO4" as NSString)
+              } preview: {
+                  Text("HELLO4")
+              }
+          
+          Text("Fruit")
+              .padding(.top, 30)
+          HStack {
+              ForEach(items, id: \.self) { fruit in
+                  Text(fruit)
+              }
+          }
+          .background(dragInProgress ? Color.orange : nil)
+          .onDrop(of: [UTType.plainText], delegate: self)
+          Spacer()
+          
+          HStack {
+              ForEach(items2, id: \.self) { fruit in
+                  Text(fruit)
+              }
+          }
+          .background(dragInProgress ? Color.green : nil)
+          .onDrop(of: [UTType.plainText], delegate: self)
+          Spacer()
+          
       }
-      .background(dragInProgress ? Color.orange : nil)
-      .onDrop(of: [UTType.plainText], delegate: self)
-      Spacer()
-    }
     .padding()
   }
 
@@ -135,7 +155,7 @@ struct DragAndDropView: View, DropDelegate {
   }
 
   func dropExited(info: DropInfo) {
-    dragInProgress = false
+      dragInProgress = false
   }
 
   func performDrop(info: DropInfo) -> Bool {
@@ -146,6 +166,13 @@ struct DragAndDropView: View, DropDelegate {
         }
       }
     }
+      for item2 in info.itemProviders(for: [UTType.plainText]) {
+        item2.loadObject(ofClass: NSString.self) { item, error in
+          if let str = item as? String {
+              items2.append(str)
+          }
+        }
+      }
     dragInProgress = false
     return true
   }
