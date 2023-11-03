@@ -75,13 +75,14 @@ struct JsonFileManager{
                 }
                 
                 let question: Question
-                if questionType == .multiSelect {
-                    question = MultipleQ(questionText: questionText, questionOptions: questionOptions, questionAnswer: questionAnswer, questionDifficulty: QuestionDifficulty.easy)
-                } else if questionType == .dragAndDrop {
-                    question = DragAndDropQ(questionText: questionText, questionOptions: questionOptions, questionAnswer: questionAnswer, questionDifficulty: QuestionDifficulty.easy)
-                } else {
-                    question = BlankQ()
-                }
+                question = Question(questionType: questionType, questionText: questionText, questionOptions: questionOptions, questionAnswer: questionAnswer, questionDifficulty: QuestionDifficulty.easy)
+//                if questionType == .multiSelect {
+//                    question = Question(questionText: questionText, questionOptions: questionOptions, questionAnswer: questionAnswer, questionDifficulty: QuestionDifficulty.easy)
+//                } else if questionType == .dragAndDrop {
+//                    question = DragAndDropQ(questionText: questionText, questionOptions: questionOptions, questionAnswer: questionAnswer, questionDifficulty: QuestionDifficulty.easy)
+//                } else {
+//                    question = BlankQ()
+//                }
 
                 questionList.append(question)
             }

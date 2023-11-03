@@ -11,7 +11,7 @@ struct DragAndDropView: View{
     let moduleName: String
     let controller: AppController
     @State var questionList: QuestionList
-    @State var question: DragAndDropQ
+    @State var question: Question
 //    @State public var options = ["cow", "type", "int", "name", "blah"]
 //    @State public var questionText = ["A", "IS A", "."]
     @State private var dragInProgress = false
