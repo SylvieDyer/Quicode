@@ -8,12 +8,12 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct DragAndDropView: View{
-    @State private var textInput = ""
-    @State private var items = ["Apple", "Orange", "Kiwi", "Pear"]
-    @State private var items2 = ["PEACHES", "BANANSA", "COCONUT", "PINAPPLE"]
-    
-    @State public var options = ["cow", "type", "int", "name", "blah"]
-    @State public var questionText = ["A", "IS A", "."]
+    let moduleName: String
+    let controller: AppController
+    @State var questionList: QuestionList
+    @State var question: DragAndDropQ
+//    @State public var options = ["cow", "type", "int", "name", "blah"]
+//    @State public var questionText = ["A", "IS A", "."]
     @State private var dragInProgress = false
     
     var body: some View {
@@ -21,13 +21,15 @@ struct DragAndDropView: View{
         VStack{
             
             HStack{
-                ForEach(questionText, id: \.self) { text in
-                    DropTemplate(text: text, dragInProgress: dragInProgress)
+                ForEach(question.getQuestionTextArr(), id: \.self) { text in
+                    if(text != ".") {
+                        DropTemplate(text: text, dragInProgress: dragInProgress)
+                    }
                 }
             }
             
             HStack {
-                ForEach(options, id: \.self) { option in
+                ForEach(question.questionOptions, id: \.self) { option in
                     Text(option)
                         .onDrag {
                             NSItemProvider(object: option as NSString)
@@ -90,8 +92,8 @@ struct DropTemplate: View, DropDelegate{
 
 }
 
-struct DragAndDropView_Previews: PreviewProvider {
-    static var previews: some View {
-        DragAndDropView()
-    }
-}
+//struct DragAndDropView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DragAndDropView()
+//    }
+//}
