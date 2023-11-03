@@ -86,14 +86,24 @@ public class QuestionList {
         return qlist[currentPos]
     }
     
+    func isAtLast() -> Bool {
+        return currentPos >= qlist.count
+    }
+    
     // Returns nil if at last question
     func getNext() -> Question? {
-//        print(currentPos)
+        print("pos", currentPos)
         currentPos += 1
         if (currentPos < qlist.count - 1) {
             return getCurrent()
         }
         return nil
+    }
+    
+    func reset() -> QuestionList {
+        print("resetting")
+        currentPos = 0
+        return self
     }
     
     func peekNext() -> Question? {
@@ -114,9 +124,9 @@ public class QuestionList {
         return getQuestionAtIndex(index: currentPos - 1)
     }
     
-    func isLast() -> Bool {
-        return currentPos >= qlist.count - 1
-    }
+//    func isLast() -> Bool {
+//        return currentPos >= qlist.count - 1
+//    }
     
     func getQuestionAtIndex(index: Int) -> Question? {
         if (index < qlist.count && index >= 0) {

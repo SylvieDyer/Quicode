@@ -23,7 +23,7 @@ struct QuestionView: View {
     // Function to display the appropriate view based on question type
     @ViewBuilder
     private func displayQuestion() -> some View {
-        if(questionList.getCurrent() != nil) {
+        if(questionList.isAtLast() != true) {
             switch questionList.getCurrent()?.questionType {
             case .multiSelect:
                 MultipleQView(moduleName: moduleName, controller: controller, questionList: questionList, question: questionList.getCurrent()!)

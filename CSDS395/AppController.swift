@@ -66,7 +66,9 @@ class AppController: NSObject, ObservableObject {
     ]
     
     func getQuestions(name: String) -> QuestionList {
-        return (questions[name] ?? QuestionList(qlist: [BlankQ()])) ?? QuestionList(qlist: [])
+        print("get questions")
+        let qlist = (questions[name] ?? QuestionList(qlist: [BlankQ()])) ?? QuestionList(qlist: [])
+        return qlist
     }
 }
 extension AppController {
