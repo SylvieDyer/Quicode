@@ -30,6 +30,7 @@ public class Question: Hashable, Identifiable {
     public var id: String {
         return UUID().uuidString
     }
+    var selected: [String]
     
     init(questionType: QuestionType, questionText: String, questionOptions: [String], questionAnswer: [String], questionDifficulty: QuestionDifficulty) {
         self.questionType = questionType
@@ -38,6 +39,7 @@ public class Question: Hashable, Identifiable {
         self.questionAnswer = questionAnswer
         self.questionDifficulty = questionDifficulty
         self.isComplete = false
+        self.selected = []
 //        self.id = UUID()
     }
     

@@ -19,6 +19,8 @@ struct MultipleQView: View {
     @State var isShown = true
     
     @State var didTapIncorrectOption: [String:Bool] = [:]
+    @State var isSelected: [String:Bool] = [:]
+
     
     let colorManager: ColorManager = ColorManager()
     
@@ -40,27 +42,75 @@ struct MultipleQView: View {
             
             ForEach(question.questionOptions, id: \.self) { option in
                 Button(action: {
-                    do {
-                        if(!question.questionAnswer.contains(option)) {
-                            didTapIncorrectOption[option] = true
-                        } else {
-                            // on answer, mark booleans as true/false (opacity --> 0)
-                            question.isComplete = true
-                            print("answered: ", option)
-                            isShown = false
+                    // mark option as selected
+                    question.selected = [option]    // TODO: coded for multiple chouce: for multi select, append or de-append
+                    
+                    // visually show question as marked, deselect rest
+                    // TODO: coded for multiple choice: for multi select, mark as true or false 
+                    isSelected[option] = true
+                    isSelected.forEach { (key: String, value: Bool) in
+                        print(key)
+                        if (key != option){
+                            isSelected[key] = false
                         }
                     }
+                    print("is selected: ", option)
+                    
+//                    do {
+//                        if(!question.questionAnswer.contains(option)) {
+//                            didTapIncorrectOption[option] = true
+//                        } else {
+//                            // on answer, mark booleans as true/false (opacity --> 0)
+//                            question.isComplete = true
+//                            print("answered: ", option)
+//                            isShown = false
+//                        }
+//                    }
                 }){
-                    Text(option).font(.title3).foregroundColor(.black).padding(10)
-                        .frame(width: 400, height: 100)
+                    Text(option)
+                        .font(.title3)
+                        .foregroundColor(.black)
+                        .padding(10)
+                        .frame(width: 400, height: 95)
                         .background(RoundedRectangle(cornerRadius: 25)
-                            .foregroundColor(didTapIncorrectOption[option] ?? false ? Color.red.opacity(0.2) : colorManager.getLightLavendar())
-                            .padding(10)
-                            .frame(width:350, height: 100)
-                        )
+                            .foregroundColor(didTapIncorrectOption[option] ?? false ? Color.red.opacity(0.2) : (isSelected[option] ?? false ? colorManager.getLavendar() : colorManager.getLightLavendar()))
+                            .frame(width:350, height: 90))
                 }
-                
             }
+            Spacer()
+            HStack{
+                Spacer()
+                Button(
+                    action: {
+                        // if still shown, change color
+                        isSelected.forEach { (key: String, value: Bool) in
+                            print("in is selected")
+                            print(key)
+                            print(value)
+                            
+                            // if is selected, is WRONG
+                            if (isSelected[key] == true){
+                                isSelected[key] = false
+                                didTapIncorrectOption[key] = true
+                            }
+                        }
+                        // on answer, mark booleans as true/ false
+                        isShown = !NextButton.validate(selected: question.selected, correct: question.questionAnswer, questionType: .multipleChoice)
+                        
+        
+                    },
+                    label: {
+                        Text("Next")
+                            .fontWeight(.bold)
+                            .background(RoundedRectangle(cornerRadius: 40)
+                            .foregroundColor(colorManager.getDarkGreen())
+                            .padding(20)
+                            .frame(width:100, height: 100))
+                        .foregroundColor(Color.white)
+                        .padding([.trailing], 20)
+                    }).padding(10)
+            }
+            .padding([.bottom], 50)
         }.background(colorManager.getLightGreen())
             .opacity(isShown ? 1.0 : 0.0)
     }

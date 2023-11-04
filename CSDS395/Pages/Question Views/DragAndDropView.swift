@@ -17,21 +17,26 @@ struct DragAndDropView: View{
     let colorManager: ColorManager = ColorManager()
     @State private var dragInProgress = false
     
+    @State var isShown = true   // to show the question 
+    
     var body: some View {
         VStack{
             Spacer()
             HStack{
                 ForEach(question.getQuestionTextArr(), id: \.self) { text in
                     if(text != ".") {
-                        DropTemplate(text: text, dragInProgress: dragInProgress)
+                        DropTemplate(text: text, dragInProgress: dragInProgress, question: question)
                     }
                 }
-            }.font(.title2).fontWeight(.bold)
+            }
+            .opacity(isShown ? 1.0 : 0.0)
+            .font(.title2).fontWeight(.bold)
                 .fixedSize(horizontal: true, vertical: true)
                 .multilineTextAlignment(.center)
                 .padding(50)
                 .background(RoundedRectangle(cornerRadius: 40)
-                    .foregroundColor(colorManager.getMidGreen())
+                    .foregroundColor(colorManager.getMidGreen()
+                    .opacity(isShown ? 1.0 : 0.0))
                     .padding(50)
                     .frame(width:400, height: 300))
             
@@ -41,10 +46,33 @@ struct DragAndDropView: View{
             ) {
                 DragTemplate(option: question.questionOptions[$0])
             }.frame(height: 300)
+                .opacity(isShown ? 1.0 : 0.0)
+
             
             Spacer()
+            HStack{
+                Spacer()
+                Button(
+                    action: {
+                        //TODO: won't move on unless right, but only one chance -- should: validate , add to extra list, move on.
+                        // on answer, mark booleans as true/ false
+                        isShown = !NextButton.validate(selected: question.selected, correct: question.questionAnswer, questionType: .dragAndDrop)
+                    },
+                    label: {
+                        Text("Next")
+                            .fontWeight(.bold)
+                            .background(RoundedRectangle(cornerRadius: 40)
+                            .foregroundColor(colorManager.getDarkGreen())
+                            .padding(20)
+                            .frame(width:100, height: 100))
+                        .foregroundColor(Color.black)
+                        .padding([.trailing], 20)
+                    })
+            }
+            .padding([.bottom], 50)
+            .opacity(isShown ? 1.0 : 0.0)
             
-        }.background(colorManager.getLightGreen())
+        }.background(colorManager.getLightGreen().opacity(isShown ? 1.0 : 0.0))
     }
 }
 
@@ -85,6 +113,7 @@ struct DropTemplate: View, DropDelegate{
     // question text associated with this blank
     var text: String
     @State var dragInProgress: Bool
+    var question: Question
 
     let colorManager: ColorManager = ColorManager()
 
@@ -112,11 +141,17 @@ struct DropTemplate: View, DropDelegate{
     
     // when drop occurs
     func performDrop(info: DropInfo) -> Bool {
+        // if drop was already performed, do not perform again
+        if (items[0] != "_______"){
+            return false
+        }
+            
         // append text of dropped item
         for item in info.itemProviders(for: [UTType.plainText]) {
             item.loadObject(ofClass: NSString.self) { item, error in
                 if let str = item as? String {
                     items = [str]
+                    question.selected.insert(items[0], at: question.getQuestionTextArr().firstIndex(of: text) ?? -1)
                 }
             }
         }
