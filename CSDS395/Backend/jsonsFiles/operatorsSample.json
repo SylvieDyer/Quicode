@@ -2,7 +2,7 @@
     "Operators": {
         "questionText": "A,is a,.",
         "questionType": "dragAndDrop",
-        "questionOptions": ["Option 1", "Option 2", "Option 3", "Option 4"],
+        "questionOptions": ["Option 1", "Option 2", "Option 3", "Option 4","Option 5","Option 6"],
         "questionAnswer": ["Option 1"]
     }
 }

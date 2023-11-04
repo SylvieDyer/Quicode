@@ -27,6 +27,8 @@ struct QuestionView: View {
                         
                     case QuestionType.multiSelect:
                         MultipleQView(moduleName: moduleName, controller: controller, questionList: questionList, question: question)
+                    case QuestionType.dragAndDrop:
+                        DragAndDropView(moduleName: moduleName, controller: controller, questionList: questionList, question: question)
                     default:
                         Text("BLANK")
                         

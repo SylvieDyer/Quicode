@@ -6,44 +6,76 @@
 //
 import SwiftUI
 import UniformTypeIdentifiers
+import WrappingHStack
 
 struct DragAndDropView: View{
     let moduleName: String
     let controller: AppController
     @State var questionList: QuestionList
     @State var question: Question
-//    @State public var options = ["cow", "type", "int", "name", "blah"]
-//    @State public var questionText = ["A", "IS A", "."]
+    
     @State private var dragInProgress = false
     
     var body: some View {
-        
         VStack{
-            
+            Spacer()
             HStack{
                 ForEach(question.getQuestionTextArr(), id: \.self) { text in
                     if(text != ".") {
                         DropTemplate(text: text, dragInProgress: dragInProgress)
                     }
                 }
-            }
+            }.font(.title2).fontWeight(.bold)
+                .fixedSize(horizontal: true, vertical: true)
+                .multilineTextAlignment(.center)
+                .padding(50)
+                .background(RoundedRectangle(cornerRadius: 40)
+                    .foregroundColor(Color.green.opacity(0.4))
+                    .padding(50)
+                    .frame(width:400, height: 300))
             
-            HStack {
-                ForEach(question.questionOptions, id: \.self) { option in
-                    Text(option)
-                        .onDrag {
-                            NSItemProvider(object: option as NSString)
-                        } preview: {
-                            Text(option)
-                        }
-                }
-            }
+            Spacer()
             
-        }
+            WrappingHStack(0...question.questionOptions.count - 1, id:\.self, alignment: .center
+            ) {
+                DragTemplate(option: question.questionOptions[$0])
+            }.frame(height: 300)
+            
+            Spacer()
+            
+        }.background(Color.white)
     }
 }
 
-
+// for draggable items
+struct DragTemplate: View {
+    var option: String
+    
+    var body : some View {
+        VStack{
+            Spacer()
+            Text(option)
+                .onDrag {
+                    NSItemProvider(object: option as NSString)
+                } preview: {
+                    Text(option)
+                        .font(.title2)
+                        .padding(15)
+                        .background(RoundedRectangle(cornerRadius: 25)
+                            .foregroundColor(Color.purple.opacity(0.2))
+                        )
+                }
+                .font(.title2)
+                .padding(15)
+                .background(RoundedRectangle(cornerRadius: 25)
+                    .foregroundColor(Color.purple.opacity(0.2))
+                )
+            Spacer()
+        }
+    }
+}
+             
+// for drop locations
 struct DropTemplate: View, DropDelegate{
     
     @State private var items = ["_______"]
@@ -59,7 +91,7 @@ struct DropTemplate: View, DropDelegate{
             ForEach(items, id: \.self) { word in
                 Text(word)
             }
-            .background(dragInProgress ? Color.orange : Color.blue)
+            .background(RoundedRectangle(cornerRadius: 25).foregroundColor(dragInProgress ? Color.green : Color.green.opacity(0.2)))
             .onDrop(of: [UTType.plainText], delegate: self)
         }
     }
@@ -91,9 +123,3 @@ struct DropTemplate: View, DropDelegate{
     }
 
 }
-
-//struct DragAndDropView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DragAndDropView()
-//    }
-//}
