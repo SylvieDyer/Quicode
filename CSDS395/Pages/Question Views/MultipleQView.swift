@@ -15,14 +15,12 @@ struct MultipleQView: View {
     @State var nextQuestion: Question? = nil
     @State var questionList: QuestionList
     @State var question: Question
-    @State var shouldNavigateToNextQuestion: Bool = false // Binding to the state in the parent view
-    
-    // dismisses entire question stream
-    @Environment(\.dismiss) var dismiss
     
     @State var isShown = true
     
     @State var didTapIncorrectOption: [String:Bool] = [:]
+    
+    let colorManager: ColorManager = ColorManager()
     
     
     var body: some View {
@@ -35,7 +33,7 @@ struct MultipleQView: View {
                 .padding(50)
                 .frame(width: 400, height: 200)
                 .background(RoundedRectangle(cornerRadius: 40)
-                    .foregroundColor(Color.cyan.opacity(0.4))
+                    .foregroundColor(colorManager.getLavendar())
                     .padding(50)
                     .frame(width:400, height: 300))
             
@@ -56,14 +54,14 @@ struct MultipleQView: View {
                     Text(option).font(.title3).foregroundColor(.black).padding(10)
                         .frame(width: 400, height: 100)
                         .background(RoundedRectangle(cornerRadius: 25)
-                            .foregroundColor(didTapIncorrectOption[option] ?? false ? Color.red.opacity(0.2) : Color.cyan.opacity(0.2))
+                            .foregroundColor(didTapIncorrectOption[option] ?? false ? Color.red.opacity(0.2) : colorManager.getLightLavendar())
                             .padding(10)
                             .frame(width:350, height: 100)
                         )
                 }
                 
             }
-        }.background(Color.white)
+        }.background(colorManager.getLightGreen())
             .opacity(isShown ? 1.0 : 0.0)
     }
 }

@@ -14,6 +14,7 @@ struct DragAndDropView: View{
     @State var questionList: QuestionList
     @State var question: Question
     
+    let colorManager: ColorManager = ColorManager()
     @State private var dragInProgress = false
     
     var body: some View {
@@ -30,7 +31,7 @@ struct DragAndDropView: View{
                 .multilineTextAlignment(.center)
                 .padding(50)
                 .background(RoundedRectangle(cornerRadius: 40)
-                    .foregroundColor(Color.green.opacity(0.4))
+                    .foregroundColor(colorManager.getMidGreen())
                     .padding(50)
                     .frame(width:400, height: 300))
             
@@ -43,7 +44,7 @@ struct DragAndDropView: View{
             
             Spacer()
             
-        }.background(Color.white)
+        }.background(colorManager.getLightGreen())
     }
 }
 
@@ -51,6 +52,7 @@ struct DragAndDropView: View{
 struct DragTemplate: View {
     var option: String
     
+    let colorManager: ColorManager = ColorManager()
     var body : some View {
         VStack{
             Spacer()
@@ -59,16 +61,16 @@ struct DragTemplate: View {
                     NSItemProvider(object: option as NSString)
                 } preview: {
                     Text(option)
-                        .font(.title2)
+                        .font(.title2).foregroundColor(Color.white)
                         .padding(15)
                         .background(RoundedRectangle(cornerRadius: 25)
-                            .foregroundColor(Color.purple.opacity(0.2))
+                            .foregroundColor(colorManager.getDarkGreen())
                         )
                 }
-                .font(.title2)
+                .font(.title2).foregroundColor(Color.white)
                 .padding(15)
                 .background(RoundedRectangle(cornerRadius: 25)
-                    .foregroundColor(Color.purple.opacity(0.2))
+                    .foregroundColor(colorManager.getDarkGreen())
                 )
             Spacer()
         }
@@ -84,14 +86,15 @@ struct DropTemplate: View, DropDelegate{
     var text: String
     @State var dragInProgress: Bool
 
-    
+    let colorManager: ColorManager = ColorManager()
+
     var body : some View {
         HStack {
             Text(text)
             ForEach(items, id: \.self) { word in
                 Text(word)
             }
-            .background(RoundedRectangle(cornerRadius: 25).foregroundColor(dragInProgress ? Color.green : Color.green.opacity(0.2)))
+            .background(RoundedRectangle(cornerRadius: 25).foregroundColor(dragInProgress ? colorManager.getDarkGreen() : colorManager.getMidGreen()))
             .onDrop(of: [UTType.plainText], delegate: self)
         }
     }

@@ -12,49 +12,69 @@ import SwiftUI
 
 // template for module pages 
 struct ModuleView: View {
-  
+    
     let name: String
     let controller: AppController
-    
     @State private var showOverview = false
+    
+    let colorManager: ColorManager = ColorManager()
+    
     var body: some View {
         
-        VStack{
-            HStack {
-                // Module Title
-                Text(name).foregroundColor(.indigo).font(.title2).fontWeight(.heavy)
-                Spacer()
-                // Help Button
-                Button(action: {showOverview.toggle()}) {
-                    // help icon
-                    Label("", systemImage: "questionmark").foregroundColor(.gray)
+        List {
+            // module title
+            Section{
+                VStack{
+                    HStack {
+                        // Module Title
+                        Text(name).foregroundColor(Color.black).font(.title2).fontWeight(.heavy)
+                        Spacer()
+                        // Help Button
+                        Button(action: {showOverview.toggle()}) {
+                            // help icon
+                            Label("", systemImage: "questionmark").foregroundColor(.black)
+                        }
+                        // pop-up
+                        .sheet(isPresented: $showOverview) {
+                            DescView(name: name)    // view with content
+                        }
+                    }.padding(20)
+                    // the blocks associated witht he module
+                    HStack{
+                        ForEach(controller.getBlocks(name: name), id: \.self) { blockName in
+                            // TODO: Connect with user-status
+                            // if blockName associated with complete , "star.fill"
+                            Image(systemName: "star")
+                        }
+                        Spacer()
+                    }.padding(10)
                 }
-                // pop-up
-                .sheet(isPresented: $showOverview) {
-                    DescView(name: name)    // view with content
-                }
-            }.padding(.horizontal, 50)
-            HStack{
-                ForEach(controller.getBlocks(name: name), id: \.self) { blockName in
-                    // TODO: Connect with user-status
-                    // if blockName associated with complete , "star.fill"
-                    Image(systemName: "star")
-                }
-            }.padding(.top, 10)
-        }
+                    
+            }.listRowBackground(RoundedRectangle(cornerRadius: 40).fill(colorManager.getLavendar()))
+            
         
-        // the blocks associated witht he module
-        List{
+            
             // iterate through list of blocks
             ForEach(controller.getBlocks(name: name), id: \.self) { blockName in
-                // individual module
-                NavigationLink(blockName){
-                    QuestionView(moduleName: name, controller: controller, questionList: controller.getQuestions(name: blockName))
+                Section {
+                    // individual module
+                    NavigationLink(){
+                        QuestionView(moduleName: name, controller: controller, questionList: controller.getQuestions(name: blockName))
+                    }  label: {
+                        VStack{
+                            Spacer()
+                            Text(blockName)
+                            Spacer()
+                        }
+                    }
+                    .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
+                    .padding(20)
                 }
-                .foregroundColor(.indigo.opacity(0.7)).font(.title3).fontWeight(.heavy)
-                .padding([.bottom], 50)}
+               
+            }.padding([.bottom], 30)
+            .listRowBackground(RoundedRectangle(cornerRadius: 40).fill(colorManager.getLightLavendar()))// color each list section
             
-        }
+        }.listStyle(InsetGroupedListStyle())
     }
 }
 
