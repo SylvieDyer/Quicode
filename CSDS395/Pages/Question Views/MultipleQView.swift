@@ -15,10 +15,15 @@ struct MultipleQView: View {
     @State var nextQuestion: Question? = nil
     @State var questionList: QuestionList
     @State var question: Question
+    
+    @State var isShown = true
+    
     @State var didTapIncorrectOption: [String:Bool] = [:]
-    @State var shouldNavigateToNextQuestion: Bool = false // Binding to the state in the parent view
-    @Environment(\.dismiss) private var dismiss
+    @State var isSelected: [String:Bool] = [:]
 
+    
+    let colorManager: ColorManager = ColorManager()
+    
     
     var body: some View {
         // use some sort of variable to track which option was selected (will have to higlight multiple if multi select
@@ -30,48 +35,87 @@ struct MultipleQView: View {
                 .padding(50)
                 .frame(width: 400, height: 200)
                 .background(RoundedRectangle(cornerRadius: 40)
-                    .foregroundColor(Color.cyan.opacity(0.4))
+                    .foregroundColor(colorManager.getLavendar())
                     .padding(50)
                     .frame(width:400, height: 300))
-                
-            NavigationLink(
-                destination: QuestionView(moduleName: moduleName, controller: controller, questionList: questionList), // Pass the answer to the AnswerView
-                isActive: $shouldNavigateToNextQuestion,
-                label: {
-                    ScrollView{
-                        // options
-                        ForEach(question.questionOptions, id: \.self) { option in
-                            Button(action: {
-                                do {
-                                    if(!question.questionAnswer.contains(option)) {
-                                        didTapIncorrectOption[option] = true
-                                    } else {
-                                        questionList.getNext();
-                                        shouldNavigateToNextQuestion = true
-                                    }
-                                }
-                            }){
-                                Text(option).font(.title3).foregroundColor(.black).padding(10)
-                                    .frame(width: 400, height: 100)
-                                    .background(RoundedRectangle(cornerRadius: 25)
-                                        .foregroundColor(didTapIncorrectOption[option] ?? false ? Color.red.opacity(0.2) : Color.cyan.opacity(0.2))
-                                        .padding(10)
-                                        .frame(width:350, height: 100)
-                                        )
-                            }
+            
+            
+            ForEach(question.questionOptions, id: \.self) { option in
+                Button(action: {
+                    // mark option as selected
+                    question.selected = [option]    // TODO: coded for multiple chouce: for multi select, append or de-append
+                    
+                    // visually show question as marked, deselect rest
+                    // TODO: coded for multiple choice: for multi select, mark as true or false 
+                    isSelected[option] = true
+                    isSelected.forEach { (key: String, value: Bool) in
+                        print(key)
+                        if (key != option){
+                            isSelected[key] = false
                         }
                     }
+                    print("is selected: ", option)
+                    
+//                    do {
+//                        if(!question.questionAnswer.contains(option)) {
+//                            didTapIncorrectOption[option] = true
+//                        } else {
+//                            // on answer, mark booleans as true/false (opacity --> 0)
+//                            question.isComplete = true
+//                            print("answered: ", option)
+//                            isShown = false
+//                        }
+//                    }
+                }){
+                    Text(option)
+                        .font(.title3)
+                        .foregroundColor(.black)
+                        .padding(10)
+                        .frame(width: 400, height: 95)
+                        .background(RoundedRectangle(cornerRadius: 25)
+                            .foregroundColor(didTapIncorrectOption[option] ?? false ? Color.red.opacity(0.2) : (isSelected[option] ?? false ? colorManager.getLavendar() : colorManager.getLightLavendar()))
+                            .frame(width:350, height: 90))
                 }
-            ).navigationBarBackButtonHidden(true)
-//            Spacer()
-        }
+            }
+            Spacer()
+            HStack{
+                Spacer()
+                Button(
+                    action: {
+                        // if still shown, change color
+                        isSelected.forEach { (key: String, value: Bool) in
+                            print("in is selected")
+                            print(key)
+                            print(value)
+                            
+                            // if is selected, is WRONG
+                            if (isSelected[key] == true){
+                                isSelected[key] = false
+                                didTapIncorrectOption[key] = true
+                            }
+                        }
+                        // on answer, mark booleans as true/ false
+                        isShown = !NextButton.validate(selected: question.selected, correct: question.questionAnswer, questionType: .multipleChoice)
+                        
+        
+                    },
+                    label: {
+                        Text("Next")
+                            .fontWeight(.bold)
+                            .background(RoundedRectangle(cornerRadius: 40)
+                            .foregroundColor(colorManager.getDarkGreen())
+                            .padding(20)
+                            .frame(width:100, height: 100))
+                        .foregroundColor(Color.white)
+                        .padding([.trailing], 20)
+                    }).padding(10)
+            }
+            .padding([.bottom], 50)
+        }.background(colorManager.getLightGreen())
+            .opacity(isShown ? 1.0 : 0.0)
     }
 }
 
+          
 
-//
-//struct MultipleQView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MultipleQView()
-//    }
-//}
+

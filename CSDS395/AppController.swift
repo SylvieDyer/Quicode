@@ -7,7 +7,7 @@
 
 import Foundation
 class AppController: NSObject, ObservableObject {
-    // TODO: HARDCODED- Connect to DB
+
     private var moduleNames: [String] = []
     private var blockNames : [String : Any] = [:]
     
@@ -42,9 +42,13 @@ class AppController: NSObject, ObservableObject {
          
             // add module names to module name list
             moduleNames.append(module.keys.first ?? "Coming Soon") // workaround for null values
-                      
-            // add [moduleName, [block names]] to info -- TODO: [] (JSON Format maybe?)
-            blockNames.updateValue(module.values.description.components(separatedBy: CharacterSet(charactersIn: ",;")), forKey: module.keys.first ?? "ERROR")
+                    
+            // TODO: edit JSON to remove leading space
+            var list = module.values.description
+            // remove the [] situation
+            list.popLast()
+            list.removeFirst()
+            blockNames.updateValue(list.components(separatedBy: CharacterSet(charactersIn: ",;")), forKey: module.keys.first ?? "ERROR")
         }
     }
     
@@ -56,19 +60,19 @@ class AppController: NSObject, ObservableObject {
         return blockNames[name] as! [String]
     }
     
-    
-    //TODO: HARDCODED - Connect to DB
-    
+        
     private var questions: [String: QuestionList?] = [
-        "[Data Types and Variables": JsonFileManager.pullJson(forResource: "dataTypes", withExtension: "json"),
+        "Data Types and Variables": JsonFileManager.pullJson(forResource: "dataTypes", withExtension: "json"),
         " Operators": JsonFileManager.pullJson(forResource:"operatorsSample", withExtension: "json"),
         " Boolean Expressions": JsonFileManager.pullJson(forResource: "booleanExpressions", withExtension: "json")
     ]
     
     func getQuestions(name: String) -> QuestionList {
-        return (questions[name] ?? QuestionList(qlist: [BlankQ()])) ?? QuestionList(qlist: [])
+        return (questions[name] ?? QuestionList(qlist: []))! 
     }
 }
+
+
 extension AppController {
     /// PLACE HOLDER FOR DND FUNCTIONALITY
     class DND: ObservableObject{

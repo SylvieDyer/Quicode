@@ -10,15 +10,6 @@
       }
     },
     {
-      "identity" : "draganddrop",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/pedroesli/DragAndDrop",
-      "state" : {
-        "revision" : "59463f5a94072a77ddca8002ccc5cee10f84f7b0",
-        "version" : "2.0.0"
-      }
-    },
-    {
       "identity" : "jmespath.swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/adam-fowler/jmespath.swift.git",
@@ -124,6 +115,15 @@
       "state" : {
         "revision" : "e7403c35ca6bb539a7ca353b91cc2d8ec0362d58",
         "version" : "1.19.0"
+      }
+    },
+    {
+      "identity" : "wrappinghstack",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dkk/WrappingHStack.git",
+      "state" : {
+        "revision" : "425d9488ba55f58f0b34498c64c054c77fc2a44b",
+        "version" : "2.2.11"
       }
     }
   ],
