@@ -27,6 +27,8 @@ struct QuestionView: View {
             switch questionList.getCurrent()?.questionType {
             case .multiSelect:
                 MultipleQView(moduleName: moduleName, controller: controller, questionList: questionList, question: questionList.getCurrent()!)
+            case .dragAndDrop:
+                DragAndDropView(moduleName: moduleName, controller: controller, questionList: questionList, question: questionList.getCurrent()! as! DragAndDropQ)
             default:
                 Text("**\(questionList.getCurrent()!.questionText)**").font(.title2).fontWeight(.bold)
             }

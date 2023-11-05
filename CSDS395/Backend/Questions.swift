@@ -51,6 +51,34 @@ public class MultipleQ: Question {
     }
 }
 
+public class DragAndDropQ: Question {
+    var questionType: QuestionType
+    var questionText: String
+    var questionOptions: [String]
+    var questionAnswer: [String]
+    var questionDifficulty: QuestionDifficulty
+    var id: UUID
+    
+    init(questionText: String, questionOptions: [String], questionAnswer: [String], questionDifficulty: QuestionDifficulty) {
+        self.questionType = QuestionType.dragAndDrop
+        self.questionText = questionText
+        self.questionOptions = questionOptions
+        self.questionAnswer = questionAnswer
+        self.questionDifficulty = questionDifficulty
+        self.id = UUID()
+    }
+    
+    func getQuestionTextArr() -> [String] {
+        return self.questionText.components(separatedBy: ",")
+    }
+    
+    func getId() -> UUID {
+        return self.id
+    }
+    
+
+}
+
 public class BlankQ: Question {
     var questionType: QuestionType
     var questionText: String = "UNSET"

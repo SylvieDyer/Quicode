@@ -4,58 +4,94 @@
 //
 //  Created by Sylvie Dyer on 9/15/23.
 //
-
 import SwiftUI
-import DragAndDrop
+import UniformTypeIdentifiers
 
-struct DragAndDropView: View {
-    
-    @ObservedObject var DNDCLASS : AppController.DND
-    
-    //    var question: Question
-    // PLACE HOLDER FOR QUESTION
-    let questionText = ["A", "BLANK1", "IS", "ONE", "BLANK4"]
-    let questionAnswers = ["Integer", "Type"]
-    let questionOptions = ["Variable", "Cow", "Type", "Pencil", "Integer"]
+struct DragAndDropView: View{
+    let moduleName: String
+    let controller: AppController
+    @State var questionList: QuestionList
+    @State var question: DragAndDropQ
+//    @State public var options = ["cow", "type", "int", "name", "blah"]
+//    @State public var questionText = ["A", "IS A", "."]
+    @State private var dragInProgress = false
     
     var body: some View {
-        InteractiveDragDropContainer{
-            VStack{
-                HStack{
-                    ForEach(Array(questionText.enumerated()), id: \.offset) { index, word in
-                        if (word == "BLANK" + String(index)){
-                            DropView { dropInfo in
-                                Text(dropInfo.didDrop ? DNDCLASS.getWord(word: word).uuidString : "BLANK")
-                                    .padding()
-                                    .background{
-                                        dropInfo.isColliding ? Color.green : Color.red
-                                    }
-                            }
-                            .onDragViewReceived { receivingViewID in
-                                DNDCLASS.setVal(word: word, id: receivingViewID)
-                            }
-                        }
-                        else {
-                            Text(word)
-                        }
-                    }
-                }
-                HStack{
-                    ForEach(questionOptions, id: \.self) { option in
-                        DragView(id: UUID()) { dragInfo in
-                            Text(option)
-                                .padding()
-                                .background{
-                                    dragInfo.isDragging ? Color.blue : Color.mint
-                                }
-                        }
+        
+        VStack{
+            
+            HStack{
+                ForEach(question.getQuestionTextArr(), id: \.self) { text in
+                    if(text != ".") {
+                        DropTemplate(text: text, dragInProgress: dragInProgress)
                     }
                 }
             }
+            
+            HStack {
+                ForEach(question.questionOptions, id: \.self) { option in
+                    Text(option)
+                        .onDrag {
+                            NSItemProvider(object: option as NSString)
+                        } preview: {
+                            Text(option)
+                        }
+                }
+            }
+            
         }
     }
 }
-//
+
+
+struct DropTemplate: View, DropDelegate{
+    
+    @State private var items = ["_______"]
+    
+    // question text associated with this blank
+    var text: String
+    @State var dragInProgress: Bool
+
+    
+    var body : some View {
+        HStack {
+            Text(text)
+            ForEach(items, id: \.self) { word in
+                Text(word)
+            }
+            .background(dragInProgress ? Color.orange : Color.blue)
+            .onDrop(of: [UTType.plainText], delegate: self)
+        }
+    }
+    
+    // when the drop area has been entered (by droppable)
+    func dropEntered(info: DropInfo) {
+        print("dropEntered")
+        dragInProgress = info.hasItemsConforming(to: [UTType.plainText])
+    }
+    
+    // when the drop area has been exited (by droppable)
+    func dropExited(info: DropInfo) {
+        dragInProgress = false
+    }
+    
+    // when drop occurs
+    func performDrop(info: DropInfo) -> Bool {
+        // append text of dropped item
+        for item in info.itemProviders(for: [UTType.plainText]) {
+            item.loadObject(ofClass: NSString.self) { item, error in
+                if let str = item as? String {
+                    items = [str]
+                }
+            }
+        }
+        // mark drag as complete
+        dragInProgress = false
+        return true
+    }
+
+}
+
 //struct DragAndDropView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        DragAndDropView()

@@ -12,9 +12,9 @@
         }
     },
     "Operators": {
-        "questionText": "This is a Operators multiSelect",
-        "questionType": "multiSelect",
+        "questionText": "A,is a,.",
+        "questionType": "dragAndDrop",
         "questionOptions": ["Option 1", "Option 2", "Option 3", "Option 4"],
-        "questionAnswer": ["Option 2", "Option 3"]
+        "questionAnswer": ["Option 1"]
     }
 }

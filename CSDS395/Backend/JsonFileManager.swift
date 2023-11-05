@@ -73,10 +73,12 @@ struct JsonFileManager{
                     default:
                         questionType = .blank
                 }
-
+                
                 let question: Question
                 if questionType == .multiSelect {
                     question = MultipleQ(questionText: questionText, questionOptions: questionOptions, questionAnswer: questionAnswer, questionDifficulty: QuestionDifficulty.easy)
+                } else if questionType == .dragAndDrop {
+                    question = DragAndDropQ(questionText: questionText, questionOptions: questionOptions, questionAnswer: questionAnswer, questionDifficulty: QuestionDifficulty.easy)
                 } else {
                     question = BlankQ()
                 }
