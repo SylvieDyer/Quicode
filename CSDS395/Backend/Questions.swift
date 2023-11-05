@@ -39,7 +39,7 @@ public class Question: Hashable, Identifiable {
         self.questionAnswer = questionAnswer
         self.questionDifficulty = questionDifficulty
         self.isComplete = false
-        self.selected = []
+        self.selected = [String](repeating: "", count: questionAnswer.count)
 //        self.id = UUID()
     }
     

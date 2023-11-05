@@ -108,7 +108,7 @@ struct DragTemplate: View {
 // for drop locations
 struct DropTemplate: View, DropDelegate{
     
-    @State private var items = ["_______"]
+    @State public var items = ["_______"]
     
     // question text associated with this blank
     var text: String
