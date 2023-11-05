@@ -14,10 +14,15 @@ struct QuestionView: View {
     
     
     @State var shouldNavigateToNextQuestion = false
+    @Environment (\.dismiss) var dismiss
     
     var body: some View {
         ZStack{
-            ModuleView(name: moduleName, controller: controller)
+          
+            VStack{
+               Text("You've completed the \(moduleName) module!")
+                Button(action: {dismiss.callAsFunction()}, label: {Text("Return to Modules")})
+            }
 
             ForEach(questionList.qlist, id: \.self){ question in
                 if (!question.isComplete){
