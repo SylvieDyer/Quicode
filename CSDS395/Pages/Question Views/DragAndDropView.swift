@@ -85,6 +85,11 @@ struct DragTemplate: View {
         VStack{
             Spacer()
             Text(option)
+                .font(.title2).foregroundColor(Color.white)
+                .padding(15)
+                .background(RoundedRectangle(cornerRadius: 25)
+                    .foregroundColor(colorManager.getDarkGreen())
+                )
                 .onDrag {
                     NSItemProvider(object: option as NSString)
                 } preview: {
@@ -95,11 +100,6 @@ struct DragTemplate: View {
                             .foregroundColor(colorManager.getDarkGreen())
                         )
                 }
-                .font(.title2).foregroundColor(Color.white)
-                .padding(15)
-                .background(RoundedRectangle(cornerRadius: 25)
-                    .foregroundColor(colorManager.getDarkGreen())
-                )
             Spacer()
         }
     }
