@@ -23,7 +23,7 @@ struct LogoutView: View {
     @State private var loadedModules = false
     @State private var isAuthenticated = false
 //    var awsManager : AWSManager = AWSManager()
-    
+
     /// SOLEY FOR TESTING PURPOSES ( content previewing)
     //    var isTestingSinglePage: Bool
     
@@ -68,15 +68,15 @@ struct LogoutView: View {
 //        }
     }
     
-    func getAWSData(){
-        Task{
-            do {
-                print("button hit")
-                await controller.setAppInfo(awsManager: awsManager)
-                loadedModules.toggle()
-            }
-            
-        }
-    }
+//    func getAWSData(){
+//        Task{
+//            do {
+//                print("button hit")
+//                await controller.setAppInfo(awsManager: awsManager)
+//                loadedModules.toggle()
+//            }
+//            
+//        }
+//    }
 }
 
