@@ -151,27 +151,27 @@ struct LoginView: View {
         
         return user
     }
-    func uploadUser(user: User) async {
-        let email = user.email!
-        let firstname = user.firstName!
-        let lastname = user.lastName!
-        let id = user.id
-        let userJson = Users(id: id!, email: email, firstname: firstname, lastname: lastname)
-        
-        do {
-            //the following line was already commented out
-//            let client = awsManager.initAWS()
-            let jsonEncoder = JSONEncoder()
-            jsonEncoder.outputFormatting = .prettyPrinted
-            let jsonData = try jsonEncoder.encode(userJson)
-            await awsManager.uploadToAWS(filename: "\(user.id!).json", body: jsonData)
-            print("after await")
-        }
-        catch {
-            print("cannot upload user")
-        }
-        print("leaving uploadUser")
-    }
+//    func uploadUser(user: User) async {
+//        let email = user.email!
+//        let firstname = user.firstName!
+//        let lastname = user.lastName!
+//        let id = user.id
+//        let userJson = Users(id: id!, email: email, firstname: firstname, lastname: lastname)
+//        
+//        do {
+//            //the following line was already commented out
+////            let client = awsManager.initAWS()
+//            let jsonEncoder = JSONEncoder()
+//            jsonEncoder.outputFormatting = .prettyPrinted
+//            let jsonData = try jsonEncoder.encode(userJson)
+//            await awsManager.uploadToAWS(filename: "\(user.id!).json", body: jsonData)
+//            print("after await")
+//        }
+//        catch {
+//            print("cannot upload user")
+//        }
+//        print("leaving uploadUser")
+//    }
     
     func RemoveUser() -> Void {
         

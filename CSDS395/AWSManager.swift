@@ -31,6 +31,7 @@ struct AWSManager {
        print("Upload Request Created")
 
        do {
+
            try await s3.putObject(uploadRequest)
            print("Object uploaded successfully!")
        } catch {
@@ -39,7 +40,8 @@ struct AWSManager {
         
         do {
 //            try await client.shutdown()
-            try await s3.client.syncShutdown()
+            try s3.client.syncShutdown()
+            try await s3.client.shutdown()
         }
         catch {
             print("Error shutting down")
@@ -81,16 +83,23 @@ struct AWSManager {
                 print("No object data received.")
             }
             
-            // shutdown client
-            do {
-                try await s3.client.shutdown()
-            }
-            catch {
-                print("Error shutting down")
-            }
+//            // shutdown client
+//            do {
+//                try await s3.client.shutdown()
+//            }
+//            catch {
+//                print("Error shutting down")
+//            }
         } catch {
             // Handle any errors that occur
             print("Error retrieving object: \(error)")
+        }
+        do {
+            try s3.client.syncShutdown()
+            try await s3.client.shutdown()
+        }
+        catch {
+            print("Error shutting down hehe")
         }
         
         /// if something goes wrong, returns empty string
