@@ -22,7 +22,7 @@ struct LogoutView: View {
     
     @State private var loadedModules = false
     @State private var isAuthenticated = false
-    var awsManager : AWSManager = AWSManager()
+//    var awsManager : AWSManager = AWSManager()
     
     /// SOLEY FOR TESTING PURPOSES ( content previewing)
     //    var isTestingSinglePage: Bool
@@ -37,32 +37,35 @@ struct LogoutView: View {
                 self.isAuthenticated = true
             })
         }
-        // otherwise, check that they are not new (if they are, something went wrong
-        else if (users.first!.newUser == false){
-            // if need to load from S3, show popup
-            if (!loadedModules){
-                VStack {
-                    Text("QUICk! are you ready to CODE?!?!?!")
-                        .font(.title)
-                        .padding(50).fontWeight(.bold)
-                    HStack{
-                        Image(systemName: "balloon.2.fill")
-                        Image(systemName: "party.popper.fill")
-                        Image(systemName: "balloon")
-                        Image(systemName: "party.popper.fill")
-                        Image(systemName: "balloon.fill")
-                        Image(systemName: "balloon")
-                        Image(systemName: "party.popper.fill")
-                    }
-                    Button("Let's Go!",
-                           action: { getAWSData() }
-                    ).padding(50).foregroundColor(.purple).font(.title2).fontWeight(.bold)
-                }
-                
-            } else { // otherwise, load Home!
-                HomeView(controller: controller, viewContext: viewContext, user: users.first!)
-            }
+        else {
+            TestView()
         }
+        // otherwise, check that they are not new (if they are, something went wrong
+//        else if (users.first!.newUser == false){
+//            // if need to load from S3, show popup
+//            if (!loadedModules){
+//                VStack {
+//                    Text("QUICk! are you ready to CODE?!?!?!")
+//                        .font(.title)
+//                        .padding(50).fontWeight(.bold)
+//                    HStack{
+//                        Image(systemName: "balloon.2.fill")
+//                        Image(systemName: "party.popper.fill")
+//                        Image(systemName: "balloon")
+//                        Image(systemName: "party.popper.fill")
+//                        Image(systemName: "balloon.fill")
+//                        Image(systemName: "balloon")
+//                        Image(systemName: "party.popper.fill")
+//                    }
+//                    Button("Let's Go!",
+//                           action: { getAWSData() }
+//                    ).padding(50).foregroundColor(.purple).font(.title2).fontWeight(.bold)
+//                }
+//                
+//            } else { // otherwise, load Home!
+//                HomeView(controller: controller, viewContext: viewContext, user: users.first!)
+//            }
+//        }
     }
     
     func getAWSData(){
