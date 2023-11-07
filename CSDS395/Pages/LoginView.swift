@@ -27,6 +27,8 @@ struct LoginView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.managedObjectContext) var moc
     
+    var authenticationSuccess: () -> Void
+    
     var body: some View {
         VStack{
             HStack(alignment: .top, spacing: 0) {
@@ -71,9 +73,11 @@ struct LoginView: View {
                 print("Authorization successful \(authResults)")
                 // creates the user object
                 let user = CreateUser(authResults: authResults)
-                Task{
-                    await uploadUser(user: user)
-                }
+                //TODO: Heilo Commented out all AWS stuff
+                //Task{
+                    //await uploadUser(user: user)
+                //}
+                authenticationSuccess()
             case .failure(let error):
                 print("Authorisation failed: \(error.localizedDescription)")
                
@@ -147,7 +151,6 @@ struct LoginView: View {
         
         return user
     }
-    
     func uploadUser(user: User) async {
         let email = user.email!
         let firstname = user.firstName!
@@ -156,6 +159,7 @@ struct LoginView: View {
         let userJson = Users(id: id!, email: email, firstname: firstname, lastname: lastname)
         
         do {
+            //the following line was already commented out
 //            let client = awsManager.initAWS()
             let jsonEncoder = JSONEncoder()
             jsonEncoder.outputFormatting = .prettyPrinted

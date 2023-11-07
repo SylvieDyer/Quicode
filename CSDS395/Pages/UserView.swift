@@ -85,7 +85,7 @@ struct UserView: View {
                         // TODO: Save JSON & Upload to S3
                         
                     }
-                    NavigationLink(destination: LoginView(appController: controller, viewContext: viewContext).navigationBarBackButtonHidden(), isActive: $isActive) {
+                    NavigationLink(destination: LogoutView(controller: controller, viewContext: viewContext, user: user).navigationBarBackButtonHidden(), isActive: $isActive) {
                         Button {
                             // change user status
                             user.isLoggedOut = true

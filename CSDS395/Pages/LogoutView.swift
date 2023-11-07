@@ -1,16 +1,18 @@
 //
-//  MainView.swift
+//  LogoutView.swift
 //  CSDS395
 //
-//  Created by Sylvie Dyer on 9/19/23.
+//  Created by Helio Dong on 11/7/23.
 //
 
 import SwiftUI
 
-// entry-point view for application
-struct MainView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    @ObservedObject var appController: AppController
+import CoreData
+
+struct LogoutView: View {
+    var controller: AppController
+    var viewContext: NSManagedObjectContext
+    var user : User
     
     // the user info
     @FetchRequest(
@@ -19,6 +21,7 @@ struct MainView: View {
     private var users: FetchedResults<User>
     
     @State private var loadedModules = false
+    @State private var isAuthenticated = false
     var awsManager : AWSManager = AWSManager()
     
     /// SOLEY FOR TESTING PURPOSES ( content previewing)
@@ -28,9 +31,10 @@ struct MainView: View {
         
         // because first should be for THIS user (won't store more than one):
         // if there are no users, or they're sill marked as new -- ask to log in
-        if (users.isEmpty || users.first!.newUser){
-            LoginView(appController: appController, viewContext: viewContext, authenticationSuccess: {
-                
+        if !isAuthenticated {
+            
+            LoginView(appController: controller, viewContext: viewContext, authenticationSuccess: {
+                self.isAuthenticated = true
             })
         }
         // otherwise, check that they are not new (if they are, something went wrong
@@ -56,7 +60,7 @@ struct MainView: View {
                 }
                 
             } else { // otherwise, load Home!
-                HomeView(controller: appController, viewContext: viewContext, user: users.first!)
+                HomeView(controller: controller, viewContext: viewContext, user: users.first!)
             }
         }
     }
@@ -65,10 +69,11 @@ struct MainView: View {
         Task{
             do {
                 print("button hit")
-                await appController.setAppInfo(awsManager: awsManager)
+                await controller.setAppInfo(awsManager: awsManager)
                 loadedModules.toggle()
             }
             
         }
     }
 }
+
