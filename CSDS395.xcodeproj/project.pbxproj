@@ -32,6 +32,8 @@
 		948996252AD9E19D003C6CD8 /* JsonFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948996242AD9E19D003C6CD8 /* JsonFileManager.swift */; };
 		BF6DE02D2AAE79F0004E19F8 /* AWSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6DE02C2AAE79F0004E19F8 /* AWSManager.swift */; };
 		BF6DE0302AAE82E8004E19F8 /* SotoS3 in Frameworks */ = {isa = PBXBuildFile; productRef = BF6DE02F2AAE82E8004E19F8 /* SotoS3 */; };
+		FDA82D9A2AFA0757008EBD95 /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA82D992AFA0757008EBD95 /* LogoutView.swift */; };
+		FDA82D9C2AFA11DC008EBD95 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA82D9B2AFA11DC008EBD95 /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		948996242AD9E19D003C6CD8 /* JsonFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFileManager.swift; sourceTree = "<group>"; };
 		BF6DE02C2AAE79F0004E19F8 /* AWSManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSManager.swift; sourceTree = "<group>"; };
 		FD4E07342AAD29DD0032FC13 /* CSDS395.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CSDS395.entitlements; sourceTree = "<group>"; };
+		FDA82D992AFA0757008EBD95 /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
+		FDA82D9B2AFA11DC008EBD95 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 				9427248C2AA8271E006F0DBF /* QuestionView.swift */,
 				2F8D87D42AAA3EA20057E8C3 /* LoginView.swift */,
 				5AA76C052AF6D3CC00C281E7 /* NextButton.swift */,
+				FDA82D992AFA0757008EBD95 /* LogoutView.swift */,
+				FDA82D9B2AFA11DC008EBD95 /* TestView.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -246,10 +252,12 @@
 				5AA76C062AF6D3CC00C281E7 /* NextButton.swift in Sources */,
 				5A9D809E2AA2F36900F9677C /* ModuleView.swift in Sources */,
 				5A9D80892AA2E4E700F9677C /* CSDS395App.swift in Sources */,
+				FDA82D9A2AFA0757008EBD95 /* LogoutView.swift in Sources */,
 				2F8D87E62AD497800057E8C3 /* Users.swift in Sources */,
 				5A94ABC12ABA1170009BA3D3 /* UserDataController.swift in Sources */,
 				2F8D87D52AAA3EA20057E8C3 /* LoginView.swift in Sources */,
 				5AE7C5602AB50B37000D51A6 /* DragAndDropView.swift in Sources */,
+				FDA82D9C2AFA11DC008EBD95 /* TestView.swift in Sources */,
 				2F8D87DF2AAFF5160057E8C3 /* UserController.swift in Sources */,
 				5A82B1422AA7A306003F1486 /* DescView.swift in Sources */,
 				5A82B1442AA7A68D003F1486 /* UserView.swift in Sources */,
@@ -383,7 +391,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CSDS395/Preview Content\"";
-				DEVELOPMENT_TEAM = F7CFN67W2A;
+				DEVELOPMENT_TEAM = D3Z862B54W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -415,7 +423,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CSDS395/Preview Content\"";
-				DEVELOPMENT_TEAM = F7CFN67W2A;
+				DEVELOPMENT_TEAM = D3Z862B54W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
