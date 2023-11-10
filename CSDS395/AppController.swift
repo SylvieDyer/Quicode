@@ -10,6 +10,7 @@ class AppController: NSObject, ObservableObject {
 
     private var moduleNames: [String] = []
     private var blockNames : [String : Any] = [:]
+    private var questions: [String: QuestionList?] = [:]
     
     func setAppInfo(awsManager: AWSManager) async {
         var dict = [Dictionary<String, Any>]()      // set a dict for the values retrieved from JSON
@@ -50,6 +51,13 @@ class AppController: NSObject, ObservableObject {
             list.removeFirst()
             blockNames.updateValue(list.components(separatedBy: CharacterSet(charactersIn: ",;")), forKey: module.keys.first ?? "ERROR")
         }
+        
+    questions = await [
+        "Data Types and Variables": JsonFileManager.pullJson(fromS3: "dataTypes.json"),
+        " Operators": JsonFileManager.pullJson(fromS3: "operators.json"),
+        " Boolean Expressions": JsonFileManager.pullJson(fromS3: "booleanExpressions.json")
+    ]
+        
     }
     
     func getModuleNames() -> [String] {
@@ -59,14 +67,7 @@ class AppController: NSObject, ObservableObject {
     func getBlocks(name: String) -> [String]{
         return blockNames[name] as! [String]
     }
-    
         
-    private var questions: [String: QuestionList?] = [
-        "Data Types and Variables": JsonFileManager.pullJson(forResource: "dataTypes", withExtension: "json"),
-        " Operators": JsonFileManager.pullJson(forResource:"operatorsSample", withExtension: "json"),
-        " Boolean Expressions": JsonFileManager.pullJson(forResource: "booleanExpressions", withExtension: "json")
-    ]
-    
     func getQuestions(name: String) -> QuestionList {
         return (questions[name] ?? QuestionList(qlist: []))! 
     }

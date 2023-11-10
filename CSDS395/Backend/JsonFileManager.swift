@@ -29,26 +29,27 @@ struct JsonFileManager{
     }
     
     
-    static func pullJson(forResource: String, withExtension: String) -> QuestionList? {
-//        if let fileURL = Bundle.main.url(forResource: "sample", withExtension: "json", subdirectory: "jsonsFiles") {
-//        } else {
-//            print("JSON file not found.")
-//            return nil
-//        }
-        guard let fileURL = Bundle.main.url(forResource: forResource, withExtension: withExtension, subdirectory: "jsonsFiles") else {
+    static func pullJson(fromS3 fileName: String) async -> QuestionList? {
+        
+        let awsManager = AWSManager()
+    
+        // Get the JSON content from AWS S3 using the getFile function
+        guard let jsonContent = try? await awsManager.getFile(fileName: fileName) else {
+            print("Unable to fetch JSON content from S3.")
             return nil
         }
-        // Read the JSON data from the file
-        guard let data = try? Data(contentsOf: fileURL) else {
+        // Convert the JSON string to Data
+        guard let jsonData = jsonContent.data(using: .utf8) else {
+            print("Unable to convert JSON content to data.")
             return nil
         }
-        print(data)
         
         // Decode the JSON data into an array of dictionaries
-        guard let jsonFile = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: [String: Any]] else {
-            print("not deserialized!")
+        guard let jsonFile = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: [String: Any]] else {
+            print("Unable to deserialize JSON content.")
             return nil
         }
+        
         // Initialize an empty array to hold Question objects
         var questionList: [Question] = []
         
@@ -60,37 +61,31 @@ struct JsonFileManager{
                let questionText = questionData["questionText"] as? String,
                let questionOptions = questionData["questionOptions"] as? [String],
                let questionAnswer = questionData["questionAnswer"] as? [String] {
-
+                
                 // Rest of your code for processing question data
                 let questionType: QuestionType
                 switch questionTypeRaw {
-                    case "multiSelect":
-                        questionType = .multiSelect
-                    case "multipleChoice":
-                        questionType = .multipleChoice
-                    case "dragAndDrop":
-                        questionType = .dragAndDrop
-                    default:
-                        questionType = .blank
+                case "multiSelect":
+                    questionType = .multiSelect
+                case "multipleChoice":
+                    questionType = .multipleChoice
+                case "dragAndDrop":
+                    questionType = .dragAndDrop
+                default:
+                    questionType = .blank
                 }
                 
+                // Create the question object
                 let question: Question
                 question = Question(questionType: questionType, questionText: questionText, questionOptions: questionOptions, questionAnswer: questionAnswer, questionDifficulty: QuestionDifficulty.easy)
-//                if questionType == .multiSelect {
-//                    question = Question(questionText: questionText, questionOptions: questionOptions, questionAnswer: questionAnswer, questionDifficulty: QuestionDifficulty.easy)
-//                } else if questionType == .dragAndDrop {
-//                    question = DragAndDropQ(questionText: questionText, questionOptions: questionOptions, questionAnswer: questionAnswer, questionDifficulty: QuestionDifficulty.easy)
-//                } else {
-//                    question = BlankQ()
-//                }
-
+                
                 questionList.append(question)
             }
         }
         
         // Create a QuestionList object with the parsed questions
         let questionListObject = QuestionList(qlist: questionList)
-        
         return questionListObject
-    }
+        
+        }
 }
