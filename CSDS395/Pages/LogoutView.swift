@@ -20,12 +20,9 @@ struct LogoutView: View {
     )
     private var users: FetchedResults<User>
     
-    @State private var loadedModules = false
+//    @State private var loadedModules = false
     @State private var isAuthenticated = false
-//    var awsManager : AWSManager = AWSManager()
 
-    /// SOLEY FOR TESTING PURPOSES ( content previewing)
-    //    var isTestingSinglePage: Bool
     
     var body: some View {
         
@@ -38,12 +35,10 @@ struct LogoutView: View {
             })
         }
         else {
-            TestView()
-        }
-        // otherwise, check that they are not new (if they are, something went wrong
-//        else if (users.first!.newUser == false){
-//            // if need to load from S3, show popup
+            HomeView(controller: controller, viewContext: viewContext, user: users.first!)
+            //TODO: commeneted out to so we don't have an AWS Issue, also we don't need to reload data here
 //            if (!loadedModules){
+//                var awsManager : AWSManager = AWSManager()
 //                VStack {
 //                    Text("QUICk! are you ready to CODE?!?!?!")
 //                        .font(.title)
@@ -58,14 +53,14 @@ struct LogoutView: View {
 //                        Image(systemName: "party.popper.fill")
 //                    }
 //                    Button("Let's Go!",
-//                           action: { getAWSData() }
+//                           action: {getAWSData()}
 //                    ).padding(50).foregroundColor(.purple).font(.title2).fontWeight(.bold)
 //                }
 //                
 //            } else { // otherwise, load Home!
 //                HomeView(controller: controller, viewContext: viewContext, user: users.first!)
 //            }
-//        }
+        }
     }
     
 //    func getAWSData(){
@@ -75,7 +70,6 @@ struct LogoutView: View {
 //                await controller.setAppInfo(awsManager: awsManager)
 //                loadedModules.toggle()
 //            }
-//            
 //        }
 //    }
 }
