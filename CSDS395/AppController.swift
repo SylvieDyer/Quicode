@@ -62,9 +62,9 @@ class AppController: NSObject, ObservableObject {
     
         
     private var questions: [String: QuestionList?] = [
-        "Data Types and Variables": JsonFileManager.pullJson(forResource: "dataTypes", withExtension: "json"),
-        " Operators": JsonFileManager.pullJson(forResource:"operatorsSample", withExtension: "json"),
-        " Boolean Expressions": JsonFileManager.pullJson(forResource: "booleanExpressions", withExtension: "json")
+        "Data Types and Variables": JsonFileManager.pullJson(fromS3: "dataTypes"),
+        " Operators": JsonFileManager.pullJson(fromS3: "operatorsSample"),
+        " Boolean Expressions": JsonFileManager.pullJson(fromS3: "booleanExpressions")
     ]
     
     func getQuestions(name: String) -> QuestionList {
