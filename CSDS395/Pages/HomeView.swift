@@ -16,6 +16,7 @@ struct HomeView: View {
     var viewContext: NSManagedObjectContext
     var user : User
     let colorManager: ColorManager = ColorManager()
+    @Environment (\.dismiss) var dismiss
     
     var body: some View {
         // wraps app in navigation to switch to user-screen
@@ -38,11 +39,14 @@ struct HomeView: View {
                      */
                     
                     // user page navigation
-                    NavigationLink {
-                        UserView(controller: controller, viewContext: viewContext, user: user).navigationBarBackButtonHidden(true)
-                    } label: {
+                    //                    NavigationLink {
+                    //                        UserView(controller: controller, viewContext: viewContext, user: user, dismiss: dismiss).navigationBarBackButtonHidden(true)
+                    //                    } label: {
+                    //                        Image(systemName: "person").foregroundColor(.gray).padding(25)
+                    //                    }
+                    Button(action: {controller.viewController.setAsUser()}, label: {
                         Image(systemName: "person").foregroundColor(.gray).padding(25)
-                    }
+                    })
                 }
                 
                 // section to replace when navigating btwn modules

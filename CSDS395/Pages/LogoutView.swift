@@ -30,9 +30,9 @@ struct LogoutView: View {
         // if there are no users, or they're sill marked as new -- ask to log in
         if !isAuthenticated {
             
-            LoginView(appController: controller, viewContext: viewContext, authenticationSuccess: {
-                self.isAuthenticated = true
-            })
+//            LoginView(appController: controller, viewContext: viewContext, authenticationSuccess: {
+//                self.isAuthenticated = true
+//            })
         }
         else {
             HomeView(controller: controller, viewContext: viewContext, user: users.first!)

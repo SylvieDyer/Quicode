@@ -11,6 +11,8 @@ class AppController: NSObject, ObservableObject {
     private var moduleNames: [String] = []
     private var blockNames : [String : Any] = [:]
     
+    @Published var viewController = ViewController()
+    
     func setAppInfo(awsManager: AWSManager) async {
         var dict = [Dictionary<String, Any>]()      // set a dict for the values retrieved from JSON
         
@@ -57,6 +59,7 @@ class AppController: NSObject, ObservableObject {
     }
     
     func getBlocks(name: String) -> [String]{
+        print(name)
         return blockNames[name] as! [String]
     }
     
@@ -74,6 +77,31 @@ class AppController: NSObject, ObservableObject {
 
 
 extension AppController {
+    
+    struct ViewController: Equatable {
+        var logInPage = true
+        var homePage = false
+        var userPage = false
+        
+        mutating func setAsHome() {
+            userPage = false
+            homePage = true
+            logInPage = false
+        }
+        
+        mutating func setAsUser() {
+            homePage = false
+            userPage = true
+            logInPage = false
+        }
+        
+        mutating func setAsLogIn(){
+            logInPage = true
+            homePage = false
+            userPage = false
+        }
+    }
+   
     /// PLACE HOLDER FOR DND FUNCTIONALITY
     class DND: ObservableObject{
         var map : [String: UUID] = [:]

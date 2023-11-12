@@ -12,16 +12,16 @@ import CoreData
 
 // log in view
 struct LoginView: View {
-    @ObservedObject var appController: AppController
-    var awsManager : AWSManager = AWSManager()
+    var appController: AppController
+    var awsManager : AWSManager
     var viewContext: NSManagedObjectContext
-
+    
     // new user
     @FetchRequest(
         sortDescriptors: []
     )
     private var users: FetchedResults<User>
- 
+    
     
     // apple log in variables
     @Environment(\.colorScheme) var colorScheme
@@ -76,17 +76,18 @@ struct LoginView: View {
                 Task{
                     await uploadUser(user: user)
                 }
+//                appController.setAsHome()
                 authenticationSuccess()
             case .failure(let error):
                 print("Authorisation failed: \(error.localizedDescription)")
-               
+                
             }
         }
         .frame(width: 280, height: 60, alignment: .center)
         .signInWithAppleButtonStyle(type)
     }
     
-
+    
     
     // to create the user and store with core data
     func CreateUser(authResults: ASAuthorization) -> User{
@@ -94,48 +95,52 @@ struct LoginView: View {
         switch authResults.credential {
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
             print("FULL NAME")
-                       print(appleIdCredential.fullName!)
-                       // appleIdCredential.user if the user's Sign In with Apple Credential Remains stable
-                       print("USER")
-                       print(appleIdCredential.user)
-                       // create new user object
-                       if users.isEmpty {
-                           user.newUser = false
-                           user.isLoggedOut = false
-                           user.email = appleIdCredential.email ?? "NO EMAIL GIVEN"
-                           user.firstName = appleIdCredential.fullName?.givenName ?? "ERROR: NO NAME GIVEN"
-                           user.lastName = appleIdCredential.fullName?.familyName ?? "ERROR: NO NAME GIVEN"
-                           user.appid = appleIdCredential.user
-                           user.id = UUID()
-                       }
-                       else {
-                           // check if user is already in core data by comparing appid
-                           if user.appid != users.first!.appid {
-                               RemoveUser() // we only allow one user in core data, so if a new appid is detected, the old user in core data should be deleted
-                               user.newUser = false
-                               user.isLoggedOut = false
-                               user.email = appleIdCredential.email ?? "NO EMAIL GIVEN"
-                               user.firstName = appleIdCredential.fullName?.givenName ?? "ERROR: NO NAME GIVEN"
-                               user.lastName = appleIdCredential.fullName?.familyName ?? "ERROR: NO NAME GIVEN"
-                               user.appid = appleIdCredential.user
-                               user.id = UUID()        // TODO: dont want to recreate everytime user logs in though ... TBD
-                           }
-                           else {
-                               users.first!.isLoggedOut = false
-                           }
-                       }
+            print(appleIdCredential.fullName!)
+            // appleIdCredential.user if the user's Sign In with Apple Credential Remains stable
+            print("USER")
+            print(appleIdCredential.user)
+            // create new user object
+            print("EMAIL")
+            print(appleIdCredential.email ?? "NO EMAIL GIVEN")
+            if users.isEmpty {
+                print("users is empty")
+                user.newUser = false
+                user.isLoggedOut = false
+                user.email = appleIdCredential.email ?? "NO EMAIL GIVEN"
+                user.firstName = appleIdCredential.fullName?.givenName ?? "ERROR: NO NAME GIVEN"
+                user.lastName = appleIdCredential.fullName?.familyName ?? "ERROR: NO NAME GIVEN"
+                user.appid = appleIdCredential.user
+                user.id = UUID()
+            }
+            else {
+                print("users not empty")
+                // check if user is already in core data by comparing appid
+                if user.appid != users.first!.appid {
+                    RemoveUser() // we only allow one user in core data, so if a new appid is detected, the old user in core data should be deleted
+                    user.newUser = false
+                    user.isLoggedOut = false
+                    user.email = appleIdCredential.email ?? "NO EMAIL GIVEN"
+                    user.firstName = appleIdCredential.fullName?.givenName ?? "ERROR: NO NAME GIVEN"
+                    user.lastName = appleIdCredential.fullName?.familyName ?? "ERROR: NO NAME GIVEN"
+                    user.appid = appleIdCredential.user
+                    user.id = UUID()        // TODO: dont want to recreate everytime user logs in though ... TBD
+                }
+                else {
+                    users.first!.isLoggedOut = false
+                }
+            }
             // try to save with core data
             do {
                 try viewContext.save()
             } catch {
                 // TODO: Replace this implementation with code to handle the error appropriately.
-               
+                
                 let nsError = error as NSError
                 // fatalError() will crash app
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
             
-        
+            
         case let passwordCredential as ASPasswordCredential:
             print("\n ** ASPasswordCredential ** \n")
             print(passwordCredential.user)  // This is a user identifier
@@ -145,8 +150,8 @@ struct LoginView: View {
         default:
             break
         }
-        
-        return user
+        print(users)
+        return users.first!
     }
     
     func uploadUser(user: User) async {
@@ -157,7 +162,7 @@ struct LoginView: View {
         let userJson = Users(id: id!, email: email, firstname: firstname, lastname: lastname)
         
         do {
-//            let client = awsManager.initAWS()
+            //            let client = awsManager.initAWS()
             let jsonEncoder = JSONEncoder()
             jsonEncoder.outputFormatting = .prettyPrinted
             let jsonData = try jsonEncoder.encode(userJson)
@@ -171,17 +176,17 @@ struct LoginView: View {
     }
     
     func RemoveUser() -> Void {
-           
-           let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-           let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
-           
-           do {
-               try viewContext.execute(deleteRequest)
-               try viewContext.save()
-           } catch {
-               print ("There was an error")
-           }
-       }
+        
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        
+        do {
+            try viewContext.execute(deleteRequest)
+            try viewContext.save()
+        } catch {
+            print ("There was an error")
+        }
+    }
 }
 //
 //// to navigate signing in with APPLE

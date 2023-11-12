@@ -9,18 +9,14 @@ import Foundation
 import SotoS3
 
 struct AWSManager {
-
-    // store S3-related values in struct
     
     var bucket: String = "quicode"
     
-    var client: AWSClient = AWSClient(
-        credentialProvider: .static(accessKeyId: "AKIA2ARVCSNBIO4SS2HU", secretAccessKey: "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"),
-        httpClientProvider: .createNew
-    )
-
-    
     func uploadToAWS(filename: String, body: Data) async {
+        let client = AWSClient(
+            credentialProvider: .static(accessKeyId: "AKIA2ARVCSNBIO4SS2HU", secretAccessKey: "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"),
+            httpClientProvider: .createNew
+        )
         let s3 = S3(client: client, region: .useast2)
         let payload = AWSPayload.byteBuffer(ByteBufferAllocator().buffer(bytes: body))
         let uploadRequest = S3.PutObjectRequest(
@@ -39,12 +35,11 @@ struct AWSManager {
        }
         
         do {
-//            try await client.shutdown()
-            try s3.client.syncShutdown()
-            try await s3.client.shutdown()
+            try client.syncShutdown()
+            print("SHUT DOWN UPLOAD")
         }
         catch {
-            print("Error shutting down")
+            print("Error shutting down \(error)")
         }
     }
     
@@ -53,6 +48,10 @@ struct AWSManager {
     
     // gets a given file from the DB and will return the body as a string
     func getFile(fileName: String) async -> String{
+        let client = AWSClient(
+            credentialProvider: .static(accessKeyId: "AKIA2ARVCSNBIO4SS2HU", secretAccessKey: "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"),
+            httpClientProvider: .createNew
+        )
         print("Getting Module List")
         let s3 = S3(client: client, region: .useast2)
         print("Create S3")
@@ -73,6 +72,13 @@ struct AWSManager {
                 let data = objectData.asString()
                     if let unwrappedValue = data {
                         print("\(unwrappedValue)")
+                        do {
+                            try client.syncShutdown()
+                            print("SHUT DOWN GET FILE")
+                        }
+                        catch {
+                            print("Error shutting down hehe")
+                        }
                         return unwrappedValue
                     } else {
                         // optionalValue is nil
@@ -82,21 +88,13 @@ struct AWSManager {
             } else {
                 print("No object data received.")
             }
-            
-//            // shutdown client
-//            do {
-//                try await s3.client.shutdown()
-//            }
-//            catch {
-//                print("Error shutting down")
-//            }
         } catch {
             // Handle any errors that occur
             print("Error retrieving object: \(error)")
         }
+        // stut down client
         do {
-            try s3.client.syncShutdown()
-            try await s3.client.shutdown()
+            try client.syncShutdown()
         }
         catch {
             print("Error shutting down hehe")

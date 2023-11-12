@@ -25,7 +25,6 @@ struct UserView: View {
     var controller: AppController
     var viewContext: NSManagedObjectContext
     var user : User
-    @State private var isActive = false
     
     var body:some View {
         NavigationView{
@@ -42,13 +41,6 @@ struct UserView: View {
                     Text("User Profile").font(.title3).bold().padding(.leading, 15)
                         .font(.callout).multilineTextAlignment(.center)
                     Spacer()
-                    // login page navigation
-//                    NavigationLink {
-//                        IsLoginView()
-//                    } label: {
-//                        Image(systemName: "arrow.down.left.circle.fill").foregroundColor(.gray).padding(25)
-//                    }
-                    
                 }
                 List{
                     //profile section
@@ -81,24 +73,22 @@ struct UserView: View {
                         //get user's last module and how far they've gotten
                         // iterate through list of modules
                     }
-                    NavigationLink(destination: LogoutView(controller: controller, viewContext: viewContext, user: user).navigationBarBackButtonHidden(), isActive: $isActive) {
-                                            Button {
-                                                // change user status
-                                                user.isLoggedOut = true
-                                                do {
-                                                    try viewContext.save()
-                                                } catch {
-                                                    // TODO: Replace this implementation with code to handle the error appropriately.
-                                                    
-                                                    let nsError = error as NSError
-                                                    // fatalError() will crash app
-                                                    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                                                }
-                                                isActive = true
-                                            } label: {
-                                                Text("Sign Out").padding(10).foregroundColor(.indigo.opacity(0.7)).font(.headline)
-                                            }
-                                        }
+                    Button(action: {
+                        
+                        print(viewContext.registeredObjects)
+                        
+                        controller.viewController.setAsLogIn()
+//                        TODO: implement log out functionality (core data, s3 saving progress, etc)
+//                        change user status
+//                        user.isLoggedOut = true
+//                        do {
+//                            try viewContext.save()
+//                        } catch {
+//
+//                            let nsError = error as NSError
+//                            // fatalError() will crash app
+//                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                    }, label:{ Text("Logout")})
                 }.listStyle(InsetGroupedListStyle())
             }
         }

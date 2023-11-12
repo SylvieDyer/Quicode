@@ -28,35 +28,46 @@ struct MainView: View {
         
         // because first should be for THIS user (won't store more than one):
         // if there are no users, or they're sill marked as new -- ask to log in
-        if (users.isEmpty || users.first!.newUser){
-            LoginView(appController: appController, viewContext: viewContext, authenticationSuccess: {
-                
+        if (appController.viewController.logInPage){
+            // TODO: UNCOMMENT LATER
+            //            || users.isEmpty || users.first!.newUser){
+            LoginView(appController: appController, awsManager: awsManager, viewContext: viewContext, authenticationSuccess: {
+                appController.viewController.setAsHome()
+                print("IS HOME??")
+                print(appController.viewController.homePage)
+                print(appController.viewController.logInPage)
             })
         }
-        // otherwise, check that they are not new (if they are, something went wrong
-        else if (users.first!.newUser == false){
-            // if need to load from S3, show popup
-            if (!loadedModules){
+        else {
+            if (users.first!.newUser == false){
                 VStack {
-                    Text("QUICk! are you ready to CODE?!?!?!")
-                        .font(.title)
-                        .padding(50).fontWeight(.bold)
-                    HStack{
-                        Image(systemName: "balloon.2.fill")
-                        Image(systemName: "party.popper.fill")
-                        Image(systemName: "balloon")
-                        Image(systemName: "party.popper.fill")
-                        Image(systemName: "balloon.fill")
-                        Image(systemName: "balloon")
-                        Image(systemName: "party.popper.fill")
+                    // if need to load from S3, show popup
+                    if (!loadedModules){
+                        VStack {
+                            Text("QUICk! are you ready to CODE?!?!?!")
+                                .font(.title)
+                                .padding(50).fontWeight(.bold)
+                            HStack{
+                                Image(systemName: "balloon.2.fill")
+                                Image(systemName: "party.popper.fill")
+                                Image(systemName: "balloon")
+                                Image(systemName: "party.popper.fill")
+                                Image(systemName: "balloon.fill")
+                                Image(systemName: "balloon")
+                                Image(systemName: "party.popper.fill")
+                            }
+                            Button("Let's Go!",
+                                   action: { getAWSData() }
+                            ).padding(50).foregroundColor(.purple).font(.title2).fontWeight(.bold)
+                        }
+                        
+                    }  else if(appController.viewController.homePage) {
+                        HomeView(controller: appController, viewContext: viewContext, user: users.first!)
+                    } else if(appController.viewController.userPage) {
+                        UserView(controller: appController, viewContext: viewContext, user: users.first!)
                     }
-                    Button("Let's Go!",
-                           action: { getAWSData() }
-                    ).padding(50).foregroundColor(.purple).font(.title2).fontWeight(.bold)
+                    
                 }
-                
-            } else { // otherwise, load Home!
-                HomeView(controller: appController, viewContext: viewContext, user: users.first!)
             }
         }
     }
