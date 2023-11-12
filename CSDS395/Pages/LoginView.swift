@@ -27,6 +27,8 @@ struct LoginView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.managedObjectContext) var moc
     
+    var authenticationSuccess: () -> Void
+    
     var body: some View {
         VStack{
             HStack(alignment: .top, spacing: 0) {
@@ -61,19 +63,20 @@ struct LoginView: View {
         }
     }
     
-    // for sign in functionality
+    // for sign in with apple
     func SignInButton(_ type: SignInWithAppleButton.Style) -> some View{
         return SignInWithAppleButton(.signIn) { request in
             request.requestedScopes = [.fullName, .email]
         } onCompletion: { result in
             switch result {
             case .success(let authResults):
-                print("Authorisation successful \(authResults)")
+                print("Authorization successful \(authResults)")
                 // creates the user object
                 let user = CreateUser(authResults: authResults)
                 Task{
                     await uploadUser(user: user)
                 }
+                authenticationSuccess()
             case .failure(let error):
                 print("Authorisation failed: \(error.localizedDescription)")
                
@@ -90,14 +93,37 @@ struct LoginView: View {
         let user = User(context: viewContext)
         switch authResults.credential {
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
-            // create new user object
-            user.newUser = false
-            user.email = appleIdCredential.email ?? "NO EMAIL GIVEN"
-            user.firstName = appleIdCredential.fullName?.givenName ?? "ERROR: NO NAME GIVEN"
-            user.lastName = appleIdCredential.fullName?.familyName ?? "ERROR: NO NAME GIVEN"
-            user.id = UUID()        // TODO: dont want to recreate everytime user logs in though ... TBD
-            
-
+            print("FULL NAME")
+                       print(appleIdCredential.fullName!)
+                       // appleIdCredential.user if the user's Sign In with Apple Credential Remains stable
+                       print("USER")
+                       print(appleIdCredential.user)
+                       // create new user object
+                       if users.isEmpty {
+                           user.newUser = false
+                           user.isLoggedOut = false
+                           user.email = appleIdCredential.email ?? "NO EMAIL GIVEN"
+                           user.firstName = appleIdCredential.fullName?.givenName ?? "ERROR: NO NAME GIVEN"
+                           user.lastName = appleIdCredential.fullName?.familyName ?? "ERROR: NO NAME GIVEN"
+                           user.appid = appleIdCredential.user
+                           user.id = UUID()
+                       }
+                       else {
+                           // check if user is already in core data by comparing appid
+                           if user.appid != users.first!.appid {
+                               RemoveUser() // we only allow one user in core data, so if a new appid is detected, the old user in core data should be deleted
+                               user.newUser = false
+                               user.isLoggedOut = false
+                               user.email = appleIdCredential.email ?? "NO EMAIL GIVEN"
+                               user.firstName = appleIdCredential.fullName?.givenName ?? "ERROR: NO NAME GIVEN"
+                               user.lastName = appleIdCredential.fullName?.familyName ?? "ERROR: NO NAME GIVEN"
+                               user.appid = appleIdCredential.user
+                               user.id = UUID()        // TODO: dont want to recreate everytime user logs in though ... TBD
+                           }
+                           else {
+                               users.first!.isLoggedOut = false
+                           }
+                       }
             // try to save with core data
             do {
                 try viewContext.save()
@@ -131,17 +157,31 @@ struct LoginView: View {
         let userJson = Users(id: id!, email: email, firstname: firstname, lastname: lastname)
         
         do {
-            let client = awsManager.initAWS()
+//            let client = awsManager.initAWS()
             let jsonEncoder = JSONEncoder()
             jsonEncoder.outputFormatting = .prettyPrinted
             let jsonData = try jsonEncoder.encode(userJson)
-            try await awsManager.uploadToAWS(client: client, bucket: "quicode", filename: "\(user.id!).json", body: jsonData)
+            await awsManager.uploadToAWS(filename: "\(user.id!).json", body: jsonData)
+            print("after await")
         }
         catch {
             print("cannot upload user")
         }
-        
+        print("leaving uploadUser")
     }
+    
+    func RemoveUser() -> Void {
+           
+           let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+           let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+           
+           do {
+               try viewContext.execute(deleteRequest)
+               try viewContext.save()
+           } catch {
+               print ("There was an error")
+           }
+       }
 }
 //
 //// to navigate signing in with APPLE
