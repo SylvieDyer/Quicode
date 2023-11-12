@@ -16,7 +16,7 @@ class AppController: NSObject, ObservableObject {
         
         // contents of the s3 object as a string
         let string = await awsManager.getFile(fileName: "ModuleNames.json")
-//        let string = ""
+        
         // convert String into Data
         let data = string.data(using: .utf8)!
         

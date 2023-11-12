@@ -29,9 +29,7 @@ struct MainView: View {
         // because first should be for THIS user (won't store more than one):
         // if there are no users, or they're sill marked as new -- ask to log in
         if (users.isEmpty || users.first!.newUser){
-            LoginView(appController: appController, viewContext: viewContext, authenticationSuccess: {
-                
-            })
+            LoginView(appController: appController, viewContext: viewContext)
         }
         // otherwise, check that they are not new (if they are, something went wrong
         else if (users.first!.newUser == false){
@@ -56,7 +54,7 @@ struct MainView: View {
                 }
                 
             } else { // otherwise, load Home!
-                HomeView(controller: appController, viewContext: viewContext, user: users.first!)
+                HomeView(controller: appController, user: users.first!)
             }
         }
     }
