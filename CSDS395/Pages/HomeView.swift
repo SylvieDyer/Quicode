@@ -12,8 +12,8 @@ import CoreData
 struct HomeView: View {
     // stores module names
     @ObservedObject var controller: AppController
-//    var awsManager : AWSManager = AWSManager()
-    var viewContext: NSManagedObjectContext
+    var awsManager : AWSManager = AWSManager()
+    //    var viewContext: NSManagedObjectContext
     var user : User
     let colorManager: ColorManager = ColorManager()
     
@@ -39,7 +39,7 @@ struct HomeView: View {
                     
                     // user page navigation
                     NavigationLink {
-                        UserView(controller: controller, viewContext: viewContext, user: user).navigationBarBackButtonHidden(true)
+                        UserView(controller: controller, user: user).navigationBarBackButtonHidden(true)
                     } label: {
                         Image(systemName: "person").foregroundColor(.gray).padding(25)
                     }
