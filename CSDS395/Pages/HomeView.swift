@@ -12,10 +12,11 @@ import CoreData
 struct HomeView: View {
     // stores module names
     @ObservedObject var controller: AppController
-    var awsManager : AWSManager = AWSManager()
-    //    var viewContext: NSManagedObjectContext
+//    var awsManager : AWSManager = AWSManager()
+    var viewContext: NSManagedObjectContext
     var user : User
     let colorManager: ColorManager = ColorManager()
+    @Environment (\.dismiss) var dismiss
     
     var body: some View {
         // wraps app in navigation to switch to user-screen
@@ -38,11 +39,14 @@ struct HomeView: View {
                      */
                     
                     // user page navigation
-                    NavigationLink {
-                        UserView(controller: controller, user: user).navigationBarBackButtonHidden(true)
-                    } label: {
+                    //                    NavigationLink {
+                    //                        UserView(controller: controller, viewContext: viewContext, user: user, dismiss: dismiss).navigationBarBackButtonHidden(true)
+                    //                    } label: {
+                    //                        Image(systemName: "person").foregroundColor(.gray).padding(25)
+                    //                    }
+                    Button(action: {controller.viewController.setAsUser()}, label: {
                         Image(systemName: "person").foregroundColor(.gray).padding(25)
-                    }
+                    })
                 }
                 
                 // section to replace when navigating btwn modules
