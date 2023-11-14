@@ -1,15 +1,15 @@
 //
-//  MultipleQView.swift
+//  MultiSelectView.swift
 //  CSDS395
 //
-//  Created by Sylvie Dyer on 9/6/23.
+//  Created by Prarthana Gajjala on 11/14/23.
 //
 
 import SwiftUI
 
 
 // for multiple choice and multi-select questions
-struct MultipleQView: View {
+struct MultiSelectView: View {
     let moduleName: String
     let controller: AppController
     @State var nextQuestion: Question? = nil
@@ -18,7 +18,7 @@ struct MultipleQView: View {
     
     @State var isShown = true
     
-    @State var didTapIncorrectOption: [String:Bool] = [:]
+    @State var didTapOption: [String:Bool] = [:]
     @State var isSelected: [String:Bool] = [:]
 
     
@@ -42,30 +42,18 @@ struct MultipleQView: View {
             
             ForEach(question.questionOptions, id: \.self) { option in
                 Button(action: {
-                    // mark option as selected
-                    question.selected = [option]    // TODO: coded for multiple chouce: for multi select, append or de-append
-                    
-                    // visually show question as marked, deselect rest
-                    // TODO: coded for multiple choice: for multi select, mark as true or false 
-                    isSelected[option] = true
-                    isSelected.forEach { (key: String, value: Bool) in
-                        print(key)
-                        if (key != option){
-                            isSelected[key] = false
-                        }
-                    }
                     print("is selected: ", option)
+                    // mark option as selected
+                    if question.selected.contains(option) {
+                        question.selected.removeAll(where: { $0 == option })
+                        isSelected[option] = false
+                    } else {
+                        question.selected.append(option)
+                        isSelected[option] = true
+                    }
+                    print("selected:", question.selected)
                     
-//                    do {
-//                        if(!question.questionAnswer.contains(option)) {
-//                            didTapIncorrectOption[option] = true
-//                        } else {
-//                            // on answer, mark booleans as true/false (opacity --> 0)
-//                            question.isComplete = true
-//                            print("answered: ", option)
-//                            isShown = false
-//                        }
-//                    }
+
                 }){
                     Text(option)
                         .font(.title3)
@@ -73,7 +61,7 @@ struct MultipleQView: View {
                         .padding(10)
                         .frame(width: 400, height: 95)
                         .background(RoundedRectangle(cornerRadius: 25)
-                            .foregroundColor(didTapIncorrectOption[option] ?? false ? Color.red.opacity(0.2) : (isSelected[option] ?? false ? colorManager.getLavendar() : colorManager.getLightLavendar()))
+                            .foregroundColor(didTapOption[option] ?? false ? (isSelected[option] ?? false ? colorManager.getLavendar() : colorManager.getLightGreyLavendar()) : (isSelected[option] ?? false ? colorManager.getLavendar() : colorManager.getLightLavendar()))
                             .frame(width:350, height: 90))
                 }
             }
@@ -87,16 +75,21 @@ struct MultipleQView: View {
                             print("in is selected")
                             print(key)
                             print(value)
-                            
-                            // if is selected, is WRONG
+            
                             if (isSelected[key] == true){
                                 isSelected[key] = false
-                                didTapIncorrectOption[key] = true
+                                didTapOption[key] = true
                             }
                         }
                         // on answer, mark booleans as true/ false
-                        isShown = !NextButton.validate(selected: question.selected, correct: question.questionAnswer, questionType: .multipleChoice)
-                        
+                        isShown = !NextButton.validate(selected: question.selected, correct: question.questionAnswer, questionType: .multiSelect)
+                        if isShown {
+                            isSelected.forEach { (key: String, value: Bool) in
+                                print("resetting selected")
+                                question.selected.removeAll(where: { $0 == key })
+                                isSelected[key] = false
+                            }
+                        }
         
                     },
                     label: {

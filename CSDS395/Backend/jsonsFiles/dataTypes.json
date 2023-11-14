@@ -3,17 +3,17 @@
         "questionText": "This is a Data Types and Variables multiSelect",
         "questionType": "multiSelect",
         "questionOptions": ["Option 1", "Option 2", "Option 3", "Option 4"],
-        "questionAnswer": ["Option 1"],
+        "questionAnswer": ["Option 1", "Option 2"],
     },
     "Data Types and Variables 2": {
-        "questionText": "This is a Data Types and Variables multiSelect2",
-        "questionType": "multiSelect",
-        "questionOptions": ["Option 1", "Option 2", "Option 3", "Option 4"],
-        "questionAnswer": ["Option 2", "Option 3"],
+        "questionText": "A,is a,.",
+        "questionType": "dragAndDrop",
+        "questionOptions": ["Option 1", "Option 2", "Option 3", "Option 4","Option 5","Option 6"],
+        "questionAnswer": ["Option 1", "Option 2"]
     },
     "Data Types and Variables 3": {
         "questionText": "This is a Data Types and Variables multiSelect3",
-        "questionType": "multiSelect",
+        "questionType": "multipleChoice",
         "questionOptions": ["Option 1", "Option 2", "Option 3", "Option 4"],
         "questionAnswer": ["Option 4"],
     }
