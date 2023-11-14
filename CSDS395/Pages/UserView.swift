@@ -23,7 +23,7 @@ import CoreData
 
 struct UserView: View {
     var controller: AppController
-//    var viewContext: NSManagedObjectContext
+    var viewContext: NSManagedObjectContext
     var user : User
     
     var body:some View {
@@ -33,7 +33,7 @@ struct UserView: View {
                 HStack(alignment: .lastTextBaseline, spacing:0){
                     // home page
                     NavigationLink {
-                        HomeView(controller: controller, user : user).navigationBarBackButtonHidden(true)
+                        HomeView(controller: controller, viewContext: viewContext, user : user).navigationBarBackButtonHidden(true)
                     } label: {
                         Image(systemName: "house").foregroundColor(.gray).padding(25)
                     }
@@ -41,13 +41,6 @@ struct UserView: View {
                     Text("User Profile").font(.title3).bold().padding(.leading, 15)
                         .font(.callout).multilineTextAlignment(.center)
                     Spacer()
-                    // login page navigation
-//                    NavigationLink {
-//                        IsLoginView()
-//                    } label: {
-//                        Image(systemName: "arrow.down.left.circle.fill").foregroundColor(.gray).padding(25)
-//                    }
-                    
                 }
                 List{
                     //profile section
@@ -79,9 +72,23 @@ struct UserView: View {
                         Text("Preferences") .foregroundColor(.purple.opacity(0.6)).font(.title2).fontWeight(.heavy)
                         //get user's last module and how far they've gotten
                         // iterate through list of modules
-                        Text("Sign Out").padding(10) //TODO
-                            .foregroundColor(.indigo.opacity(0.7)).font(.headline)
                     }
+                    Button(action: {
+                        
+                        print(viewContext.registeredObjects)
+                        
+                        controller.viewController.setAsLogIn()
+//                        TODO: implement log out functionality (core data, s3 saving progress, etc)
+//                        change user status
+//                        user.isLoggedOut = true
+//                        do {
+//                            try viewContext.save()
+//                        } catch {
+//
+//                            let nsError = error as NSError
+//                            // fatalError() will crash app
+//                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                    }, label:{ Text("Logout")})
                 }.listStyle(InsetGroupedListStyle())
             }
         }
