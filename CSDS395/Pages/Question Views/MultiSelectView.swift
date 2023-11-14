@@ -42,16 +42,18 @@ struct MultiSelectView: View {
             
             ForEach(question.questionOptions, id: \.self) { option in
                 Button(action: {
+                    print("is selected: ", option)
                     // mark option as selected
                     if question.selected.contains(option) {
-                        question.selected.removeAll(where: { $0 == "option" })
+                        question.selected.removeAll(where: { $0 == option })
                         isSelected[option] = false
                     } else {
                         question.selected.append(option)
                         isSelected[option] = true
                     }
+                    print("selected:", question.selected)
                     
-                    print("is selected: ", option)
+
                 }){
                     Text(option)
                         .font(.title3)
