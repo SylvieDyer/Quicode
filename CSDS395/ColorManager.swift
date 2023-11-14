@@ -21,7 +21,7 @@ class ColorManager {
     }
     
     func getLightGreyLavendar() -> Color {
-        return getColor(hex: "#c7c1e1")
+        return getColor(hex: "#b1acc8")
     }
     
     func getLightGreen() -> Color {

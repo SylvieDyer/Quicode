@@ -32,6 +32,9 @@ class NextButton {
             return correct[0] == selected[0]
             
         case .multiSelect:
+            if selected.count != correct.count {
+                return false
+            }
             for answer in selected {
                 // if correct doesn't contain option
                 if (!correct.contains(answer)){
