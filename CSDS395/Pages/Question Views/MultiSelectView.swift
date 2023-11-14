@@ -84,7 +84,13 @@ struct MultiSelectView: View {
                         }
                         // on answer, mark booleans as true/ false
                         isShown = !NextButton.validate(selected: question.selected, correct: question.questionAnswer, questionType: .multiSelect)
-                        
+                        if isShown {
+                            isSelected.forEach { (key: String, value: Bool) in
+                                print("resetting selected")
+                                question.selected.removeAll(where: { $0 == key })
+                                isSelected[key] = false
+                            }
+                        }
         
                     },
                     label: {
