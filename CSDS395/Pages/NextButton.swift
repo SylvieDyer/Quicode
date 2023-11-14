@@ -48,9 +48,3 @@ class NextButton {
         return true
     }
 }
-
-//struct NextButton_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NextButton()
-//    }
-//}

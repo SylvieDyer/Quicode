@@ -18,7 +18,7 @@ struct MultiSelectView: View {
     
     @State var isShown = true
     
-    @State var didTapIncorrectOption: [String:Bool] = [:]
+    @State var didTapOption: [String:Bool] = [:]
     @State var isSelected: [String:Bool] = [:]
 
     
@@ -61,7 +61,7 @@ struct MultiSelectView: View {
                         .padding(10)
                         .frame(width: 400, height: 95)
                         .background(RoundedRectangle(cornerRadius: 25)
-                            .foregroundColor(didTapIncorrectOption[option] ?? false ? Color.red.opacity(0.2) : (isSelected[option] ?? false ? colorManager.getLavendar() : colorManager.getLightLavendar()))
+                            .foregroundColor(didTapOption[option] ?? false ? (isSelected[option] ?? false ? colorManager.getLavendar() : colorManager.getLightGreyLavendar()) : (isSelected[option] ?? false ? colorManager.getLavendar() : colorManager.getLightLavendar()))
                             .frame(width:350, height: 90))
                 }
             }
@@ -75,11 +75,10 @@ struct MultiSelectView: View {
                             print("in is selected")
                             print(key)
                             print(value)
-                            
-                            // if is selected, is WRONG
+            
                             if (isSelected[key] == true){
                                 isSelected[key] = false
-                                didTapIncorrectOption[key] = true
+                                didTapOption[key] = true
                             }
                         }
                         // on answer, mark booleans as true/ false
