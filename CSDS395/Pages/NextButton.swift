@@ -19,6 +19,12 @@ class NextButton {
             // for drag and drop
         case .dragAndDrop:
             // TODO: must be in order
+            if selected.isEmpty {
+                return false
+            }
+            if selected.count < 2 {
+                return false
+            }
             for index in 0...correct.count - 1{
                 if (selected[index] != correct[index]){
                     print("returning false for DND")
@@ -28,6 +34,9 @@ class NextButton {
             break
             
         case .multipleChoice:
+            if selected.isEmpty {
+                return false
+            }
             print("returning \(correct[0] == selected[0]) for multiple choice")
             return correct[0] == selected[0]
             
