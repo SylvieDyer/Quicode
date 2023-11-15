@@ -148,7 +148,7 @@ struct DropTemplate: View, DropDelegate{
             item.loadObject(ofClass: NSString.self) { item, error in
                 if let str = item as? String {
                     items = [str]
-                    question.selected.insert(items[0], at: number)
+                    question.selected[number] = items[0]
                 }
             }
         }
