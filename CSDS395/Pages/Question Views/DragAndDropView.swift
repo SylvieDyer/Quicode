@@ -18,7 +18,6 @@ struct DragAndDropView: View{
     @State private var dragInProgress = false
     
     @State var isShown = true   // to show the question
-    @State var reset = false
     
     var body: some View {
         VStack{
@@ -58,7 +57,6 @@ struct DragAndDropView: View{
                         //TODO: won't move on unless right, but only one chance -- should: validate , add to extra list, move on.
                         // on answer, mark booleans as true/ false
                         isShown = !NextButton.validate(selected: question.selected, correct: question.questionAnswer, questionType: .dragAndDrop)
-                        if isShown { reset = true }
                     },
                     label: {
                         Text("Next")
@@ -144,17 +142,13 @@ struct DropTemplate: View, DropDelegate{
     
     // when drop occurs
     func performDrop(info: DropInfo) -> Bool {
-        // if drop was already performed, do not perform again
-//        if (items[0] != "_______"){
-//            return false
-//        }
             
         // append text of dropped item
         for item in info.itemProviders(for: [UTType.plainText]) {
             item.loadObject(ofClass: NSString.self) { item, error in
                 if let str = item as? String {
                     items = [str]
-                    question.selected.insert(items[0], at: number ?? -1)
+                    question.selected.insert(items[0], at: number)
                 }
             }
         }
