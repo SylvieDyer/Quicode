@@ -18,6 +18,7 @@ struct DragAndDropView: View{
     @State private var dragInProgress = false
     
     @State var isShown = true   // to show the question
+    @State var isSelected: [String:Bool] = [:]
     
     var body: some View {
         VStack{
@@ -44,7 +45,7 @@ struct DragAndDropView: View{
             
             WrappingHStack(0...question.questionOptions.count - 1, id:\.self, alignment: .center
             ) {
-                DragTemplate(option: question.questionOptions[$0])
+                DragTemplate(option: question.questionOptions[$0], isSelected: $isSelected)
             }.frame(height: 300)
                 .opacity(isShown ? 1.0 : 0.0)
 
@@ -57,6 +58,11 @@ struct DragAndDropView: View{
                         //TODO: won't move on unless right, but only one chance -- should: validate , add to extra list, move on.
                         // on answer, mark booleans as true/ false
                         isShown = !NextButton.validate(selected: question.selected, correct: question.questionAnswer, questionType: .dragAndDrop)
+                        if isShown {
+                            question.selected.forEach { key in
+                                isSelected[key] = true
+                            }
+                        }
                     },
                     label: {
                         Text("Next")
@@ -81,6 +87,7 @@ struct DragTemplate: View {
     var option: String
     
     let colorManager: ColorManager = ColorManager()
+    @Binding var isSelected:[String:Bool]
     var body : some View {
         VStack{
             Spacer()
@@ -88,7 +95,7 @@ struct DragTemplate: View {
                 .font(.title2).foregroundColor(Color.white)
                 .padding(15)
                 .background(RoundedRectangle(cornerRadius: 25)
-                    .foregroundColor(colorManager.getDarkGreen())
+                    .foregroundColor(isSelected[option] ?? false ? colorManager.getDarkGreen() : colorManager.getMidGreen())
                 )
                 .onDrag {
                     NSItemProvider(object: option as NSString)
@@ -124,7 +131,7 @@ struct DropTemplate: View, DropDelegate{
             ForEach(items, id: \.self) { word in
                 Text(word)
             }
-            .background(RoundedRectangle(cornerRadius: 25).foregroundColor(dragInProgress ? colorManager.getDarkGreen() : colorManager.getMidGreen()))
+            .background(RoundedRectangle(cornerRadius: 25).foregroundColor(dragInProgress ? (colorManager.getDarkGreen()) : colorManager.getMidGreen()))
             .onDrop(of: [UTType.plainText], delegate: self)
         }
     }
