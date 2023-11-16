@@ -94,8 +94,8 @@
             filePath = "CSDS395/Pages/Question Views/DragAndDropView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -110,8 +110,8 @@
             filePath = "CSDS395/Pages/Question Views/DragAndDropView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -827,6 +827,118 @@
             endingLineNumber = "78"
             landmarkName = "body"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "49C4CA3C-F021-4141-9CC2-C23FC62AD1F4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CSDS395/Pages/NextButton.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "validate(selected:correct:questionType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "35C73B7E-9518-4851-A9D5-C01CE668501B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CSDS395/Pages/Question Views/DragAndDropView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "performDrop(info:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "35C73B7E-9518-4851-A9D5-C01CE668501B - fa869438f3e9d4e5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;__C.NSItemProviderReading&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in CSDS395.DropTemplate.performDrop(info: SwiftUI.DropInfo) -&gt; Swift.Bool"
+                  moduleName = "CSDS395"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prart/Library/CloudStorage/OneDrive-Personal/Documents/2023Fall/senior_proj/SeniorProject/CSDS395/Pages/Question%20Views/DragAndDropView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "151"
+                  endingLineNumber = "151"
+                  offsetFromSymbolStart = "408">
+               </Location>
+               <Location
+                  uuid = "35C73B7E-9518-4851-A9D5-C01CE668501B - fa869438f3e9d4e5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;__C.NSItemProviderReading&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in CSDS395.DropTemplate.performDrop(info: SwiftUI.DropInfo) -&gt; Swift.Bool"
+                  moduleName = "CSDS395"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prart/Library/CloudStorage/OneDrive-Personal/Documents/2023Fall/senior_proj/SeniorProject/CSDS395/Pages/Question%20Views/DragAndDropView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "151"
+                  endingLineNumber = "151"
+                  offsetFromSymbolStart = "344">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B0876531-19FE-4D0E-94C5-4D2EF9664F58"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CSDS395/Pages/Question Views/DragAndDropView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "performDrop(info:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B0876531-19FE-4D0E-94C5-4D2EF9664F58 - fa869438f3e9d4da"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;__C.NSItemProviderReading&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in CSDS395.DropTemplate.performDrop(info: SwiftUI.DropInfo) -&gt; Swift.Bool"
+                  moduleName = "CSDS395"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prart/Library/CloudStorage/OneDrive-Personal/Documents/2023Fall/senior_proj/SeniorProject/CSDS395/Pages/Question%20Views/DragAndDropView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "556">
+               </Location>
+               <Location
+                  uuid = "B0876531-19FE-4D0E-94C5-4D2EF9664F58 - fa869438f3e9d4da"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;__C.NSItemProviderReading&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in CSDS395.DropTemplate.performDrop(info: SwiftUI.DropInfo) -&gt; Swift.Bool"
+                  moduleName = "CSDS395"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prart/Library/CloudStorage/OneDrive-Personal/Documents/2023Fall/senior_proj/SeniorProject/CSDS395/Pages/Question%20Views/DragAndDropView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "408">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

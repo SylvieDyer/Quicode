@@ -39,7 +39,11 @@ public class Question: Hashable, Identifiable {
         self.questionAnswer = questionAnswer
         self.questionDifficulty = questionDifficulty
         self.isComplete = false
-        self.selected = []
+        if(questionType == QuestionType.dragAndDrop) {
+            self.selected = [String](repeating: "", count: questionAnswer.count)
+        } else {
+            self.selected = []
+        }
 //        self.id = UUID()
     }
     
