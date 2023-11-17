@@ -59,7 +59,7 @@ struct ModuleView: View {
                 Section {
                     // individual module
                     NavigationLink(){
-                        QuestionView(moduleName: name, controller: controller, questionList: controller.getQuestions(name: blockName))
+                        BlockView(moduleName: name, blockName: blockName, controller: controller)
                     }  label: {
                         VStack{
                             Spacer()
