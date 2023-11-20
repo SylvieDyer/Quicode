@@ -52,70 +52,79 @@ struct BlockView: View {
             Section {
                 // individual module
                 Button("Easy", action: {
-                    Task {
+                    Task.detached {
                         do {
-                            self.isNavigationActive = true
-                            self.questionList = await controller.getQuestions(name: blockName, difficulty: "easy")
-                            self.currDifficulty = QuestionDifficulty.easy
-                            print("easy")
+                            let questions = try await controller.getQuestions(name: blockName, difficulty: "easy")
+                            let mainQueue = DispatchQueue.main
+                            mainQueue.async {
+                                self.questionList = questions
+                                self.currDifficulty = QuestionDifficulty.easy
+                                self.isNavigationActive = true
+                                print("easy")
+                            }
+                        } catch {
+                            print("Error fetching questions: \(error)")
                         }
                     }
                 })
                 .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
                 .padding(20)
-                if isNavigationActive && currDifficulty == QuestionDifficulty.easy {
-                    NavigationLink(){
-                        QuestionView(moduleName: moduleName, controller: controller, questionList: questionList)
-                    } label: { }
-                }
             }.listRowBackground(RoundedRectangle(cornerRadius: 40).fill(colorManager.getLightGreen()))// color each list section
             
             // MEDIUM
             Section {
                 // individual module
                 Button("Medium", action: {
-                    Task {
+                    Task.detached {
                         do {
-                            self.isNavigationActive = true
-                            self.questionList = await controller.getQuestions(name: blockName, difficulty: "medium")
-                            self.currDifficulty = QuestionDifficulty.medium
-                            print("medium")
+                            let questions = try await controller.getQuestions(name: blockName, difficulty: "medium")
+                            let mainQueue = DispatchQueue.main
+                            mainQueue.async {
+                                self.questionList = questions
+                                self.currDifficulty = QuestionDifficulty.easy
+                                self.isNavigationActive = true
+                                print("medium")
+                            }
+                        } catch {
+                            print("Error fetching questions: \(error)")
                         }
                     }
                 })
                 .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
                 .padding(20)
-                if isNavigationActive && currDifficulty == QuestionDifficulty.medium {
-                    NavigationLink(){
-                        QuestionView(moduleName: moduleName, controller: controller, questionList: questionList)
-                    } label: { }.hidden()
-                }
             }.listRowBackground(RoundedRectangle(cornerRadius: 40).fill(colorManager.getMidGreen()))// color each list section
             
             // HARD
             Section {
                 // individual module
                 Button("Hard", action: {
-                    Task {
+                    Task.detached {
                         do {
-                            self.isNavigationActive = true
-                            self.questionList = await controller.getQuestions(name: blockName, difficulty: "hard")
-                            self.currDifficulty = QuestionDifficulty.hard
-                            print("hard")
+                            let questions = try await controller.getQuestions(name: blockName, difficulty: "hard")
+                            let mainQueue = DispatchQueue.main
+                            mainQueue.async {
+                                self.questionList = questions
+                                self.currDifficulty = QuestionDifficulty.easy
+                                self.isNavigationActive = true
+                                print("hard")
+                            }
+                        } catch {
+                            print("Error fetching questions: \(error)")
                         }
                     }
                 })
                 .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
                 .padding(20)
-                if isNavigationActive && currDifficulty == QuestionDifficulty.hard {
-                    NavigationLink(){
-                        QuestionView(moduleName: moduleName, controller: controller, questionList: questionList)
-                    } label: { }.hidden()
-                    
-                }
             }.listRowBackground(RoundedRectangle(cornerRadius: 40).fill(colorManager.getDarkGreen()))// color each list section
             
         }.listStyle(InsetGroupedListStyle())
+        
+        if isNavigationActive {
+            NavigationView {
+                    QuestionView(moduleName: moduleName, controller: controller, questionList: questionList)
+            }
+            
+        }
     }
 }
 
