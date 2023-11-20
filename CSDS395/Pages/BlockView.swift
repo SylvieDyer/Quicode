@@ -14,6 +14,10 @@ struct BlockView: View {
     var controller: AppController
     @State private var showOverview = false
     let colorManager: ColorManager = ColorManager()
+    @State private var questionList: QuestionList = QuestionList(qlist: [])
+    @State private var isNavigationActive = false
+    @State private var currDifficulty = QuestionDifficulty.easy
+    @State private var trueVal = true
     
     var body: some View {
         List {
@@ -47,52 +51,68 @@ struct BlockView: View {
             // EASY
             Section {
                 // individual module
-                NavigationLink(){
-                    QuestionView(moduleName: moduleName, controller: controller, questionList: controller.getQuestions(name: blockName))
-                    
-                }  label: {
-                    VStack{
-                        Spacer()
-                        Text("Easy")
-                        Spacer()
+                Button("Easy", action: {
+                    Task {
+                        do {
+                            self.isNavigationActive = true
+                            self.questionList = await controller.getQuestions(name: blockName, difficulty: "easy")
+                            self.currDifficulty = QuestionDifficulty.easy
+                            print("easy")
+                        }
                     }
-                }
+                })
                 .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
                 .padding(20)
+                if isNavigationActive && currDifficulty == QuestionDifficulty.easy {
+                    NavigationLink(){
+                        QuestionView(moduleName: moduleName, controller: controller, questionList: questionList)
+                    } label: { }
+                }
             }.listRowBackground(RoundedRectangle(cornerRadius: 40).fill(colorManager.getLightGreen()))// color each list section
             
             // MEDIUM
             Section {
                 // individual module
-                NavigationLink(){
-                    QuestionView(moduleName: moduleName, controller: controller, questionList: controller.getQuestions(name: blockName))
-                    
-                }  label: {
-                    VStack{
-                        Spacer()
-                        Text("Medium")
-                        Spacer()
+                Button("Medium", action: {
+                    Task {
+                        do {
+                            self.isNavigationActive = true
+                            self.questionList = await controller.getQuestions(name: blockName, difficulty: "medium")
+                            self.currDifficulty = QuestionDifficulty.medium
+                            print("medium")
+                        }
                     }
-                }
+                })
                 .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
                 .padding(20)
+                if isNavigationActive && currDifficulty == QuestionDifficulty.medium {
+                    NavigationLink(){
+                        QuestionView(moduleName: moduleName, controller: controller, questionList: questionList)
+                    } label: { }.hidden()
+                }
             }.listRowBackground(RoundedRectangle(cornerRadius: 40).fill(colorManager.getMidGreen()))// color each list section
             
             // HARD
             Section {
                 // individual module
-                NavigationLink(){
-                    QuestionView(moduleName: moduleName, controller: controller, questionList: controller.getQuestions(name: blockName))
-                    
-                }  label: {
-                    VStack{
-                        Spacer()
-                        Text("Hard")
-                        Spacer()
+                Button("Hard", action: {
+                    Task {
+                        do {
+                            self.isNavigationActive = true
+                            self.questionList = await controller.getQuestions(name: blockName, difficulty: "hard")
+                            self.currDifficulty = QuestionDifficulty.hard
+                            print("hard")
+                        }
                     }
-                }
+                })
                 .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
                 .padding(20)
+                if isNavigationActive && currDifficulty == QuestionDifficulty.hard {
+                    NavigationLink(){
+                        QuestionView(moduleName: moduleName, controller: controller, questionList: questionList)
+                    } label: { }.hidden()
+                    
+                }
             }.listRowBackground(RoundedRectangle(cornerRadius: 40).fill(colorManager.getDarkGreen()))// color each list section
             
         }.listStyle(InsetGroupedListStyle())

@@ -1,0 +1,21 @@
+{
+    "Data Types and Variables": {
+        "questionText": "This is a Data Types and Variables hard",
+        "questionType": "multiSelect",
+        "questionOptions": ["Option 1", "Option 2", "Option 3", "Option 4"],
+        "questionAnswer": ["Option 1", "Option 2"],
+    },
+    "Data Types and Variables 2": {
+        "questionText": "A hard,is a,.",
+        "questionType": "dragAndDrop",
+        "questionOptions": ["Option 1", "Option 2", "Option 3", "Option 4","Option 5","Option 6"],
+        "questionAnswer": ["Option 1", "Option 2"]
+    },
+    "Data Types and Variables 3": {
+        "questionText": "This is a Data Types and Variables hard",
+        "questionType": "multipleChoice",
+        "questionOptions": ["Option 1", "Option 2", "Option 3", "Option 4"],
+        "questionAnswer": ["Option 4"],
+    }
+}
+

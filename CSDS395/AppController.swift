@@ -54,11 +54,17 @@ class AppController: NSObject, ObservableObject {
             blockNames.updateValue(list.components(separatedBy: CharacterSet(charactersIn: ",;")), forKey: module.keys.first ?? "ERROR")
         }
         
-    questions = await [
-        "Data Types and Variables": JsonFileManager.pullJson(fromS3: "dataTypes.json"),
-        " Operators": JsonFileManager.pullJson(fromS3: "operators.json"),
-        " Boolean Expressions": JsonFileManager.pullJson(fromS3: "booleanExpressions.json")
-    ]
+//    questions = await [
+//        "Data Types and Variables_easy": JsonFileManager.pullJson(fromS3: "dataTypes.json"),
+//        "Data Types and Variables_medium": JsonFileManager.pullJson(fromS3: "dataTypes.json"),
+//        "Data Types and Variables_hard": JsonFileManager.pullJson(fromS3: "dataTypes.json"),
+//        " Operators_easy": JsonFileManager.pullJson(fromS3: "operators.json"),
+//        " Operators_medium": JsonFileManager.pullJson(fromS3: "operators.json"),
+//        " Operators_hard": JsonFileManager.pullJson(fromS3: "operators.json"),
+//        " Boolean Expressions_easy": JsonFileManager.pullJson(fromS3: "booleanExpressions.json"),
+//        " Boolean Expressions_medium": JsonFileManager.pullJson(fromS3: "booleanExpressions.json"),
+//        " Boolean Expressions_hard": JsonFileManager.pullJson(fromS3: "booleanExpressions.json")
+//    ]
         
     }
     
@@ -71,8 +77,9 @@ class AppController: NSObject, ObservableObject {
         return blockNames[name] as! [String]
     }
         
-    func getQuestions(name: String) -> QuestionList {
-        return (questions[name] ?? QuestionList(qlist: []))! 
+    func getQuestions(name: String, difficulty: String) async -> QuestionList {
+        var qlist = await JsonFileManager.pullJson(fromS3: name + "_" + difficulty + ".json") ?? QuestionList(qlist: [])
+        return qlist
     }
 }
 
