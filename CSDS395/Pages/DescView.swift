@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct DescView: View {
-    let name: String
+    var controller: AppController
+    var blockName: String
+    
     var body: some View {
-        Text("**\(name)**").font(.title2).fontWeight(.bold)
-        Text("A Brief Overview:").font(.title3)
-    }
+        ScrollView{
+            Text("**\(blockName)**").font(.title2).fontWeight(.bold)
+            Text("A Brief Overview:").font(.title3)
+            Text("\(controller.getOverview(blockName: blockName))")
+        }
+    }                 
 }
 

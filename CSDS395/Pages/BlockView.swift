@@ -36,7 +36,7 @@ struct BlockView: View {
                         }
                         // pop-up
                         .sheet(isPresented: $showOverview) {
-                            DescView(name: blockName)    // view with content for current block
+                            DescView(controller: controller, blockName: blockName)    // view with content for current block
                         }
                     }.padding(20)
                 }
