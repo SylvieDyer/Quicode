@@ -76,22 +76,16 @@ struct ModuleView: View {
             
         }.listStyle(InsetGroupedListStyle())
     }
-    //        "Data Types and Variables_easy": JsonFileManager.pullJson(fromS3: "dataTypes.json"),
-    //        "Data Types and Variables_medium": JsonFileManager.pullJson(fromS3: "dataTypes.json"),
-    //        "Data Types and Variables_hard": JsonFileManager.pullJson(fromS3: "dataTypes.json"),
-    //        " Operators_easy": JsonFileManager.pullJson(fromS3: "operators.json"),
-    //        " Operators_medium": JsonFileManager.pullJson(fromS3: "operators.json"),
-    //        " Operators_hard": JsonFileManager.pullJson(fromS3: "operators.json"),
-    //        " Boolean Expressions_easy": JsonFileManager.pullJson(fromS3: "booleanExpressions.json"),
-    //        " Boolean Expressions_medium": JsonFileManager.pullJson(fromS3: "booleanExpressions.json"),
-    //        " Boolean Expressions_hard": JsonFileManager.pullJson(fromS3: "booleanExpressions.json")
+
     func getBlockName(blockName:String) -> String{
         if blockName == "Data Types and Variables" {
             return "dataTypes"
         } else if blockName == " Operators" {
             return "operators"
+        } else if blockName == " Boolean Expressions" {
+            return "booleanExpressions"
         }
-        return "booleanExpressions"
+        return ""
     }
 }
 

@@ -30,8 +30,8 @@
             filePath = "CSDS395/Pages/QuestionView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -1278,8 +1278,24 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B5F18250-4563-443F-8EBD-E81EDF346656"
-            shouldBeEnabled = "Yes"
+            uuid = "0665CB87-D55C-4A13-A031-4E817C6833F1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CSDS395/AppController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "getQuestions(name:difficulty:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2E8A0695-58EA-4DA6-AE15-0FE7F75DDABD"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CSDS395/Pages/BlockView.swift"
@@ -1291,22 +1307,7 @@
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "B5F18250-4563-443F-8EBD-E81EDF346656 - 4af64f8ca0812ce8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CSDS395.BlockView.body.getter : some"
-                  moduleName = "CSDS395"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/prart/Library/CloudStorage/OneDrive-Personal/Documents/2023Fall/senior_proj/SeniorProject/CSDS395/Pages/BlockView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
-                  offsetFromSymbolStart = "1524">
-               </Location>
-               <Location
-                  uuid = "B5F18250-4563-443F-8EBD-E81EDF346656 - 88c791dddf996c40"
+                  uuid = "2E8A0695-58EA-4DA6-AE15-0FE7F75DDABD - 88c791dddf996c40"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -1320,23 +1321,70 @@
                   endingLineNumber = "124"
                   offsetFromSymbolStart = "176">
                </Location>
+               <Location
+                  uuid = "2E8A0695-58EA-4DA6-AE15-0FE7F75DDABD - 4af64f8ca0812e9f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CSDS395.BlockView.body.getter : some"
+                  moduleName = "CSDS395"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prart/Library/CloudStorage/OneDrive-Personal/Documents/2023Fall/senior_proj/SeniorProject/CSDS395/Pages/BlockView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "1856">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0665CB87-D55C-4A13-A031-4E817C6833F1"
+            uuid = "14B3BFC2-3152-4C12-9D5E-29A4A4F29920"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CSDS395/AppController.swift"
+            filePath = "CSDS395/Pages/BlockView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "getQuestions(name:difficulty:)"
-            landmarkType = "7">
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "14B3BFC2-3152-4C12-9D5E-29A4A4F29920 - 4af64f8ca0812ebe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CSDS395.BlockView.body.getter : some"
+                  moduleName = "CSDS395"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prart/Library/CloudStorage/OneDrive-Personal/Documents/2023Fall/senior_proj/SeniorProject/CSDS395/Pages/BlockView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
+                  offsetFromSymbolStart = "1540">
+               </Location>
+               <Location
+                  uuid = "14B3BFC2-3152-4C12-9D5E-29A4A4F29920 - 595b483cec3a963d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.listRowBackground&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(Swift.Optional&lt;&#x3c4;_1_0&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.listRowBackground&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(Swift.Optional&lt;&#x3c4;_1_0&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.listRowBackground&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(Swift.Optional&lt;&#x3c4;_1_0&gt;) -&gt; some&gt;&gt;.0)&gt; in CSDS395.BlockView.body.getter : some"
+                  moduleName = "CSDS395"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prart/Library/CloudStorage/OneDrive-Personal/Documents/2023Fall/senior_proj/SeniorProject/CSDS395/Pages/BlockView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
+                  offsetFromSymbolStart = "2900">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
