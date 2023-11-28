@@ -36,7 +36,7 @@ struct ModuleView: View {
                         }
                         // pop-up
                         .sheet(isPresented: $showOverview) {
-                            DescView(name: name)    // view with content
+                            DescView(controller: controller, blockName: name)    // view with content
                         }
                     }.padding(20)
                     // the blocks associated witht he module
