@@ -92,6 +92,8 @@ struct LoginView: View {
     // to create the user and store with core data
     func CreateUser(authResults: ASAuthorization) -> User{
         let user = User(context: viewContext)
+        let defaults = UserDefaults.standard
+        
         switch authResults.credential {
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
             print("FULL NAME")
@@ -102,13 +104,28 @@ struct LoginView: View {
             // create new user object
             print("EMAIL")
             print(appleIdCredential.email ?? "NO EMAIL GIVEN")
+            
+            let defaults = UserDefaults.standard
+                            
+            if appleIdCredential.email != nil{
+                defaults.set(appleIdCredential.email, forKey: "email")
+            }
+            
+            if appleIdCredential.fullName?.givenName != nil{
+                defaults.set(appleIdCredential.fullName?.givenName, forKey: "firstname")
+            }
+            
+            if appleIdCredential.fullName?.familyName != nil{
+                defaults.set(appleIdCredential.fullName?.familyName, forKey: "lastname")
+            }
+            
             if users.isEmpty {
                 print("users is empty")
                 user.newUser = false
                 user.isLoggedOut = false
-                user.email = appleIdCredential.email ?? "NO EMAIL GIVEN"
-                user.firstName = appleIdCredential.fullName?.givenName ?? "ERROR: NO NAME GIVEN"
-                user.lastName = appleIdCredential.fullName?.familyName ?? "ERROR: NO NAME GIVEN"
+                user.email = appleIdCredential.email ?? UserDefaults.standard.string(forKey: "email")
+                user.firstName = appleIdCredential.fullName?.givenName ?? UserDefaults.standard.string(forKey: "firstname")
+                user.lastName = appleIdCredential.fullName?.familyName ?? UserDefaults.standard.string(forKey: "lastname")
                 user.appid = appleIdCredential.user
                 user.id = UUID()
             }
@@ -119,9 +136,9 @@ struct LoginView: View {
                     RemoveUser() // we only allow one user in core data, so if a new appid is detected, the old user in core data should be deleted
                     user.newUser = false
                     user.isLoggedOut = false
-                    user.email = appleIdCredential.email ?? "NO EMAIL GIVEN"
-                    user.firstName = appleIdCredential.fullName?.givenName ?? "ERROR: NO NAME GIVEN"
-                    user.lastName = appleIdCredential.fullName?.familyName ?? "ERROR: NO NAME GIVEN"
+                    user.email = appleIdCredential.email ?? UserDefaults.standard.string(forKey: "email")
+                    user.firstName = appleIdCredential.fullName?.givenName ?? UserDefaults.standard.string(forKey: "firstname")
+                    user.lastName = appleIdCredential.fullName?.familyName ?? UserDefaults.standard.string(forKey: "lastname")
                     user.appid = appleIdCredential.user
                     user.id = UUID()        // TODO: dont want to recreate everytime user logs in though ... TBD
                 }
