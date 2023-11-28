@@ -1,0 +1,38 @@
+{
+	"q1": {
+ 		"questionText": "Which one of the following statements will not equate to 3?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["1+2", "6/2", "6%2", "5-2"],
+       "questionAnswer": ["6%2"]
+	},
+	"q2": {
+ 		"questionText": "If x <= 3 and x > 2, what does x equal?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["3", "nothing", "2", "1"],
+       "questionAnswer": ["2"]
+	},
+	"q3": {
+ 		"questionText": "If x + y == 7 and x - y == 1, then x == , and y == ,.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["3", "2", "4", "5"],
+       "questionAnswer": ["4", "3"]
+	},
+	"q4": {
+ 		"questionText": "3 == , is equivalent to True and 3 == 4 is equivalent to ,.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["3", "False", "True", "4"],
+       "questionAnswer": ["3", "False"]
+	},
+	"q5": {
+ 		"questionText": "If x < 4, what assumptions can be made about x?",
+       "questionType": "multiSelect",
+       "questionOptions": ["x == 3", "x < 5", "x != 4", "x != 5"],
+       "questionAnswer": ["x < 5", "x != 4", "x != 5"]
+	},
+	"q6": {
+ 		"questionText": "Select the statements that evaluate to False",
+       "questionType": "multiSelect",
+       "questionOptions": ["!(3 == 3)", "3 > 4 || 3 < 4", "3 == 3 || !(3 != 3)", "(3 < 6) && (3 > 6)"],
+       "questionAnswer": ["!(3 == 3)", "(3 < 6) && (3 > 6)"]
+    }
+}

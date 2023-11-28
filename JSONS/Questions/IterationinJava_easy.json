@@ -1,0 +1,39 @@
+{
+    "q1": {
+             "questionText": "Which of the following key words can be used to create a loop?",
+           "questionType": "multiSelect",
+           "questionOptions": ["if", "for", "while", "loop"],
+           "questionAnswer": ["for", "while"]
+        },
+    "q2": {
+             "questionText": "Which of the following loops will execute its block of code as long as a certain condition is true?",
+           "questionType": "multipleChoice",
+           "questionOptions": ["for loop", "if loop", "while loop", "switch loop"],
+           "questionAnswer": ["while loop"]
+        },
+    "q3": {
+             "questionText": "A(n) , loop should be used for iterating a specific number of times.",
+           "questionType": "dragAndDrop",
+           "questionOptions": ["for", "if", "while", "switch"],
+           "questionAnswer": ["for"]
+        },
+    "q4": {
+             "questionText": "How does a while loop differ from a for loop?",
+           "questionType": "multipleChoice",
+           "questionOptions": ["While loops are used for counting", "For loops are used for indefinite iteration", "For loops are used when the number of iterations is known", "For loops are used until the statement in the program is proven wrong"],
+           "questionAnswer": ["For loops are used when the number of iterations is known"]
+        },
+    "q5": {
+             "questionText": "A(n) , loop should be used to iterate over items within an array.",
+           "questionType": "dragAndDrop",
+           "questionOptions": ["for", "for each", "while", "if"],
+           "questionAnswer": ["for each"]
+        },
+    "q6": {
+             "questionText": "Which of the following constructs can be used to iterate over an array?",
+           "questionType": "multiSelect",
+           "questionOptions": ["for", "loop", "foreach", "while"],
+           "questionAnswer": ["for", "foreach", "while"]
+        }
+    }
+    

@@ -1,0 +1,39 @@
+{
+	"q1": {
+ 		"questionText": "If students == [\"Alex\", \"Bob\", \"Dylan\"], which index corresponds to \"Bob\"?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["2", "3", "1", "0"],
+       "questionAnswer": ["1"]
+	},
+	"q2": {
+ 		"questionText": "If students == [\"Alex\", \"Bob\", \"Dylan\"], which name corresponds to index 2?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["Alex", "Dylan", "Undefined", "Bob"],
+       "questionAnswer": ["Dylan"]
+	},
+	"q3": {
+ 		"questionText": "Arrays are enclosed by , and elements are separated by ,.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["parentheses", "square brackets", "semicolons", "commas"],
+       "questionAnswer": ["square brackets", "commas"]
+	},
+	"q4": {
+ 		"questionText": "If the length of an array is equal to n then the index of the last element is ,.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["n + 1", "n - 1", "n - 2", "n"],
+       "questionAnswer": ["n - 1"]
+	},
+	"q5": {
+ 		"questionText": "Which of the following arrays have \"a\" in index 1?",
+       "questionType": "multiSelect",
+       "questionOptions": ["[\"b\", \"a\", \"c\", \"d\"]", "[\"a\", \"b\", \"c\"]", "[\"b\", \"c\", \"d\", \"a\"]", "[\"a\", \"a\", \"c\", \"d\", \"a\"]"],
+       "questionAnswer": ["[\"b\", \"a\", \"c\", \"d\"]","[\"a\", \"a\", \"c\", \"d\", \"a\"]"]
+	},
+	"q6": {
+ 		"questionText": "Select the statements that are not true about arrays.",
+       "questionType": "multiSelect",
+       "questionOptions": ["Arrays can store multiple elements.", "The elements in an array don't remain in their same index.", "Arrays cannot contain duplicates.", "Array elements cannot be changed."],
+       "questionAnswer": [ "The elements in an array don't remain in their same index.", "Arrays cannot contain duplicates.", "Array elements cannot be changed."]
+	}
+
+}

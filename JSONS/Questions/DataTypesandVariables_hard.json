@@ -1,0 +1,38 @@
+{
+	"q1": {
+ 		"questionText": "Which data type would be better for storing the price of an item in a store?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["Character", "Double", "Integer", "Boolean"],
+       "questionAnswer": ["Double"]
+	},
+	"q2": {
+ 		"questionText": "A variable, identity, is used to store the number one as a Double type. What is the value of identity?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["\"1.0\"", "1.0", "1", "0x100"],
+       "questionAnswer": ["1.0"]
+	},
+	"q3": {
+ 		"questionText": "In the , \"Hello\", 'e' is the second ,.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["Integer", "String", "Boolean", "Character"],
+       "questionAnswer": ["String", "Character"]
+	},
+	"q4": {
+ 		"questionText": "Typecasting the , 1 into a , would result in \"1\"",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["Double", "Character", "String", "Integer"],
+       "questionAnswer": ["Integer", "String"]
+	},
+	"q5": {
+ 		"questionText": "Which of the following values would result in 1 if typecast to an Integer?",
+       "questionType": "multiSelect",
+       "questionOptions": ["2.1", "1.0", "\"1\"", "one"],
+       "questionAnswer": ["1.0", "\"1\""]
+	},
+	"q6": {
+ 		"questionText": "Which of the following are primitive data types?",
+       "questionType": "multiSelect",
+       "questionOptions": ["Arrays", "Strings","Variables", "Doubles", "Integers"],
+       "questionAnswer": ["Strings", "Doubles", "Integers"]
+	}
+}

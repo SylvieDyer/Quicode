@@ -1,0 +1,39 @@
+{
+	"q1": {
+ 		"questionText": "Which of the following is a string?",
+       "questionType": "multiSelect",
+       "questionOptions": ["\"1.0\"", "'c'", "\"c\"", "5", "word", "\"Sarah\"", "1.0"],
+       "questionAnswer": ["\"1.0\"", "\"c\"", "\"Sarah\""]
+	},
+"q2": {
+ 		"questionText": ",x = ,;.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["int", "1","double", "12345678910", "char", "\"c\""],
+       "questionAnswer": ["int", "1"]
+	},
+"q3": {
+ 		"questionText": "Say we have an array to store prices. What data type should the array hold?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["money", "int", "long", "double"],
+       "questionAnswer": ["double"]
+	},
+"q4": {
+ 		"questionText": "Which of the following types are numeric?",
+       "questionType": "multiSelect",
+       "questionOptions": ["number", "decimal", "long", "float"],
+       "questionAnswer": ["long", "float"]
+	},
+"q5": {
+ 		"questionText": "Given an array storing type int, which value can be stored in this array?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["1.0", "10", "\"10\"", "'1'"],
+       "questionAnswer": ["10"]
+	},
+"q6": {
+ 		"questionText": ",name = ,.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["int", "Name", "String", "5", "word", "\"Sarah\"", "1.0"],
+       "questionAnswer": ["String", "\"Sarah\""]
+    }
+}
+

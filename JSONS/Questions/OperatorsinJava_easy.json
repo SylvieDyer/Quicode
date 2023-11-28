@@ -1,0 +1,39 @@
+{
+    "q1": {
+             "questionText": "What does the ! operator stand for",
+           "questionType": "multipleChoice",
+           "questionOptions": ["EXCITE", "NOR", "AND", "NOT"],
+           "questionAnswer": ["not"]
+        },
+    "q2": {
+             "questionText": "Which of the following can be used to add 1 to x?",
+           "questionType": "multiSelect",
+           "questionOptions": ["x + 1;", "x = x + 1;", "x+;", "x += 1;"],
+           "questionAnswer": ["x++;", "x = x + 1;", "x += 1;"]
+        },
+    "q3": {
+             "questionText": "Fill in the blank such that this code will print 3\nint x = 123;\nx ,=,;\nprint(x);.",
+           "questionType": "dragAndDrop",
+           "questionOptions": ["10", "+", "-", "%"],
+           "questionAnswer": ["10", "%"]
+        },
+    "q4": {
+             "questionText": "Which of the following can be used to compare numbers?",
+           "questionType": "multiSelect",
+           "questionOptions": ["=", "!=", "?", ">"],
+           "questionAnswer": ["!=", ">"]
+        },
+    "q5": {
+             "questionText": "What does the the || operator stand for?",
+           "questionType": "multipleChoice",
+           "questionOptions": ["AND", "OR", "NOT", "FOR"],
+           "questionAnswer": ["OR"]
+        },
+    "q6": {
+             "questionText": "<= stands for ,.",
+           "questionType": "dragAndDrop",
+           "questionOptions": ["greater than", "greater than or equal to", "less than", "less than or equal to"],
+           "questionAnswer": ["Option 1"]
+        }
+    }
+    

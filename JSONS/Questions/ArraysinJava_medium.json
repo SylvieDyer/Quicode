@@ -1,0 +1,39 @@
+{
+    "q1": {
+             "questionText": "Fill in the following array in increasing order: int[] arr = new int[] {, , , ,}.",
+           "questionType": "dragAndDrop",
+           "questionOptions": ["1,", "1.2,", "-2,", "6", "0.0,", "3.2,", "4,", "5.1"],
+           "questionAnswer": ["-2,", "1,", "4,", "6"]
+        },
+    "q2": {
+             "questionText": "Given the array int[] arr = [2, 4, 6, 8], what is the value of arr[2]?",
+           "questionType": "multipleChoice",
+           "questionOptions": ["2", "4", "6", "8"],
+           "questionAnswer": ["6"]
+        },
+    "q3": {
+             "questionText": "Given the array double[] arr = [1.2, 3.4, 5.6], what is the value of arr[4]?",
+           "questionType": "multipleChoice",
+           "questionOptions": ["1.2", "3.4", "5.6", "none of the above"],
+           "questionAnswer": ["none of the above"]
+        },
+    "q4": {
+             "questionText": "Given the array double[] arr = [1.2, 3.4, 5.6], which of the following will return valid values?",
+           "questionType": "multiSelect",
+           "questionOptions": ["arr[-1]", "arr[0]", "arr[2]", "arr[3]"],
+           "questionAnswer": ["arr[0]", "arr[2]"]
+        },
+    "q5": {
+             "questionText": "Given the array\nint[] arr = new int[] {1 2 3}:\n arr[0] = ,\n arr[1] = ,\n arr[2] = ,\n arr[3] = ,\n arr.length = ,.",
+           "questionType": "dragAndDrop",
+           "questionOptions": ["1", "2", "3", "4", "N/A"],
+           "questionAnswer": ["1", "2", "3", "N/A", "4"]
+        },
+    "q6": {
+             "questionText": "Which of the following are correct ways to indicate an array type",
+           "questionType": "multiSelect",
+           "questionOptions": ["array", "[]", "int[]", "none of the above"],
+           "questionAnswer": ["int[]"]
+        }
+    }
+    

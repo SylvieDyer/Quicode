@@ -1,0 +1,39 @@
+{
+    "q1": {
+             "questionText": "What does the following array store:\n int[] arr;",
+           "questionType": "multipleChoice",
+           "questionOptions": ["double", "long", "float", "int"],
+           "questionAnswer": ["int"]
+        },
+    "q2": {
+             "questionText": "Which of the following arrays store numbers?",
+           "questionType": "multiSelect",
+           "questionOptions": ["num[] arr;", "int[] arr;", "float[] arr;", "char[] arr;"],
+           "questionAnswer": ["int[] arr;", "float[] arr;"]
+        },
+    "q3": {
+             "questionText": "Given the array int[] arr = [2, 4, 6, 8], what is the value of arr.length?",
+           "questionType": "multipleChoice",
+           "questionOptions": ["2", "4", "6", "8"],
+           "questionAnswer": ["4"]
+        },
+    "q4": {
+             "questionText": "Which of the following arrays could be used to store words?",
+           "questionType": "multiSelect",
+           "questionOptions": ["Word[]", "int[]", "String[]", "Yarn[]"],
+           "questionAnswer": ["String[]"]
+        },
+    "q5": {
+             "questionText": "Given the array double[] arr = [1.2, 3.4, 5.6], what is the value of arr[length]",
+           "questionType": "multipleChoice",
+           "questionOptions": ["1.2", "3.4", "5.6", "none of the above"],
+           "questionAnswer": ["none of the above"]
+        },
+    "q6": {
+             "questionText": "To find the length of an array Java uses the , attribute.",
+           "questionType": "dragAndDrop",
+           "questionOptions": ["[0]", "[size]", "length", "size"],
+           "questionAnswer": ["length"]
+        }
+    }
+    

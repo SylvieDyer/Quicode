@@ -1,0 +1,38 @@
+{
+	"q1": {
+ 		"questionText": "Which of the following conditions is equivalent to \"x is either less than 5 or greater than 10\"?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["x < 5 || x > 10", "!(5 < x && x <= 10)", "5 < x && x < 10", "x == 5 || x == 10"],
+       "questionAnswer": ["x < 5 || x > 10"]
+	},
+	"q2": {
+ 		"questionText": "What logical operation satisfies that x is a positive and even number?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["x > 0 && x % 2 == 1", "x > 0 && x % 2 == 0", "x < 0 && x % 2 == 0", "x > 0 || x % 2 == 0"],
+       "questionAnswer": ["x > 0 && x % 2 == 0"]
+	},
+	"q3": {
+ 		"questionText": "If (X && !Y) || Z == True and Z == False then Y == , and X == ,.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["True", "True or False", "False", "Undefined"],
+       "questionAnswer": ["False", "True"]
+	},
+	"q4": {
+ 		"questionText": "If a == 4 then a , 3 would change its value to 7 and a , 3 would change its value to 1.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["*=", "-=", "+=", "/="],
+       "questionAnswer": ["+=", "-="]
+	},
+	"q5": {
+ 		"questionText": "If x % 3 == 0 and x % 2 == 0, what are some possible values of x?",
+       "questionType": "multiSelect",
+       "questionOptions": ["6", "12", "14", "36"],
+       "questionAnswer": ["6", "12", "36"]
+	},
+	"q6": {
+ 		"questionText": "Select which statements are true if a == 3 and b == 4.",
+       "questionType": "multiSelect",
+       "questionOptions": ["a < b && !(a > b)", "a % 2 == 1 && b % 2 == 0", "b % a == 1", "b < a || a != a"],
+       "questionAnswer": ["a < b && !(a > b)", "a % 2 == 1 && b % 2 == 0", "b % a == 1"]
+	}
+}

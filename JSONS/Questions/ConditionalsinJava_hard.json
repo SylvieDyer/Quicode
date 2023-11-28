@@ -1,0 +1,39 @@
+{
+    "q1": {
+             "questionText": "Which of the following are equivalent to: if (x <= 450)?",
+           "questionType": "multiSelect",
+           "questionOptions": ["x > 450 || x == 450", "x == 450", "x < 450 && x == 450", "x < 451"],
+           "questionAnswer": ["x < 451"]
+        },
+    "q2": {
+             "questionText": "Given x = 5 make the following code print 2:\n,, {print(1);}\n,,{print(2);}.",
+           "questionType": "dragAndDrop",
+           "questionOptions": ["if", "else if", "else", "x < 10", "N/A", "x == 20"],
+           "questionAnswer": ["if", "x < 10", "else", "N/A"]
+        },
+    "q3": {
+             "questionText": "What will the following code print:\nif(10 % 2 == 0) {print(5);}\nelse if(5 * 6 == 70 / 10){print(9);}\nelse if(365 % 10 > 40 / 8){print(1);}",
+           "questionType": "multipleChoice",
+           "questionOptions": ["5", "9", "1", "none of the above"],
+           "questionAnswer": ["none of the above"]
+        },
+    "q4": {
+             "questionText": "What will the result of x be in the following code: int x = 0;\nif(45 / 5 > 80 / 10) {x += 5;}\nif(3 * 4 < 12) {x += 10;}\nelse {x += 5;}\n x += 10;",
+           "questionType": "multipleChoice",
+           "questionOptions": ["20", "5", "15", "254"],
+           "questionAnswer": ["20"]
+        },
+    "q5": {
+             "questionText": "Which of the following are equivalent to: if (x >= 821)?",
+           "questionType": "multiSelect",
+           "questionOptions": ["x > 820", "x > 821 && x == 821", "x > 820 && x == 821", "x < 821"],
+           "questionAnswer": ["x > 820"]
+        },
+    "q6": {
+             "questionText": "Given x = 20 make the following code result in x = 10:\n,, {x /= 2 ;}\n,,{x -= 10;}.",
+           "questionType": "dragAndDrop",
+           "questionOptions": ["if", "else if", "x > 10", "x / 5 > 10"],
+           "questionAnswer": ["if", "x > 10", "else if", "x / 5 > 10"]
+        }
+    }
+    

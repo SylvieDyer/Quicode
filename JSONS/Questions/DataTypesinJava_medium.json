@@ -1,0 +1,38 @@
+{
+	"q1": {
+ 		"questionText": "Which of the following is the correct syntax for declaring a variable?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["var int = 1;", "int x = 1.0;", "int x = 10;", "word x = hello;"],
+       "questionAnswer": ["int x = 10;"]
+	},
+"q2": {
+ 		"questionText": "The type, represents a whole number (ie 1 100 3).",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["int", "String", "double", "char", "word", "number"],
+       "questionAnswer": ["int"]
+	},
+"q3": {
+ 		"questionText": "Which of the following types may be used to represent a numeric value?",
+       "questionType": "multiSelect",
+       "questionOptions": ["int", "number", "double", "value"],
+       "questionAnswer": ["int", "double"]
+	},
+"q4": {
+ 		"questionText": "Which of the following is the correct syntax for declaring a decimal?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["var double = 1.2;", "double x = 1.2;", "int x = 1.2;", "decimal x = 1.2;"],
+       "questionAnswer": ["double x = 1.2;"]
+	},
+"q5": {
+ 		"questionText": "To store a name, which of the following data types could be used?",
+       "questionType": "multiSelect",
+       "questionOptions": ["Character", "String", "Word", "Noun"],
+       "questionAnswer": ["String"]
+	},
+"q6": {
+ 		"questionText": "To represent the value 12345678910 in Java a,should be used.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["int", "number", "double", "long", "float", "largeNum"],
+       "questionAnswer": ["long"]
+	}
+}

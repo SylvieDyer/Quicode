@@ -1,0 +1,38 @@
+{
+	"q1": {
+ 		"questionText": "For the following code: \nif (a <= 4): print \"Hello\" \nelse if (b == 4): print \"Goodbye\"\nWhat gets printed if a == 4 and b == 4?",
+        "questionType": "multipleChoice",
+       "questionOptions": ["Hello", "Hello Goodbye", "Goodbye", "Goodbye Hello", "Nothing"],
+       "questionAnswer": ["Hello"]
+	},
+	"q2": {
+ 		"questionText": "If you want some code to run only if a variable, `a`, is even, what would you use?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["if (a == 2)", "if (a % 2 == 0)", "else if (a % 2 == 0)", "else (a % 2 == 0)"],
+       "questionAnswer": ["if(a % 2 == 0)"]
+	},
+	"q3": {
+ 		"questionText": "Fill in the blanks that best match the behavior: \nif(a , 3) print \"a is smaller than 3\" \n,(a , 3) print \"a is equal to 3\" \n , print \"a is greater than 3\"",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["!=", "==", "<=", "<", ">", "if", "else if", "else"],
+       "questionAnswer": ["<", "else if", "==", "else"]
+	},
+	"q4": {
+ 		"questionText": "For the following: \nif (a) print \"Hello\" \nelse if (!a) print \"Goodbye\"\n \"Goodbye\" will print if a == ,",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["3", "Goodbye", "True", "False"],
+       "questionAnswer": ["False"]
+	},
+	"q5": {
+ 		"questionText": "Given two boolean values a and b with an initial condition: `if a or b` what other conditions can be checked with these values?",
+       "questionType": "multiSelect",
+       "questionOptions": ["else if b or a", "else", "else if a and b", "else if !a or b", "else if a or !b"],
+       "questionAnswer": ["else", "else if a and b", "else if !a or b", "else if a or !b"]
+	},
+	"q6": {
+ 		"questionText": "For what values of 'a' would B execute in the following code: \nif (a < 3) A \nelse if(a >= 3 && a < 7) B \nelse C",
+       "questionType": "multiSelect",
+       "questionOptions": ["1", "3", "0", "7", "4", "6", "8"],
+       "questionAnswer": ["3", "4", "6"]
+	}
+}

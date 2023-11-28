@@ -1,0 +1,38 @@
+{
+	"q1": {
+ 		"questionText": "What data type would be better for storing a user's age?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["Character", "Double", "Integer", "Boolean"],
+       "questionAnswer": ["Integer"]
+	},
+	"q2": {
+ 		"questionText": "What can you use to convert from a String to an Integer?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["Transforming", "Concatenating", "Typecasting", "Manipulating"],
+       "questionAnswer": ["Typecasting"]
+	},
+	"q3": {
+ 		"questionText": ", are often used to store a sequence of ,.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["Integers", "Strings", "Booleans", "Characters"],
+       "questionAnswer": ["Strings", "Characters"]
+	},
+	"q4": {
+ 		"questionText": "\"1\" is of data type , while 1 is of data type ,.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["Double", "Boolean", "String", "Integer"],
+       "questionAnswer": ["String", "Integer"]
+	},
+	"q5": {
+ 		"questionText": "Which of the following is NOT of integer type? (choose one)",
+       "questionType": "multiSelect",
+       "questionOptions": ["1", "1.0", "\"1\"", "ONE"],
+       "questionAnswer": ["1.0", "\"1\"", "ONE"]
+	},
+	"q6": {
+ 		"questionText": "Which of the following are valid Strings?",
+       "questionType": "multiSelect",
+       "questionOptions": ["\"\"", "Hello.\"", "Bye.\"", "\"1209283.0\""],
+       "questionAnswer": ["\"\"", "\"1209283.0\""]
+	}
+}

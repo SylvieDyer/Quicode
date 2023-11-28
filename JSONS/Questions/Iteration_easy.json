@@ -1,0 +1,38 @@
+{
+	"q1": {
+ 		"questionText": "What is the main difference between a while-loop and a for-loop?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["While-loops go forever, for-loops don't", "while-loops can iterate through data structures and for-loops can't", "while-loops run while a certain condition is met and for-loops run a set amount of times", "for-loops run while a certain condition is met and while-loops run a set amount of times"],
+       "questionAnswer": ["while-loops run while a certain condition is met and for-loops run a set amount of times"]
+	},
+	"q2": {
+ 		"questionText": "Which tool is best for iterating through arrays?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["if-statements", "for-loops", "while-loops", "numbers"],
+       "questionAnswer": ["for-loops"]
+	},
+	"q3": {
+ 		"questionText": "Iteration is useful when you want to , code.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["kill", "run", "modify", "repeat"],
+       "questionAnswer": ["repeat"]
+	},
+	"q4": {
+ 		"questionText": ", loops are useful for counting the amount of times you want code to repeat and , loops are useful for going through an array.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["while loops", "for-each loops", "if statements", "for-loops"],
+       "questionAnswer": ["for-loops", "for-each loops"]
+	},
+	"q5": {
+ 		"questionText": "What are the two main tools used for iteration?.",
+       "questionType": "multiSelect",
+       "questionOptions": ["if statements", "while loops", "for loops", "infinite loops"],
+       "questionAnswer": ["while loops", "for loops"]
+	},
+	"q6": {
+ 		"questionText": "Select the valid loop statements.",
+       "questionType": "multiSelect",
+       "questionOptions": ["for i from 0 to 9", "while (i < 10)", "while (x + y)", "for element in array", "for i < 10"],
+       "questionAnswer": ["for i from 0 to 9", "while (i < 10)", "for element in array"]
+	}
+}

@@ -1,0 +1,38 @@
+{
+	"q1": {
+ 		"questionText": "For the following code: \nif (a <= 4): print \"Hello\" \nelse if (b == 4): print \"Goodbye\"\nWhat gets printed if a == 4 and b == 3?",
+        "questionType": "multipleChoice",
+       "questionOptions": ["Hello", "Hello Goodbye", "Goodbye", "Goodbye Hello", "Nothing"],
+       "questionAnswer": ["Hello"]
+	},
+	"q2": {
+ 		"questionText": "If you want some code to run only if a variable, `a`, is even, what would you use?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["if (a == 2)", "if (a % 2 == 0)", "else if (a % 2 == 0)", "else (a % 2 == 0)"],
+       "questionAnswer": ["if(a % 2 == 0)"]
+	},
+	"q3": {
+ 		"questionText": "The following statement: \nif (a > 0) a -= 1 \n will , 1 from a if a is ,.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["add", "subtract", "positive", "negative"],
+       "questionAnswer": ["subtract", "positive"]
+	},
+	"q4": {
+ 		"questionText": "The following statement: \nif (a < 0) a += 1 \n will , 1 from a if a is ,.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["add", "subtract", "positive", "negative"],
+       "questionAnswer": ["add", "negative"]
+	},
+	"q5": {
+ 		"questionText": "Which of the following are invalid conditional expressions?",
+       "questionType": "multiSelect",
+       "questionOptions": ["if(a == 1)", "if(x + y)", "if(True)", "if(False)", "if (!True)", "if (\"Hello\")"],
+       "questionAnswer": ["if(x + y)", "if (\"Hello\")"]
+	},
+	"q6": {
+ 		"questionText": "What is a good set of conditions for a traffic light system?In the following statements, what would print if a == 5? \nif (a <= 5) print \"Goodbye\" \nif (a == 5) print \"I said Goodbye\" \nelse if (a >= 6) print \"Hello\"",
+       "questionType": "multiSelect",
+       "questionOptions": ["if (light == \"green\")... else if (light == \"yellowGoodbye\")...else", "if (light == \"green\")... else if (light == \"yellow\")...else if (light == \"red\")...", "else if (light == \"red\")... if (light == \"yellow\")...else if (light == \"green\")...", "if (light == \"red\")... else if (light == \"yellow\")...else if (light == \"green\")...", "\"I said Goodbye\"", "Hello", "Nothing"],
+       "questionAnswer": ["if (light == \"green\")... else if (light == \"yellow\")...else", "if (light == \"green\")... else if (light == \"yellow\")...else if (light == \"red\")...", "if (light == \"red\")... else if (light == \"yellow\")...else if (light == \"green\")...", "I said Goodbye"]
+	}
+}

@@ -1,0 +1,39 @@
+{
+    "q1": {
+             "questionText": "Which of the following are used to denote a conditional in Java?",
+           "questionType": "multiSelect",
+           "questionOptions": ["if", "else", "else if", "if else"],
+           "questionAnswer": ["if", "else", "else if"]
+        },
+    "q2": {
+             "questionText": "If statements can be proceeded by (select one):",
+           "questionType": "multipleChoice",
+           "questionOptions": ["else", "else if", "none of the above", "all of the above"],
+           "questionAnswer": ["all of the above"]
+        },
+    "q3": {
+             "questionText": "Else statements must be preceded by:",
+           "questionType": "multiSelect",
+           "questionOptions": ["if", "else if", "else", "none of the above"],
+           "questionAnswer": ["if", "else if"]
+        },
+    "q4": {
+             "questionText": "Fill in the logical ordering of conditionals:\n1:,\n2:,\n3:,.",
+           "questionType": "dragAndDrop",
+           "questionOptions": ["else", "if", "else if", "if else"],
+           "questionAnswer": ["if", "else if", "else"]
+        },
+    "q5": {
+             "questionText": "Which of the following can be used as a default to execute an action that satisfies no conditions?",
+           "questionType": "multipleChoice",
+           "questionOptions": ["else if", "if", "if else", "else"],
+           "questionAnswer": ["else"]
+        },
+    "q6": {
+             "questionText": "Which of the following actions will be executed:\n if (false) A \n else if(true) B \n else C",
+           "questionType": "multipleChoice",
+           "questionOptions": ["A", "B", "C", "None of the above"],
+           "questionAnswer": ["B"]
+        }
+    }
+    

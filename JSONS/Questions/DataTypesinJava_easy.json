@@ -1,0 +1,39 @@
+{
+	"q1": {
+ 		"questionText": "A,is an example of a Character.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["\"hello\"", "'c'", "word", "5", "32.1"],
+       "questionAnswer": ["'c'"]
+	},
+"q2": {
+ 		"questionText": "Which of the following is a double?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["1.0", "1", "'c'", "12345678910"],
+       "questionAnswer": ["1.0"]
+	},
+"q3": {
+ 		"questionText": "The data types (int) (double) (float) and (long) are used to represent,.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["values", "yarn", "numbers", "words"],
+       "questionAnswer": ["numbers"]
+	},
+"q4": {
+ 		"questionText": "Which of the following types can be used to represent a name",
+       "questionType": "multipleChoice",
+       "questionOptions": ["String", "Characters", "Yarn", "long"],
+       "questionAnswer": ["String"]
+	},
+"q5": {
+ 		"questionText": "Select the values that can be stored as an int",
+       "questionType": "multiSelect",
+       "questionOptions": ["1", "\"100\"", "100", "'20.1'"],
+       "questionAnswer": ["1", "100"]
+	},
+"q6": {
+ 		"questionText": "Select the types that could be used to store a number",
+       "questionType": "multiSelect",
+       "questionOptions": ["double", "String", "number", "long"],
+       "questionAnswer": ["double", "long"]
+	}
+}
+

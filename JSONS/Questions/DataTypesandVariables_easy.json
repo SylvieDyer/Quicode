@@ -1,0 +1,38 @@
+{
+	"q1": {
+ 		"questionText": "What data type is used to store true or false values?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["Integer", "String", "Boolean", "Double"],
+       "questionAnswer": ["Boolean"]
+	},
+	"q2": {
+ 		"questionText": "Which one of the following is of integer type?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["\"Hello\"", "True", "4", "+"],
+       "questionAnswer": ["4"]
+	},
+	"q3": {
+ 		"questionText": "1 is of data type , and 'A' is of data type ,.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["Double", "String", "Character", "Integer"],
+       "questionAnswer": ["Integer", "Character"]
+	},
+	"q4": {
+ 		"questionText": "\"True\" is of data type , while True is of data type ,.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["Double", "String", "Boolean", "Integer"],
+       "questionAnswer": ["String", "Boolean"]
+	},
+	"q5": {
+ 		"questionText": "Select all of the integers.",
+       "questionType": "multiSelect",
+       "questionOptions": ["1", "3", "1.0", "“9”"],
+       "questionAnswer": ["1", "3"]
+	},
+	"q6": {
+ 		"questionText": "Select all the values which are NOT integers.",
+       "questionType": "multiSelect",
+       "questionOptions": ["“Hello”", "5.1", "51", "“9”"],
+       "questionAnswer": ["“Hello”", "5.1", "“9”"]
+	}
+}

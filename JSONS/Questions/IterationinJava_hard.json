@@ -1,0 +1,39 @@
+{
+    "q1": {
+             "questionText": "Which of the following is the correct way to instantiate a loop?",
+           "questionType": "multiSelect",
+           "questionOptions": ["for (x > 10)", "while (x <= 10)", "for (int i = 0; i < 10; i++)", "foreach (Integer x : arr)"],
+           "questionAnswer": ["Option 1"]
+        },
+    "q2": {
+             "questionText": "Which of the following loops will iterate exactly 5 times?",
+           "questionType": "multiSelect",
+           "questionOptions": ["for (int i = 1; i <= 32 ; i *= 2)", "for (int i = 625; i >= 1; i /= 5)", "for (int i = 1; i <= 5; i++)", "for (int i = 5; i >= 0; i--)"],
+           "questionAnswer": ["for (int i = 625; i >= 1; i /= 5)"]
+        },
+    "q3": {
+             "questionText": "How many times will this loop iterate: \nint x = 1; while(true && x <= 10) {x++;}",
+           "questionType": "multipleChoice",
+           "questionOptions": ["1", "10", "infinitely", "11"],
+           "questionAnswer": ["11"]
+        },
+    "q4": {
+             "questionText":  "How many times will this loop iterate: \nint x = 1; while(false && x <= 10) {x++;}",
+           "questionType": "multipleChoice",
+           "questionOptions": ["never", "10", "infinitely", "11"],
+           "questionAnswer": ["11"]
+        },
+    "q5": {
+             "questionText": "Fill in this loop to iterate exactly 4 times:\n,(,,=,;,,,;,).",
+           "questionType": "dragAndDrop",
+           "questionOptions": ["double", "while", "int", "for", "foreach", "i", "i += 4", "i--", "<=", "0", "26", "1", "i *= 3"],
+           "questionAnswer": ["for", "int", "i", "1", "i", "<=", "26", "i *= 3"]
+        },
+    "q6": {
+             "questionText": "The following code will output {, , , , ,}:\n int[] array = {1 2 3 4 5};\nfor(int i = 4; i >= 0; i--){print(array[i]);}.",
+           "questionType": "dragAndDrop",
+           "questionOptions": ["1", "2", "3", "4", "5"],
+           "questionAnswer": ["5", "4", "3", "2", "1"]
+        }
+    }
+    

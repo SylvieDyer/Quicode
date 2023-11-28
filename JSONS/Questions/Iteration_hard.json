@@ -1,0 +1,38 @@
+{
+	"q1": {
+ 		"questionText": "How many times will the following loop iterate: \ni = 0 \nwhile (i < 9) i += 2",
+       "questionType": "multipleChoice",
+       "questionOptions": ["It won't go into the loop.", "8 times", "9 times", "4 times", "it will go on forever", "10 times", "5 times"],
+       "questionAnswer": ["4 times"]
+	},
+	"q2": {
+ 		"questionText": "For the array `letters` with the value ['a', 'b', 'c', 'd'], the following code was written: \nletter_count = 0\n for each letter in letters: letter_count += 1`\nwhat will be the final value of letter_count?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["3", "0", "4", "5"],
+       "questionAnswer": ["4"]
+	},
+	"q3": {
+ 		"questionText": "For the following loop: \nwhile (i >= 0) i -= 1 \nif i starts out with a value of 5 it will iterate , times and i's final value will be ,",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["5", "6", "1", "0", "-1", "4"],
+       "questionAnswer": ["6", "-1"]
+	},
+	"q4": {
+ 		"questionText": "Fill in the blank to iterate through the array 'letters' and print out each letter: , letter , letters: print ,",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["for", "for each", "while", "in", "from", "to", "letter", "letters[letter]"],
+       "questionAnswer": ["for each", "in", "letter"]
+	},
+	"q5": {
+ 		"questionText": "For the array `letters == ['a', 'b', 'c', 'd']`, what are ways to iterate through and print each element?",
+       "questionType": "multiSelect",
+       "questionOptions": ["for each letter in letters: print letter", "for i from 0 to 3: print letters[i]", "print letters", "while i < 4: print letters[i]", "for i from 1 to 4: print letters[i]"],
+       "questionAnswer": ["for each letter in letters: print letter", "for i from 0 to 3: print letters[i]"]
+	},
+	"q6": {
+ 		"questionText": "Select the loops that will run infinitely.",
+       "questionType": "multiSelect",
+       "questionOptions": ["i = 0 \nwhile (i < 10) i -= 1", "i = 10 \nwhile (i > 0) i -= 1", "i = 10 \nwhile (i > 0) i += 1", "i = 0 \nwhile (True) i += 1"],
+       "questionAnswer": ["i = 0 \nwhile (i < 10) i -= 1", "i = 10 \nwhile (i > 0) i += 1", "i = 0 \nwhile (True) i += 1"]
+	}
+}

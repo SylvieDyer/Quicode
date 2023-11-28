@@ -1,0 +1,38 @@
+{
+	"q1": {
+ 		"questionText": "The \"condition\" inside an if statement needs to evaluate to:",
+       "questionType": "multipleChoice",
+       "questionOptions": ["a number", "a string", "any value", "a boolean"],
+       "questionAnswer": ["a boolean"]
+	},
+	"q2": {
+ 		"questionText": "Which of the following is a valid conditional expression?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["if(a + b)", "if(\"Hello\")", "if(a == \"Hello\")", "if(x / y)"],
+       "questionAnswer": ["if(a == \"Hello\")"]
+	},
+	"q3": {
+ 		"questionText": "Logically, else-if statements come after , statements but before , statements.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["while", "else", "for", "if"],
+       "questionAnswer": ["if", "else"]
+	},
+	"q4": {
+ 		"questionText": ", statements get executed only if the if and else-if statements were ,.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["else-if", "else", "true", "false"],
+       "questionAnswer": ["else", "false"]
+	},
+	"q5": {
+ 		"questionText": "Select the statements that follow valid conditional orders.",
+       "questionType": "multiSelect",
+       "questionOptions": ["if, else", "if, else-if, else-if, else", "if, else-if", "if, else, else-if, else"],
+       "questionAnswer": ["if, else", "if, else-if, else-if, else", "if, else-if"]
+	},
+	"q6": {
+ 		"questionText": "The first statement in a sequence of statements is: if a == 4. What other conditional statements can follow this one?.",
+       "questionType": "multiSelect",
+       "questionOptions": ["else if a < 4", "else if a != 4", "else if a == 4", "else", "else if a > 4"],
+       "questionAnswer": ["else if a < 4", "else if a != 4", "else", "else if a > 4"]
+	}
+}

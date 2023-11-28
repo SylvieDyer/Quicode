@@ -1,0 +1,38 @@
+{
+	"q1": {
+ 		"questionText": "How many times will the loop `for i from 0 to 10` execute?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["9 times", "10 times", "11 times", "12 times"],
+       "questionAnswer": ["11 times"]
+	},
+	"q2": {
+ 		"questionText": "What will the value of sum be at the end of the following execution? \nsum = 0 \nfor i from 1 to 5: sum += 1",
+       "questionType": "multipleChoice",
+       "questionOptions": ["0", "1", "4", "5", "6"],
+       "questionAnswer": ["5"]
+	},
+	"q3": {
+ 		"questionText": "Fill in the blanks to repeat the loop 10 times: for , from , to , .",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["i", "8", "0", "9"],
+       "questionAnswer": ["i", "0", "9"]
+	},
+	"q4": {
+ 		"questionText": "For the following loop: \nwhile (i > 0) i -= 1 \nif i starts out with a value of 5 it will iterate , times and i's final value will be ,",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["5", "6", "1", "0", "-1", "4"],
+       "questionAnswer": ["5", "0"]
+	},
+	"q5": {
+ 		"questionText": "For which value pairs will the following loop iterate 5 times: \ni = ? \nwhile(i < b) i += 1",
+       "questionType": "multiSelect",
+       "questionOptions": ["i == 0 and b =="],
+       "questionAnswer": []
+	},
+	"q6": {
+ 		"questionText": "Select the loops that will iterate 4 times",
+       "questionType": "multiSelect",
+       "questionOptions": ["for i from 0 to 3", "for each element in ['2', '3', '4', '5'] ", "for i from 0 to 4", "i = 0 \nwhile(i <= 3) i+= 1", "for i from 1 to 4"],
+       "questionAnswer": ["for i from 0 to 3", "for each element in ['2', '3', '4', '5'] ", "i = 0 \nwhile(i <= 3) i+= 1", "for i from 1 to 4"]
+	}
+}

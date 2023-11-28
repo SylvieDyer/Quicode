@@ -1,0 +1,38 @@
+{
+	"q1": {
+ 		"questionText": "What operator would you use to add values?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["+", "-", "/", "%"],
+       "questionAnswer": ["+"]
+	},
+	"q2": {
+ 		"questionText": "What operator would you use to find the remainder of the division between two values?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["+", "-", "/", "%"],
+       "questionAnswer": ["%"]
+	},
+	"q3": {
+ 		"questionText": ", is used to divide, and , is used to multiply values.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["*", "-", "/", "%"],
+       "questionAnswer": ["/", "*"]
+	},
+	"q4": {
+ 		"questionText": "= indicates , while == indicates ,.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["Equality", "Assignment", "Inequality", "Cnvergence"],
+       "questionAnswer": ["Assignment", "Equality"]
+	},
+	"q5": {
+ 		"questionText": "Select the operators that indicate inequality.",
+       "questionType": "multiSelect",
+       "questionOptions": ["=", ">", "!=", "<"],
+       "questionAnswer": [">", "!=", "<"]
+	},
+	"q6": {
+ 		"questionText": "Select the statements that evaluate to True",
+       "questionType": "multiSelect",
+       "questionOptions": ["True && False", "True || False", "True || True", "True && True"],
+       "questionAnswer": ["True || False", "True || True", "True && True"]
+	}
+}

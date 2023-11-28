@@ -1,0 +1,38 @@
+{
+	"q1": {
+ 		"questionText": "In the context of programming, an array is:",
+       "questionType": "multipleChoice",
+       "questionOptions": ["a number", "a variable", "a collection of values", "a logical expression"],
+       "questionAnswer": ["a collection of values"]
+	},
+	"q2": {
+ 		"questionText": "What is usually used to enclose elements in arrays?",
+       "questionType": "multipleChoice",
+       "questionOptions": ["{}", "()", "/\\", "[]"],
+       "questionAnswer": ["[]"]
+	},
+	"q3": {
+ 		"questionText": "Elements in arrays can be accessed using ,.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["operators", "arrows", "letters", "indexes"],
+       "questionAnswer": ["indexes"]
+	},
+	"q4": {
+ 		"questionText": "Array indexes always start at ,.",
+       "questionType": "dragAndDrop",
+       "questionOptions": ["1", "-1", "2", "0"],
+       "questionAnswer": ["0"]
+	},
+	"q5": {
+ 		"questionText": "If the array `students` contains 5 elements, select valid access statements.",
+       "questionType": "multiSelect",
+       "questionOptions": ["students[0]", "students[3]", "students[5]", "students[9]"],
+       "questionAnswer": ["students[0]", "students[3]"]
+	},
+	"q6": {
+ 		"questionText": "Select the valid arrays.",
+       "questionType": "multiSelect",
+       "questionOptions": ["[\"Hello\", \"Goodbye\"]", "[1, 2, 3]", "[True, False]", "[+, -, ==, =]"],
+       "questionAnswer": ["[\"Hello\", \"Goodbye\"]", "[1, 2, 3]", "[True, False]"]
+	}
+}
