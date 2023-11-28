@@ -23,16 +23,23 @@ struct DragAndDropView: View{
     var body: some View {
         VStack{
             Spacer()
-            HStack{
-                ForEach(Array(question.getQuestionTextArr().enumerated()), id: \.element) { index, element in
-                    if(element != ".") {
-                        DropTemplate(number: index, text: element, dragInProgress: dragInProgress, question: question)
-                    }
+            WrappingHStack(0...question.getQuestionTextArr().count - 1, id:\.self, alignment: .center
+            ) {
+            
+                if (question.getQuestionTextArr()[$0] != ".") {
+                    DropTemplate(number: $0, text: question.getQuestionTextArr()[$0], dragInProgress: dragInProgress, question: question)
                 }
             }
+//            HStack{
+//                ForEach(Array(question.getQuestionTextArr().enumerated()), id: \.element) { index, element in
+//                    if(element != ".") {
+//                        DropTemplate(number: index, text: element, dragInProgress: dragInProgress, question: question)
+//                    }
+//                }
+//            }
             .opacity(isShown ? 1.0 : 0.0)
-            .font(.title2).fontWeight(.bold)
-                .fixedSize(horizontal: true, vertical: true)
+            .fontWeight(.bold)
+//                .fixedSize(horizontal: true, vertical: true)
                 .multilineTextAlignment(.center)
                 .padding(50)
                 .background(RoundedRectangle(cornerRadius: 40)
