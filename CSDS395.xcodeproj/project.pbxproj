@@ -28,10 +28,13 @@
 		5AE7C5602AB50B37000D51A6 /* DragAndDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7C55F2AB50B37000D51A6 /* DragAndDropView.swift */; };
 		9427248D2AA8271E006F0DBF /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9427248C2AA8271E006F0DBF /* QuestionView.swift */; };
 		9427248F2AA82CC6006F0DBF /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9427248E2AA82CC6006F0DBF /* Questions.swift */; };
+		9441653C2B117CE8006AB1DF /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9441653B2B117CE8006AB1DF /* DBManager.swift */; };
 		9472CD4B2AE0623E004DB195 /* jsonsFiles in Resources */ = {isa = PBXBuildFile; fileRef = 9472CD4A2AE0623E004DB195 /* jsonsFiles */; };
 		948045BB2B03EDBA006B9B25 /* MultiSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948045BA2B03EDBA006B9B25 /* MultiSelectView.swift */; };
 		948045BD2B03F3AE006B9B25 /* MultipleChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948045BC2B03F3AD006B9B25 /* MultipleChoiceView.swift */; };
 		948996252AD9E19D003C6CD8 /* JsonFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948996242AD9E19D003C6CD8 /* JsonFileManager.swift */; };
+		94A435322B1184B600FC3A0B /* AWSDynamoDB in Frameworks */ = {isa = PBXBuildFile; productRef = 94A435312B1184B600FC3A0B /* AWSDynamoDB */; };
+		94A435342B1184B600FC3A0B /* AWSDynamoDBStreams in Frameworks */ = {isa = PBXBuildFile; productRef = 94A435332B1184B600FC3A0B /* AWSDynamoDBStreams */; };
 		BF6DE02D2AAE79F0004E19F8 /* AWSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6DE02C2AAE79F0004E19F8 /* AWSManager.swift */; };
 		BF6DE0302AAE82E8004E19F8 /* SotoS3 in Frameworks */ = {isa = PBXBuildFile; productRef = BF6DE02F2AAE82E8004E19F8 /* SotoS3 */; };
 /* End PBXBuildFile section */
@@ -58,6 +61,7 @@
 		5AE7C55F2AB50B37000D51A6 /* DragAndDropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragAndDropView.swift; sourceTree = "<group>"; };
 		9427248C2AA8271E006F0DBF /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		9427248E2AA82CC6006F0DBF /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
+		9441653B2B117CE8006AB1DF /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		9472CD4A2AE0623E004DB195 /* jsonsFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; name = jsonsFiles; path = CSDS395/Backend/jsonsFiles; sourceTree = "<group>"; };
 		948045BA2B03EDBA006B9B25 /* MultiSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectView.swift; sourceTree = "<group>"; };
 		948045BC2B03F3AD006B9B25 /* MultipleChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceView.swift; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A79D89E2AF5E75C00682DC2 /* WrappingHStack in Frameworks */,
+				94A435322B1184B600FC3A0B /* AWSDynamoDB in Frameworks */,
+				94A435342B1184B600FC3A0B /* AWSDynamoDBStreams in Frameworks */,
 				BF6DE0302AAE82E8004E19F8 /* SotoS3 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,6 +144,7 @@
 				5A9D808E2AA2E4E900F9677C /* Preview Content */,
 				5A94ABC22ABA11F1009BA3D3 /* MainView.swift */,
 				5A79D89F2AF5F0CD00682DC2 /* ColorManager.swift */,
+				9441653B2B117CE8006AB1DF /* DBManager.swift */,
 			);
 			path = CSDS395;
 			sourceTree = "<group>";
@@ -179,6 +186,8 @@
 			packageProductDependencies = (
 				BF6DE02F2AAE82E8004E19F8 /* SotoS3 */,
 				5A79D89D2AF5E75C00682DC2 /* WrappingHStack */,
+				94A435312B1184B600FC3A0B /* AWSDynamoDB */,
+				94A435332B1184B600FC3A0B /* AWSDynamoDBStreams */,
 			);
 			productName = CSDS395;
 			productReference = 5A9D80852AA2E4E700F9677C /* CSDS395.app */;
@@ -211,6 +220,7 @@
 			packageReferences = (
 				BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */,
 				5A79D89C2AF5E75C00682DC2 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
+				94A435302B1184B600FC3A0B /* XCRemoteSwiftPackageReference "aws-sdk-swift" */,
 			);
 			productRefGroup = 5A9D80862AA2E4E700F9677C /* Products */;
 			projectDirPath = "";
@@ -257,6 +267,7 @@
 				5A94ABC12ABA1170009BA3D3 /* UserDataController.swift in Sources */,
 				2F8D87D52AAA3EA20057E8C3 /* LoginView.swift in Sources */,
 				5AE7C5602AB50B37000D51A6 /* DragAndDropView.swift in Sources */,
+				9441653C2B117CE8006AB1DF /* DBManager.swift in Sources */,
 				2F8D87DF2AAFF5160057E8C3 /* UserController.swift in Sources */,
 				5A82B1422AA7A306003F1486 /* DescView.swift in Sources */,
 				5A82B1442AA7A68D003F1486 /* UserView.swift in Sources */,
@@ -477,6 +488,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		94A435302B1184B600FC3A0B /* XCRemoteSwiftPackageReference "aws-sdk-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/awslabs/aws-sdk-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.31.0;
+			};
+		};
 		BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/soto-project/soto.git";
@@ -492,6 +511,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5A79D89C2AF5E75C00682DC2 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
 			productName = WrappingHStack;
+		};
+		94A435312B1184B600FC3A0B /* AWSDynamoDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 94A435302B1184B600FC3A0B /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
+			productName = AWSDynamoDB;
+		};
+		94A435332B1184B600FC3A0B /* AWSDynamoDBStreams */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 94A435302B1184B600FC3A0B /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
+			productName = AWSDynamoDBStreams;
 		};
 		BF6DE02F2AAE82E8004E19F8 /* SotoS3 */ = {
 			isa = XCSwiftPackageProductDependency;

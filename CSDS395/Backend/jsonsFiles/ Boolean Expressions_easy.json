@@ -1,12 +1,12 @@
 {
     "Boolean Expressions 1": {
-        "questionText": "This is a Boolean Expressions multiSelect1",
+        "questionText": "This is a Boolean Expressions easy",
         "questionType": "multiSelect",
         "questionOptions": ["Option 1", "Option 2", "Option 3", "Option 4"],
         "questionAnswer": ["Option 1"],
     },
     "Boolean Expressions 2": {
-        "questionText": "This is a Boolean Expressions multiSelect2",
+        "questionText": "This is a Boolean Expressions easy",
         "questionType": "multiSelect",
         "questionOptions": ["Option 1", "Option 2", "Option 3", "Option 4"],
         "questionAnswer": ["Option 1"],

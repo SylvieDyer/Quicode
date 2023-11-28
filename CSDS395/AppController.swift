@@ -89,13 +89,6 @@ class AppController: NSObject, ObservableObject {
             blockContent.updateValue(briefOverview, forKey: block.keys.first ?? "ERROR")
         }
         
-        /// questions
-        questions = await [
-            "Data Types and Variables": JsonFileManager.pullJson(fromS3: "dataTypes.json"),
-            " Operators": JsonFileManager.pullJson(fromS3: "operators.json"),
-            " Boolean Expressions": JsonFileManager.pullJson(fromS3: "booleanExpressions.json")
-        ]
-        
     }
     
     func getModuleNames() -> [String] {
@@ -107,8 +100,9 @@ class AppController: NSObject, ObservableObject {
         return blockNames[name] as! [String]
     }
         
-    func getQuestions(name: String) -> QuestionList {
-        return (questions[name] ?? QuestionList(qlist: []))! 
+    func getQuestions(name: String, difficulty: String) async -> QuestionList {
+        var qlist = await JsonFileManager.pullJson(fromS3: name + "_" + difficulty + ".json") ?? QuestionList(qlist: [])
+        return qlist
     }
     
     func getOverview(blockName: String) -> String {

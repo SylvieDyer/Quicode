@@ -59,7 +59,7 @@ struct ModuleView: View {
                 Section {
                     // individual module
                     NavigationLink(){
-                        BlockView(moduleName: name, blockName: blockName, controller: controller)
+                        BlockView(moduleName: name, blockName: getBlockName(blockName: blockName), controller: controller)
                     }  label: {
                         VStack{
                             Spacer()
@@ -76,7 +76,19 @@ struct ModuleView: View {
             
         }.listStyle(InsetGroupedListStyle())
     }
+
+    func getBlockName(blockName:String) -> String{
+        if blockName == "Data Types and Variables" {
+            return "dataTypes"
+        } else if blockName == " Operators" {
+            return "operators"
+        } else if blockName == " Boolean Expressions" {
+            return "booleanExpressions"
+        }
+        return ""
+    }
 }
+
 
 //// for testing when developing
 //struct View_Previews: PreviewProvider {
