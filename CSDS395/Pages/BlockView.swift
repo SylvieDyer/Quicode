@@ -21,7 +21,7 @@ struct BlockView: View {
     
     var body: some View {
         if isNavigationActive {
-            QuestionView(blockName: blockName, questionDifficulty: currDifficulty, controller: controller, questionList: questionList)
+            QuestionView(blockName: getMappedBlockName(blockName: blockName), questionDifficulty: currDifficulty, controller: controller, questionList: questionList)
         } else {
             List {
                 // block title
@@ -57,7 +57,7 @@ struct BlockView: View {
                     Button("Easy", action: {
                         Task.detached {
                             do {
-                                let questions = try await controller.getQuestions(name: blockName, difficulty: "easy")
+                                let questions = try await controller.getQuestions(name: getMappedBlockName(blockName: blockName), difficulty: "easy")
                                 let mainQueue = DispatchQueue.main
                                 mainQueue.async {
                                     self.questionList = questions
@@ -80,7 +80,7 @@ struct BlockView: View {
                     Button("Medium", action: {
                         Task.detached {
                             do {
-                                let questions = try await controller.getQuestions(name: blockName, difficulty: "medium")
+                                let questions = try await controller.getQuestions(name: getMappedBlockName(blockName: blockName), difficulty: "medium")
                                 let mainQueue = DispatchQueue.main
                                 mainQueue.async {
                                     self.questionList = questions
@@ -103,7 +103,7 @@ struct BlockView: View {
                     Button("Hard", action: {
                         Task.detached {
                             do {
-                                let questions = try await controller.getQuestions(name: blockName, difficulty: "hard")
+                                let questions = try await controller.getQuestions(name: getMappedBlockName(blockName: blockName), difficulty: "hard")
                                 let mainQueue = DispatchQueue.main
                                 mainQueue.async {
                                     self.questionList = questions
@@ -122,6 +122,17 @@ struct BlockView: View {
                 
             }.listStyle(InsetGroupedListStyle())
         }
+    }
+    
+    func getMappedBlockName(blockName:String) -> String{
+        if blockName == "Data Types and Variables" {
+            return "dataTypes"
+        } else if blockName == " Operators" {
+            return "operators"
+        } else if blockName == " Boolean Expressions" {
+            return "booleanExpressions"
+        }
+        return ""
     }
 }
 
