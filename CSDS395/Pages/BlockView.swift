@@ -21,7 +21,7 @@ struct BlockView: View {
     
     var body: some View {
         if isNavigationActive {
-            QuestionView(blockName: getMappedBlockName(blockName: blockName), questionDifficulty: currDifficulty, controller: controller, questionList: questionList)
+            QuestionView(blockName: blockName, questionDifficulty: currDifficulty, controller: controller, questionList: questionList)
         } else {
             List {
                 // block title
@@ -124,15 +124,20 @@ struct BlockView: View {
         }
     }
     
+    
     func getMappedBlockName(blockName:String) -> String{
-        if blockName == "Data Types and Variables" {
-            return "dataTypes"
-        } else if blockName == " Operators" {
-            return "operators"
-        } else if blockName == " Boolean Expressions" {
-            return "booleanExpressions"
-        }
-        return ""
+        print("mapping name:")
+        print(blockName)
+        return blockName.replacingOccurrences(of: " ", with: "")
+
+//        if blockName == "Data Types and Variables" {
+//            return "dataTypes"
+//        } else if blockName == " Operators" {
+//            return "operators"
+//        } else if blockName == " Boolean Expressions" {
+//            return "booleanExpressions"
+//        }
+//        return ""
     }
 }
 

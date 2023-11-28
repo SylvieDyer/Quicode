@@ -21,7 +21,7 @@ struct QuestionView: View {
         ZStack{
           
             VStack{
-                Text("You've completed the \(getBlockNameFormatted(blockName:blockName)) \(getStringQuestionDifficulty(questionDifficulty:questionDifficulty)) module!")
+                Text("You've completed the \(blockName) \(getStringQuestionDifficulty(questionDifficulty:questionDifficulty)) module!")
                 switch (questionDifficulty) {
                 case QuestionDifficulty.easy:
                     Text("Let's try something a little harder!")
@@ -49,16 +49,17 @@ struct QuestionView: View {
             }
         }
     }
-    func getBlockNameFormatted(blockName:String) -> String {
-        if blockName == "dataTypes" {
-            return "Data Types and Variables"
-        } else if blockName == "operators"  {
-            return "Operators"
-        } else if blockName == "booleanExpressions"  {
-            return "Boolean Expressions"
-        }
-        return ""
-    }
+//    func getBlockNameFormatted(blockName:String) -> String {
+//        return blockName.replacingOccurrences(of: " ", with: "")
+////        if blockName == "dataTypes" {
+////            return "Data Types and Variables"
+////        } else if blockName == "operators"  {
+////            return "Operators"
+////        } else if blockName == "booleanExpressions"  {
+////            return "Boolean Expressions"
+////        }
+////        return ""
+//    }
     
     func getStringQuestionDifficulty(questionDifficulty:QuestionDifficulty) -> String {
         if questionDifficulty == QuestionDifficulty.easy {
