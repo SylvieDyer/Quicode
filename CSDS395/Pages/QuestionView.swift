@@ -49,18 +49,7 @@ struct QuestionView: View {
             }
         }
     }
-//    func getBlockNameFormatted(blockName:String) -> String {
-//        return blockName.replacingOccurrences(of: " ", with: "")
-////        if blockName == "dataTypes" {
-////            return "Data Types and Variables"
-////        } else if blockName == "operators"  {
-////            return "Operators"
-////        } else if blockName == "booleanExpressions"  {
-////            return "Boolean Expressions"
-////        }
-////        return ""
-//    }
-    
+
     func getStringQuestionDifficulty(questionDifficulty:QuestionDifficulty) -> String {
         if questionDifficulty == QuestionDifficulty.easy {
             return "easy"

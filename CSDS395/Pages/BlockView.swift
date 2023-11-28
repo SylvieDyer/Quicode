@@ -126,18 +126,7 @@ struct BlockView: View {
     
     
     func getMappedBlockName(blockName:String) -> String{
-        print("mapping name:")
-        print(blockName)
         return blockName.replacingOccurrences(of: " ", with: "")
-
-//        if blockName == "Data Types and Variables" {
-//            return "dataTypes"
-//        } else if blockName == " Operators" {
-//            return "operators"
-//        } else if blockName == " Boolean Expressions" {
-//            return "booleanExpressions"
-//        }
-//        return ""
     }
 }
 
