@@ -20,7 +20,7 @@
 	"q4": {
  		"questionText": "= indicates , while == indicates ,.",
        "questionType": "dragAndDrop",
-       "questionOptions": ["Equality", "Assignment", "Inequality", "Cnvergence"],
+       "questionOptions": ["Equality", "Assignment", "Inequality", "Convergence"],
        "questionAnswer": ["Assignment", "Equality"]
 	},
 	"q5": {

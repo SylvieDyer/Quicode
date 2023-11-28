@@ -24,15 +24,15 @@
        "questionAnswer": ["5", "0"]
 	},
 	"q5": {
- 		"questionText": "For which value pairs will the following loop iterate 5 times: \ni = ? \nwhile(i < b) i += 1",
+ 		"questionText": "For which value pairs will the following loop iterate 5 times: \ni = a \nwhile(i < b) i += 1",
        "questionType": "multiSelect",
-       "questionOptions": ["i == 0 and b =="],
-       "questionAnswer": []
+       "questionOptions": ["a == 0, b == 5", "a == 1, b == 5", "a == 2, b == 7", "a == 1, b == 6"],
+       "questionAnswer": ["a == 0, b == 5", "a == 2, b == 7", "a == 1, b == 6"]
 	},
 	"q6": {
  		"questionText": "Select the loops that will iterate 4 times",
        "questionType": "multiSelect",
-       "questionOptions": ["for i from 0 to 3", "for each element in ['2', '3', '4', '5'] ", "for i from 0 to 4", "i = 0 \nwhile(i <= 3) i+= 1", "for i from 1 to 4"],
-       "questionAnswer": ["for i from 0 to 3", "for each element in ['2', '3', '4', '5'] ", "i = 0 \nwhile(i <= 3) i+= 1", "for i from 1 to 4"]
+       "questionOptions": ["for i from 0 to 3", "for each element in ['2', '3', '4', '5'] ", "for i from 0 to 4", "for i from 1 to 4"],
+       "questionAnswer": ["for i from 0 to 3", "for each element in ['2', '3', '4', '5'] ",  "for i from 1 to 4"]
 	}
 }

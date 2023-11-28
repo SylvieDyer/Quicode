@@ -2,7 +2,7 @@
 	"q1": {
  		"questionText": "For the following code: \nif (a <= 4): print \"Hello\" \nelse if (b == 4): print \"Goodbye\"\nWhat gets printed if a == 4 and b == 4?",
         "questionType": "multipleChoice",
-       "questionOptions": ["Hello", "Hello Goodbye", "Goodbye", "Goodbye Hello", "Nothing"],
+       "questionOptions": ["Hello", "Hello Goodbye", "Goodbye", "Goodbye Hello"],
        "questionAnswer": ["Hello"]
 	},
 	"q2": {
@@ -26,13 +26,13 @@
 	"q5": {
  		"questionText": "Given two boolean values a and b with an initial condition: `if a or b` what other conditions can be checked with these values?",
        "questionType": "multiSelect",
-       "questionOptions": ["else if b or a", "else", "else if a and b", "else if !a or b", "else if a or !b"],
-       "questionAnswer": ["else", "else if a and b", "else if !a or b", "else if a or !b"]
+       "questionOptions": ["else if b or a", "else", "else if a and b", "else if !a or b"],
+       "questionAnswer": ["else", "else if a and b", "else if !a or b"]
 	},
 	"q6": {
  		"questionText": "For what values of 'a' would B execute in the following code: \nif (a < 3) A \nelse if(a >= 3 && a < 7) B \nelse C",
        "questionType": "multiSelect",
-       "questionOptions": ["1", "3", "0", "7", "4", "6", "8"],
+       "questionOptions": ["1", "3", "4", "6"],
        "questionAnswer": ["3", "4", "6"]
 	}
 }

@@ -32,7 +32,7 @@
 	"q6": {
  		"questionText": "The first statement in a sequence of statements is: if a == 4. What other conditional statements can follow this one?.",
        "questionType": "multiSelect",
-       "questionOptions": ["else if a < 4", "else if a != 4", "else if a == 4", "else", "else if a > 4"],
-       "questionAnswer": ["else if a < 4", "else if a != 4", "else", "else if a > 4"]
+       "questionOptions": ["else if a != 4", "else if a == 4", "else", "else if a > 4"],
+       "questionAnswer": ["else if a != 4", "else", "else if a > 4"]
 	}
 }

@@ -32,7 +32,7 @@
 	"q6": {
  		"questionText": "Which of the following are primitive data types?",
        "questionType": "multiSelect",
-       "questionOptions": ["Arrays", "Strings","Variables", "Doubles", "Integers"],
+       "questionOptions": ["Strings", "Variables", "Doubles", "Integers"],
        "questionAnswer": ["Strings", "Doubles", "Integers"]
 	}
 }

@@ -32,7 +32,7 @@
 	"q6": {
  		"questionText": "Select the valid loop statements.",
        "questionType": "multiSelect",
-       "questionOptions": ["for i from 0 to 9", "while (i < 10)", "while (x + y)", "for element in array", "for i < 10"],
+       "questionOptions": ["for i from 0 to 9", "while (i < 10)", "while (x + y)", "for element in array"],
        "questionAnswer": ["for i from 0 to 9", "while (i < 10)", "for element in array"]
 	}
 }

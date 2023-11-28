@@ -2,7 +2,7 @@
 	"q1": {
  		"questionText": "How many times will the following loop iterate: \ni = 0 \nwhile (i < 9) i += 2",
        "questionType": "multipleChoice",
-       "questionOptions": ["It won't go into the loop.", "8 times", "9 times", "4 times", "it will go on forever", "10 times", "5 times"],
+       "questionOptions": ["8 times", "4 times", "it will go on forever", "9 times"],
        "questionAnswer": ["4 times"]
 	},
 	"q2": {
@@ -26,7 +26,7 @@
 	"q5": {
  		"questionText": "For the array `letters == ['a', 'b', 'c', 'd']`, what are ways to iterate through and print each element?",
        "questionType": "multiSelect",
-       "questionOptions": ["for each letter in letters: print letter", "for i from 0 to 3: print letters[i]", "print letters", "while i < 4: print letters[i]", "for i from 1 to 4: print letters[i]"],
+       "questionOptions": ["for each letter in letters: print letter", "for i from 0 to 3: print letters[i]", "print letters", "while i < 4: print letters[i]"],
        "questionAnswer": ["for each letter in letters: print letter", "for i from 0 to 3: print letters[i]"]
 	},
 	"q6": {
