@@ -73,6 +73,7 @@ struct LoginView: View {
                 print("Authorization successful \(authResults)")
                 // creates the user object
                 let user = CreateUser(authResults: authResults)
+                CreateUser(authResults: authResults)
                 Task{
                     await uploadUser(user: user)
                 }
@@ -119,33 +120,35 @@ struct LoginView: View {
                 defaults.set(appleIdCredential.fullName?.familyName, forKey: "lastname")
             }
             
-            if users.isEmpty {
-                print("users is empty")
-                user.newUser = false
-                user.isLoggedOut = false
-                user.email = appleIdCredential.email ?? UserDefaults.standard.string(forKey: "email")
-                user.firstName = appleIdCredential.fullName?.givenName ?? UserDefaults.standard.string(forKey: "firstname")
-                user.lastName = appleIdCredential.fullName?.familyName ?? UserDefaults.standard.string(forKey: "lastname")
-                user.appid = appleIdCredential.user
-                user.id = UUID()
-            }
-            else {
-                print("users not empty")
-                // check if user is already in core data by comparing appid
-                if user.appid != users.first!.appid {
-                    RemoveUser() // we only allow one user in core data, so if a new appid is detected, the old user in core data should be deleted
-                    user.newUser = false
-                    user.isLoggedOut = false
-                    user.email = appleIdCredential.email ?? UserDefaults.standard.string(forKey: "email")
-                    user.firstName = appleIdCredential.fullName?.givenName ?? UserDefaults.standard.string(forKey: "firstname")
-                    user.lastName = appleIdCredential.fullName?.familyName ?? UserDefaults.standard.string(forKey: "lastname")
-                    user.appid = appleIdCredential.user
-                    user.id = UUID()        // TODO: dont want to recreate everytime user logs in though ... TBD
-                }
-                else {
-                    users.first!.isLoggedOut = false
-                }
-            }
+            print("users is empty")
+            user.newUser = false
+            user.isLoggedOut = false
+            user.email = appleIdCredential.email ?? UserDefaults.standard.string(forKey: "email")
+            user.firstName = appleIdCredential.fullName?.givenName ?? UserDefaults.standard.string(forKey: "firstname")
+            user.lastName = appleIdCredential.fullName?.familyName ?? UserDefaults.standard.string(forKey: "lastname")
+            user.appid = appleIdCredential.user
+            
+//            if users.isEmpty {
+//                
+////                user.id = UUID()
+//            }
+//            else {
+//                print("users not empty")
+//                // check if user is already in core data by comparing appid
+//                if user.appid != users.first!.appid {
+//                    RemoveUser() // we only allow one user in core data, so if a new appid is detected, the old user in core data should be deleted
+//                    user.newUser = false
+//                    user.isLoggedOut = false
+//                    user.email = appleIdCredential.email ?? UserDefaults.standard.string(forKey: "email")
+//                    user.firstName = appleIdCredential.fullName?.givenName ?? UserDefaults.standard.string(forKey: "firstname")
+//                    user.lastName = appleIdCredential.fullName?.familyName ?? UserDefaults.standard.string(forKey: "lastname")
+//                    user.appid = appleIdCredential.user
+////                    user.id = UUID()        // TODO: dont want to recreate everytime user logs in though ... TBD
+//                }
+//                else {
+//                    users.first!.isLoggedOut = false
+//                }
+//            }
             // try to save with core data
 //            do {
 //                try viewContext.save()
@@ -168,14 +171,15 @@ struct LoginView: View {
             break
         }
         print(users)
-        return users.first!
+        return user
     }
     
     func uploadUser(user: User) async {
         let email = user.email!
         let firstname = user.firstName!
         let lastname = user.lastName!
-        let id = user.id
+        let id = user.appid
+        print("id: \(id!)")
         let userJson = Users(id: id!, email: email, firstname: firstname, lastname: lastname)
         
         do {
@@ -183,7 +187,7 @@ struct LoginView: View {
             let jsonEncoder = JSONEncoder()
             jsonEncoder.outputFormatting = .prettyPrinted
             let jsonData = try jsonEncoder.encode(userJson)
-            await awsManager.uploadToAWS(filename: "\(user.id!).json", body: jsonData)
+            await awsManager.uploadToAWS(filename: "\(user.appid!).json", body: jsonData)
             print("after await")
         }
         catch {
