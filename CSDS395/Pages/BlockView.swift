@@ -12,6 +12,7 @@ struct BlockView: View {
     var moduleName: String
     var blockName: String
     var controller: AppController
+    var user : User
     @State private var showOverview = false
     let colorManager: ColorManager = ColorManager()
     @State private var questionList: QuestionList = QuestionList(qlist: [])
@@ -21,7 +22,7 @@ struct BlockView: View {
     
     var body: some View {
         if isNavigationActive {
-            QuestionView(blockName: blockName, questionDifficulty: currDifficulty, controller: controller, questionList: questionList)
+            QuestionView(blockName: blockName, questionDifficulty: currDifficulty, controller: controller, user: user, questionList: questionList)
         } else {
             List {
                 // block title
@@ -148,8 +149,8 @@ struct BlockView: View {
     }
 }
 
-struct BlockView_Previews: PreviewProvider {
-    static var previews: some View {
-        BlockView(moduleName:"MODULE", blockName:"BLOCK NAME", controller: AppController())
-    }
-}
+//struct BlockView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BlockView(moduleName:"MODULE", blockName:"BLOCK NAME", controller: AppController())
+//    }
+//}

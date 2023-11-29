@@ -11,6 +11,7 @@ struct QuestionView: View {
     let blockName: String
     let questionDifficulty: QuestionDifficulty
     let controller: AppController
+    var user : User
     @State var questionList: QuestionList
     
     

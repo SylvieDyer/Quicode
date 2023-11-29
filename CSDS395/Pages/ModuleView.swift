@@ -15,6 +15,7 @@ struct ModuleView: View {
     
     let name: String
     let controller: AppController
+    var user : User
     @State private var showOverview = false
     
     let colorManager: ColorManager = ColorManager()
@@ -60,7 +61,7 @@ struct ModuleView: View {
                     // individual module
                     VStack{
                         NavigationLink(){
-                            BlockView(moduleName: name, blockName: blockName, controller: controller)
+                            BlockView(moduleName: name, blockName: blockName, controller: controller, user: user)
                         }  label: {
                             Text(blockName)
                         }

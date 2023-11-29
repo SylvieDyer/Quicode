@@ -68,7 +68,7 @@ struct HomeView: View {
                             HStack{ // to center text
                                 Spacer()
                                 NavigationLink{
-                                    ModuleView(name: "Quick Lesson", controller: controller)
+                                    ModuleView(name: "Quick Lesson", controller: controller, user: user)
                                 } label: {
                                     VStack{
                                         Text("Today's Quick Lesson:") .foregroundColor(.cyan.opacity(0.7)).font(.title2).fontWeight(.heavy)
@@ -85,7 +85,7 @@ struct HomeView: View {
                             Section{
                                 // individual module
                                 NavigationLink(){
-                                    ModuleView(name: moduleName, controller: controller)
+                                    ModuleView(name: moduleName, controller: controller, user: user)
                                 } label: {
                                     VStack{
                                         Text(moduleName).padding(.top, 10)
