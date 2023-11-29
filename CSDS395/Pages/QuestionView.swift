@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct QuestionView: View {
+    let moduleName: String
     let blockName: String
     let questionDifficulty: QuestionDifficulty
     let controller: AppController
     var user : User
+    let dbManager : DBManager = DBManager()
     @State var questionList: QuestionList
     var colorManager = ColorManager()
     
@@ -38,7 +40,8 @@ struct QuestionView: View {
                     Text("3 Stars!").font(.title3).padding([.bottom], 15)
                 }
                 
-                Button(action: {dismiss.callAsFunction()}, label: {Text("Return to Modules") .fontWeight(.bold)
+                
+                Button(action: {dismiss.callAsFunction(); updateDB();}, label: {Text("Return to Modules") .fontWeight(.bold)
                         .background(RoundedRectangle(cornerRadius: 40)
                             .foregroundColor(colorManager.getLavendar())
                             .padding(20)
@@ -75,6 +78,17 @@ struct QuestionView: View {
             return "Hard"
         }
         return ""
+    }
+    
+    func updateDB() {
+        Task {
+            do{
+                await dbManager.updateDB(
+                    key: ["userID" : .s("\(user.appid!)")],
+                    expressionAttributeValues: [":newModuleName" : .s("\(moduleName)"), ":newBlockName": .s("\(blockName)"), ":newQuestionDifficulty": .s("\(questionDifficulty)")],
+                    updateExpression: "SET moduleName = :newModuleName, blockName = :newBlockName, questionDifficulty = :newQuestionDifficulty")
+            }
+        }
     }
 }
 //

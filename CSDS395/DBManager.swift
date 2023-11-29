@@ -8,17 +8,18 @@
 import Foundation
 import SotoDynamoDB
 
+
 struct DBManager {
         
-    func uploadToDB() async {
+    func uploadToDB(item: [String: SotoDynamoDB.DynamoDB.AttributeValue]) async {
         let client = AWSClient(
             credentialProvider: .static(accessKeyId: "AKIA2ARVCSNBIO4SS2HU", secretAccessKey: "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"),
             httpClientProvider: .createNew
         )
-        let dynamoDB = DynamoDB(client: client, region: .useast1)
-        let putItemInput = DynamoDB.PutItemInput(item: ["userID": .s("TESTID")], tableName: "quicode")
+        let dynamoDB = DynamoDB(client: client, region: .useast2)
+        let putItemInput = DynamoDB.PutItemInput(item: item, tableName: "quicode")
         do {
-            var response = try await dynamoDB.putItem(putItemInput)
+            let response = try await dynamoDB.putItem(putItemInput)
             print("Added item to db: \(response)")
             
     } catch{
@@ -27,6 +28,31 @@ struct DBManager {
     
             
         print("Uploaded to table?")
+        do {
+            try client.syncShutdown()
+        }
+        catch {
+            print("Error shutting down hehe")
+        }
+    }
+    
+    func updateDB(key: [String: SotoDynamoDB.DynamoDB.AttributeValue], expressionAttributeValues: [String: SotoDynamoDB.DynamoDB.AttributeValue], updateExpression: String) async {
+        let client = AWSClient(
+            credentialProvider: .static(accessKeyId: "AKIA2ARVCSNBIO4SS2HU", secretAccessKey: "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"),
+            httpClientProvider: .createNew
+        )
+        let dynamoDB = DynamoDB(client: client, region: .useast2)
+        let updateItemInput = DynamoDB.UpdateItemInput(expressionAttributeValues: expressionAttributeValues, key: key, tableName: "quicode", updateExpression: updateExpression)
+        do {
+            let response = try await dynamoDB.updateItem(updateItemInput)
+            print("Added item to db: \(response)")
+            
+    } catch{
+        print("Error updating item: \(error)")
+    }
+    
+            
+        print("Updaated table?")
         do {
             try client.syncShutdown()
         }
