@@ -58,20 +58,23 @@ struct ModuleView: View {
             ForEach(controller.getBlocks(name: name), id: \.self) { blockName in
                 Section {
                     // individual module
-                    NavigationLink(){
-                        BlockView(moduleName: name, blockName: blockName, controller: controller)
-                    }  label: {
-                        VStack{
-                            Spacer()
+                    VStack{
+                        NavigationLink(){
+                            BlockView(moduleName: name, blockName: blockName, controller: controller)
+                        }  label: {
                             Text(blockName)
-                            Spacer()
+                        }
+                        .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
+                        .padding(20)
+                        HStack{
+                            Image(systemName: "star")
+                            Image(systemName: "star")
+                            Image(systemName: "star")
                         }
                     }
-                    .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
-                    .padding(20)
                 }
                
-            }.padding([.bottom], 30)
+            }.padding([.bottom], 20)
             .listRowBackground(RoundedRectangle(cornerRadius: 40).fill(colorManager.getLightLavendar()))// color each list section
             
         }.listStyle(InsetGroupedListStyle())

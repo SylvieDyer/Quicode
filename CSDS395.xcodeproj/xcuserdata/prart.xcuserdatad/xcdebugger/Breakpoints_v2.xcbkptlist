@@ -208,7 +208,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "80"
             endingLineNumber = "80"
-            landmarkName = "getQuestions(name:difficulty:)"
+            landmarkName = "setAppInfo(awsManager:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1065,8 +1065,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
             endingLineNumber = "79"
-            landmarkName = "AppController"
-            landmarkType = "3">
+            landmarkName = "setAppInfo(awsManager:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "9F4DC0FE-F949-490A-80D3-F456313571DF - ca4aaf02adcee3"
@@ -1113,7 +1113,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "81"
             endingLineNumber = "81"
-            landmarkName = "getQuestions(name:difficulty:)"
+            landmarkName = "setAppInfo(awsManager:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1189,8 +1189,8 @@
             filePath = "CSDS395/Pages/BlockView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -1239,7 +1239,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
             endingLineNumber = "82"
-            landmarkName = "getQuestions(name:difficulty:)"
+            landmarkName = "setAppInfo(awsManager:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1287,7 +1287,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
             endingLineNumber = "83"
-            landmarkName = "getQuestions(name:difficulty:)"
+            landmarkName = "setAppInfo(awsManager:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1301,10 +1301,10 @@
             filePath = "CSDS395/Pages/BlockView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "getMappedBlockName(blockName:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "2E8A0695-58EA-4DA6-AE15-0FE7F75DDABD - 88c791dddf996c40"
@@ -1349,10 +1349,10 @@
             filePath = "CSDS395/Pages/BlockView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "BlockView"
+            landmarkType = "14">
             <Locations>
                <Location
                   uuid = "14B3BFC2-3152-4C12-9D5E-29A4A4F29920 - 4af64f8ca0812ebe"
