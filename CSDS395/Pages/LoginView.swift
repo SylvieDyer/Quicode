@@ -147,15 +147,15 @@ struct LoginView: View {
                 }
             }
             // try to save with core data
-            do {
-                try viewContext.save()
-            } catch {
-                // TODO: Replace this implementation with code to handle the error appropriately.
-                
-                let nsError = error as NSError
-                // fatalError() will crash app
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+//            do {
+//                try viewContext.save()
+//            } catch {
+//                // TODO: Replace this implementation with code to handle the error appropriately.
+//                
+//                let nsError = error as NSError
+//                // fatalError() will crash app
+//                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+//            }
             
             
         case let passwordCredential as ASPasswordCredential:
