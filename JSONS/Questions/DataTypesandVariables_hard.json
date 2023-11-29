@@ -12,7 +12,7 @@
        "questionAnswer": ["1.0"]
 	},
 	"q3": {
- 		"questionText": "In the , \"Hello\", 'e' is the second ,.",
+ 		"questionText": "In the , \"Hello\" 'e' is the second ,.",
        "questionType": "dragAndDrop",
        "questionOptions": ["Integer", "String", "Boolean", "Character"],
        "questionAnswer": ["String", "Character"]
