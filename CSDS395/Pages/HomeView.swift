@@ -24,7 +24,7 @@ struct HomeView: View {
             VStack {
                 // header
                 HStack(alignment: .lastTextBaseline, spacing:0){
-                    Text("QUICCODE").font(.largeTitle).bold().padding(.leading, 15)
+                    Text("QUICODE").font(.largeTitle).bold().padding(.leading, 15)
                         .fontWidth(.expanded)
                         .font(.callout)
                     Spacer()
@@ -55,7 +55,7 @@ struct HomeView: View {
                         // welcome section
                         Section{
                             // will be dynamic with user name -- Text("Welcome Back, \(user.name)
-                            Text("Welcome Back, \(user.firstName ?? "User")").bold().font(.title2)
+                            Text("Welcome Back, \(user.firstName ?? UserDefaults.standard.string(forKey: "firstname") ?? "firstname")").bold().font(.title2)
                             
                         }
                         .listRowBackground(

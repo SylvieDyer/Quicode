@@ -13,6 +13,7 @@ struct QuestionView: View {
     let controller: AppController
     var user : User
     @State var questionList: QuestionList
+    var colorManager = ColorManager()
     
     
     @State var shouldNavigateToNextQuestion = false
@@ -21,18 +22,32 @@ struct QuestionView: View {
     var body: some View {
         ZStack{
           
-            VStack{
-                Text("You've completed the \(blockName) \(getStringQuestionDifficulty(questionDifficulty:questionDifficulty)) module!")
+            VStack {
+                Text("You've completed").font(.title2).bold()
+                
+                Text("\(blockName)").font(.title).bold().multilineTextAlignment(.center)
+                Text("Difficulty: \(getStringQuestionDifficulty(questionDifficulty:questionDifficulty))").font(.title2).bold().multilineTextAlignment(.center)
+                    .padding([.bottom], 20)
+                
                 switch (questionDifficulty) {
                 case QuestionDifficulty.easy:
-                    Text("Let's try something a little harder!")
+                    Text("Let's try something a little harder!").font(.title3).padding([.bottom], 15)
                 case QuestionDifficulty.medium:
-                    Text("Time for a challenge!")
+                    Text("Time for a challenge!").font(.title3).padding([.bottom], 15)
                 case QuestionDifficulty.hard:
-                    Text("3 Stars!")
+                    Text("3 Stars!").font(.title3).padding([.bottom], 15)
                 }
-                Button(action: {dismiss.callAsFunction()}, label: {Text("Return to Modules")})
+                
+                Button(action: {dismiss.callAsFunction()}, label: {Text("Return to Modules") .fontWeight(.bold)
+                        .background(RoundedRectangle(cornerRadius: 40)
+                            .foregroundColor(colorManager.getLavendar())
+                            .padding(20)
+                            .frame(width:300, height: 100))
+                        .foregroundColor(Color.white)
+                        .padding([.trailing], 20)
+                }).padding(10)
             }
+            
 
             ForEach(questionList.qlist, id: \.self){ question in
                 if (!question.isComplete){
@@ -53,12 +68,18 @@ struct QuestionView: View {
 
     func getStringQuestionDifficulty(questionDifficulty:QuestionDifficulty) -> String {
         if questionDifficulty == QuestionDifficulty.easy {
-            return "easy"
+            return "Easy"
         } else if questionDifficulty == QuestionDifficulty.medium {
-            return "medium"
+            return "Medium"
         } else if questionDifficulty == QuestionDifficulty.hard {
-            return "hard"
+            return "Hard"
         }
         return ""
     }
 }
+//
+//struct QuestionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        QuestionView(blockName: "Data Types and Variables", questionDifficulty: QuestionDifficulty.easy, controller: AppController(), questionList: QuestionList(qlist: []))
+//    }
+//}
