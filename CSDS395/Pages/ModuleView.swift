@@ -12,16 +12,15 @@ import SwiftUI
 
 // template for module pages 
 struct ModuleView: View {
-    
     let name: String
     let controller: AppController
     var user : User
+    let hardCodedLastCompletedModule: String = "Operators"
     @State private var showOverview = false
+    @State private var blocksValidMap: [String : Bool] = [:]
     
     let colorManager: ColorManager = ColorManager()
-    
     var body: some View {
-        
         List {
             // module title
             Section{
@@ -52,6 +51,9 @@ struct ModuleView: View {
                 }
                     
             }.listRowBackground(RoundedRectangle(cornerRadius: 40).fill(colorManager.getLavendar()))
+            .onAppear() {
+                blocksValidMap = getBlocksValidMap(lastCompleted: hardCodedLastCompletedModule)
+            }
             
         
             
@@ -60,17 +62,25 @@ struct ModuleView: View {
                 Section {
                     // individual module
                     VStack{
-                        NavigationLink(){
-                            BlockView(moduleName: name, blockName: blockName, controller: controller, user: user)
-                        }  label: {
+                        if (blocksValidMap[blockName] ?? true) {
+                            NavigationLink(destination: BlockView(moduleName: name, blockName: blockName, controller: controller, user: user)) {
+                                Text(blockName)
+                                    .foregroundColor(Color.black)
+                                    .font(.title3)
+                                    .fontWeight(.heavy)
+                                    .padding(20)
+                                HStack {
+                                    Image(systemName: "star")
+                                    Image(systemName: "star")
+                                    Image(systemName: "star" )
+                                }
+                            }
+                        } else {
                             Text(blockName)
-                        }
-                        .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
-                        .padding(20)
-                        HStack{
-                            Image(systemName: "star")
-                            Image(systemName: "star")
-                            Image(systemName: "star")
+                                .foregroundColor(Color.gray)
+                                .font(.title3)
+                                .fontWeight(.heavy)
+                                .padding(20)
                         }
                     }
                 }
@@ -81,6 +91,17 @@ struct ModuleView: View {
         }.listStyle(InsetGroupedListStyle())
     }
    
+    func getBlocksValidMap(lastCompleted: String) -> [String : Bool] {
+        var blockMap: [String : Bool] = [:]
+        var valid = true
+        for blockName in controller.getBlocks(name: name){
+            blockMap[blockName] = valid
+            if(blockName == lastCompleted) {
+                valid = false
+            }
+        }
+        return blockMap
+    }
 }
 
 

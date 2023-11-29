@@ -16,7 +16,9 @@ struct HomeView: View {
     var viewContext: NSManagedObjectContext
     var user : User
     let colorManager: ColorManager = ColorManager()
+    let hardCodedLastCompletedModule: String = "CS Foundations"
     @Environment (\.dismiss) var dismiss
+    @State private var modulesValidMap: [String : Bool] = [:]
     
     var body: some View {
         // wraps app in navigation to switch to user-screen
@@ -44,7 +46,9 @@ struct HomeView: View {
                     //                    } label: {
                     //                        Image(systemName: "person").foregroundColor(.gray).padding(25)
                     //                    }
-                    Button(action: {controller.viewController.setAsUser()}, label: {
+                    Button(action: {
+                        controller.viewController.setAsUser();
+                    }, label: {
                         Image(systemName: "person").foregroundColor(.gray).padding(25)
                     })
                 }
@@ -82,29 +86,40 @@ struct HomeView: View {
                         
                         // iterate through list of modules
                         ForEach(controller.getModuleNames(), id: \.self) { moduleName in
-                            Section{
-                                // individual module
-                                NavigationLink(){
-                                    ModuleView(name: moduleName, controller: controller, user: user)
-                                } label: {
-                                    VStack{
-                                        Text(moduleName).padding(.top, 10)
-                                        Spacer()
-                                        // progress Bar
-                                        HStack{
+                            if (modulesValidMap[moduleName] ?? true) {
+                                    Section{
+                                    // individual module
+                                    NavigationLink(){
+                                        ModuleView(name: moduleName, controller: controller, user: user)
+                                    } label: {
+                                        VStack{
+                                            Text(moduleName).padding(.top, 10)
                                             Spacer()
-                                            ForEach(controller.getBlocks(name: moduleName), id: \.self) { blockName in
-                                                // TODO: Connect with user-status
-                                                // if blockName associated with complete , "star.fill"
-                                                Image(systemName: "star").foregroundColor(.black)
+                                            // progress Bar
+                                            HStack{
+                                                Spacer()
+                                                ForEach(controller.getBlocks(name: moduleName), id: \.self) { blockName in
+                                                    // TODO: Connect with user-status
+                                                    // if blockName associated with complete , "star.fill"
+                                                    Image(systemName: "star").foregroundColor(.black)
+                                                }
+                                                Spacer()
                                             }
-                                            Spacer()
                                         }
                                     }
-                                }
-                                .foregroundColor(.black).font(.title3).fontWeight(.heavy)
-                                .padding([.bottom], 30)
-                            }.padding([.bottom], 30)
+                                    .foregroundColor(.black).font(.title3).fontWeight(.heavy)
+                                    .padding([.bottom], 30)
+                                }.padding([.bottom], 30)
+                            } else {
+                                Section{
+                                // individual module
+                                    Text(moduleName).padding(.top, 10)
+                                    .frame(alignment: .center)
+                                    .foregroundColor(.gray).font(.title3).fontWeight(.heavy)
+                                    .padding([.bottom], 30)
+                                }.padding([.bottom], 30)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                            }
                         }
                         .listRowBackground(
                             RoundedRectangle(cornerRadius: 40)
@@ -112,10 +127,24 @@ struct HomeView: View {
                         ) // color each list section
                         
                     }.listStyle(InsetGroupedListStyle()) // (remove drop down option for list sectoins)
+                    .onAppear() {
+                        modulesValidMap = getModulesValidMap(lastCompleted: hardCodedLastCompletedModule)
+                    }
                 }
             }
         }
         
+    }
+    func getModulesValidMap(lastCompleted: String) -> [String : Bool] {
+        var moduleMap: [String : Bool] = [:]
+        var valid = true
+        for moduleName in controller.getModuleNames(){
+            moduleMap[moduleName] = valid
+            if(moduleName == lastCompleted) {
+                valid = false
+            }
+        }
+        return moduleMap
     }
 }
 
