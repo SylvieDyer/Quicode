@@ -95,7 +95,7 @@ struct BlockView: View {
                                     let mainQueue = DispatchQueue.main
                                     mainQueue.async {
                                         self.questionList = questions
-                                        self.currDifficulty = QuestionDifficulty.easy
+                                        self.currDifficulty = QuestionDifficulty.medium
                                         self.isNavigationActive = true
                                         print("medium")
                                     }
@@ -122,7 +122,7 @@ struct BlockView: View {
                                     let mainQueue = DispatchQueue.main
                                     mainQueue.async {
                                         self.questionList = questions
-                                        self.currDifficulty = QuestionDifficulty.easy
+                                        self.currDifficulty = QuestionDifficulty.hard
                                         self.isNavigationActive = true
                                         print("hard")
                                     }

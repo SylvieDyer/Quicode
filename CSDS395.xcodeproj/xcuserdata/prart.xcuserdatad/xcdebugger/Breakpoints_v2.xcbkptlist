@@ -1303,8 +1303,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "142"
             endingLineNumber = "142"
-            landmarkName = "getMappedBlockName(blockName:)"
-            landmarkType = "7">
+            landmarkName = "body"
+            landmarkType = "24">
             <Locations>
                <Location
                   uuid = "2E8A0695-58EA-4DA6-AE15-0FE7F75DDABD - 88c791dddf996c40"
@@ -1351,8 +1351,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "141"
             endingLineNumber = "141"
-            landmarkName = "BlockView"
-            landmarkType = "14">
+            landmarkName = "body"
+            landmarkType = "24">
             <Locations>
                <Location
                   uuid = "14B3BFC2-3152-4C12-9D5E-29A4A4F29920 - 4af64f8ca0812ebe"
