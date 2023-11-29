@@ -26,6 +26,109 @@
 		5AA76C062AF6D3CC00C281E7 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA76C052AF6D3CC00C281E7 /* NextButton.swift */; };
 		5AD3D8A42B07218A001091EC /* BlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD3D8A32B07218A001091EC /* BlockView.swift */; };
 		5AE7C5602AB50B37000D51A6 /* DragAndDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7C55F2AB50B37000D51A6 /* DragAndDropView.swift */; };
+		8D5BBEFE2B1707BF00F8BCE5 /* SotoACM in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBEFD2B1707BF00F8BCE5 /* SotoACM */; };
+		8D5BBF002B1707BF00F8BCE5 /* SotoACMPCA in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBEFF2B1707BF00F8BCE5 /* SotoACMPCA */; };
+		8D5BBF022B1707BF00F8BCE5 /* SotoAPIGateway in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF012B1707BF00F8BCE5 /* SotoAPIGateway */; };
+		8D5BBF042B1707BF00F8BCE5 /* SotoARCZonalShift in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF032B1707BF00F8BCE5 /* SotoARCZonalShift */; };
+		8D5BBF062B1707BF00F8BCE5 /* SotoAccessAnalyzer in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF052B1707BF00F8BCE5 /* SotoAccessAnalyzer */; };
+		8D5BBF082B1707BF00F8BCE5 /* SotoAccount in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF072B1707BF00F8BCE5 /* SotoAccount */; };
+		8D5BBF0A2B1707BF00F8BCE5 /* SotoAlexaForBusiness in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF092B1707BF00F8BCE5 /* SotoAlexaForBusiness */; };
+		8D5BBF0C2B1707BF00F8BCE5 /* SotoAmp in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF0B2B1707BF00F8BCE5 /* SotoAmp */; };
+		8D5BBF0E2B1707BF00F8BCE5 /* SotoAmplify in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF0D2B1707BF00F8BCE5 /* SotoAmplify */; };
+		8D5BBF102B1707BF00F8BCE5 /* SotoAmplifyBackend in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF0F2B1707BF00F8BCE5 /* SotoAmplifyBackend */; };
+		8D5BBF122B1707BF00F8BCE5 /* SotoAmplifyUIBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF112B1707BF00F8BCE5 /* SotoAmplifyUIBuilder */; };
+		8D5BBF142B1707BF00F8BCE5 /* SotoApiGatewayManagementApi in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF132B1707BF00F8BCE5 /* SotoApiGatewayManagementApi */; };
+		8D5BBF162B1707BF00F8BCE5 /* SotoApiGatewayV2 in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF152B1707BF00F8BCE5 /* SotoApiGatewayV2 */; };
+		8D5BBF182B1707BF00F8BCE5 /* SotoAppConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF172B1707BF00F8BCE5 /* SotoAppConfig */; };
+		8D5BBF1A2B1707BF00F8BCE5 /* SotoAppConfigData in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF192B1707BF00F8BCE5 /* SotoAppConfigData */; };
+		8D5BBF1C2B1707BF00F8BCE5 /* SotoAppIntegrations in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF1B2B1707BF00F8BCE5 /* SotoAppIntegrations */; };
+		8D5BBF1E2B1707BF00F8BCE5 /* SotoAppMesh in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF1D2B1707BF00F8BCE5 /* SotoAppMesh */; };
+		8D5BBF202B1707BF00F8BCE5 /* SotoAppRunner in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF1F2B1707BF00F8BCE5 /* SotoAppRunner */; };
+		8D5BBF222B1707BF00F8BCE5 /* SotoAppStream in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF212B1707BF00F8BCE5 /* SotoAppStream */; };
+		8D5BBF242B1707BF00F8BCE5 /* SotoAppSync in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF232B1707BF00F8BCE5 /* SotoAppSync */; };
+		8D5BBF262B1707BF00F8BCE5 /* SotoAppflow in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF252B1707BF00F8BCE5 /* SotoAppflow */; };
+		8D5BBF282B1707BF00F8BCE5 /* SotoApplicationAutoScaling in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF272B1707BF00F8BCE5 /* SotoApplicationAutoScaling */; };
+		8D5BBF2A2B1707BF00F8BCE5 /* SotoApplicationCostProfiler in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF292B1707BF00F8BCE5 /* SotoApplicationCostProfiler */; };
+		8D5BBF2C2B1707BF00F8BCE5 /* SotoApplicationDiscoveryService in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF2B2B1707BF00F8BCE5 /* SotoApplicationDiscoveryService */; };
+		8D5BBF2E2B1707BF00F8BCE5 /* SotoApplicationInsights in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF2D2B1707BF00F8BCE5 /* SotoApplicationInsights */; };
+		8D5BBF302B1707BF00F8BCE5 /* SotoAthena in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF2F2B1707BF00F8BCE5 /* SotoAthena */; };
+		8D5BBF322B1707BF00F8BCE5 /* SotoAuditManager in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF312B1707BF00F8BCE5 /* SotoAuditManager */; };
+		8D5BBF342B1707BF00F8BCE5 /* SotoAutoScaling in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF332B1707BF00F8BCE5 /* SotoAutoScaling */; };
+		8D5BBF362B1707BF00F8BCE5 /* SotoAutoScalingPlans in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF352B1707BF00F8BCE5 /* SotoAutoScalingPlans */; };
+		8D5BBF382B1707BF00F8BCE5 /* SotoBackup in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF372B1707BF00F8BCE5 /* SotoBackup */; };
+		8D5BBF3A2B1707BF00F8BCE5 /* SotoBackupGateway in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF392B1707BF00F8BCE5 /* SotoBackupGateway */; };
+		8D5BBF3C2B1707BF00F8BCE5 /* SotoBackupStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF3B2B1707BF00F8BCE5 /* SotoBackupStorage */; };
+		8D5BBF3E2B1707BF00F8BCE5 /* SotoBatch in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF3D2B1707BF00F8BCE5 /* SotoBatch */; };
+		8D5BBF402B1707BF00F8BCE5 /* SotoBillingconductor in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF3F2B1707BF00F8BCE5 /* SotoBillingconductor */; };
+		8D5BBF422B1707BF00F8BCE5 /* SotoBraket in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF412B1707BF00F8BCE5 /* SotoBraket */; };
+		8D5BBF442B1707BF00F8BCE5 /* SotoBudgets in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF432B1707BF00F8BCE5 /* SotoBudgets */; };
+		8D5BBF462B1707BF00F8BCE5 /* SotoChime in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF452B1707BF00F8BCE5 /* SotoChime */; };
+		8D5BBF482B1707BF00F8BCE5 /* SotoChimeSDKIdentity in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF472B1707BF00F8BCE5 /* SotoChimeSDKIdentity */; };
+		8D5BBF4A2B1707BF00F8BCE5 /* SotoChimeSDKMediaPipelines in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF492B1707BF00F8BCE5 /* SotoChimeSDKMediaPipelines */; };
+		8D5BBF4C2B1707BF00F8BCE5 /* SotoChimeSDKMeetings in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF4B2B1707BF00F8BCE5 /* SotoChimeSDKMeetings */; };
+		8D5BBF4E2B1707BF00F8BCE5 /* SotoChimeSDKMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF4D2B1707BF00F8BCE5 /* SotoChimeSDKMessaging */; };
+		8D5BBF502B1707BF00F8BCE5 /* SotoChimeSDKVoice in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF4F2B1707BF00F8BCE5 /* SotoChimeSDKVoice */; };
+		8D5BBF522B1707BF00F8BCE5 /* SotoCleanRooms in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF512B1707BF00F8BCE5 /* SotoCleanRooms */; };
+		8D5BBF542B1707BF00F8BCE5 /* SotoCloud9 in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF532B1707BF00F8BCE5 /* SotoCloud9 */; };
+		8D5BBF562B1707BF00F8BCE5 /* SotoCloudControl in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF552B1707BF00F8BCE5 /* SotoCloudControl */; };
+		8D5BBF582B1707BF00F8BCE5 /* SotoCloudDirectory in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF572B1707BF00F8BCE5 /* SotoCloudDirectory */; };
+		8D5BBF5A2B1707BF00F8BCE5 /* SotoCloudFormation in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF592B1707BF00F8BCE5 /* SotoCloudFormation */; };
+		8D5BBF5C2B1707BF00F8BCE5 /* SotoCloudFront in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF5B2B1707BF00F8BCE5 /* SotoCloudFront */; };
+		8D5BBF5E2B1707BF00F8BCE5 /* SotoCloudHSM in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF5D2B1707BF00F8BCE5 /* SotoCloudHSM */; };
+		8D5BBF602B1707BF00F8BCE5 /* SotoCloudHSMV2 in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF5F2B1707BF00F8BCE5 /* SotoCloudHSMV2 */; };
+		8D5BBF622B1707BF00F8BCE5 /* SotoCloudSearch in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF612B1707BF00F8BCE5 /* SotoCloudSearch */; };
+		8D5BBF642B1707BF00F8BCE5 /* SotoCloudSearchDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF632B1707BF00F8BCE5 /* SotoCloudSearchDomain */; };
+		8D5BBF662B1707BF00F8BCE5 /* SotoCloudTrail in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF652B1707BF00F8BCE5 /* SotoCloudTrail */; };
+		8D5BBF682B1707BF00F8BCE5 /* SotoCloudTrailData in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF672B1707BF00F8BCE5 /* SotoCloudTrailData */; };
+		8D5BBF6A2B1707BF00F8BCE5 /* SotoCloudWatch in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF692B1707BF00F8BCE5 /* SotoCloudWatch */; };
+		8D5BBF6C2B1707BF00F8BCE5 /* SotoCloudWatchEvents in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF6B2B1707BF00F8BCE5 /* SotoCloudWatchEvents */; };
+		8D5BBF6E2B1707BF00F8BCE5 /* SotoCloudWatchLogs in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF6D2B1707BF00F8BCE5 /* SotoCloudWatchLogs */; };
+		8D5BBF702B1707BF00F8BCE5 /* SotoCodeArtifact in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF6F2B1707BF00F8BCE5 /* SotoCodeArtifact */; };
+		8D5BBF722B1707BF00F8BCE5 /* SotoCodeBuild in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF712B1707BF00F8BCE5 /* SotoCodeBuild */; };
+		8D5BBF742B1707BF00F8BCE5 /* SotoCodeCatalyst in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF732B1707BF00F8BCE5 /* SotoCodeCatalyst */; };
+		8D5BBF762B1707BF00F8BCE5 /* SotoCodeCommit in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF752B1707BF00F8BCE5 /* SotoCodeCommit */; };
+		8D5BBF782B1707BF00F8BCE5 /* SotoCodeDeploy in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF772B1707BF00F8BCE5 /* SotoCodeDeploy */; };
+		8D5BBF7A2B1707BF00F8BCE5 /* SotoCodeGuruProfiler in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF792B1707BF00F8BCE5 /* SotoCodeGuruProfiler */; };
+		8D5BBF7C2B1707BF00F8BCE5 /* SotoCodeGuruReviewer in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF7B2B1707BF00F8BCE5 /* SotoCodeGuruReviewer */; };
+		8D5BBF7E2B1707BF00F8BCE5 /* SotoCodeGuruSecurity in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF7D2B1707BF00F8BCE5 /* SotoCodeGuruSecurity */; };
+		8D5BBF802B1707BF00F8BCE5 /* SotoCodePipeline in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF7F2B1707BF00F8BCE5 /* SotoCodePipeline */; };
+		8D5BBF822B1707BF00F8BCE5 /* SotoCodeStar in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF812B1707BF00F8BCE5 /* SotoCodeStar */; };
+		8D5BBF842B1707BF00F8BCE5 /* SotoCodeStarConnections in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF832B1707BF00F8BCE5 /* SotoCodeStarConnections */; };
+		8D5BBF862B1707BF00F8BCE5 /* SotoCodeStarNotifications in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF852B1707BF00F8BCE5 /* SotoCodeStarNotifications */; };
+		8D5BBF882B1707BF00F8BCE5 /* SotoCognitoIdentity in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF872B1707BF00F8BCE5 /* SotoCognitoIdentity */; };
+		8D5BBF8A2B1707BF00F8BCE5 /* SotoCognitoIdentityProvider in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF892B1707BF00F8BCE5 /* SotoCognitoIdentityProvider */; };
+		8D5BBF8C2B1707BF00F8BCE5 /* SotoCognitoSync in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF8B2B1707BF00F8BCE5 /* SotoCognitoSync */; };
+		8D5BBF8E2B1707BF00F8BCE5 /* SotoComprehend in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF8D2B1707BF00F8BCE5 /* SotoComprehend */; };
+		8D5BBF902B1707BF00F8BCE5 /* SotoComprehendMedical in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF8F2B1707BF00F8BCE5 /* SotoComprehendMedical */; };
+		8D5BBF922B1707BF00F8BCE5 /* SotoComputeOptimizer in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF912B1707BF00F8BCE5 /* SotoComputeOptimizer */; };
+		8D5BBF942B1707BF00F8BCE5 /* SotoConfigService in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF932B1707BF00F8BCE5 /* SotoConfigService */; };
+		8D5BBF962B1707BF00F8BCE5 /* SotoConnect in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF952B1707BF00F8BCE5 /* SotoConnect */; };
+		8D5BBF982B1707BF00F8BCE5 /* SotoConnectCampaigns in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF972B1707BF00F8BCE5 /* SotoConnectCampaigns */; };
+		8D5BBF9A2B1707BF00F8BCE5 /* SotoConnectCases in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF992B1707BF00F8BCE5 /* SotoConnectCases */; };
+		8D5BBF9C2B1707BF00F8BCE5 /* SotoConnectContactLens in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF9B2B1707BF00F8BCE5 /* SotoConnectContactLens */; };
+		8D5BBF9E2B1707BF00F8BCE5 /* SotoConnectParticipant in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF9D2B1707BF00F8BCE5 /* SotoConnectParticipant */; };
+		8D5BBFA02B1707BF00F8BCE5 /* SotoControlTower in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBF9F2B1707BF00F8BCE5 /* SotoControlTower */; };
+		8D5BBFA22B1707BF00F8BCE5 /* SotoCostAndUsageReportService in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFA12B1707BF00F8BCE5 /* SotoCostAndUsageReportService */; };
+		8D5BBFA42B1707BF00F8BCE5 /* SotoCostExplorer in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFA32B1707BF00F8BCE5 /* SotoCostExplorer */; };
+		8D5BBFA62B1707BF00F8BCE5 /* SotoCustomerProfiles in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFA52B1707BF00F8BCE5 /* SotoCustomerProfiles */; };
+		8D5BBFA82B1707BF00F8BCE5 /* SotoDAX in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFA72B1707BF00F8BCE5 /* SotoDAX */; };
+		8D5BBFAA2B1707BF00F8BCE5 /* SotoDLM in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFA92B1707BF00F8BCE5 /* SotoDLM */; };
+		8D5BBFAC2B1707BF00F8BCE5 /* SotoDataBrew in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFAB2B1707BF00F8BCE5 /* SotoDataBrew */; };
+		8D5BBFAE2B1707BF00F8BCE5 /* SotoDataExchange in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFAD2B1707BF00F8BCE5 /* SotoDataExchange */; };
+		8D5BBFB02B1707BF00F8BCE5 /* SotoDataPipeline in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFAF2B1707BF00F8BCE5 /* SotoDataPipeline */; };
+		8D5BBFB22B1707BF00F8BCE5 /* SotoDataSync in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFB12B1707BF00F8BCE5 /* SotoDataSync */; };
+		8D5BBFB42B1707BF00F8BCE5 /* SotoDatabaseMigrationService in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFB32B1707BF00F8BCE5 /* SotoDatabaseMigrationService */; };
+		8D5BBFB62B1707BF00F8BCE5 /* SotoDetective in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFB52B1707BF00F8BCE5 /* SotoDetective */; };
+		8D5BBFB82B1707BF00F8BCE5 /* SotoDevOpsGuru in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFB72B1707BF00F8BCE5 /* SotoDevOpsGuru */; };
+		8D5BBFBA2B1707BF00F8BCE5 /* SotoDeviceFarm in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFB92B1707BF00F8BCE5 /* SotoDeviceFarm */; };
+		8D5BBFBC2B1707BF00F8BCE5 /* SotoDirectConnect in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFBB2B1707BF00F8BCE5 /* SotoDirectConnect */; };
+		8D5BBFBE2B1707BF00F8BCE5 /* SotoDirectoryService in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFBD2B1707BF00F8BCE5 /* SotoDirectoryService */; };
+		8D5BBFC02B1707BF00F8BCE5 /* SotoDocDB in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFBF2B1707BF00F8BCE5 /* SotoDocDB */; };
+		8D5BBFC22B1707BF00F8BCE5 /* SotoDocDBElastic in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFC12B1707BF00F8BCE5 /* SotoDocDBElastic */; };
+		8D5BBFC42B1707BF00F8BCE5 /* SotoDrs in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFC32B1707BF00F8BCE5 /* SotoDrs */; };
+		8D5BBFC62B1707BF00F8BCE5 /* SotoDynamoDB in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFC52B1707BF00F8BCE5 /* SotoDynamoDB */; };
+		8D5BBFC82B1707BF00F8BCE5 /* SotoDynamoDBStreams in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFC72B1707BF00F8BCE5 /* SotoDynamoDBStreams */; };
+		8D5BBFCA2B1707BF00F8BCE5 /* SotoEBS in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5BBFC92B1707BF00F8BCE5 /* SotoEBS */; };
 		9427248D2AA8271E006F0DBF /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9427248C2AA8271E006F0DBF /* QuestionView.swift */; };
 		9427248F2AA82CC6006F0DBF /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9427248E2AA82CC6006F0DBF /* Questions.swift */; };
 		9441653C2B117CE8006AB1DF /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9441653B2B117CE8006AB1DF /* DBManager.swift */; };
@@ -33,8 +136,6 @@
 		948045BB2B03EDBA006B9B25 /* MultiSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948045BA2B03EDBA006B9B25 /* MultiSelectView.swift */; };
 		948045BD2B03F3AE006B9B25 /* MultipleChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948045BC2B03F3AD006B9B25 /* MultipleChoiceView.swift */; };
 		948996252AD9E19D003C6CD8 /* JsonFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948996242AD9E19D003C6CD8 /* JsonFileManager.swift */; };
-		94A435322B1184B600FC3A0B /* AWSDynamoDB in Frameworks */ = {isa = PBXBuildFile; productRef = 94A435312B1184B600FC3A0B /* AWSDynamoDB */; };
-		94A435342B1184B600FC3A0B /* AWSDynamoDBStreams in Frameworks */ = {isa = PBXBuildFile; productRef = 94A435332B1184B600FC3A0B /* AWSDynamoDBStreams */; };
 		BF6DE02D2AAE79F0004E19F8 /* AWSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6DE02C2AAE79F0004E19F8 /* AWSManager.swift */; };
 		BF6DE0302AAE82E8004E19F8 /* SotoS3 in Frameworks */ = {isa = PBXBuildFile; productRef = BF6DE02F2AAE82E8004E19F8 /* SotoS3 */; };
 /* End PBXBuildFile section */
@@ -75,10 +176,111 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D5BBF302B1707BF00F8BCE5 /* SotoAthena in Frameworks */,
+				8D5BBF822B1707BF00F8BCE5 /* SotoCodeStar in Frameworks */,
+				8D5BBFBA2B1707BF00F8BCE5 /* SotoDeviceFarm in Frameworks */,
 				5A79D89E2AF5E75C00682DC2 /* WrappingHStack in Frameworks */,
-				94A435322B1184B600FC3A0B /* AWSDynamoDB in Frameworks */,
-				94A435342B1184B600FC3A0B /* AWSDynamoDBStreams in Frameworks */,
+				8D5BBF082B1707BF00F8BCE5 /* SotoAccount in Frameworks */,
+				8D5BBF6E2B1707BF00F8BCE5 /* SotoCloudWatchLogs in Frameworks */,
+				8D5BBFAC2B1707BF00F8BCE5 /* SotoDataBrew in Frameworks */,
+				8D5BBF9C2B1707BF00F8BCE5 /* SotoConnectContactLens in Frameworks */,
+				8D5BBF962B1707BF00F8BCE5 /* SotoConnect in Frameworks */,
+				8D5BBF402B1707BF00F8BCE5 /* SotoBillingconductor in Frameworks */,
+				8D5BBF2E2B1707BF00F8BCE5 /* SotoApplicationInsights in Frameworks */,
+				8D5BBFC62B1707BF00F8BCE5 /* SotoDynamoDB in Frameworks */,
+				8D5BBF4E2B1707BF00F8BCE5 /* SotoChimeSDKMessaging in Frameworks */,
+				8D5BBF262B1707BF00F8BCE5 /* SotoAppflow in Frameworks */,
+				8D5BBF222B1707BF00F8BCE5 /* SotoAppStream in Frameworks */,
+				8D5BBFAE2B1707BF00F8BCE5 /* SotoDataExchange in Frameworks */,
+				8D5BBF882B1707BF00F8BCE5 /* SotoCognitoIdentity in Frameworks */,
+				8D5BBF102B1707BF00F8BCE5 /* SotoAmplifyBackend in Frameworks */,
+				8D5BBF1E2B1707BF00F8BCE5 /* SotoAppMesh in Frameworks */,
+				8D5BBF482B1707BF00F8BCE5 /* SotoChimeSDKIdentity in Frameworks */,
+				8D5BBF122B1707BF00F8BCE5 /* SotoAmplifyUIBuilder in Frameworks */,
+				8D5BBF4C2B1707BF00F8BCE5 /* SotoChimeSDKMeetings in Frameworks */,
+				8D5BBFC42B1707BF00F8BCE5 /* SotoDrs in Frameworks */,
+				8D5BBFB02B1707BF00F8BCE5 /* SotoDataPipeline in Frameworks */,
+				8D5BBF862B1707BF00F8BCE5 /* SotoCodeStarNotifications in Frameworks */,
+				8D5BBF442B1707BF00F8BCE5 /* SotoBudgets in Frameworks */,
+				8D5BBF382B1707BF00F8BCE5 /* SotoBackup in Frameworks */,
+				8D5BBF322B1707BF00F8BCE5 /* SotoAuditManager in Frameworks */,
+				8D5BBF522B1707BF00F8BCE5 /* SotoCleanRooms in Frameworks */,
+				8D5BBFA02B1707BF00F8BCE5 /* SotoControlTower in Frameworks */,
+				8D5BBF8A2B1707BF00F8BCE5 /* SotoCognitoIdentityProvider in Frameworks */,
+				8D5BBF4A2B1707BF00F8BCE5 /* SotoChimeSDKMediaPipelines in Frameworks */,
+				8D5BBF602B1707BF00F8BCE5 /* SotoCloudHSMV2 in Frameworks */,
+				8D5BBFCA2B1707BF00F8BCE5 /* SotoEBS in Frameworks */,
+				8D5BBF802B1707BF00F8BCE5 /* SotoCodePipeline in Frameworks */,
+				8D5BBF2C2B1707BF00F8BCE5 /* SotoApplicationDiscoveryService in Frameworks */,
+				8D5BBF9E2B1707BF00F8BCE5 /* SotoConnectParticipant in Frameworks */,
+				8D5BBFA42B1707BF00F8BCE5 /* SotoCostExplorer in Frameworks */,
+				8D5BBF702B1707BF00F8BCE5 /* SotoCodeArtifact in Frameworks */,
+				8D5BBF8E2B1707BF00F8BCE5 /* SotoComprehend in Frameworks */,
+				8D5BBF3E2B1707BF00F8BCE5 /* SotoBatch in Frameworks */,
+				8D5BBFA82B1707BF00F8BCE5 /* SotoDAX in Frameworks */,
+				8D5BBF362B1707BF00F8BCE5 /* SotoAutoScalingPlans in Frameworks */,
+				8D5BBF342B1707BF00F8BCE5 /* SotoAutoScaling in Frameworks */,
+				8D5BBF6C2B1707BF00F8BCE5 /* SotoCloudWatchEvents in Frameworks */,
+				8D5BBF142B1707BF00F8BCE5 /* SotoApiGatewayManagementApi in Frameworks */,
+				8D5BBFC02B1707BF00F8BCE5 /* SotoDocDB in Frameworks */,
+				8D5BBF062B1707BF00F8BCE5 /* SotoAccessAnalyzer in Frameworks */,
+				8D5BBFB22B1707BF00F8BCE5 /* SotoDataSync in Frameworks */,
+				8D5BBF3C2B1707BF00F8BCE5 /* SotoBackupStorage in Frameworks */,
+				8D5BBF7E2B1707BF00F8BCE5 /* SotoCodeGuruSecurity in Frameworks */,
+				8D5BBF5C2B1707BF00F8BCE5 /* SotoCloudFront in Frameworks */,
+				8D5BBF3A2B1707BF00F8BCE5 /* SotoBackupGateway in Frameworks */,
+				8D5BBF202B1707BF00F8BCE5 /* SotoAppRunner in Frameworks */,
+				8D5BBF722B1707BF00F8BCE5 /* SotoCodeBuild in Frameworks */,
+				8D5BBF182B1707BF00F8BCE5 /* SotoAppConfig in Frameworks */,
+				8D5BBF562B1707BF00F8BCE5 /* SotoCloudControl in Frameworks */,
+				8D5BBF422B1707BF00F8BCE5 /* SotoBraket in Frameworks */,
+				8D5BBFB82B1707BF00F8BCE5 /* SotoDevOpsGuru in Frameworks */,
+				8D5BBF2A2B1707BF00F8BCE5 /* SotoApplicationCostProfiler in Frameworks */,
+				8D5BBF782B1707BF00F8BCE5 /* SotoCodeDeploy in Frameworks */,
+				8D5BBF8C2B1707BF00F8BCE5 /* SotoCognitoSync in Frameworks */,
+				8D5BBF502B1707BF00F8BCE5 /* SotoChimeSDKVoice in Frameworks */,
+				8D5BBEFE2B1707BF00F8BCE5 /* SotoACM in Frameworks */,
+				8D5BBF282B1707BF00F8BCE5 /* SotoApplicationAutoScaling in Frameworks */,
+				8D5BBF1A2B1707BF00F8BCE5 /* SotoAppConfigData in Frameworks */,
+				8D5BBF542B1707BF00F8BCE5 /* SotoCloud9 in Frameworks */,
+				8D5BBFC82B1707BF00F8BCE5 /* SotoDynamoDBStreams in Frameworks */,
+				8D5BBF642B1707BF00F8BCE5 /* SotoCloudSearchDomain in Frameworks */,
+				8D5BBFBE2B1707BF00F8BCE5 /* SotoDirectoryService in Frameworks */,
+				8D5BBF682B1707BF00F8BCE5 /* SotoCloudTrailData in Frameworks */,
+				8D5BBFA22B1707BF00F8BCE5 /* SotoCostAndUsageReportService in Frameworks */,
+				8D5BBF742B1707BF00F8BCE5 /* SotoCodeCatalyst in Frameworks */,
+				8D5BBF7C2B1707BF00F8BCE5 /* SotoCodeGuruReviewer in Frameworks */,
+				8D5BBFB62B1707BF00F8BCE5 /* SotoDetective in Frameworks */,
+				8D5BBF5E2B1707BF00F8BCE5 /* SotoCloudHSM in Frameworks */,
+				8D5BBFAA2B1707BF00F8BCE5 /* SotoDLM in Frameworks */,
+				8D5BBF002B1707BF00F8BCE5 /* SotoACMPCA in Frameworks */,
 				BF6DE0302AAE82E8004E19F8 /* SotoS3 in Frameworks */,
+				8D5BBF982B1707BF00F8BCE5 /* SotoConnectCampaigns in Frameworks */,
+				8D5BBF762B1707BF00F8BCE5 /* SotoCodeCommit in Frameworks */,
+				8D5BBF0E2B1707BF00F8BCE5 /* SotoAmplify in Frameworks */,
+				8D5BBFA62B1707BF00F8BCE5 /* SotoCustomerProfiles in Frameworks */,
+				8D5BBF162B1707BF00F8BCE5 /* SotoApiGatewayV2 in Frameworks */,
+				8D5BBF942B1707BF00F8BCE5 /* SotoConfigService in Frameworks */,
+				8D5BBFB42B1707BF00F8BCE5 /* SotoDatabaseMigrationService in Frameworks */,
+				8D5BBF042B1707BF00F8BCE5 /* SotoARCZonalShift in Frameworks */,
+				8D5BBF622B1707BF00F8BCE5 /* SotoCloudSearch in Frameworks */,
+				8D5BBFBC2B1707BF00F8BCE5 /* SotoDirectConnect in Frameworks */,
+				8D5BBF462B1707BF00F8BCE5 /* SotoChime in Frameworks */,
+				8D5BBF582B1707BF00F8BCE5 /* SotoCloudDirectory in Frameworks */,
+				8D5BBF022B1707BF00F8BCE5 /* SotoAPIGateway in Frameworks */,
+				8D5BBF1C2B1707BF00F8BCE5 /* SotoAppIntegrations in Frameworks */,
+				8D5BBF6A2B1707BF00F8BCE5 /* SotoCloudWatch in Frameworks */,
+				8D5BBF9A2B1707BF00F8BCE5 /* SotoConnectCases in Frameworks */,
+				8D5BBFC22B1707BF00F8BCE5 /* SotoDocDBElastic in Frameworks */,
+				8D5BBF5A2B1707BF00F8BCE5 /* SotoCloudFormation in Frameworks */,
+				8D5BBF842B1707BF00F8BCE5 /* SotoCodeStarConnections in Frameworks */,
+				8D5BBF7A2B1707BF00F8BCE5 /* SotoCodeGuruProfiler in Frameworks */,
+				8D5BBF922B1707BF00F8BCE5 /* SotoComputeOptimizer in Frameworks */,
+				8D5BBF242B1707BF00F8BCE5 /* SotoAppSync in Frameworks */,
+				8D5BBF0C2B1707BF00F8BCE5 /* SotoAmp in Frameworks */,
+				8D5BBF662B1707BF00F8BCE5 /* SotoCloudTrail in Frameworks */,
+				8D5BBF0A2B1707BF00F8BCE5 /* SotoAlexaForBusiness in Frameworks */,
+				8D5BBF902B1707BF00F8BCE5 /* SotoComprehendMedical in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,8 +388,109 @@
 			packageProductDependencies = (
 				BF6DE02F2AAE82E8004E19F8 /* SotoS3 */,
 				5A79D89D2AF5E75C00682DC2 /* WrappingHStack */,
-				94A435312B1184B600FC3A0B /* AWSDynamoDB */,
-				94A435332B1184B600FC3A0B /* AWSDynamoDBStreams */,
+				8D5BBEFD2B1707BF00F8BCE5 /* SotoACM */,
+				8D5BBEFF2B1707BF00F8BCE5 /* SotoACMPCA */,
+				8D5BBF012B1707BF00F8BCE5 /* SotoAPIGateway */,
+				8D5BBF032B1707BF00F8BCE5 /* SotoARCZonalShift */,
+				8D5BBF052B1707BF00F8BCE5 /* SotoAccessAnalyzer */,
+				8D5BBF072B1707BF00F8BCE5 /* SotoAccount */,
+				8D5BBF092B1707BF00F8BCE5 /* SotoAlexaForBusiness */,
+				8D5BBF0B2B1707BF00F8BCE5 /* SotoAmp */,
+				8D5BBF0D2B1707BF00F8BCE5 /* SotoAmplify */,
+				8D5BBF0F2B1707BF00F8BCE5 /* SotoAmplifyBackend */,
+				8D5BBF112B1707BF00F8BCE5 /* SotoAmplifyUIBuilder */,
+				8D5BBF132B1707BF00F8BCE5 /* SotoApiGatewayManagementApi */,
+				8D5BBF152B1707BF00F8BCE5 /* SotoApiGatewayV2 */,
+				8D5BBF172B1707BF00F8BCE5 /* SotoAppConfig */,
+				8D5BBF192B1707BF00F8BCE5 /* SotoAppConfigData */,
+				8D5BBF1B2B1707BF00F8BCE5 /* SotoAppIntegrations */,
+				8D5BBF1D2B1707BF00F8BCE5 /* SotoAppMesh */,
+				8D5BBF1F2B1707BF00F8BCE5 /* SotoAppRunner */,
+				8D5BBF212B1707BF00F8BCE5 /* SotoAppStream */,
+				8D5BBF232B1707BF00F8BCE5 /* SotoAppSync */,
+				8D5BBF252B1707BF00F8BCE5 /* SotoAppflow */,
+				8D5BBF272B1707BF00F8BCE5 /* SotoApplicationAutoScaling */,
+				8D5BBF292B1707BF00F8BCE5 /* SotoApplicationCostProfiler */,
+				8D5BBF2B2B1707BF00F8BCE5 /* SotoApplicationDiscoveryService */,
+				8D5BBF2D2B1707BF00F8BCE5 /* SotoApplicationInsights */,
+				8D5BBF2F2B1707BF00F8BCE5 /* SotoAthena */,
+				8D5BBF312B1707BF00F8BCE5 /* SotoAuditManager */,
+				8D5BBF332B1707BF00F8BCE5 /* SotoAutoScaling */,
+				8D5BBF352B1707BF00F8BCE5 /* SotoAutoScalingPlans */,
+				8D5BBF372B1707BF00F8BCE5 /* SotoBackup */,
+				8D5BBF392B1707BF00F8BCE5 /* SotoBackupGateway */,
+				8D5BBF3B2B1707BF00F8BCE5 /* SotoBackupStorage */,
+				8D5BBF3D2B1707BF00F8BCE5 /* SotoBatch */,
+				8D5BBF3F2B1707BF00F8BCE5 /* SotoBillingconductor */,
+				8D5BBF412B1707BF00F8BCE5 /* SotoBraket */,
+				8D5BBF432B1707BF00F8BCE5 /* SotoBudgets */,
+				8D5BBF452B1707BF00F8BCE5 /* SotoChime */,
+				8D5BBF472B1707BF00F8BCE5 /* SotoChimeSDKIdentity */,
+				8D5BBF492B1707BF00F8BCE5 /* SotoChimeSDKMediaPipelines */,
+				8D5BBF4B2B1707BF00F8BCE5 /* SotoChimeSDKMeetings */,
+				8D5BBF4D2B1707BF00F8BCE5 /* SotoChimeSDKMessaging */,
+				8D5BBF4F2B1707BF00F8BCE5 /* SotoChimeSDKVoice */,
+				8D5BBF512B1707BF00F8BCE5 /* SotoCleanRooms */,
+				8D5BBF532B1707BF00F8BCE5 /* SotoCloud9 */,
+				8D5BBF552B1707BF00F8BCE5 /* SotoCloudControl */,
+				8D5BBF572B1707BF00F8BCE5 /* SotoCloudDirectory */,
+				8D5BBF592B1707BF00F8BCE5 /* SotoCloudFormation */,
+				8D5BBF5B2B1707BF00F8BCE5 /* SotoCloudFront */,
+				8D5BBF5D2B1707BF00F8BCE5 /* SotoCloudHSM */,
+				8D5BBF5F2B1707BF00F8BCE5 /* SotoCloudHSMV2 */,
+				8D5BBF612B1707BF00F8BCE5 /* SotoCloudSearch */,
+				8D5BBF632B1707BF00F8BCE5 /* SotoCloudSearchDomain */,
+				8D5BBF652B1707BF00F8BCE5 /* SotoCloudTrail */,
+				8D5BBF672B1707BF00F8BCE5 /* SotoCloudTrailData */,
+				8D5BBF692B1707BF00F8BCE5 /* SotoCloudWatch */,
+				8D5BBF6B2B1707BF00F8BCE5 /* SotoCloudWatchEvents */,
+				8D5BBF6D2B1707BF00F8BCE5 /* SotoCloudWatchLogs */,
+				8D5BBF6F2B1707BF00F8BCE5 /* SotoCodeArtifact */,
+				8D5BBF712B1707BF00F8BCE5 /* SotoCodeBuild */,
+				8D5BBF732B1707BF00F8BCE5 /* SotoCodeCatalyst */,
+				8D5BBF752B1707BF00F8BCE5 /* SotoCodeCommit */,
+				8D5BBF772B1707BF00F8BCE5 /* SotoCodeDeploy */,
+				8D5BBF792B1707BF00F8BCE5 /* SotoCodeGuruProfiler */,
+				8D5BBF7B2B1707BF00F8BCE5 /* SotoCodeGuruReviewer */,
+				8D5BBF7D2B1707BF00F8BCE5 /* SotoCodeGuruSecurity */,
+				8D5BBF7F2B1707BF00F8BCE5 /* SotoCodePipeline */,
+				8D5BBF812B1707BF00F8BCE5 /* SotoCodeStar */,
+				8D5BBF832B1707BF00F8BCE5 /* SotoCodeStarConnections */,
+				8D5BBF852B1707BF00F8BCE5 /* SotoCodeStarNotifications */,
+				8D5BBF872B1707BF00F8BCE5 /* SotoCognitoIdentity */,
+				8D5BBF892B1707BF00F8BCE5 /* SotoCognitoIdentityProvider */,
+				8D5BBF8B2B1707BF00F8BCE5 /* SotoCognitoSync */,
+				8D5BBF8D2B1707BF00F8BCE5 /* SotoComprehend */,
+				8D5BBF8F2B1707BF00F8BCE5 /* SotoComprehendMedical */,
+				8D5BBF912B1707BF00F8BCE5 /* SotoComputeOptimizer */,
+				8D5BBF932B1707BF00F8BCE5 /* SotoConfigService */,
+				8D5BBF952B1707BF00F8BCE5 /* SotoConnect */,
+				8D5BBF972B1707BF00F8BCE5 /* SotoConnectCampaigns */,
+				8D5BBF992B1707BF00F8BCE5 /* SotoConnectCases */,
+				8D5BBF9B2B1707BF00F8BCE5 /* SotoConnectContactLens */,
+				8D5BBF9D2B1707BF00F8BCE5 /* SotoConnectParticipant */,
+				8D5BBF9F2B1707BF00F8BCE5 /* SotoControlTower */,
+				8D5BBFA12B1707BF00F8BCE5 /* SotoCostAndUsageReportService */,
+				8D5BBFA32B1707BF00F8BCE5 /* SotoCostExplorer */,
+				8D5BBFA52B1707BF00F8BCE5 /* SotoCustomerProfiles */,
+				8D5BBFA72B1707BF00F8BCE5 /* SotoDAX */,
+				8D5BBFA92B1707BF00F8BCE5 /* SotoDLM */,
+				8D5BBFAB2B1707BF00F8BCE5 /* SotoDataBrew */,
+				8D5BBFAD2B1707BF00F8BCE5 /* SotoDataExchange */,
+				8D5BBFAF2B1707BF00F8BCE5 /* SotoDataPipeline */,
+				8D5BBFB12B1707BF00F8BCE5 /* SotoDataSync */,
+				8D5BBFB32B1707BF00F8BCE5 /* SotoDatabaseMigrationService */,
+				8D5BBFB52B1707BF00F8BCE5 /* SotoDetective */,
+				8D5BBFB72B1707BF00F8BCE5 /* SotoDevOpsGuru */,
+				8D5BBFB92B1707BF00F8BCE5 /* SotoDeviceFarm */,
+				8D5BBFBB2B1707BF00F8BCE5 /* SotoDirectConnect */,
+				8D5BBFBD2B1707BF00F8BCE5 /* SotoDirectoryService */,
+				8D5BBFBF2B1707BF00F8BCE5 /* SotoDocDB */,
+				8D5BBFC12B1707BF00F8BCE5 /* SotoDocDBElastic */,
+				8D5BBFC32B1707BF00F8BCE5 /* SotoDrs */,
+				8D5BBFC52B1707BF00F8BCE5 /* SotoDynamoDB */,
+				8D5BBFC72B1707BF00F8BCE5 /* SotoDynamoDBStreams */,
+				8D5BBFC92B1707BF00F8BCE5 /* SotoEBS */,
 			);
 			productName = CSDS395;
 			productReference = 5A9D80852AA2E4E700F9677C /* CSDS395.app */;
@@ -220,7 +523,6 @@
 			packageReferences = (
 				BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */,
 				5A79D89C2AF5E75C00682DC2 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
-				94A435302B1184B600FC3A0B /* XCRemoteSwiftPackageReference "aws-sdk-swift" */,
 			);
 			productRefGroup = 5A9D80862AA2E4E700F9677C /* Products */;
 			projectDirPath = "";
@@ -488,14 +790,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		94A435302B1184B600FC3A0B /* XCRemoteSwiftPackageReference "aws-sdk-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/awslabs/aws-sdk-swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.31.0;
-			};
-		};
 		BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/soto-project/soto.git";
@@ -512,15 +806,520 @@
 			package = 5A79D89C2AF5E75C00682DC2 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
 			productName = WrappingHStack;
 		};
-		94A435312B1184B600FC3A0B /* AWSDynamoDB */ = {
+		8D5BBEFD2B1707BF00F8BCE5 /* SotoACM */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 94A435302B1184B600FC3A0B /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
-			productName = AWSDynamoDB;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoACM;
 		};
-		94A435332B1184B600FC3A0B /* AWSDynamoDBStreams */ = {
+		8D5BBEFF2B1707BF00F8BCE5 /* SotoACMPCA */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 94A435302B1184B600FC3A0B /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
-			productName = AWSDynamoDBStreams;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoACMPCA;
+		};
+		8D5BBF012B1707BF00F8BCE5 /* SotoAPIGateway */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAPIGateway;
+		};
+		8D5BBF032B1707BF00F8BCE5 /* SotoARCZonalShift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoARCZonalShift;
+		};
+		8D5BBF052B1707BF00F8BCE5 /* SotoAccessAnalyzer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAccessAnalyzer;
+		};
+		8D5BBF072B1707BF00F8BCE5 /* SotoAccount */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAccount;
+		};
+		8D5BBF092B1707BF00F8BCE5 /* SotoAlexaForBusiness */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAlexaForBusiness;
+		};
+		8D5BBF0B2B1707BF00F8BCE5 /* SotoAmp */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAmp;
+		};
+		8D5BBF0D2B1707BF00F8BCE5 /* SotoAmplify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAmplify;
+		};
+		8D5BBF0F2B1707BF00F8BCE5 /* SotoAmplifyBackend */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAmplifyBackend;
+		};
+		8D5BBF112B1707BF00F8BCE5 /* SotoAmplifyUIBuilder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAmplifyUIBuilder;
+		};
+		8D5BBF132B1707BF00F8BCE5 /* SotoApiGatewayManagementApi */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoApiGatewayManagementApi;
+		};
+		8D5BBF152B1707BF00F8BCE5 /* SotoApiGatewayV2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoApiGatewayV2;
+		};
+		8D5BBF172B1707BF00F8BCE5 /* SotoAppConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAppConfig;
+		};
+		8D5BBF192B1707BF00F8BCE5 /* SotoAppConfigData */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAppConfigData;
+		};
+		8D5BBF1B2B1707BF00F8BCE5 /* SotoAppIntegrations */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAppIntegrations;
+		};
+		8D5BBF1D2B1707BF00F8BCE5 /* SotoAppMesh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAppMesh;
+		};
+		8D5BBF1F2B1707BF00F8BCE5 /* SotoAppRunner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAppRunner;
+		};
+		8D5BBF212B1707BF00F8BCE5 /* SotoAppStream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAppStream;
+		};
+		8D5BBF232B1707BF00F8BCE5 /* SotoAppSync */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAppSync;
+		};
+		8D5BBF252B1707BF00F8BCE5 /* SotoAppflow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAppflow;
+		};
+		8D5BBF272B1707BF00F8BCE5 /* SotoApplicationAutoScaling */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoApplicationAutoScaling;
+		};
+		8D5BBF292B1707BF00F8BCE5 /* SotoApplicationCostProfiler */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoApplicationCostProfiler;
+		};
+		8D5BBF2B2B1707BF00F8BCE5 /* SotoApplicationDiscoveryService */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoApplicationDiscoveryService;
+		};
+		8D5BBF2D2B1707BF00F8BCE5 /* SotoApplicationInsights */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoApplicationInsights;
+		};
+		8D5BBF2F2B1707BF00F8BCE5 /* SotoAthena */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAthena;
+		};
+		8D5BBF312B1707BF00F8BCE5 /* SotoAuditManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAuditManager;
+		};
+		8D5BBF332B1707BF00F8BCE5 /* SotoAutoScaling */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAutoScaling;
+		};
+		8D5BBF352B1707BF00F8BCE5 /* SotoAutoScalingPlans */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoAutoScalingPlans;
+		};
+		8D5BBF372B1707BF00F8BCE5 /* SotoBackup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoBackup;
+		};
+		8D5BBF392B1707BF00F8BCE5 /* SotoBackupGateway */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoBackupGateway;
+		};
+		8D5BBF3B2B1707BF00F8BCE5 /* SotoBackupStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoBackupStorage;
+		};
+		8D5BBF3D2B1707BF00F8BCE5 /* SotoBatch */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoBatch;
+		};
+		8D5BBF3F2B1707BF00F8BCE5 /* SotoBillingconductor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoBillingconductor;
+		};
+		8D5BBF412B1707BF00F8BCE5 /* SotoBraket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoBraket;
+		};
+		8D5BBF432B1707BF00F8BCE5 /* SotoBudgets */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoBudgets;
+		};
+		8D5BBF452B1707BF00F8BCE5 /* SotoChime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoChime;
+		};
+		8D5BBF472B1707BF00F8BCE5 /* SotoChimeSDKIdentity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoChimeSDKIdentity;
+		};
+		8D5BBF492B1707BF00F8BCE5 /* SotoChimeSDKMediaPipelines */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoChimeSDKMediaPipelines;
+		};
+		8D5BBF4B2B1707BF00F8BCE5 /* SotoChimeSDKMeetings */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoChimeSDKMeetings;
+		};
+		8D5BBF4D2B1707BF00F8BCE5 /* SotoChimeSDKMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoChimeSDKMessaging;
+		};
+		8D5BBF4F2B1707BF00F8BCE5 /* SotoChimeSDKVoice */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoChimeSDKVoice;
+		};
+		8D5BBF512B1707BF00F8BCE5 /* SotoCleanRooms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCleanRooms;
+		};
+		8D5BBF532B1707BF00F8BCE5 /* SotoCloud9 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCloud9;
+		};
+		8D5BBF552B1707BF00F8BCE5 /* SotoCloudControl */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCloudControl;
+		};
+		8D5BBF572B1707BF00F8BCE5 /* SotoCloudDirectory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCloudDirectory;
+		};
+		8D5BBF592B1707BF00F8BCE5 /* SotoCloudFormation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCloudFormation;
+		};
+		8D5BBF5B2B1707BF00F8BCE5 /* SotoCloudFront */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCloudFront;
+		};
+		8D5BBF5D2B1707BF00F8BCE5 /* SotoCloudHSM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCloudHSM;
+		};
+		8D5BBF5F2B1707BF00F8BCE5 /* SotoCloudHSMV2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCloudHSMV2;
+		};
+		8D5BBF612B1707BF00F8BCE5 /* SotoCloudSearch */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCloudSearch;
+		};
+		8D5BBF632B1707BF00F8BCE5 /* SotoCloudSearchDomain */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCloudSearchDomain;
+		};
+		8D5BBF652B1707BF00F8BCE5 /* SotoCloudTrail */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCloudTrail;
+		};
+		8D5BBF672B1707BF00F8BCE5 /* SotoCloudTrailData */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCloudTrailData;
+		};
+		8D5BBF692B1707BF00F8BCE5 /* SotoCloudWatch */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCloudWatch;
+		};
+		8D5BBF6B2B1707BF00F8BCE5 /* SotoCloudWatchEvents */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCloudWatchEvents;
+		};
+		8D5BBF6D2B1707BF00F8BCE5 /* SotoCloudWatchLogs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCloudWatchLogs;
+		};
+		8D5BBF6F2B1707BF00F8BCE5 /* SotoCodeArtifact */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCodeArtifact;
+		};
+		8D5BBF712B1707BF00F8BCE5 /* SotoCodeBuild */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCodeBuild;
+		};
+		8D5BBF732B1707BF00F8BCE5 /* SotoCodeCatalyst */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCodeCatalyst;
+		};
+		8D5BBF752B1707BF00F8BCE5 /* SotoCodeCommit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCodeCommit;
+		};
+		8D5BBF772B1707BF00F8BCE5 /* SotoCodeDeploy */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCodeDeploy;
+		};
+		8D5BBF792B1707BF00F8BCE5 /* SotoCodeGuruProfiler */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCodeGuruProfiler;
+		};
+		8D5BBF7B2B1707BF00F8BCE5 /* SotoCodeGuruReviewer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCodeGuruReviewer;
+		};
+		8D5BBF7D2B1707BF00F8BCE5 /* SotoCodeGuruSecurity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCodeGuruSecurity;
+		};
+		8D5BBF7F2B1707BF00F8BCE5 /* SotoCodePipeline */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCodePipeline;
+		};
+		8D5BBF812B1707BF00F8BCE5 /* SotoCodeStar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCodeStar;
+		};
+		8D5BBF832B1707BF00F8BCE5 /* SotoCodeStarConnections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCodeStarConnections;
+		};
+		8D5BBF852B1707BF00F8BCE5 /* SotoCodeStarNotifications */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCodeStarNotifications;
+		};
+		8D5BBF872B1707BF00F8BCE5 /* SotoCognitoIdentity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCognitoIdentity;
+		};
+		8D5BBF892B1707BF00F8BCE5 /* SotoCognitoIdentityProvider */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCognitoIdentityProvider;
+		};
+		8D5BBF8B2B1707BF00F8BCE5 /* SotoCognitoSync */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCognitoSync;
+		};
+		8D5BBF8D2B1707BF00F8BCE5 /* SotoComprehend */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoComprehend;
+		};
+		8D5BBF8F2B1707BF00F8BCE5 /* SotoComprehendMedical */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoComprehendMedical;
+		};
+		8D5BBF912B1707BF00F8BCE5 /* SotoComputeOptimizer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoComputeOptimizer;
+		};
+		8D5BBF932B1707BF00F8BCE5 /* SotoConfigService */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoConfigService;
+		};
+		8D5BBF952B1707BF00F8BCE5 /* SotoConnect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoConnect;
+		};
+		8D5BBF972B1707BF00F8BCE5 /* SotoConnectCampaigns */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoConnectCampaigns;
+		};
+		8D5BBF992B1707BF00F8BCE5 /* SotoConnectCases */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoConnectCases;
+		};
+		8D5BBF9B2B1707BF00F8BCE5 /* SotoConnectContactLens */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoConnectContactLens;
+		};
+		8D5BBF9D2B1707BF00F8BCE5 /* SotoConnectParticipant */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoConnectParticipant;
+		};
+		8D5BBF9F2B1707BF00F8BCE5 /* SotoControlTower */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoControlTower;
+		};
+		8D5BBFA12B1707BF00F8BCE5 /* SotoCostAndUsageReportService */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCostAndUsageReportService;
+		};
+		8D5BBFA32B1707BF00F8BCE5 /* SotoCostExplorer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCostExplorer;
+		};
+		8D5BBFA52B1707BF00F8BCE5 /* SotoCustomerProfiles */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoCustomerProfiles;
+		};
+		8D5BBFA72B1707BF00F8BCE5 /* SotoDAX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoDAX;
+		};
+		8D5BBFA92B1707BF00F8BCE5 /* SotoDLM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoDLM;
+		};
+		8D5BBFAB2B1707BF00F8BCE5 /* SotoDataBrew */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoDataBrew;
+		};
+		8D5BBFAD2B1707BF00F8BCE5 /* SotoDataExchange */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoDataExchange;
+		};
+		8D5BBFAF2B1707BF00F8BCE5 /* SotoDataPipeline */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoDataPipeline;
+		};
+		8D5BBFB12B1707BF00F8BCE5 /* SotoDataSync */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoDataSync;
+		};
+		8D5BBFB32B1707BF00F8BCE5 /* SotoDatabaseMigrationService */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoDatabaseMigrationService;
+		};
+		8D5BBFB52B1707BF00F8BCE5 /* SotoDetective */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoDetective;
+		};
+		8D5BBFB72B1707BF00F8BCE5 /* SotoDevOpsGuru */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoDevOpsGuru;
+		};
+		8D5BBFB92B1707BF00F8BCE5 /* SotoDeviceFarm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoDeviceFarm;
+		};
+		8D5BBFBB2B1707BF00F8BCE5 /* SotoDirectConnect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoDirectConnect;
+		};
+		8D5BBFBD2B1707BF00F8BCE5 /* SotoDirectoryService */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoDirectoryService;
+		};
+		8D5BBFBF2B1707BF00F8BCE5 /* SotoDocDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoDocDB;
+		};
+		8D5BBFC12B1707BF00F8BCE5 /* SotoDocDBElastic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoDocDBElastic;
+		};
+		8D5BBFC32B1707BF00F8BCE5 /* SotoDrs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoDrs;
+		};
+		8D5BBFC52B1707BF00F8BCE5 /* SotoDynamoDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoDynamoDB;
+		};
+		8D5BBFC72B1707BF00F8BCE5 /* SotoDynamoDBStreams */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoDynamoDBStreams;
+		};
+		8D5BBFC92B1707BF00F8BCE5 /* SotoEBS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF6DE02E2AAE82E8004E19F8 /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoEBS;
 		};
 		BF6DE02F2AAE82E8004E19F8 /* SotoS3 */ = {
 			isa = XCSwiftPackageProductDependency;

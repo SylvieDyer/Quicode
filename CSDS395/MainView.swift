@@ -20,6 +20,7 @@ struct MainView: View {
     
     @State private var loadedModules = false
     var awsManager : AWSManager = AWSManager()
+    var dbManager : DBManager = DBManager()
     
     /// SOLEY FOR TESTING PURPOSES ( content previewing)
     //    var isTestingSinglePage: Bool
@@ -75,6 +76,7 @@ struct MainView: View {
     func getAWSData(){
         Task{
             do {
+                await dbManager.uploadToDB()
                 print("button hit")
                 await appController.setAppInfo(awsManager: awsManager)
                 loadedModules.toggle()
