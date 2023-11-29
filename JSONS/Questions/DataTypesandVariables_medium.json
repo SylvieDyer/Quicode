@@ -24,7 +24,7 @@
        "questionAnswer": ["String", "Integer"]
 	},
 	"q5": {
- 		"questionText": "Which of the following is NOT of integer type? (choose one)",
+ 		"questionText": "Which of the following is NOT of integer type?",
        "questionType": "multiSelect",
        "questionOptions": ["1", "1.0", "\"1\"", "ONE"],
        "questionAnswer": ["1.0", "\"1\"", "ONE"]
