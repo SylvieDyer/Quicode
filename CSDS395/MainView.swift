@@ -21,6 +21,8 @@ struct MainView: View {
     @State private var loadedModules = false
     var awsManager : AWSManager = AWSManager()
     
+    var colorManager = ColorManager()
+    
     /// SOLEY FOR TESTING PURPOSES ( content previewing)
     //    var isTestingSinglePage: Bool
     
@@ -46,7 +48,7 @@ struct MainView: View {
                         VStack {
                             Text("QUICk! are you ready to CODE?!?!?!")
                                 .font(.title)
-                                .padding(50).fontWeight(.bold)
+                                .padding(50).fontWeight(.bold).multilineTextAlignment(.center)
                             HStack{
                                 Image(systemName: "balloon.2.fill")
                                 Image(systemName: "party.popper.fill")
@@ -55,10 +57,18 @@ struct MainView: View {
                                 Image(systemName: "balloon.fill")
                                 Image(systemName: "balloon")
                                 Image(systemName: "party.popper.fill")
-                            }
-                            Button("Let's Go!",
-                                   action: { getAWSData() }
-                            ).padding(50).foregroundColor(.purple).font(.title2).fontWeight(.bold)
+                            }.padding([.bottom], 20)
+                            Button(
+                                   action: { getAWSData() },
+                                   label: {Text("Let's Go!")
+                             .fontWeight(.bold)
+                                .background(RoundedRectangle(cornerRadius: 40)
+                                .foregroundColor(colorManager.getLavendar())
+                                .padding(20)
+                                .frame(width:300, height: 100))
+                            .foregroundColor(Color.white)
+                            .padding([.trailing], 20)
+                        }).padding(10)
                         }
                         
                     }  else if(appController.viewController.homePage) {

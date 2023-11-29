@@ -15,6 +15,7 @@ struct LoginView: View {
     var appController: AppController
     var awsManager : AWSManager
     var viewContext: NSManagedObjectContext
+    var colorManager = ColorManager()
     
     // new user
     @FetchRequest(
@@ -30,27 +31,24 @@ struct LoginView: View {
     var authenticationSuccess: () -> Void
     
     var body: some View {
-        VStack{
-            HStack(alignment: .top, spacing: 0) {
-                Text("QUICCODE")
-                    .font(.largeTitle).bold().padding(.leading, 15)
+        ZStack{
+            colorManager.getLightGreen().ignoresSafeArea(.all, edges: .all)
+            VStack{
+                Spacer()
+                Text("Welcome to").font(.title2).bold()
+                
+                Text("QUICODE")
+                    .font(.largeTitle).bold()
                     .fontWidth(.expanded)
                     .font(.callout)
                 Spacer()
-            }
-            Spacer()
-            
-            VStack(alignment: .center, spacing: 15){
                 
-                Text("Login")
+                Text("Login to get started!")
                     .font(.title2)
                     .fontWeight(.semibold)
-                    .padding(.horizontal, 12)
-                    .padding(.top, 30)
-            }
-            
-            // sign in with apple auth
-            VStack(alignment: .center, spacing: 15){
+                
+                // sign in with apple auth
+                
                 // for the button appearance
                 if colorScheme.self == .dark {
                     SignInButton(SignInWithAppleButton.Style.whiteOutline)
@@ -58,6 +56,8 @@ struct LoginView: View {
                 else {
                     SignInButton(SignInWithAppleButton.Style.black)
                 }
+                
+                Spacer()
                 Spacer()
             }
         }
@@ -203,13 +203,4 @@ struct LoginView: View {
 //    }
 //
 //
-//}
-
-
-
-//
-//struct LoginView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        IsLoginView()
-//    }
 //}
