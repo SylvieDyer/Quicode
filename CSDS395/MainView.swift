@@ -34,7 +34,7 @@ struct MainView: View {
         if (appController.viewController.logInPage){
             // TODO: UNCOMMENT LATER
             //            || users.isEmpty || users.first!.newUser){
-            LoginView(appController: appController, awsManager: awsManager, viewContext: viewContext, authenticationSuccess: {
+            LoginView(appController: appController, awsManager: awsManager, dbManager: dbManager, viewContext: viewContext, authenticationSuccess: {
                 appController.viewController.setAsHome()
                 print("IS HOME??")
                 print(appController.viewController.homePage)
@@ -86,7 +86,6 @@ struct MainView: View {
     func getAWSData(){
         Task{
             do {
-                await dbManager.uploadToDB()
                 print("button hit")
                 await appController.setAppInfo(awsManager: awsManager)
                 loadedModules.toggle()

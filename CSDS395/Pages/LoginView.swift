@@ -14,6 +14,7 @@ import CoreData
 struct LoginView: View {
     var appController: AppController
     var awsManager : AWSManager
+    var dbManager: DBManager
     var viewContext: NSManagedObjectContext
     var colorManager = ColorManager()
     
@@ -188,6 +189,7 @@ struct LoginView: View {
             jsonEncoder.outputFormatting = .prettyPrinted
             let jsonData = try jsonEncoder.encode(userJson)
             await awsManager.uploadToAWS(filename: "\(user.appid!).json", body: jsonData)
+            await dbManager.uploadToDB(item: ["userID": .s("\(user.appid!)")])
             print("after await")
         }
         catch {

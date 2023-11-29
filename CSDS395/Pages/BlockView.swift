@@ -22,7 +22,7 @@ struct BlockView: View {
     
     var body: some View {
         if isNavigationActive {
-            QuestionView(blockName: blockName, questionDifficulty: currDifficulty, controller: controller, user: user, questionList: questionList)
+            QuestionView(moduleName: moduleName, blockName: blockName, questionDifficulty: currDifficulty, controller: controller, user: user, questionList: questionList)
         } else {
             List {
                 // block title
