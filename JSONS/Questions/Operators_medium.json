@@ -9,10 +9,10 @@
  		"questionText": "If x <= 3 and x > 2, what does x equal?",
        "questionType": "multipleChoice",
        "questionOptions": ["3", "nothing", "2", "1"],
-       "questionAnswer": ["2"]
+       "questionAnswer": ["3"]
 	},
 	"q3": {
- 		"questionText": "If x + y == 7 and x - y == 1, then x == , and y == ,.",
+ 		"questionText": "If x + y == 7 and x - y == 1 then x == , and y == ,.",
        "questionType": "dragAndDrop",
        "questionOptions": ["3", "2", "4", "5"],
        "questionAnswer": ["4", "3"]
@@ -26,8 +26,8 @@
 	"q5": {
  		"questionText": "If x < 4, what assumptions can be made about x?",
        "questionType": "multiSelect",
-       "questionOptions": ["x == 3", "x < 5", "x != 4", "x != 5"],
-       "questionAnswer": ["x < 5", "x != 4", "x != 5"]
+       "questionOptions": ["x == 3", "x != 6", "x != 4", "x != 5"],
+       "questionAnswer": ["x != 6", "x != 4", "x != 5"]
 	},
 	"q6": {
  		"questionText": "Select the statements that evaluate to False",

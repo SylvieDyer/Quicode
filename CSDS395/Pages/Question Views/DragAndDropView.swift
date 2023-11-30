@@ -26,8 +26,13 @@ struct DragAndDropView: View{
             WrappingHStack(0...question.getQuestionTextArr().count - 1, id:\.self, alignment: .center
             ) {
             
-                if (question.getQuestionTextArr()[$0] != ".") {
+                if (question.getQuestionTextArr()[$0].last != ".") {
                     DropTemplate(number: $0, text: question.getQuestionTextArr()[$0], dragInProgress: dragInProgress, question: question)
+                }
+                else{
+                    Text(question.getQuestionTextArr()[$0])
+                    .background(RoundedRectangle(cornerRadius: 25).foregroundColor(dragInProgress ? (colorManager.getDarkGreen()) : colorManager.getMidGreen()))
+//                    .fixedSize(horizontal: false, vertical: true)
                 }
             }
 //            HStack{
@@ -140,6 +145,7 @@ struct DropTemplate: View, DropDelegate{
             }
             .background(RoundedRectangle(cornerRadius: 25).foregroundColor(dragInProgress ? (colorManager.getDarkGreen()) : colorManager.getMidGreen()))
             .onDrop(of: [UTType.plainText], delegate: self)
+            
         }
     }
     
