@@ -23,30 +23,19 @@ struct DragAndDropView: View{
     var body: some View {
         VStack{
             Spacer()
-            WrappingHStack(0...question.getQuestionTextArr().count - 1, id:\.self, alignment: .leading
-            ) {
-                
-                if (question.getQuestionTextArr()[$0].last != ".") {
-                    DropTemplate(number: $0, text: question.getQuestionTextArr()[$0], dragInProgress: dragInProgress, question: question)
-                }
-                else if (question.getQuestionTextArr()[$0] != "."){
-            
-                    Text(question.getQuestionTextArr()[$0])
-                        .background(RoundedRectangle(cornerRadius: 25).foregroundColor(dragInProgress ? (colorManager.getDarkGreen()) : colorManager.getMidGreen()))
-                        .fixedSize(horizontal: true, vertical: false)
+            VStack{
+                ForEach(Array(question.getQuestionTextArr().enumerated()), id: \.element) { index, element in
+                    if (element.last != ".") {
+                        DropTemplate(number: index, text:element, dragInProgress: dragInProgress, question: question)
+                    }
+                    else if (element != "."){
+                        Text(element)
+                            .background(RoundedRectangle(cornerRadius: 25).foregroundColor(dragInProgress ? (colorManager.getDarkGreen()) : colorManager.getMidGreen()))
+                    }
                 }
             }
-            
-            //            HStack{
-            //                ForEach(Array(question.getQuestionTextArr().enumerated()), id: \.element) { index, element in
-            //                    if(element != ".") {
-            //                        DropTemplate(number: index, text: element, dragInProgress: dragInProgress, question: question)
-            //                    }
-            //                }
-            //            }
             .opacity(isShown ? 1.0 : 0.0)
             .fontWeight(.bold)
-//            .fixedSize(horizontal: true, vertical: true)
             .multilineTextAlignment(.center)
             .padding(50)
             .background(RoundedRectangle(cornerRadius: 40)
@@ -140,16 +129,17 @@ struct DropTemplate: View, DropDelegate{
     let colorManager: ColorManager = ColorManager()
 
     var body : some View {
-        VStack {
-                Text(text)
+        WrappingHStack(0...0) {_ in
+            Text(text).allowsTightening(true).lineLimit(100).fixedSize(horizontal: false, vertical: true)
+            VStack{
+                Spacer()
                 ForEach(items, id: \.self) { word in
                     Text(word)
                 }
                 .background(RoundedRectangle(cornerRadius: 25).foregroundColor(dragInProgress ? (colorManager.getDarkGreen()) : colorManager.getMidGreen()))
                 .onDrop(of: [UTType.plainText], delegate: self)
-            
-        } .frame(width:300)
-            .fixedSize(horizontal: false, vertical: true)
+            }
+        }
     }
     
     // when the drop area has been entered (by droppable)
@@ -185,6 +175,6 @@ struct DropTemplate: View, DropDelegate{
 struct Drag_Preview : PreviewProvider {
     
     static var previews: some View {
-        DragAndDropView(moduleName: "NAMEEE", controller: AppController(), questionList: QuestionList(qlist:[]), question: Question(questionType: QuestionType.dragAndDrop, questionText: "\"True\" is of data type , while True is of BLAHLABLHABLHA data type ,.", questionOptions: ["Double", "String", "Boolean", "Integer"], questionAnswer: ["String", "Boolean"], questionDifficulty: QuestionDifficulty.easy))
+        DragAndDropView(moduleName: "NAMEEE", controller: AppController(), questionList: QuestionList(qlist:[]), question: Question(questionType: QuestionType.dragAndDrop, questionText: "The data types (int) (double) (float) and (long) are used to represent,But (String) (Character) represent,.", questionOptions: ["Double", "String", "Boolean", "Integer"], questionAnswer: ["String", "Boolean"], questionDifficulty: QuestionDifficulty.easy))
     }
 }
