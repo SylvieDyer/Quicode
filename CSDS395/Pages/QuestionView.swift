@@ -41,7 +41,7 @@ struct QuestionView: View {
                 }
                 
                 
-                Button(action: {dismiss.callAsFunction(); updateDB();}, label: {Text("Return to Modules") .fontWeight(.bold)
+                Button(action: {dismiss.callAsFunction(); updateDB(); queryDB();}, label: {Text("Return to Modules") .fontWeight(.bold)
                         .background(RoundedRectangle(cornerRadius: 40)
                             .foregroundColor(colorManager.getLavendar())
                             .padding(20)
@@ -87,6 +87,15 @@ struct QuestionView: View {
                     key: ["userID" : .s("\(user.appid!)")],
                     expressionAttributeValues: [":newModuleName" : .s("\(moduleName)"), ":newBlockName": .s("\(blockName)"), ":newQuestionDifficulty": .s("\(questionDifficulty)")],
                     updateExpression: "SET moduleName = :newModuleName, blockName = :newBlockName, questionDifficulty = :newQuestionDifficulty")
+            }
+        }
+    }
+    
+    func queryDB(){
+        Task {
+            do {
+                let response = await dbManager.queryDB(userID: user.appid!)
+                print(response)
             }
         }
     }

@@ -189,7 +189,12 @@ struct LoginView: View {
             jsonEncoder.outputFormatting = .prettyPrinted
             let jsonData = try jsonEncoder.encode(userJson)
             await awsManager.uploadToAWS(filename: "\(user.appid!).json", body: jsonData)
-            await dbManager.uploadToDB(item: ["userID": .s("\(user.appid!)")])
+            let queryOptions = await dbManager.queryDB(userID: "\(user.appid!)")
+            //if the user isn't already in the database, add it
+            if queryOptions == [:] {
+                await dbManager.uploadToDB(item: ["userID": .s("\(user.appid!)")])
+
+            }
             print("after await")
         }
         catch {

@@ -15,7 +15,7 @@ struct ModuleView: View {
     let name: String
     let controller: AppController
     var user : User
-    let hardCodedLastCompletedModule: String = "Operators"
+    let dbManager : DBManager = DBManager()
     @State private var showOverview = false
     @State private var blocksValidMap: [String : Bool] = [:]
     
@@ -29,7 +29,7 @@ struct ModuleView: View {
                         // Module Title
                         Text(name).foregroundColor(Color.black).font(.title2).fontWeight(.heavy)
                         Spacer()
-                        // Help Button
+                        //  Help Button
                         Button(action: {showOverview.toggle()}) {
                             // help icon
                             Label("", systemImage: "questionmark").foregroundColor(.black)
@@ -52,7 +52,12 @@ struct ModuleView: View {
                     
             }.listRowBackground(RoundedRectangle(cornerRadius: 40).fill(colorManager.getLavendar()))
             .onAppear() {
-                blocksValidMap = getBlocksValidMap(lastCompleted: hardCodedLastCompletedModule)
+                Task{
+                    do {
+                        var lastCompletedBlock = await queryBlockName() ?? "Operators"
+                        blocksValidMap = getBlocksValidMap(lastCompleted: lastCompletedBlock)
+                    }
+                }
             }
             
         
@@ -96,11 +101,22 @@ struct ModuleView: View {
         var valid = true
         for blockName in controller.getBlocks(name: name){
             blockMap[blockName] = valid
+            //alt solution to integer mapping: make this get the difficulty and use it
             if(blockName == lastCompleted) {
                 valid = false
             }
         }
         return blockMap
+    }
+    
+    func queryBlockName() async -> String?{
+        let response = await dbManager.queryDB(userID: user.appid!)
+        return response["blockName"]
+    }
+    
+    func queryDifficulty() async -> String?{
+        let response = await dbManager.queryDB(userID: user.appid!)
+        return response["questionDifficulty"]
     }
 }
 
