@@ -13,15 +13,12 @@ import SotoS3
 
 @main
 struct CSDS395App: App {
-    // for core data
+    // for user defaults
     let userDataController = UserDataController.shared
 
     
     var body: some Scene {
         WindowGroup {
-            // for testing Drag and Drop
-//            DragAndDropView(DNDCLASS: AppController.DND())
-           
             MainView(appController: AppController())
                 .environment(\.managedObjectContext, userDataController.container.viewContext)
         

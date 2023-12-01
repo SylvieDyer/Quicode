@@ -25,25 +25,12 @@ struct HomeView: View {
                         .fontWidth(.expanded)
                         .font(.callout)
                     Spacer()
-                    
-                    /// commented out for now... will be log out button in UserPage?
-                    // sign in with apple page
-                    /*
-                     NavigationLink {
-                     IsLoginView()
-                     } label: {
-                     Image(systemName: "arrow.down.left.circle.fill").foregroundColor(.gray).padding(25)
-                     */
-                    
-                    // user page navigation
-                    //                    NavigationLink {
-                    //                        UserView(controller: controller, viewContext: viewContext, user: user, dismiss: dismiss).navigationBarBackButtonHidden(true)
-                    //                    } label: {
-                    //                        Image(systemName: "person").foregroundColor(.gray).padding(25)
-                    //                    }
-                    Button(action: {controller.viewController.setAsUser()}, label: {
-                        Image(systemName: "person").foregroundColor(.gray).padding(25)
-                    })
+                    Button(
+                        action: {
+                            controller.viewController.setAsUser()},
+                        label: {
+                            Image(systemName: "person").foregroundColor(.gray).padding(25)
+                        })
                 }
                 
                 // section to replace when navigating btwn modules
@@ -52,7 +39,7 @@ struct HomeView: View {
                         // welcome section
                         Section{
                             // will be dynamic with user name -- Text("Welcome Back, \(user.name)
-                            Text("Welcome Back, \(UserDefaults.standard.string(forKey: "firstname") ?? "firstname")").bold().font(.title2)
+                            Text("Welcome Back, \(UserDefaults.standard.string(forKey: "firstname") ?? "User")").bold().font(.title2)
                             
                         }
                         .listRowBackground(
