@@ -10,18 +10,12 @@ import SwiftUI
 // entry-point view for application
 struct MainView: View {
     @ObservedObject var appController: AppController
-    
-   
     @State private var loadedModules = false
     var awsManager : AWSManager = AWSManager()
-    
     var colorManager = ColorManager()
     
-    /// SOLEY FOR TESTING PURPOSES ( content previewing)
-    //    var isTestingSinglePage: Bool
-    
     var body: some View {
-        
+        // open login if logged out / is redirected
         if (appController.viewController.logInPage && !UserDefaults.standard.bool(forKey: "isLoggedIn")){
             LoginView(appController: appController, awsManager: awsManager, authenticationSuccess: {
                 appController.viewController.setAsHome()
@@ -57,14 +51,13 @@ struct MainView: View {
                                     .padding([.trailing], 20)
                             }).padding(10)
                     }
-                    
+                // otherwise if directed home
                 }  else if(appController.viewController.homePage) {
                     HomeView(controller: appController)
+                // otherwise if directed to user page
                 } else if(appController.viewController.userPage) {
                     UserView(controller: appController)
                 }
-                
-                
             }
         }
     }
@@ -72,7 +65,6 @@ struct MainView: View {
     func getAWSData(){
         Task{
             do {
-                print("button hit")
                 await appController.setAppInfo(awsManager: awsManager)
                 appController.viewController.setAsHome()
                 UserDefaults.standard.set(true, forKey: "isLoggedIn")

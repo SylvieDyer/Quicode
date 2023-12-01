@@ -75,7 +75,6 @@ struct LoginView: View {
                 Task{
                     await uploadUser(user: user)
                 }
-//                appController.setAsHome()
                 authenticationSuccess()
             case .failure(let error):
                 print("Authorisation failed: \(error.localizedDescription)")
@@ -90,7 +89,6 @@ struct LoginView: View {
     
     // to create the user and store with core data
     func CreateUser(authResults: ASAuthorization) -> Users{
-//        let user = User(context: viewContext)
         var user: Users? = nil
         let defaults = UserDefaults.standard
         switch authResults.credential {
@@ -162,19 +160,3 @@ struct LoginView: View {
     }
     
 }
-//
-//// to navigate signing in with APPLE
-//struct SignInWithAppleSwiftUIButton: View {
-//
-//
-//    var viewContext: NSManagedObjectContext
-//
-//    @FetchRequest(sortDescriptors: []) var users: FetchedResults<User>
-//
-//    var body: some View {
-//
-//
-//    }
-//
-//
-//}

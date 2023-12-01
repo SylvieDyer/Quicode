@@ -10,10 +10,9 @@ import Swift
 class NextButton {
   
     static func validate(selected: [String], correct: [String], questionType: QuestionType) -> Bool {
-        print("in validate)")
+        print("VALIDATING QUESTION RESPONSE: ")
         print(selected)
         print(correct)
-        print(questionType)
         
         switch (questionType){
             // for drag and drop

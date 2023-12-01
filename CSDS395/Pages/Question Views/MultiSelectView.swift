@@ -42,7 +42,6 @@ struct MultiSelectView: View {
             
             ForEach(question.questionOptions, id: \.self) { option in
                 Button(action: {
-                    print("is selected: ", option)
                     // mark option as selected
                     if question.selected.contains(option) {
                         question.selected.removeAll(where: { $0 == option })
@@ -51,9 +50,6 @@ struct MultiSelectView: View {
                         question.selected.append(option)
                         isSelected[option] = true
                     }
-                    print("selected:", question.selected)
-                    
-
                 }){
                     Text(option)
                         .font(.title3)
@@ -72,10 +68,6 @@ struct MultiSelectView: View {
                     action: {
                         // if still shown, change color
                         isSelected.forEach { (key: String, value: Bool) in
-                            print("in is selected")
-                            print(key)
-                            print(value)
-            
                             if (isSelected[key] == true){
                                 isSelected[key] = false
                                 didTapOption[key] = true
@@ -85,7 +77,6 @@ struct MultiSelectView: View {
                         isShown = !NextButton.validate(selected: question.selected, correct: question.questionAnswer, questionType: .multiSelect)
                         if isShown {
                             isSelected.forEach { (key: String, value: Bool) in
-                                print("resetting selected")
                                 question.selected.removeAll(where: { $0 == key })
                                 isSelected[key] = false
                             }

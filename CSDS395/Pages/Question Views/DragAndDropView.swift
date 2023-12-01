@@ -144,7 +144,6 @@ struct DropTemplate: View, DropDelegate{
     
     // when the drop area has been entered (by droppable)
     func dropEntered(info: DropInfo) {
-        print("dropEntered")
         dragInProgress = info.hasItemsConforming(to: [UTType.plainText])
     }
     
