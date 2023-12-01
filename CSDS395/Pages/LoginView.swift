@@ -73,7 +73,6 @@ struct LoginView: View {
                 print("Authorization successful \(authResults)")
                 // creates the user object
                 let user = CreateUser(authResults: authResults)
-                CreateUser(authResults: authResults)
                 Task{
                     await uploadUser(user: user)
                 }
@@ -91,10 +90,10 @@ struct LoginView: View {
     
     
     // to create the user and store with core data
-    func CreateUser(authResults: ASAuthorization) -> User{
-        let user = User(context: viewContext)
+    func CreateUser(authResults: ASAuthorization) -> Users{
+//        let user = User(context: viewContext)
+        var user: Users? = nil
         let defaults = UserDefaults.standard
-        
         switch authResults.credential {
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
             print("FULL NAME")
@@ -105,8 +104,6 @@ struct LoginView: View {
             // create new user object
             print("EMAIL")
             print(appleIdCredential.email ?? "NO EMAIL GIVEN")
-            
-            let defaults = UserDefaults.standard
                             
             if appleIdCredential.email != nil{
                 defaults.set(appleIdCredential.email, forKey: "email")
@@ -120,74 +117,43 @@ struct LoginView: View {
                 defaults.set(appleIdCredential.fullName?.familyName, forKey: "lastname")
             }
             
-            print("users is empty")
-            user.newUser = false
-            user.isLoggedOut = false
-            user.email = appleIdCredential.email ?? UserDefaults.standard.string(forKey: "email")
-            user.firstName = appleIdCredential.fullName?.givenName ?? UserDefaults.standard.string(forKey: "firstname")
-            user.lastName = appleIdCredential.fullName?.familyName ?? UserDefaults.standard.string(forKey: "lastname")
-            user.appid = appleIdCredential.user
             
-//            if users.isEmpty {
-//                
-////                user.id = UUID()
-//            }
-//            else {
-//                print("users not empty")
-//                // check if user is already in core data by comparing appid
-//                if user.appid != users.first!.appid {
-//                    RemoveUser() // we only allow one user in core data, so if a new appid is detected, the old user in core data should be deleted
-//                    user.newUser = false
-//                    user.isLoggedOut = false
-//                    user.email = appleIdCredential.email ?? UserDefaults.standard.string(forKey: "email")
-//                    user.firstName = appleIdCredential.fullName?.givenName ?? UserDefaults.standard.string(forKey: "firstname")
-//                    user.lastName = appleIdCredential.fullName?.familyName ?? UserDefaults.standard.string(forKey: "lastname")
-//                    user.appid = appleIdCredential.user
-////                    user.id = UUID()        // TODO: dont want to recreate everytime user logs in though ... TBD
-//                }
-//                else {
-//                    users.first!.isLoggedOut = false
-//                }
-//            }
-            // try to save with core data
-//            do {
-//                try viewContext.save()
-//            } catch {
-//                // TODO: Replace this implementation with code to handle the error appropriately.
-//                
-//                let nsError = error as NSError
-//                // fatalError() will crash app
-//                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//            }
+            let newUser = false
+            let isLoggedOut = false
+            let email = appleIdCredential.email ?? defaults.string(forKey: "email")
+            let firstName = appleIdCredential.fullName?.givenName ?? defaults.string(forKey: "firstname")
+            let lastName = appleIdCredential.fullName?.familyName ?? defaults.string(forKey: "lastname")
+            let appid = appleIdCredential.user
             
-            
-        case let passwordCredential as ASPasswordCredential:
-            print("\n ** ASPasswordCredential ** \n")
-            print(passwordCredential.user)  // This is a user identifier
-            print(passwordCredential.password) //The password
-            break
+            user = Users(
+                id: appid,
+                email: email!,
+                firstname: firstName!,
+                lastname: lastName!,
+                newUser: newUser,
+                isLoggedOut: isLoggedOut
+            )
+            return user!
             
         default:
             break
         }
-        print(users)
-        return user
+        return user!
     }
     
-    func uploadUser(user: User) async {
-        let email = user.email!
-        let firstname = user.firstName!
-        let lastname = user.lastName!
-        let id = user.appid
-        print("id: \(id!)")
-        let userJson = Users(id: id!, email: email, firstname: firstname, lastname: lastname)
+    func uploadUser(user: Users) async {
+        let email = user.email
+        let firstname = user.firstname
+        let lastname = user.lastname
+        let id = user.id
+        print("id: \(id)")
+        let userJson = Users(id: id, email: email, firstname: firstname, lastname: lastname, newUser: user.newUser, isLoggedOut: user.isLoggedOut)
         
         do {
-            //            let client = awsManager.initAWS()
             let jsonEncoder = JSONEncoder()
             jsonEncoder.outputFormatting = .prettyPrinted
             let jsonData = try jsonEncoder.encode(userJson)
-            await awsManager.uploadToAWS(filename: "\(user.appid!).json", body: jsonData)
+            await awsManager.uploadToAWS(filename: "\(user.id).json", body: jsonData)
             print("after await")
         }
         catch {

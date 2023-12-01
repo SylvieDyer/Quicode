@@ -12,4 +12,7 @@ public struct Users : Codable{
     let email : String
     let firstname : String
     let lastname : String
+    let newUser : Bool
+    let isLoggedOut : Bool
+    
 }
