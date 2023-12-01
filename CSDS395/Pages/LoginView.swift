@@ -14,7 +14,6 @@ import CoreData
 struct LoginView: View {
     var appController: AppController
     var awsManager : AWSManager
-    var viewContext: NSManagedObjectContext
     var colorManager = ColorManager()
     
     // new user
@@ -162,18 +161,6 @@ struct LoginView: View {
         print("leaving uploadUser")
     }
     
-    func RemoveUser() -> Void {
-        
-        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
-        
-        do {
-            try viewContext.execute(deleteRequest)
-            try viewContext.save()
-        } catch {
-            print ("There was an error")
-        }
-    }
 }
 //
 //// to navigate signing in with APPLE

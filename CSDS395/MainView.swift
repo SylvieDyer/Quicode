@@ -9,7 +9,6 @@ import SwiftUI
 
 // entry-point view for application
 struct MainView: View {
-    @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var appController: AppController
     
     // the user info
@@ -33,7 +32,7 @@ struct MainView: View {
         if (appController.viewController.logInPage){
             // TODO: UNCOMMENT LATER
             //            || users.isEmpty || users.first!.newUser){
-            LoginView(appController: appController, awsManager: awsManager, viewContext: viewContext, authenticationSuccess: {
+            LoginView(appController: appController, awsManager: awsManager, authenticationSuccess: {
                 appController.viewController.setAsHome()
                 print("IS HOME??")
                 print(appController.viewController.homePage)
@@ -72,9 +71,9 @@ struct MainView: View {
                         }
                         
                     }  else if(appController.viewController.homePage) {
-                        HomeView(controller: appController, viewContext: viewContext, user: users.first!)
+                        HomeView(controller: appController)
                     } else if(appController.viewController.userPage) {
-                        UserView(controller: appController, viewContext: viewContext, user: users.first!)
+                        UserView(controller: appController)
                     }
                     
                 }
