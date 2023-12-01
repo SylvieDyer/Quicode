@@ -19,12 +19,9 @@ import SwiftUI
  preferences
  Choose default language
  */
-import CoreData
 
 struct UserView: View {
     var controller: AppController
-    var viewContext: NSManagedObjectContext
-    var user : User
     
     var body:some View {
         NavigationView{
@@ -33,7 +30,7 @@ struct UserView: View {
                 HStack(alignment: .lastTextBaseline, spacing:0){
                     // home page
                     NavigationLink {
-                        HomeView(controller: controller, viewContext: viewContext, user : user).navigationBarBackButtonHidden(true)
+                        HomeView(controller: controller).navigationBarBackButtonHidden(true)
                     } label: {
                         Image(systemName: "house").foregroundColor(.gray).padding(25)
                     }
@@ -45,9 +42,9 @@ struct UserView: View {
                 List{
                     //profile section
                     VStack{
-                        Text("\(user.firstName ?? "First Name") \(user.lastName ?? "Last Name")").font(.headline).multilineTextAlignment(.leading)
+                        Text("\(UserDefaults.standard.string(forKey: "firstname") ?? "First Name") \(UserDefaults.standard.string(forKey: "lastname") ?? "Last Name")").font(.headline).multilineTextAlignment(.leading)
                         //TODO: take from user name
-                        Text("\(user.email ?? "Email")").font(.caption).multilineTextAlignment(.leading)
+                        Text("\(UserDefaults.standard.string(forKey: "email") ?? "Email")").font(.caption).multilineTextAlignment(.leading)
                     }
                     //Progress Tracking Section
                     Section{
@@ -75,7 +72,7 @@ struct UserView: View {
                     }
                     Button(action: {
                         
-                        print(viewContext.registeredObjects)
+//                        print(viewContext.registeredObjects)
                         
                         controller.viewController.setAsLogIn()
 //                        TODO: implement log out functionality (core data, s3 saving progress, etc)
