@@ -40,7 +40,7 @@ struct QuestionView: View {
                 }
                 
                 
-                Button(action: {dismiss.callAsFunction(); updateDB(); queryDB();}, label: {Text("Return to Modules") .fontWeight(.bold)
+                Button(action: {dismiss.callAsFunction(); updateDB();}, label: {Text("Return to Modules") .fontWeight(.bold)
                         .background(RoundedRectangle(cornerRadius: 40)
                             .foregroundColor(colorManager.getLavendar())
                             .padding(20)
@@ -82,21 +82,20 @@ struct QuestionView: View {
     func updateDB() {
         Task {
             do{
-                await dbManager.updateDB(
-                    key: ["userID" : .s("\(userID)")],
-                    expressionAttributeValues: [":newModuleName" : .s("\(moduleName)"), ":newBlockName": .s("\(blockName)"), ":newQuestionDifficulty": .s("\(questionDifficulty)")],
-                    updateExpression: "SET moduleName = :newModuleName, blockName = :newBlockName, questionDifficulty = :newQuestionDifficulty")
+                let response = await queryDB();
+                if(ProgressUtils.getValue(inputValue: ["\(blockName)","\(questionDifficulty)"]) > ProgressUtils.getValue(inputValue: [response["blockName"] ?? "", response["questionDifficulty"] ?? ""])){
+                    await dbManager.updateDB(
+                        key: ["userID" : .s("\(userID)")],
+                        expressionAttributeValues: [":newModuleName" : .s("\(moduleName)"), ":newBlockName": .s("\(blockName)"), ":newQuestionDifficulty": .s("\(questionDifficulty)")],
+                        updateExpression: "SET moduleName = :newModuleName, blockName = :newBlockName, questionDifficulty = :newQuestionDifficulty")
+                }
             }
         }
     }
     
-    func queryDB(){
-        Task {
-            do {
-                let response = await dbManager.queryDB(userID: userID)
-                print(response)
-            }
-        }
+    func queryDB() async -> [String : String]{
+        let response = await dbManager.queryDB(userID: userID)
+        return response;
     }
 }
 //
