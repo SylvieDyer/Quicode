@@ -9,7 +9,7 @@
  		"questionText": "If you want some code to run only if a variable, `a`, is even, what would you use?",
        "questionType": "multipleChoice",
        "questionOptions": ["if (a == 2)", "if (a % 2 == 0)", "else if (a % 2 == 0)", "else (a % 2 == 0)"],
-       "questionAnswer": ["if(a % 2 == 0)"]
+       "questionAnswer": ["if (a % 2 == 0)"]
 	},
 	"q3": {
  		"questionText": "The following statement: \nif (a > 0) a -= 1 \n will , 1 from a if a is ,.",
