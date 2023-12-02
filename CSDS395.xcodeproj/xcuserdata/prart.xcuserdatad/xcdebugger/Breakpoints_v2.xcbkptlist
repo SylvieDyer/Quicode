@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "04DD4E79-B0AD-4F2A-9AC9-600AAA4F75BA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CSDS395/Pages/HomeView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "HomeView"
-            landmarkType = "14">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "78297620-92E1-4EE2-8F32-5867F56B50A1"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -30,8 +14,8 @@
             filePath = "CSDS395/Pages/QuestionView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -94,8 +78,8 @@
             filePath = "CSDS395/Pages/Question Views/DragAndDropView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -110,8 +94,8 @@
             filePath = "CSDS395/Pages/Question Views/DragAndDropView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -120,15 +104,15 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "0F8452DF-2066-4D83-B5DC-978DCA2558F9"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CSDS395/Pages/LoginView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "CreateUser(authResults:)"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "uploadUser(user:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -205,6 +189,36 @@
                   startingLineNumber = "164"
                   endingLineNumber = "164"
                   offsetFromSymbolStart = "11612">
+               </Location>
+               <Location
+                  uuid = "0F8452DF-2066-4D83-B5DC-978DCA2558F9 - 5009b7d89623a757"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CSDS395.LoginView.CreateUser(authResults: __C.ASAuthorization) -&gt; CSDS395.User"
+                  moduleName = "CSDS395"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prart/Library/CloudStorage/OneDrive-Personal/Documents/2023Fall/senior_proj/SeniorProject/CSDS395/Pages/LoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "165"
+                  endingLineNumber = "165"
+                  offsetFromSymbolStart = "11040">
+               </Location>
+               <Location
+                  uuid = "0F8452DF-2066-4D83-B5DC-978DCA2558F9 - f45d16fca06a03d2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for CSDS395.LoginView.uploadUser(user: CSDS395.Users) async -&gt; ()"
+                  moduleName = "CSDS395"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prart/Library/CloudStorage/OneDrive-Personal/Documents/2023Fall/senior_proj/SeniorProject/CSDS395/Pages/LoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "145"
+                  endingLineNumber = "145"
+                  offsetFromSymbolStart = "324">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -964,10 +978,10 @@
             filePath = "CSDS395/Pages/Question Views/DragAndDropView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "DropTemplate"
-            landmarkType = "14">
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "dropExited(info:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "35C73B7E-9518-4851-A9D5-C01CE668501B - fa869438f3e9d4e5"
@@ -1012,9 +1026,9 @@
             filePath = "CSDS395/Pages/Question Views/DragAndDropView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "performDrop(info:)"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "dropExited(info:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1234,8 +1248,8 @@
             filePath = "CSDS395/Pages/BlockView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -1346,8 +1360,8 @@
             filePath = "CSDS395/Pages/BlockView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -1394,8 +1408,8 @@
             filePath = "CSDS395/Pages/BlockView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -1508,8 +1522,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "96"
             endingLineNumber = "96"
-            landmarkName = "getBlocksValidMap(lastCompleted:)"
-            landmarkType = "7">
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1524,8 +1538,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
             endingLineNumber = "95"
-            landmarkName = "getBlocksValidMap(lastCompleted:)"
-            landmarkType = "7">
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1572,8 +1586,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "139"
             endingLineNumber = "139"
-            landmarkName = "getModulesValidMap(lastCompleted:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
             <Locations>
                <Location
                   uuid = "7ED26E5A-A306-42F5-BC5F-7E7C57C71F5F - 5874526906958692"
@@ -1619,9 +1633,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "getModulesValidMap(lastCompleted:)"
-            landmarkType = "7">
+            endingLineNumber = "147">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1685,6 +1697,22 @@
                   offsetFromSymbolStart = "680">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "50E2719E-8E16-4773-A369-7D4410FB7B13"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CSDS395/Pages/LoginView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "uploadUser(user:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

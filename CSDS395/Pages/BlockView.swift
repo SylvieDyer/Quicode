@@ -12,7 +12,6 @@ struct BlockView: View {
     var moduleName: String
     var blockName: String
     var controller: AppController
-    var user : User
     @State private var showOverview = false
     let colorManager: ColorManager = ColorManager()
     @State private var questionList: QuestionList = QuestionList(qlist: [])
@@ -22,7 +21,7 @@ struct BlockView: View {
     
     var body: some View {
         if isNavigationActive {
-            QuestionView(moduleName: moduleName, blockName: blockName, questionDifficulty: currDifficulty, controller: controller, user: user, questionList: questionList)
+            QuestionView(moduleName: moduleName, blockName: blockName, questionDifficulty: currDifficulty, controller: controller, questionList: questionList)
         } else {
             List {
                 // block title

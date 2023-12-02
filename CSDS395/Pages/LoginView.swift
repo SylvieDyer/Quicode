@@ -115,6 +115,10 @@ struct LoginView: View {
                 defaults.set(appleIdCredential.fullName?.familyName, forKey: "lastname")
             }
             
+            defaults.set(appleIdCredential.user, forKey: "id")
+
+
+            
             
             let newUser = false
             let isLoggedOut = false
@@ -151,11 +155,11 @@ struct LoginView: View {
             let jsonEncoder = JSONEncoder()
             jsonEncoder.outputFormatting = .prettyPrinted
             let jsonData = try jsonEncoder.encode(userJson)
-            await awsManager.uploadToAWS(filename: "\(user.appid!).json", body: jsonData)
-            let queryOptions = await dbManager.queryDB(userID: "\(user.appid!)")
+            await awsManager.uploadToAWS(filename: "\(user.id).json", body: jsonData)
+            let queryOptions = await dbManager.queryDB(userID: "\(user.id)")
             //if the user isn't already in the database, add it
             if queryOptions == [:] {
-                await dbManager.uploadToDB(item: ["userID": .s("\(user.appid!)")])
+                await dbManager.uploadToDB(item: ["userID": .s("\(user.id)")])
 
             }
             print("after await")

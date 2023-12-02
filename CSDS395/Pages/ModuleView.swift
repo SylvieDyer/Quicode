@@ -14,10 +14,10 @@ import SwiftUI
 struct ModuleView: View {
     let name: String
     let controller: AppController
-    var user : User
     let dbManager : DBManager = DBManager()
     @State private var showOverview = false
     @State private var blocksValidMap: [String : Bool] = [:]
+    @State private var userID: String = UserDefaults.standard.string(forKey: "id") ?? "ID"
     
     let colorManager: ColorManager = ColorManager()
     var body: some View {
@@ -68,7 +68,7 @@ struct ModuleView: View {
                     // individual module
                     VStack{
                         if (blocksValidMap[blockName] ?? true) {
-                            NavigationLink(destination: BlockView(moduleName: name, blockName: blockName, controller: controller, user: user)) {
+                            NavigationLink(destination: BlockView(moduleName: name, blockName: blockName, controller: controller)) {
                                 Text(blockName)
                                     .foregroundColor(Color.black)
                                     .font(.title3)
@@ -110,13 +110,18 @@ struct ModuleView: View {
     }
     
     func queryBlockName() async -> String?{
-        let response = await dbManager.queryDB(userID: user.appid!)
+        let response = await dbManager.queryDB(userID: userID)
         return response["blockName"]
     }
     
     func queryDifficulty() async -> String?{
-        let response = await dbManager.queryDB(userID: user.appid!)
+        let response = await dbManager.queryDB(userID: userID)
         return response["questionDifficulty"]
+    }
+    
+    func queryModuleName() async -> String?{
+        let response = await dbManager.queryDB(userID: userID)
+        return response["moduleName"]
     }
 }
 

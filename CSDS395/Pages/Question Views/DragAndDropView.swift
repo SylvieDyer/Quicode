@@ -33,11 +33,6 @@ struct DragAndDropView: View{
                             .background(RoundedRectangle(cornerRadius: 25).foregroundColor(dragInProgress ? (colorManager.getDarkGreen()) : colorManager.getMidGreen()))
                     }
                 }
-                else{
-                    Text(question.getQuestionTextArr()[$0])
-                    .background(RoundedRectangle(cornerRadius: 25).foregroundColor(dragInProgress ? (colorManager.getDarkGreen()) : colorManager.getMidGreen()))
-//                    .fixedSize(horizontal: false, vertical: true)
-                }
             }
             .opacity(isShown ? 1.0 : 0.0)
             .fontWeight(.bold)

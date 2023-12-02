@@ -12,5 +12,6 @@ struct ProgressUtils {
 
     static func getKey() -> String {
         //
+        return ""
     }
 }

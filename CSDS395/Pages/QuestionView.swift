@@ -12,11 +12,10 @@ struct QuestionView: View {
     let blockName: String
     let questionDifficulty: QuestionDifficulty
     let controller: AppController
-    var user : User
     let dbManager : DBManager = DBManager()
     @State var questionList: QuestionList
     var colorManager = ColorManager()
-    
+    @State private var userID: String = UserDefaults.standard.string(forKey: "id") ?? "ID"
     
     @State var shouldNavigateToNextQuestion = false
     @Environment (\.dismiss) var dismiss
@@ -84,7 +83,7 @@ struct QuestionView: View {
         Task {
             do{
                 await dbManager.updateDB(
-                    key: ["userID" : .s("\(user.appid!)")],
+                    key: ["userID" : .s("\(userID)")],
                     expressionAttributeValues: [":newModuleName" : .s("\(moduleName)"), ":newBlockName": .s("\(blockName)"), ":newQuestionDifficulty": .s("\(questionDifficulty)")],
                     updateExpression: "SET moduleName = :newModuleName, blockName = :newBlockName, questionDifficulty = :newQuestionDifficulty")
             }
@@ -94,7 +93,7 @@ struct QuestionView: View {
     func queryDB(){
         Task {
             do {
-                let response = await dbManager.queryDB(userID: user.appid!)
+                let response = await dbManager.queryDB(userID: userID)
                 print(response)
             }
         }
