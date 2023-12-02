@@ -130,6 +130,7 @@ struct DropTemplate: View, DropDelegate{
 
     var body : some View {
         WrappingHStack(0...0) {_ in
+            Spacer()
             Text(text).allowsTightening(true).lineLimit(100).fixedSize(horizontal: false, vertical: true)
             VStack{
                 Spacer()
@@ -174,6 +175,6 @@ struct DropTemplate: View, DropDelegate{
 struct Drag_Preview : PreviewProvider {
     
     static var previews: some View {
-        DragAndDropView(moduleName: "NAMEEE", controller: AppController(), questionList: QuestionList(qlist:[]), question: Question(questionType: QuestionType.dragAndDrop, questionText: "The data types (int) (double) (float) and (long) are used to represent,But (String) (Character) represent,.", questionOptions: ["Double", "String", "Boolean", "Integer"], questionAnswer: ["String", "Boolean"], questionDifficulty: QuestionDifficulty.easy))
+        DragAndDropView(moduleName: "NAMEEE", controller: AppController(), questionList: QuestionList(qlist:[]), question: Question(questionType: QuestionType.dragAndDrop, questionText: "The type, represents a whole number (ie 1 100 3).", questionOptions: ["Double", "String", "Boolean", "Integer"], questionAnswer: ["String", "Boolean"], questionDifficulty: QuestionDifficulty.easy))
     }
 }

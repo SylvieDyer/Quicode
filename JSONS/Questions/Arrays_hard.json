@@ -18,7 +18,7 @@
        "questionAnswer": ["variables", "names"]
 	},
 	"q4": {
- 		"questionText": "The final element of an array of 6 elements is the number 4, the index of this element is ,.",
+ 		"questionText": "The final element of an array of 6 elements is the number 4 so the index of this element is ,.",
        "questionType": "dragAndDrop",
        "questionOptions": ["4", "3", "5", "6", "7"],
        "questionAnswer": ["5"]

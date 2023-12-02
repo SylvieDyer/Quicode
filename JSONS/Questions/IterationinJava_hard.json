@@ -24,7 +24,7 @@
            "questionAnswer": ["11"]
         },
     "q5": {
-             "questionText": "Fill in this loop to iterate exactly 4 times:\n,(,,=,;,,,;,).",
+             "questionText": "Fill in this loop to iterate exactly 4 times:\n , ( , , = , ; , , , ; , ).",
            "questionType": "dragAndDrop",
            "questionOptions": ["double", "while", "int", "for", "foreach", "i", "i += 4", "i--", "<=", "0", "26", "1", "i *= 3"],
            "questionAnswer": ["for", "int", "i", "1", "i", "<=", "26", "i *= 3"]

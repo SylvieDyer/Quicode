@@ -18,13 +18,13 @@
            "questionAnswer": ["15 % 10 != 5"]
         },
     "q4": {
-             "questionText": "Make the following expression evaluate to TRUE\n4,3 + 6.",
+             "questionText": "Make the following expression evaluate to TRUE\n4, 3  + 6.",
            "questionType": "dragAndDrop",
            "questionOptions": ["<", ">", "==", "!="],
            "questionAnswer": ["<"]
         },
     "q5": {
-             "questionText": "Make the following expression evaluate to FALSE\nTRUE,FALSE.",
+             "questionText": "Make the following expression evaluate to FALSE\nTRUE , FALSE.",
            "questionType": "dragAndDrop",
            "questionOptions": ["||", "!!", "&&", "!=", "<=", ">="],
            "questionAnswer": ["&&"]

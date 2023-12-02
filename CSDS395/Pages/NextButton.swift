@@ -21,9 +21,6 @@ class NextButton {
             if selected.isEmpty {
                 return false
             }
-            if selected.count < 2 {
-                return false
-            }
             for index in 0...correct.count - 1{
                 if (selected[index] != correct[index]){
                     print("returning false for DND")

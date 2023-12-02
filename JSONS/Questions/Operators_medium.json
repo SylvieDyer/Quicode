@@ -12,7 +12,7 @@
        "questionAnswer": ["2"]
 	},
 	"q3": {
- 		"questionText": "If x + y == 7 and x - y == 1, then x == , and y == ,.",
+ 		"questionText": "If x + y == 7 and x - y == 1 then x == , and y == ,.",
        "questionType": "dragAndDrop",
        "questionOptions": ["3", "2", "4", "5"],
        "questionAnswer": ["4", "3"]

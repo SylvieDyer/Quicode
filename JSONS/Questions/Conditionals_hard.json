@@ -18,7 +18,7 @@
        "questionAnswer": ["<", "else if", "==", "else"]
 	},
 	"q4": {
- 		"questionText": "For the following: \nif (a) print \"Hello\" \nelse if (!a) print \"Goodbye\"\n \"Goodbye\" will print if a == ,",
+ 		"questionText": "For the following: \nif (a) print \"Hello\" \nelse if (!a) print \"Goodbye\"\n \"Goodbye\" will print if a == ,.",
        "questionType": "dragAndDrop",
        "questionOptions": ["3", "Goodbye", "True", "False"],
        "questionAnswer": ["False"]

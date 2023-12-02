@@ -6,7 +6,7 @@
        "questionAnswer": ["int x = 10;"]
 	},
 "q2": {
- 		"questionText": "The type, represents a whole number (ie 1 100 3).",
+ 		"questionText": "The type , represents a whole number (ie 1 100 3).",
        "questionType": "dragAndDrop",
        "questionOptions": ["int", "String", "double", "char", "word", "number"],
        "questionAnswer": ["int"]
@@ -30,7 +30,7 @@
        "questionAnswer": ["String"]
 	},
 "q6": {
- 		"questionText": "To represent the value 12345678910 in Java a,should be used.",
+ 		"questionText": "To represent the value 12345678910 in Java a , should be used.",
        "questionType": "dragAndDrop",
        "questionOptions": ["int", "number", "double", "long", "float", "largeNum"],
        "questionAnswer": ["long"]
