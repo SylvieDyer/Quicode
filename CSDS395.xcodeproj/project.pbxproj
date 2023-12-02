@@ -133,6 +133,7 @@
 		9427248F2AA82CC6006F0DBF /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9427248E2AA82CC6006F0DBF /* Questions.swift */; };
 		9441653C2B117CE8006AB1DF /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9441653B2B117CE8006AB1DF /* DBManager.swift */; };
 		9472CD4B2AE0623E004DB195 /* jsonsFiles in Resources */ = {isa = PBXBuildFile; fileRef = 9472CD4A2AE0623E004DB195 /* jsonsFiles */; };
+		947C4AC82B1B820000050A8F /* ProgressUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947C4AC72B1B820000050A8F /* ProgressUtils.swift */; };
 		948045BB2B03EDBA006B9B25 /* MultiSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948045BA2B03EDBA006B9B25 /* MultiSelectView.swift */; };
 		948045BD2B03F3AE006B9B25 /* MultipleChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948045BC2B03F3AD006B9B25 /* MultipleChoiceView.swift */; };
 		948996252AD9E19D003C6CD8 /* JsonFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948996242AD9E19D003C6CD8 /* JsonFileManager.swift */; };
@@ -164,6 +165,7 @@
 		9427248E2AA82CC6006F0DBF /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 		9441653B2B117CE8006AB1DF /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		9472CD4A2AE0623E004DB195 /* jsonsFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; name = jsonsFiles; path = CSDS395/Backend/jsonsFiles; sourceTree = "<group>"; };
+		947C4AC72B1B820000050A8F /* ProgressUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressUtils.swift; sourceTree = "<group>"; };
 		948045BA2B03EDBA006B9B25 /* MultiSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectView.swift; sourceTree = "<group>"; };
 		948045BC2B03F3AD006B9B25 /* MultipleChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceView.swift; sourceTree = "<group>"; };
 		948996242AD9E19D003C6CD8 /* JsonFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFileManager.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				5A94ABC02ABA1170009BA3D3 /* UserDataController.swift */,
 				2F8D87E52AD497800057E8C3 /* Users.swift */,
 				948996242AD9E19D003C6CD8 /* JsonFileManager.swift */,
+				947C4AC72B1B820000050A8F /* ProgressUtils.swift */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				5A9D808B2AA2E4E700F9677C /* HomeView.swift in Sources */,
 				5A9D80952AA2E4E900F9677C /* CSDS395.xcdatamodeld in Sources */,
 				5AA76C062AF6D3CC00C281E7 /* NextButton.swift in Sources */,
+				947C4AC82B1B820000050A8F /* ProgressUtils.swift in Sources */,
 				5A9D809E2AA2F36900F9677C /* ModuleView.swift in Sources */,
 				5A9D80892AA2E4E700F9677C /* CSDS395App.swift in Sources */,
 				2F8D87E62AD497800057E8C3 /* Users.swift in Sources */,
