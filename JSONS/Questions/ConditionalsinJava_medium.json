@@ -1,21 +1,9 @@
 {
-    "q1": {
-             "questionText": "Make the following code print 4\nif(10,11)  {print(4)}\nelse{print(5)}.",
-           "questionType": "dragAndDrop",
-           "questionOptions": ["==", "<", ">", "&&"],
-           "questionAnswer": ["<"]
-        },
     "q2": {
              "questionText": "Which of the following can be used to ensure that the code within this if-statement runs: if(20 / 2 ___ 10)",
            "questionType": "multiSelect",
            "questionOptions": ["!=", "==", ">=", "<="],
            "questionAnswer": ["==", ">=", "<="]
-        },
-    "q3": {
-             "questionText": "Make the following code print 20\nif(30 / 10 , 3)  {print(40)}\nelse{print(20)}.",
-           "questionType": "dragAndDrop",
-           "questionOptions": ["==", "<=", ">=", "!="],
-           "questionAnswer": ["=="]
         },
     "q4": {
              "questionText": "What will print from the following code:\nif(20 / 2 == 10 && 6 / 3 == 2) {print(10);}\nelse if(20 / 2 != 10) {print(20);}\nelse {print(5);} ",

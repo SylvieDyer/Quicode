@@ -11,23 +11,11 @@
            "questionOptions": ["To store multiple data types", "To access and identify each part in the array", "To set the size of an array", "To perform mathematical operations on the array"],
            "questionAnswer": ["To access and identify each part in the array"]
         },
-    "q3": {
-             "questionText": "Make an array (sorted in increasing order) that sums to 10: ,,=,,{,,,,};.",
-           "questionType": "dragAndDrop",
-           "questionOptions": ["arr", "int[]", "double[]", "new", "8", "1", "-2", "1.3", "6.1", "3","3.9"],
-           "questionAnswer": ["int[]", "arr", "new", "int", "-2", "1", "3", "8"]
-        },
     "q4": {
              "questionText": "Given the array arr = [8, 7, 6, 5], which of the following equates to 10",
            "questionType": "multiSelect",
            "questionOptions": ["arr.length + arr[3]", "arr.length + arr[2]", "arr[4] * 2", "arr[0] * 2 - arr[2]"],
            "questionAnswer": ["arr.length + arr[2]","arr[0] * 2 - arr[2]"]
-        },
-    "q5": {
-             "questionText": "Instantiate an array that can hold 5 names:\n , array = , ,[,].",
-           "questionType": "dragAndDrop",
-           "questionOptions": ["int[]", "char[]", "String[]", "new", "int", "char", "String", "5", "6"],
-           "questionAnswer": ["String[]", "new", "String", "5"]
         },
     "q6": {
              "questionText": "Which of the following can be used to instantiate an array?",

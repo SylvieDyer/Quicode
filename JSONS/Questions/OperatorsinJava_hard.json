@@ -17,23 +17,11 @@
         "questionOptions": ["x = x + 10", "x += 10", "x *= 1 * 10", "x = (55 % 10) * 2"],
         "questionAnswer": ["x = x + 10", "x += 10", "x = (55 % 10) * 2"]
         },
-    "q4": {
-             "questionText": "Make the following expression TRUE\n 8, 2 , 1 6 , 17 , 5 , 0.",
-           "questionType": "dragAndDrop",
-           "questionOptions": ["!=", "==", "/", "*", "%", "-", "+", "&&", "!", "<", ">"],
-           "questionAnswer": ["*", "==", "&&", "%", ">"]
-        },
     "q5": {
         "questionText": "Which of the following could replace x >= 26 % 10",
         "questionType": "multipleChoice",
         "questionOptions": ["x > 3 * 2 && x == 1 + 5", "x >= 9 - 3 || x > 20", "x == 10 - 4 || x > 12 / 2", "x != 6 && x < 4 + 2"],
         "questionAnswer": ["x == 10 - 4 || x > 12 / 2"]
-        },
-    "q6": {
-        "questionText": "Make the following expression FALSE\n4 , 3 , 7 , 9 , 10 , 2.",
-        "questionType": "dragAndDrop",
-        "questionOptions": ["&&", "||", "+", "*", ">", "<", "-", "!=", "=="],
-        "questionAnswer": ["+", "!=", "||", "<", "-"]
         }
     }
     

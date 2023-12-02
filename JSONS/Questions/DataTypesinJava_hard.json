@@ -5,12 +5,6 @@
        "questionOptions": ["\"1.0\"", "'c'", "5", "\"Sarah\""],
        "questionAnswer": ["\"1.0\"", "\"Sarah\""]
 	},
-"q2": {
- 		"questionText": ", x = , ;.",
-       "questionType": "dragAndDrop",
-       "questionOptions": ["int", "1","double", "12345678910", "char", "\"c\""],
-       "questionAnswer": ["int", "1"]
-	},
 "q3": {
  		"questionText": "Say we have an array to store prices. What data type should the array hold?",
        "questionType": "multipleChoice",
@@ -28,12 +22,6 @@
        "questionType": "multipleChoice",
        "questionOptions": ["1.0", "10", "\"10\"", "'1'"],
        "questionAnswer": ["10"]
-	},
-"q6": {
- 		"questionText": " , name = , .",
-       "questionType": "dragAndDrop",
-       "questionOptions": ["int", "Name", "String", "5", "word", "\"Sarah\"", "1.0"],
-       "questionAnswer": ["String", "\"Sarah\""]
-    }
+	}
 }
 

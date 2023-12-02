@@ -1,10 +1,4 @@
 {
-    "q1": {
-             "questionText": "Fill in the following array in increasing order: int[] arr = new int[] {, , , ,}.",
-           "questionType": "dragAndDrop",
-           "questionOptions": ["1,", "1.2,", "-2,", "6", "0.0,", "3.2,", "4,", "5.1"],
-           "questionAnswer": ["-2,", "1,", "4,", "6"]
-        },
     "q2": {
              "questionText": "Given the array int[] arr = [2, 4, 6, 8], what is the value of arr[2]?",
            "questionType": "multipleChoice",
@@ -24,7 +18,7 @@
            "questionAnswer": ["arr[0]", "arr[2]"]
         },
     "q5": {
-             "questionText": "Given the array\nint[] arr = new int[] {1 2 3}:\n arr[0] = ,\n arr[1] = ,\n arr[2] = ,\n arr[3] = ,\n arr.length = ,.",
+             "questionText": "Given the array\nint[] arr = new int[] {1 2 3}:\n arr[0] = , arr[1] = ,arr[2] = ,arr[3] = , arr.length = ,.",
            "questionType": "dragAndDrop",
            "questionOptions": ["1", "2", "3", "4", "N/A"],
            "questionAnswer": ["1", "2", "3", "N/A", "4"]
