@@ -80,38 +80,28 @@ struct BlockView: View {
                 Section {
                     // individual module
                     HStack{
-                        if(difficultiesValidMap["easy"] ?? true) {
-                            Button("Easy", action: {
-                                Task.detached {
-                                    do {
-                                        let questions = await controller.getQuestions(name: getMappedBlockName(blockName: blockName), difficulty: "easy")
-                                        let mainQueue = DispatchQueue.main
-                                        mainQueue.async {
-                                            self.questionList = questions
-                                            self.currDifficulty = QuestionDifficulty.easy
-                                            self.isNavigationActive = true
-                                            print("easy")
-                                        }
+                        Button("Easy", action: {
+                            Task.detached {
+                                do {
+                                    let questions = await controller.getQuestions(name: getMappedBlockName(blockName: blockName), difficulty: "easy")
+                                    let mainQueue = DispatchQueue.main
+                                    mainQueue.async {
+                                        self.questionList = questions
+                                        self.currDifficulty = QuestionDifficulty.easy
+                                        self.isNavigationActive = true
+                                        print("easy")
                                     }
                                 }
-                            })
-                            .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
-                            .padding(20)
-                            Spacer()
-                            if(ProgressUtils.getValue(inputValue: [blockName, "easy"]) <= ProgressUtils.getValue(inputValue: lastCompleted)) {
-                                Image(systemName: "star.fill")
                             }
-                            else {
-                                Image(systemName: "star")
-                            }
-                        } else {
-                            Text("Easy")
-                            .foregroundColor(Color.gray).font(.title3).fontWeight(.heavy)
-                            .padding(20)
-                            Spacer()
+                        })
+                        .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
+                        .padding(20)
+                        Spacer()
+                        if(ProgressUtils.getValue(inputValue: [blockName, "easy"]) <= ProgressUtils.getValue(inputValue: lastCompleted)) {
+                            Image(systemName: "star.fill")
+                        }
+                        else {
                             Image(systemName: "star")
-                                .renderingMode(.template)
-                                .foregroundColor(Color.gray)
                         }
                     }
                     
