@@ -19,6 +19,7 @@ struct HomeView: View {
     @State private var modulesValidMap: [String : Bool] = [:]
     @State private var userID: String = UserDefaults.standard.string(forKey: "id") ?? "ID"
     @State private var lastCompleted : [String] = []
+    @State private var lastCompletedDifficulty : String = ""
     
     var body: some View {
         // wraps app in navigation to switch to user-screen
@@ -84,12 +85,16 @@ struct HomeView: View {
                                             HStack{
                                                 Spacer()
                                                 ForEach(controller.getBlocks(name: moduleName), id: \.self) { blockName in
-                                                    // TODO: Connect with user-status
-                                                    if(ProgressUtils.getValue(inputValue: [blockName]) < ProgressUtils.getValue(inputValue: lastCompleted) + 10) {
-                                                        Image(systemName: "star.fill").foregroundColor(.black)
-                                                    }
-                                                    else {
-                                                        Image(systemName: "star").foregroundColor(.black)
+                                                    if(lastCompleted.count > 0) {
+//                                                        let v1 = ProgressUtils.getValue(inputValue: [blockName])
+//                                                        let v2 = ProgressUtils.getValue(inputValue: [lastCompleted[1]])
+                                                        if(ProgressUtils.getValue(inputValue: [blockName]) < ProgressUtils.getValue(inputValue: [lastCompleted[1]])
+                                                           || (ProgressUtils.getValue(inputValue: [blockName]) == ProgressUtils.getValue(inputValue: [lastCompleted[1]]) && ProgressUtils.getValue(inputValue: [lastCompletedDifficulty]) == 3)) {
+                                                            Image(systemName: "star.fill").foregroundColor(.black)
+                                                        }
+                                                        else {
+                                                            Image(systemName: "star").foregroundColor(.black)
+                                                        }
                                                     }
                                                 }
                                                 Spacer()
@@ -120,6 +125,7 @@ struct HomeView: View {
                         Task{
                             do {
                                 lastCompleted =  await queryModuleAndBlock();
+                                lastCompletedDifficulty = await queryDifficulty();
                                 modulesValidMap = getModulesValidMap(lastCompleted: lastCompleted);
                             }
                         }
@@ -133,6 +139,11 @@ struct HomeView: View {
     func queryModuleAndBlock() async -> [String] {
         let response = await dbManager.queryDB(userID: userID)
         return [response["moduleName"] ?? "", response["blockName"] ?? ""]
+    }
+    
+    func queryDifficulty() async -> String{
+        let response = await dbManager.queryDB(userID: userID)
+        return response["questionDifficulty"] ?? ""
     }
     
     func getModulesValidMap(lastCompleted: [String?]) -> [String : Bool] {

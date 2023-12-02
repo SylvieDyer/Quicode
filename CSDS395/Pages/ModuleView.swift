@@ -43,10 +43,7 @@ struct ModuleView: View {
                     // the blocks associated witht he module
                     HStack{
                         ForEach(controller.getBlocks(name: name), id: \.self) { blockName in
-                            // TODO: Connect with user-status
-                            let v1 = ProgressUtils.getValue(inputValue: [blockName])
-                            let v2 = ProgressUtils.getValue(inputValue: lastCompleted)
-                            if(ProgressUtils.getValue(inputValue: [blockName]) < ProgressUtils.getValue(inputValue: lastCompleted)) {
+                            if(ProgressUtils.getValue(inputValue: [blockName]) <= ProgressUtils.getValue(inputValue: lastCompleted) - 3) {
                                 Image(systemName: "star.fill").foregroundColor(.black)
                             }
                             else {
