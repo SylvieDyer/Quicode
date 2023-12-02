@@ -13,7 +13,13 @@ struct HomeView: View {
     // stores module names
     @ObservedObject var controller: AppController
     let colorManager: ColorManager = ColorManager()
+    let hardCodedLastCompletedModule: String = "CS Foundations"
+    let dbManager : DBManager = DBManager()
     @Environment (\.dismiss) var dismiss
+    @State private var modulesValidMap: [String : Bool] = [:]
+    @State private var userID: String = UserDefaults.standard.string(forKey: "id") ?? "ID"
+    @State private var lastCompleted : [String] = []
+    @State private var lastCompletedDifficulty : String = ""
     
     var body: some View {
         // wraps app in navigation to switch to user-screen
@@ -55,40 +61,63 @@ struct HomeView: View {
                                     ModuleView(name: "Quick Lesson", controller: controller)
                                 } label: {
                                     VStack{
-                                        Text("Today's Quick Lesson:") .foregroundColor(.cyan.opacity(0.7)).font(.title2).fontWeight(.heavy)
-                                        Text("Common Mistakes") .foregroundColor(.red.opacity(0.7)).font(.title3).fontWeight(.heavy)
+                                        Text("Today's Quick Lesson:").foregroundColor(.black).font(.title3).fontWeight(.heavy)
                                     }
                                 }
                                 .padding(20)
                                 Spacer()
                             }
                         }
+                        .listRowBackground(
+                            RoundedRectangle(cornerRadius: 40)
+                                .fill(Color.white)
+                        )
+                           
                         
                         // iterate through list of modules
                         ForEach(controller.getModuleNames(), id: \.self) { moduleName in
-                            Section{
-                                // individual module
-                                NavigationLink(){
-                                    ModuleView(name: moduleName, controller: controller)
-                                } label: {
-                                    VStack{
-                                        Text(moduleName).padding(.top, 10)
-                                        Spacer()
-                                        // progress Bar
-                                        HStack{
+                            if (moduleName == "CS Foundations" || modulesValidMap[moduleName] ?? true) {
+                                    Section{
+                                    // individual module
+                                    NavigationLink(){
+                                        ModuleView(name: moduleName, controller: controller)
+                                    } label: {
+                                        VStack{
+                                            Text(moduleName).padding(.top, 10)
                                             Spacer()
-                                            ForEach(controller.getBlocks(name: moduleName), id: \.self) { blockName in
-                                                // TODO: Connect with user-status
-                                                // if blockName associated with complete , "star.fill"
-                                                Image(systemName: "star").foregroundColor(.black)
+                                            // progress Bar
+                                            HStack{
+                                                Spacer()
+                                                ForEach(controller.getBlocks(name: moduleName), id: \.self) { blockName in
+                                                    if(lastCompleted.count > 0) {
+//                                                        let v1 = ProgressUtils.getValue(inputValue: [blockName])
+//                                                        let v2 = ProgressUtils.getValue(inputValue: [lastCompleted[1]])
+                                                        if(ProgressUtils.getValue(inputValue: [blockName]) < ProgressUtils.getValue(inputValue: [lastCompleted[1]])
+                                                           || (ProgressUtils.getValue(inputValue: [blockName]) == ProgressUtils.getValue(inputValue: [lastCompleted[1]]) && ProgressUtils.getValue(inputValue: [lastCompletedDifficulty]) == 3)) {
+                                                            Image(systemName: "star.fill").foregroundColor(.black)
+                                                        }
+                                                        else {
+                                                            Image(systemName: "star").foregroundColor(.black)
+                                                        }
+                                                    }
+                                                }
+                                                Spacer()
                                             }
-                                            Spacer()
                                         }
                                     }
-                                }
-                                .foregroundColor(.black).font(.title3).fontWeight(.heavy)
-                                .padding([.bottom], 30)
-                            }.padding([.bottom], 30)
+                                    .foregroundColor(.black).font(.title3).fontWeight(.heavy)
+                                    .padding([.bottom], 30)
+                                }.padding([.bottom], 30)
+                            } else {
+                                Section{
+                                // individual module
+                                    Text(moduleName).padding(.top, 10)
+                                    .frame(alignment: .center)
+                                    .foregroundColor(.gray).font(.title3).fontWeight(.heavy)
+                                    .padding([.bottom], 30)
+                                }.padding([.bottom], 30)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                            }
                         }
                         .listRowBackground(
                             RoundedRectangle(cornerRadius: 40)
@@ -96,24 +125,45 @@ struct HomeView: View {
                         ) // color each list section
                         
                     }.listStyle(InsetGroupedListStyle()) // (remove drop down option for list sectoins)
+                    .onAppear() {
+                        Task{
+                            do {
+                                lastCompleted =  await queryModuleAndBlock();
+                                lastCompletedDifficulty = await queryDifficulty();
+                                modulesValidMap = getModulesValidMap(lastCompleted: lastCompleted);
+                            }
+                        }
+                    }
                 }
             }
         }
         
     }
+    
+    func queryModuleAndBlock() async -> [String] {
+        let response = await dbManager.queryDB(userID: userID)
+        return [response["moduleName"] ?? "", response["blockName"] ?? ""]
+    }
+    
+    func queryDifficulty() async -> String{
+        let response = await dbManager.queryDB(userID: userID)
+        return response["questionDifficulty"] ?? ""
+    }
+    
+    func getModulesValidMap(lastCompleted: [String?]) -> [String : Bool] {
+        var moduleMap: [String : Bool] = [:]
+        let progressModuleVal = ProgressUtils.getValue(inputValue: [lastCompleted[0] ?? ""])
+        let progressBlockVal = ProgressUtils.getValue(inputValue: [lastCompleted[1] ?? ""])
+        
+        for moduleName in controller.getModuleNames(){
+            let thisModuleVal = ProgressUtils.getValue(inputValue: [moduleName])
+            
+            if(thisModuleVal <= progressModuleVal || (thisModuleVal == progressModuleVal + 100 && ProgressUtils.isLastBlock(blockVal: progressBlockVal))) {
+                moduleMap[moduleName] = true
+            } else {
+                moduleMap[moduleName] = false
+            }
+        }
+        return moduleMap
+    }
 }
-
-//struct HomeView_Previews: PreviewProvider {
-//
-//    // for core data
-////    let userDataController = UserDataController.shared
-//
-//    static var previews: some View {
-//        // for core data
-//        let userDataController = UserDataController.shared
-//        // preview enter in MainView
-//        MainView(appController: AppController())
-//            .environment(\.managedObjectContext, userDataController.container.viewContext)
-//
-//    }
-//}

@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct QuestionView: View {
+    let moduleName: String
     let blockName: String
     let questionDifficulty: QuestionDifficulty
     let controller: AppController
+    let dbManager : DBManager = DBManager()
     @State var questionList: QuestionList
     var colorManager = ColorManager()
-    
+    @State private var userID: String = UserDefaults.standard.string(forKey: "id") ?? "ID"
     
     @State var shouldNavigateToNextQuestion = false
     @Environment (\.dismiss) var dismiss
@@ -37,7 +39,12 @@ struct QuestionView: View {
                     Text("3 Stars!").font(.title3).padding([.bottom], 15)
                 }
                 
-                Button(action: {dismiss.callAsFunction()}, label: {Text("Return to Modules") .fontWeight(.bold)
+                
+                Button(
+                    action: {
+                        dismiss.callAsFunction();
+                        updateDB();
+                    }, label: {Text("Return to Modules") .fontWeight(.bold)
                         .background(RoundedRectangle(cornerRadius: 40)
                             .foregroundColor(colorManager.getLavendar())
                             .padding(20)
@@ -74,6 +81,25 @@ struct QuestionView: View {
             return "Hard"
         }
         return ""
+    }
+    
+    func updateDB() {
+        Task {
+            do{
+                let response = await queryDB();
+                if(ProgressUtils.getValue(inputValue: ["\(blockName)","\(questionDifficulty)"]) > ProgressUtils.getValue(inputValue: [response["blockName"] ?? "", response["questionDifficulty"] ?? ""])){
+                    await dbManager.updateDB(
+                        key: ["userID" : .s("\(userID)")],
+                        expressionAttributeValues: [":newModuleName" : .s("\(moduleName)"), ":newBlockName": .s("\(blockName)"), ":newQuestionDifficulty": .s("\(questionDifficulty)")],
+                        updateExpression: "SET moduleName = :newModuleName, blockName = :newBlockName, questionDifficulty = :newQuestionDifficulty")
+                }
+            }
+        }
+    }
+    
+    func queryDB() async -> [String : String]{
+        let response = await dbManager.queryDB(userID: userID)
+        return response;
     }
 }
 //

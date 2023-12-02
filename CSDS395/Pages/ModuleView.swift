@@ -12,15 +12,16 @@ import SwiftUI
 
 // template for module pages 
 struct ModuleView: View {
-    
     let name: String
     let controller: AppController
+    let dbManager : DBManager = DBManager()
     @State private var showOverview = false
+    @State private var blocksValidMap: [String : Bool] = [:]
+    @State private var userID: String = UserDefaults.standard.string(forKey: "id") ?? "ID"
+    @State private var lastCompleted : [String] = []
     
     let colorManager: ColorManager = ColorManager()
-    
     var body: some View {
-        
         List {
             // module title
             Section{
@@ -29,7 +30,7 @@ struct ModuleView: View {
                         // Module Title
                         Text(name).foregroundColor(Color.black).font(.title2).fontWeight(.heavy)
                         Spacer()
-                        // Help Button
+                        //  Help Button
                         Button(action: {showOverview.toggle()}) {
                             // help icon
                             Label("", systemImage: "questionmark").foregroundColor(.black)
@@ -42,15 +43,26 @@ struct ModuleView: View {
                     // the blocks associated witht he module
                     HStack{
                         ForEach(controller.getBlocks(name: name), id: \.self) { blockName in
-                            // TODO: Connect with user-status
-                            // if blockName associated with complete , "star.fill"
-                            Image(systemName: "star")
+                            if(ProgressUtils.getValue(inputValue: [blockName]) <= ProgressUtils.getValue(inputValue: lastCompleted) - 3) {
+                                Image(systemName: "star.fill").foregroundColor(.black)
+                            }
+                            else {
+                                Image(systemName: "star").foregroundColor(.black)
+                            }
                         }
                         Spacer()
                     }.padding(10)
                 }
                     
             }.listRowBackground(RoundedRectangle(cornerRadius: 40).fill(colorManager.getLavendar()))
+            .onAppear() {
+                Task{
+                    do {
+                        lastCompleted =  await queryBlockAndDifficulty()
+                        blocksValidMap = getBlocksValidMap(lastCompleted: lastCompleted)
+                    }
+                }
+            }
             
         
             
@@ -58,39 +70,77 @@ struct ModuleView: View {
             ForEach(controller.getBlocks(name: name), id: \.self) { blockName in
                 Section {
                     // individual module
-                    NavigationLink(){
-                        BlockView(moduleName: name, blockName: blockName, controller: controller)
-                    }  label: {
-                        VStack{
-                            Spacer()
+                    VStack{
+                        if (blockName == "Data Types and Variables" || blocksValidMap[blockName] ?? true) {
+                            NavigationLink(destination: BlockView(moduleName: name, blockName: blockName, controller: controller)) {
+                                Text(blockName)
+                                    .foregroundColor(Color.black)
+                                    .font(.title3)
+                                    .fontWeight(.heavy)
+                                    .padding(20)
+                                HStack {
+                                    let difficulties = ["easy", "medium","hard"]
+                                    ForEach(difficulties, id: \.self) { difficulty in
+                                        if(ProgressUtils.getValue(inputValue: [blockName, difficulty]) <= ProgressUtils.getValue(inputValue: lastCompleted)) {
+                                            Image(systemName: "star.fill")
+                                        }
+                                        else {
+                                            Image(systemName: "star")
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
                             Text(blockName)
-                            Spacer()
+                                .foregroundColor(Color.gray)
+                                .font(.title3)
+                                .fontWeight(.heavy)
+                                .padding(20)
                         }
                     }
-                    .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
-                    .padding(20)
                 }
                
-            }.padding([.bottom], 30)
+            }.padding([.bottom], 20)
             .listRowBackground(RoundedRectangle(cornerRadius: 40).fill(colorManager.getLightLavendar()))// color each list section
             
         }.listStyle(InsetGroupedListStyle())
     }
    
+    func getBlocksValidMap(lastCompleted: [String?]) -> [String : Bool] {
+        var blockMap: [String : Bool] = [:]
+        var valid = true
+        let progressBlockVal = ProgressUtils.getValue(inputValue: [lastCompleted[0] ?? ""])
+        let progressDifficultyVal = ProgressUtils.getValue(inputValue: [lastCompleted[1] ?? ""])
+        
+        for blockName in controller.getBlocks(name: name){
+            let thisBlockVal = ProgressUtils.getValue(inputValue: [blockName])
+            //alt solution to integer mapping: make this get the difficulty and use it
+            if(thisBlockVal <= progressBlockVal || (thisBlockVal == progressBlockVal + 10 && progressDifficultyVal == 3)) {
+                blockMap[blockName] = true
+            } else {
+                blockMap[blockName] = false
+            }
+        }
+        return blockMap
+    }
+    
+    func queryBlockName() async -> String?{
+        let response = await dbManager.queryDB(userID: userID)
+        return response["blockName"]
+    }
+    
+    func queryDifficulty() async -> String?{
+        let response = await dbManager.queryDB(userID: userID)
+        return response["questionDifficulty"]
+    }
+    
+    func queryModuleName() async -> String?{
+        let response = await dbManager.queryDB(userID: userID)
+        return response["moduleName"]
+    }
+    
+    func queryBlockAndDifficulty() async -> [String] {
+        let response = await dbManager.queryDB(userID: userID)
+        return [response["blockName"] ?? "", response["questionDifficulty"] ?? ""]
+    }
 }
-
-
-//// for testing when developing
-//struct View_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeView(controller: AppController())
-//    }
-//}
-//
-
-
-//struct Previews_ModuleView_Previews: PreviewProvider {
-//    static var previews: some View {
-////        Text("Hello, World!")
-//    }
-//}

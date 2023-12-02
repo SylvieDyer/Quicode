@@ -18,7 +18,7 @@
        "questionAnswer": ["String", "Character"]
 	},
 	"q4": {
- 		"questionText": "Typecasting the , 1 into a , would result in \"1\"",
+ 		"questionText": "Typecasting the , 1 into a , would result in \"1\".",
        "questionType": "dragAndDrop",
        "questionOptions": ["Double", "Character", "String", "Integer"],
        "questionAnswer": ["Integer", "String"]

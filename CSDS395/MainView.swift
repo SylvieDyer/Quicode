@@ -12,12 +12,14 @@ struct MainView: View {
     @ObservedObject var appController: AppController
     @State private var loadedModules = false
     var awsManager : AWSManager = AWSManager()
+    var dbManager : DBManager = DBManager()
+    
     var colorManager = ColorManager()
     
     var body: some View {
         // open login if logged out / is redirected
         if (appController.viewController.logInPage && !UserDefaults.standard.bool(forKey: "isLoggedIn")){
-            LoginView(appController: appController, awsManager: awsManager, authenticationSuccess: {
+            LoginView(appController: appController, awsManager: awsManager, dbManager: dbManager, authenticationSuccess: {
                 appController.viewController.setAsHome()
             })
         }
