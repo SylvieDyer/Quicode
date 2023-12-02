@@ -132,11 +132,4 @@ struct ModuleView: View {
         let response = await dbManager.queryDB(userID: userID)
         return [response["blockName"], response["questionDifficulty"]]
     }
-    
-//    func isValid(blockName: String) -> Bool {
-//
-//
-//        return
-//
-//    }
 }

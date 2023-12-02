@@ -12,12 +12,15 @@ struct BlockView: View {
     var moduleName: String
     var blockName: String
     var controller: AppController
-    @State private var showOverview = false
     let colorManager: ColorManager = ColorManager()
+    let dbManager : DBManager = DBManager()
+    @State private var showOverview = false
+    @State private var difficultiesValidMap: [String : Bool] = [:]
     @State private var questionList: QuestionList = QuestionList(qlist: [])
     @State private var isNavigationActive = false
     @State private var currDifficulty = QuestionDifficulty.easy
-    @State private var trueVal = true
+    @State private var userID: String = UserDefaults.standard.string(forKey: "id") ?? "ID"
+
     
     var body: some View {
         if isNavigationActive {
@@ -55,59 +58,84 @@ struct BlockView: View {
                     }
                     
                 }.listRowBackground(RoundedRectangle(cornerRadius: 40).fill(colorManager.getLightGreyLavendar()))
-                    .padding([.bottom],10)
+                .padding([.bottom],10)
+                .onAppear() {
+                    Task{
+                        do {
+                            difficultiesValidMap = getDifficultiesValidMap(lastCompleted: await queryBlockAndDifficulty())
+                        }
+                    }
+                }
                 
                 // EASY
                 Section {
                     // individual module
                     HStack{
-                        Button("Easy", action: {
-                            Task.detached {
-                                do {
-                                    let questions = try await controller.getQuestions(name: getMappedBlockName(blockName: blockName), difficulty: "easy")
-                                    let mainQueue = DispatchQueue.main
-                                    mainQueue.async {
-                                        self.questionList = questions
-                                        self.currDifficulty = QuestionDifficulty.easy
-                                        self.isNavigationActive = true
-                                        print("easy")
+                        if(difficultiesValidMap["easy"] ?? true) {
+                            Button("Easy", action: {
+                                Task.detached {
+                                    do {
+                                        let questions = await controller.getQuestions(name: getMappedBlockName(blockName: blockName), difficulty: "easy")
+                                        let mainQueue = DispatchQueue.main
+                                        mainQueue.async {
+                                            self.questionList = questions
+                                            self.currDifficulty = QuestionDifficulty.easy
+                                            self.isNavigationActive = true
+                                            print("easy")
+                                        }
                                     }
-                                } catch {
-                                    print("Error fetching questions: \(error)")
                                 }
-                            }
-                        })
-                        .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
-                        .padding(20)
-                        Spacer()
-                        Image(systemName: "star")
+                            })
+                            .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
+                            .padding(20)
+                            Spacer()
+                            Image(systemName: "star")
+                        } else {
+                            Text("Easy")
+                            .foregroundColor(Color.gray).font(.title3).fontWeight(.heavy)
+                            .padding(20)
+                            Spacer()
+                            Image(systemName: "star")
+                                .renderingMode(.template)
+                                .foregroundColor(Color.gray)
+                        }
                     }
+                    
+                    
                 }.listRowBackground(RoundedRectangle(cornerRadius: 40).fill(colorManager.getLightGreen()))// color each list section
                 
                 // MEDIUM
                 Section {
                     // individual module
                     HStack{
-                        Button("Medium", action: {
-                            Task.detached {
-                                do {
-                                    let questions = try await controller.getQuestions(name: getMappedBlockName(blockName: blockName), difficulty: "medium")
-                                    let mainQueue = DispatchQueue.main
-                                    mainQueue.async {
-                                        self.questionList = questions
-                                        self.currDifficulty = QuestionDifficulty.medium
-                                        self.isNavigationActive = true
-                                        print("medium")
+                        if(difficultiesValidMap["medium"] ?? true) {
+                            Button("Medium", action: {
+                                Task.detached {
+                                    do {
+                                        let questions = await controller.getQuestions(name: getMappedBlockName(blockName: blockName), difficulty: "medium")
+                                        let mainQueue = DispatchQueue.main
+                                        mainQueue.async {
+                                            self.questionList = questions
+                                            self.currDifficulty = QuestionDifficulty.medium
+                                            self.isNavigationActive = true
+                                            print("medium")
+                                        }
                                     }
-                                } catch {
-                                    print("Error fetching questions: \(error)")
                                 }
-                            }
-                        })
-                        .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
-                        .padding(20)
-                        Spacer()
-                        Image(systemName: "star")
+                            })
+                            .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
+                            .padding(20)
+                            Spacer()
+                            Image(systemName: "star")
+                        } else {
+                            Text("Medium")
+                            .foregroundColor(Color.gray).font(.title3).fontWeight(.heavy)
+                            .padding(20)
+                            Spacer()
+                            Image(systemName: "star")
+                                .renderingMode(.template)
+                                .foregroundColor(Color.gray)
+                        }
                     }
                 }.listRowBackground(RoundedRectangle(cornerRadius: 40).fill(colorManager.getMidGreen()))// color each list section
                 
@@ -115,26 +143,34 @@ struct BlockView: View {
                 Section {
                     // individual module
                     HStack{
-                        Button("Hard", action: {
-                            Task.detached {
-                                do {
-                                    let questions = try await controller.getQuestions(name: getMappedBlockName(blockName: blockName), difficulty: "hard")
-                                    let mainQueue = DispatchQueue.main
-                                    mainQueue.async {
-                                        self.questionList = questions
-                                        self.currDifficulty = QuestionDifficulty.hard
-                                        self.isNavigationActive = true
-                                        print("hard")
+                        if(difficultiesValidMap["hard"] ?? true) {
+                            Button("Hard", action: {
+                                Task.detached {
+                                    do {
+                                        let questions = await controller.getQuestions(name: getMappedBlockName(blockName: blockName), difficulty: "hard")
+                                        let mainQueue = DispatchQueue.main
+                                        mainQueue.async {
+                                            self.questionList = questions
+                                            self.currDifficulty = QuestionDifficulty.hard
+                                            self.isNavigationActive = true
+                                            print("hard")
+                                        }
                                     }
-                                } catch {
-                                    print("Error fetching questions: \(error)")
                                 }
-                            }
-                        })
-                        .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
-                        .padding(20)
-                        Spacer()
-                        Image(systemName: "star")
+                            })
+                            .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
+                            .padding(20)
+                            Spacer()
+                            Image(systemName: "star")
+                        } else {
+                            Text("Hard")
+                            .foregroundColor(Color.gray).font(.title3).fontWeight(.heavy)
+                            .padding(20)
+                            Spacer()
+                            Image(systemName: "star")
+                                .renderingMode(.template)
+                                .foregroundColor(Color.gray)
+                        }
                     }
                 }.listRowBackground(RoundedRectangle(cornerRadius: 40).fill(colorManager.getDarkGreen()))// color each list section
                 
@@ -146,10 +182,23 @@ struct BlockView: View {
     func getMappedBlockName(blockName:String) -> String{
         return blockName.replacingOccurrences(of: " ", with: "")
     }
-}
+    
+    func queryBlockAndDifficulty() async -> [String?] {
+        let response = await dbManager.queryDB(userID: userID)
+        return [response["blockName"], response["questionDifficulty"]]
+    }
+    
+    func getDifficultiesValidMap(lastCompleted: [String?]) -> [String : Bool] {
+        var blockMap: [String : Bool] = [:]
+        var valid = true
+        let progressBlockVal = ProgressUtils.getValue(inputValue: [lastCompleted[0] ?? ""])
+        let progressDifficultyVal = ProgressUtils.getValue(inputValue: [lastCompleted[1] ?? ""])
+        let thisBlockVal = ProgressUtils.getValue(inputValue: [blockName])
+        
+        blockMap["easy"] = true
+        blockMap["medium"] = progressDifficultyVal == 1 || progressBlockVal > thisBlockVal
+        blockMap["hard"] = progressDifficultyVal == 2 || progressBlockVal > thisBlockVal
 
-//struct BlockView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BlockView(moduleName:"MODULE", blockName:"BLOCK NAME", controller: AppController())
-//    }
-//}
+        return blockMap
+    }
+}
