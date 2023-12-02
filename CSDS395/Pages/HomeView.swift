@@ -61,14 +61,18 @@ struct HomeView: View {
                                     ModuleView(name: "Quick Lesson", controller: controller)
                                 } label: {
                                     VStack{
-                                        Text("Today's Quick Lesson:") .foregroundColor(.cyan.opacity(0.7)).font(.title2).fontWeight(.heavy)
-                                        Text("Common Mistakes") .foregroundColor(.red.opacity(0.7)).font(.title3).fontWeight(.heavy)
+                                        Text("Today's Quick Lesson:").foregroundColor(.black).font(.title3).fontWeight(.heavy)
                                     }
                                 }
                                 .padding(20)
                                 Spacer()
                             }
                         }
+                        .listRowBackground(
+                            RoundedRectangle(cornerRadius: 40)
+                                .fill(Color.white)
+                        )
+                           
                         
                         // iterate through list of modules
                         ForEach(controller.getModuleNames(), id: \.self) { moduleName in

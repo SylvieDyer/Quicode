@@ -40,7 +40,11 @@ struct QuestionView: View {
                 }
                 
                 
-                Button(action: {dismiss.callAsFunction(); updateDB();}, label: {Text("Return to Modules") .fontWeight(.bold)
+                Button(
+                    action: {
+                        dismiss.callAsFunction();
+                        updateDB();
+                    }, label: {Text("Return to Modules") .fontWeight(.bold)
                         .background(RoundedRectangle(cornerRadius: 40)
                             .foregroundColor(colorManager.getLavendar())
                             .padding(20)

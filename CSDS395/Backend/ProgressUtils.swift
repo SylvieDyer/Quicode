@@ -43,9 +43,9 @@ struct ProgressUtils {
     
     static func getKey(inputValue : Int) -> [String : String]{
         var outputDict : [String : String] = [:]
-        var blockVal = (inputValue/10) * 10
-        var moduleVal = (inputValue/100) * 100
-        var difficulty = (inputValue % 10)
+        let blockVal = (inputValue/10) * 10
+        let moduleVal = (inputValue/100) * 100
+        let difficulty = (inputValue % 10)
         for (key, value) in lessonToInt {
             if(value == blockVal) {
                 outputDict["blockName"] = key
