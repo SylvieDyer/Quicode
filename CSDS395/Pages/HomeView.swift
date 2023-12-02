@@ -122,25 +122,10 @@ struct HomeView: View {
         var valid = true
         for moduleName in controller.getModuleNames(){
             moduleMap[moduleName] = valid
-            if(moduleName == lastCompleted) {
+            if(ProgressUtils.getValue(inputValue: [moduleName]) > ProgressUtils.getValue(inputValue: [lastCompleted])) {
                 valid = false
             }
         }
         return moduleMap
     }
 }
-
-//struct HomeView_Previews: PreviewProvider {
-//
-//    // for core data
-////    let userDataController = UserDataController.shared
-//
-//    static var previews: some View {
-//        // for core data
-//        let userDataController = UserDataController.shared
-//        // preview enter in MainView
-//        MainView(appController: AppController())
-//            .environment(\.managedObjectContext, userDataController.container.viewContext)
-//
-//    }
-//}

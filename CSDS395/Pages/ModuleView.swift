@@ -54,8 +54,7 @@ struct ModuleView: View {
             .onAppear() {
                 Task{
                     do {
-                        var lastCompletedBlock = await queryBlockName() ?? "Operators"
-                        blocksValidMap = getBlocksValidMap(lastCompleted: lastCompletedBlock)
+                        blocksValidMap = getBlocksValidMap(lastCompleted: await queryBlockAndDifficulty())
                     }
                 }
             }
@@ -77,7 +76,7 @@ struct ModuleView: View {
                                 HStack {
                                     Image(systemName: "star")
                                     Image(systemName: "star")
-                                    Image(systemName: "star" )
+                                    Image(systemName: "star")
                                 }
                             }
                         } else {
@@ -96,14 +95,19 @@ struct ModuleView: View {
         }.listStyle(InsetGroupedListStyle())
     }
    
-    func getBlocksValidMap(lastCompleted: String) -> [String : Bool] {
+    func getBlocksValidMap(lastCompleted: [String?]) -> [String : Bool] {
         var blockMap: [String : Bool] = [:]
         var valid = true
+        let progressBlockVal = ProgressUtils.getValue(inputValue: [lastCompleted[0] ?? ""])
+        let progressDifficultyVal = ProgressUtils.getValue(inputValue: [lastCompleted[1] ?? ""])
+        
         for blockName in controller.getBlocks(name: name){
-            blockMap[blockName] = valid
+            let thisBlockVal = ProgressUtils.getValue(inputValue: [blockName])
             //alt solution to integer mapping: make this get the difficulty and use it
-            if(blockName == lastCompleted) {
-                valid = false
+            if(thisBlockVal <= progressBlockVal || (thisBlockVal == progressBlockVal + 10 && progressDifficultyVal == 3)) {
+                blockMap[blockName] = true
+            } else {
+                blockMap[blockName] = false
             }
         }
         return blockMap
@@ -123,20 +127,16 @@ struct ModuleView: View {
         let response = await dbManager.queryDB(userID: userID)
         return response["moduleName"]
     }
-}
-
-
-//// for testing when developing
-//struct View_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeView(controller: AppController())
-//    }
-//}
+    
+    func queryBlockAndDifficulty() async -> [String?] {
+        let response = await dbManager.queryDB(userID: userID)
+        return [response["blockName"], response["questionDifficulty"]]
+    }
+    
+//    func isValid(blockName: String) -> Bool {
 //
-
-
-//struct Previews_ModuleView_Previews: PreviewProvider {
-//    static var previews: some View {
-////        Text("Hello, World!")
+//
+//        return
+//
 //    }
-//}
+}

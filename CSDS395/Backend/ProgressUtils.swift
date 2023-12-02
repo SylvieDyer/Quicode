@@ -14,7 +14,7 @@ struct ProgressUtils {
         "Java Basics" : 200,
         "Data Structures" : 300,
         "Python Basics" : 400,
-        "Data Types and Varibles" : 110,
+        "Data Types and Variables" : 110,
         "Operators" : 120,
         "Conditionals" : 130,
         "Arrays" : 140,
