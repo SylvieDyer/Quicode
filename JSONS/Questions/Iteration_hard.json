@@ -12,13 +12,13 @@
        "questionAnswer": ["4"]
 	},
 	"q3": {
- 		"questionText": "For the following loop: \nwhile (i >= 0) i -= 1 \nif i starts out with a value of 5 it will iterate , times and i's final value will be ,",
+ 		"questionText": "For the following loop: \nwhile (i >= 0) i -= 1 \nif i starts out with a value of 5 it will iterate , times and i's final value will be ,.",
        "questionType": "dragAndDrop",
        "questionOptions": ["5", "6", "1", "0", "-1", "4"],
        "questionAnswer": ["6", "-1"]
 	},
 	"q4": {
- 		"questionText": "Fill in the blank to iterate through the array 'letters' and print out each letter: , letter , letters: print ,",
+ 		"questionText": "Fill in the blank to iterate through the array 'letters' and print out each letter: , letter , letters: print ,.",
        "questionType": "dragAndDrop",
        "questionOptions": ["for", "for each", "while", "in", "from", "to", "letter", "letters[letter]"],
        "questionAnswer": ["for each", "in", "letter"]

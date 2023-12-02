@@ -12,7 +12,7 @@
        "questionAnswer": ["%"]
 	},
 	"q3": {
- 		"questionText": ", is used to divide and , is used to multiply values",
+ 		"questionText": ", is used to divide and , is used to multiply values.",
        "questionType": "dragAndDrop",
        "questionOptions": ["*", "-", "/", "%"],
        "questionAnswer": ["/", "*"]

@@ -19,88 +19,95 @@ import SwiftUI
  preferences
  Choose default language
  */
-import CoreData
 
 struct UserView: View {
     var controller: AppController
-    var viewContext: NSManagedObjectContext
-    var user : User
+    var colorManager = ColorManager()
     
     var body:some View {
-        NavigationView{
-            VStack{
-                // header
-                HStack(alignment: .lastTextBaseline, spacing:0){
+        
+        VStack{
+            // header
+            HStack(spacing:0){
+                ZStack{
                     // home page
-                    NavigationLink {
-                        HomeView(controller: controller, viewContext: viewContext, user : user).navigationBarBackButtonHidden(true)
-                    } label: {
-                        Image(systemName: "house").foregroundColor(.gray).padding(25)
+                    HStack{
+                        Button(
+                            action: {
+                                controller.viewController.setAsHome()},
+                            label: {
+                                Image(systemName: "house").foregroundColor(.black).padding(25)
+                            })
+                        Spacer()
                     }
-                    Spacer()
-                    Text("User Profile").font(.title3).bold().padding(.leading, 15)
-                        .font(.callout).multilineTextAlignment(.center)
-                    Spacer()
+                    // Title
+                    HStack{
+                        Spacer()
+                        
+                        Text("User Profile").font(.title2).bold()
+                            .font(.callout)
+                        Spacer()
+                    }
                 }
-                List{
+            }.frame(height: 50)
+            List{
+                Section{
                     //profile section
-                    VStack{
-                        Text("\(user.firstName ?? "First Name") \(user.lastName ?? "Last Name")").font(.headline).multilineTextAlignment(.leading)
+                    VStack(alignment:.leading){
+                        Text("\(UserDefaults.standard.string(forKey: "firstname") ?? "First Name") \(UserDefaults.standard.string(forKey: "lastname") ?? "Last Name")").font(.title).bold()
                         //TODO: take from user name
-                        Text("\(user.email ?? "Email")").font(.caption).multilineTextAlignment(.leading)
+                        Text("\(UserDefaults.standard.string(forKey: "email") ?? "Email")").font(.title3)
                     }
-                    //Progress Tracking Section
+                    .padding([.leading], 10)
+                }.listRowBackground(
+                    RoundedRectangle(cornerRadius: 50)
+                        .fill(colorManager.getMidGreen().opacity(0.8)))
+          
+                //Progress Tracking Section
+                Section{
+                    Text("Your Progress:").font(.title2).fontWeight(.heavy).foregroundColor(.black).opacity(0.8)
+                }.listRowBackground( RoundedRectangle(cornerRadius: 50).fill(colorManager.getColor(hex: "#f2f2f7")))
+                                    // iterate through list of modules
+                ForEach(controller.getModuleNames(), id: \.self) { moduleName in
                     Section{
-                        Text("Progress") .foregroundColor(.green.opacity(0.6)).font(.title2).fontWeight(.heavy)
-                        //get user's last module and how far they've gotten
-                        // iterate through list of modules
-                        ForEach(controller.getModuleNames(), id: \.self) { moduleName in
-                            // individual module
-                            Text(moduleName).padding(.top, 10)
-                            // progress Bar
-                            HStack{
-                                ForEach(controller.getBlocks(name: moduleName), id: \.self) { blockName in
-                                    // TODO: Connect with user-status
-                                    // if blockName associated with complete , "star.fill"
-                                    Image(systemName: "star").foregroundColor(.gray)
+                        VStack(alignment:.leading){
+                            Text(moduleName).padding(.top, 10).bold()
+                                Spacer()
+                                // progress Bar
+                                HStack{
+                                    ForEach(controller.getBlocks(name: moduleName), id: \.self) { blockName in
+                                        // TODO: Connect with user-status
+                                        // if blockName associated with complete , "star.fill"
+                                        Image(systemName: "star").foregroundColor(.black)
+                                    }
+                                    Spacer()
                                 }
                             }
-                            .foregroundColor(.indigo.opacity(0.7)).font(.title3).fontWeight(.heavy)
-                        }
-                    }
-                    Section{
-                        Text("Preferences") .foregroundColor(.purple.opacity(0.6)).font(.title2).fontWeight(.heavy)
-                        //get user's last module and how far they've gotten
-                        // iterate through list of modules
-                    }
-                    Button(action: {
                         
-                        print(viewContext.registeredObjects)
-                        
-                        controller.viewController.setAsLogIn()
-//                        TODO: implement log out functionality (core data, s3 saving progress, etc)
-//                        change user status
-//                        user.isLoggedOut = true
-//                        do {
-//                            try viewContext.save()
-//                        } catch {
-//
-//                            let nsError = error as NSError
-//                            // fatalError() will crash app
-//                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                    }, label:{ Text("Logout")})
-                }.listStyle(InsetGroupedListStyle())
-            }
+                        .padding(20)
+                    }.listRowBackground(
+                        RoundedRectangle(cornerRadius: 50)
+                            .fill(colorManager.getLightLavendar()))
+                }
+                
+                
+                Button(action: {
+                    UserDefaults.standard.set(false, forKey: "isLoggedIn")
+                    controller.viewController.setAsLogIn()
+                    //                        TODO: implement log out functionality (core data, s3 saving progress, etc)
+                }, label:{ Text("Logout").font(.title2).bold()})
+            }.listStyle(InsetGroupedListStyle())
         }
     }
+    
 }
 
 
-// 
-////// for testing when developing
-//struct UserView_Previews: PreviewProvider {
-//
-//    static var previews: some View {
-//        UserView(controller: AppController(), user: User())
-//    }
-//}
+ 
+//// for testing when developing
+struct UserView_Previews: PreviewProvider {
+
+    static var previews: some View {
+        UserView(controller: AppController())
+    }
+}

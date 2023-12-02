@@ -6,7 +6,7 @@
            "questionAnswer": ["x < 451"]
         },
     "q2": {
-             "questionText": "Given x = 5 make the following code print 2:\n,, {print(1);}\n,,{print(2);}.",
+             "questionText": "Given x = 5 make the following code print 2:\n , , {print(1);}\n , , {print(2);}.",
            "questionType": "dragAndDrop",
            "questionOptions": ["if", "else if", "else", "x < 10", "N/A", "x == 20"],
            "questionAnswer": ["if", "x < 10", "else", "N/A"]
@@ -30,7 +30,7 @@
            "questionAnswer": ["x > 820"]
         },
     "q6": {
-             "questionText": "Given x = 20 make the following code result in x = 10:\n,, {x /= 2 ;}\n,,{x -= 10;}.",
+             "questionText": "Given x = 20 make the following code result in x = 10:\n , , {x /= 2 ;}\n , , {x -= 10;}.",
            "questionType": "dragAndDrop",
            "questionOptions": ["if", "else if", "x > 10", "x / 5 > 10"],
            "questionAnswer": ["if", "x > 10", "else if", "x / 5 > 10"]

@@ -52,9 +52,7 @@ struct AWSManager {
             credentialProvider: .static(accessKeyId: "AKIA2ARVCSNBIO4SS2HU", secretAccessKey: "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"),
             httpClientProvider: .createNew
         )
-        print("Getting Module List")
         let s3 = S3(client: client, region: .useast2)
-        print("Create S3")
         
         let input = S3.GetObjectRequest(
             bucket: bucket,
@@ -71,13 +69,12 @@ struct AWSManager {
               
                 let data = objectData.asString()
                     if let unwrappedValue = data {
-                        print("\(unwrappedValue)")
+//                        print("\(unwrappedValue)")
                         do {
                             try client.syncShutdown()
-                            print("SHUT DOWN GET FILE")
                         }
                         catch {
-                            print("Error shutting down hehe")
+                            print("Error shutting down")
                         }
                         return unwrappedValue
                     } else {
@@ -92,12 +89,12 @@ struct AWSManager {
             // Handle any errors that occur
             print("Error retrieving object: \(error)")
         }
-        // stut down client
+        // shut down client
         do {
             try client.syncShutdown()
         }
         catch {
-            print("Error shutting down hehe")
+            print("Error shutting down")
         }
         
         /// if something goes wrong, returns empty string

@@ -29,7 +29,7 @@ class AppController: NSObject, ObservableObject {
         do {
             if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [Dictionary<String,Any>]
             {
-                print(jsonArray) // use the json here
+//                print(jsonArray) // use the json here
                 dict = jsonArray
                 
             } else {
@@ -57,8 +57,6 @@ class AppController: NSObject, ObservableObject {
         }
         
         /// brief overviews
-        print("getting overview:")
-        
         // contents of the s3 object as a string
         let content = await awsManager.getFile(fileName: "blockOverviews.json")
         
@@ -79,7 +77,7 @@ class AppController: NSObject, ObservableObject {
             print(error)
         }
         
-        
+        // set overviews for each module / block
         for block in dict {
            
             var briefOverview = block.values.description
@@ -96,7 +94,6 @@ class AppController: NSObject, ObservableObject {
     }
     
     func getBlocks(name: String) -> [String]{
-        print(name)
         return blockNames[name] as! [String]
     }
         

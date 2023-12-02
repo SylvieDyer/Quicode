@@ -48,13 +48,10 @@ struct MultipleChoiceView: View {
                     // visually show question as marked, deselect rest
                     isSelected[option] = true
                     isSelected.forEach { (key: String, value: Bool) in
-                        print(key)
                         if (key != option){
                             isSelected[key] = false
                         }
                     }
-                    print("is selected: ", option)
-                    
                 }){
                     Text(option)
                         .font(.title3)
@@ -73,9 +70,6 @@ struct MultipleChoiceView: View {
                     action: {
                         // if still shown, change color
                         isSelected.forEach { (key: String, value: Bool) in
-                            print("in is selected")
-                            print(key)
-                            print(value)
                             
                             // if is selected, is WRONG
                             if (isSelected[key] == true){

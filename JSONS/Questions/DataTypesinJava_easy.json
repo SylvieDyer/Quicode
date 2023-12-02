@@ -1,6 +1,6 @@
 {
 	"q1": {
- 		"questionText": "A,is an example of a Character.",
+ 		"questionText": "The following is an example of a Character: ,.",
        "questionType": "dragAndDrop",
        "questionOptions": ["\"hello\"", "'c'", "word", "5", "32.1"],
        "questionAnswer": ["'c'"]
@@ -12,7 +12,7 @@
        "questionAnswer": ["1.0"]
 	},
 "q3": {
- 		"questionText": "The data types (int) (double) (float) and (long) are used to represent,.",
+ 		"questionText": "The data types (int) (double) (float) and (long) are used to represent ,.",
        "questionType": "dragAndDrop",
        "questionOptions": ["values", "yarn", "numbers", "words"],
        "questionAnswer": ["numbers"]

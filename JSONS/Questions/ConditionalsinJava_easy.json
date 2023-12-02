@@ -18,7 +18,7 @@
            "questionAnswer": ["if", "else if"]
         },
     "q4": {
-             "questionText": "Fill in the logical ordering of conditionals:\n1:,\n2:,\n3:,.",
+             "questionText": "Fill in the logical ordering of conditionals:\n1: ,\n2: ,\n3: ,.",
            "questionType": "dragAndDrop",
            "questionOptions": ["else", "if", "else if", "if else"],
            "questionAnswer": ["if", "else if", "else"]

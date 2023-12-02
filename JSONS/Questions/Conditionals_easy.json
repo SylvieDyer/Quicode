@@ -12,7 +12,7 @@
        "questionAnswer": ["if(a == \"Hello\")"]
 	},
 	"q3": {
- 		"questionText": "Logically, else-if statements come after , statements but before , statements.",
+ 		"questionText": "Logically else-if statements come after , statements but before , statements.",
        "questionType": "dragAndDrop",
        "questionOptions": ["while", "else", "for", "if"],
        "questionAnswer": ["if", "else"]

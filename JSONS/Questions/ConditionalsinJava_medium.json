@@ -12,7 +12,7 @@
            "questionAnswer": ["==", ">=", "<="]
         },
     "q3": {
-             "questionText": "Make the following code print 20\nif(30 / 10,3)  {print(40)}\nelse{print(20)}.",
+             "questionText": "Make the following code print 20\nif(30 / 10 , 3)  {print(40)}\nelse{print(20)}.",
            "questionType": "dragAndDrop",
            "questionOptions": ["==", "<=", ">=", "!="],
            "questionAnswer": ["=="]

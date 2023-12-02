@@ -10,19 +10,15 @@ import Swift
 class NextButton {
   
     static func validate(selected: [String], correct: [String], questionType: QuestionType) -> Bool {
-        print("in validate)")
+        print("VALIDATING QUESTION RESPONSE: ")
         print(selected)
         print(correct)
-        print(questionType)
         
         switch (questionType){
             // for drag and drop
         case .dragAndDrop:
             // TODO: must be in order
             if selected.isEmpty {
-                return false
-            }
-            if selected.count < 2 {
                 return false
             }
             for index in 0...correct.count - 1{
