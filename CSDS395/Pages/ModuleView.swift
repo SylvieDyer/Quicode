@@ -44,7 +44,9 @@ struct ModuleView: View {
                     HStack{
                         ForEach(controller.getBlocks(name: name), id: \.self) { blockName in
                             // TODO: Connect with user-status
-                            if(ProgressUtils.getValue(inputValue: [blockName]) < ProgressUtils.getValue(inputValue: lastCompleted) + 10) {
+                            let v1 = ProgressUtils.getValue(inputValue: [blockName])
+                            let v2 = ProgressUtils.getValue(inputValue: lastCompleted)
+                            if(ProgressUtils.getValue(inputValue: [blockName]) < ProgressUtils.getValue(inputValue: lastCompleted)) {
                                 Image(systemName: "star.fill").foregroundColor(.black)
                             }
                             else {
@@ -80,9 +82,15 @@ struct ModuleView: View {
                                     .fontWeight(.heavy)
                                     .padding(20)
                                 HStack {
-                                    Image(systemName: "star")
-                                    Image(systemName: "star")
-                                    Image(systemName: "star")
+                                    let difficulties = ["easy", "medium","hard"]
+                                    ForEach(difficulties, id: \.self) { difficulty in
+                                        if(ProgressUtils.getValue(inputValue: [blockName, difficulty]) <= ProgressUtils.getValue(inputValue: lastCompleted)) {
+                                            Image(systemName: "star.fill")
+                                        }
+                                        else {
+                                            Image(systemName: "star")
+                                        }
+                                    }
                                 }
                             }
                         } else {
