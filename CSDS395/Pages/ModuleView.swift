@@ -18,6 +18,7 @@ struct ModuleView: View {
     @State private var showOverview = false
     @State private var blocksValidMap: [String : Bool] = [:]
     @State private var userID: String = UserDefaults.standard.string(forKey: "id") ?? "ID"
+    @State private var lastCompleted : [String] = []
     
     let colorManager: ColorManager = ColorManager()
     var body: some View {
@@ -43,8 +44,12 @@ struct ModuleView: View {
                     HStack{
                         ForEach(controller.getBlocks(name: name), id: \.self) { blockName in
                             // TODO: Connect with user-status
-                            // if blockName associated with complete , "star.fill"
-                            Image(systemName: "star")
+                            if(ProgressUtils.getValue(inputValue: [blockName]) < ProgressUtils.getValue(inputValue: lastCompleted) + 10) {
+                                Image(systemName: "star.fill").foregroundColor(.black)
+                            }
+                            else {
+                                Image(systemName: "star").foregroundColor(.black)
+                            }
                         }
                         Spacer()
                     }.padding(10)
@@ -54,7 +59,8 @@ struct ModuleView: View {
             .onAppear() {
                 Task{
                     do {
-                        blocksValidMap = getBlocksValidMap(lastCompleted: await queryBlockAndDifficulty())
+                        lastCompleted =  await queryBlockAndDifficulty()
+                        blocksValidMap = getBlocksValidMap(lastCompleted: lastCompleted)
                     }
                 }
             }
@@ -128,8 +134,8 @@ struct ModuleView: View {
         return response["moduleName"]
     }
     
-    func queryBlockAndDifficulty() async -> [String?] {
+    func queryBlockAndDifficulty() async -> [String] {
         let response = await dbManager.queryDB(userID: userID)
-        return [response["blockName"], response["questionDifficulty"]]
+        return [response["blockName"] ?? "", response["questionDifficulty"] ?? ""]
     }
 }

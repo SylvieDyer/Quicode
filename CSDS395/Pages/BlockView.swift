@@ -21,6 +21,8 @@ struct BlockView: View {
     @State private var currDifficulty = QuestionDifficulty.easy
     @State private var userID: String = UserDefaults.standard.string(forKey: "id") ?? "ID"
 
+    @State private var trueVal = true
+    @State private var lastCompleted : [String] = []
     
     var body: some View {
         if isNavigationActive {
@@ -50,10 +52,16 @@ struct BlockView: View {
                             }
                         }.padding(20)
                         HStack{
-                            Image(systemName: "star")
-                            Image(systemName: "star")
-                            Image(systemName: "star")
-                            
+                            let difficulties = ["easy", "medium","hard"]
+                            ForEach(difficulties, id: \.self) { difficulty in
+                                if(ProgressUtils.getValue(inputValue: [blockName, difficulty]) <= ProgressUtils.getValue(inputValue: lastCompleted)) {
+                                    Image(systemName: "star.fill")
+                                }
+                                else {
+                                    Image(systemName: "star")
+                                }
+                            }
+
                         }.padding(10)
                     }
                     
@@ -62,7 +70,8 @@ struct BlockView: View {
                 .onAppear() {
                     Task{
                         do {
-                            difficultiesValidMap = getDifficultiesValidMap(lastCompleted: await queryBlockAndDifficulty())
+                            lastCompleted = await queryBlockAndDifficulty()
+                            difficultiesValidMap = getDifficultiesValidMap(lastCompleted: lastCompleted)
                         }
                     }
                 }
@@ -89,7 +98,12 @@ struct BlockView: View {
                             .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
                             .padding(20)
                             Spacer()
-                            Image(systemName: "star")
+                            if(ProgressUtils.getValue(inputValue: [blockName, "easy"]) <= ProgressUtils.getValue(inputValue: lastCompleted)) {
+                                Image(systemName: "star.fill")
+                            }
+                            else {
+                                Image(systemName: "star")
+                            }
                         } else {
                             Text("Easy")
                             .foregroundColor(Color.gray).font(.title3).fontWeight(.heavy)
@@ -126,7 +140,12 @@ struct BlockView: View {
                             .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
                             .padding(20)
                             Spacer()
-                            Image(systemName: "star")
+                            if(ProgressUtils.getValue(inputValue: [blockName, "medium"]) <= ProgressUtils.getValue(inputValue: lastCompleted)) {
+                                Image(systemName: "star.fill")
+                            }
+                            else {
+                                Image(systemName: "star")
+                            }
                         } else {
                             Text("Medium")
                             .foregroundColor(Color.gray).font(.title3).fontWeight(.heavy)
@@ -161,7 +180,12 @@ struct BlockView: View {
                             .foregroundColor(Color.black).font(.title3).fontWeight(.heavy)
                             .padding(20)
                             Spacer()
-                            Image(systemName: "star")
+                            if(ProgressUtils.getValue(inputValue: [blockName, "hard"]) <= ProgressUtils.getValue(inputValue: lastCompleted)) {
+                                Image(systemName: "star.fill")
+                            }
+                            else {
+                                Image(systemName: "star")
+                            }
                         } else {
                             Text("Hard")
                             .foregroundColor(Color.gray).font(.title3).fontWeight(.heavy)
@@ -183,21 +207,20 @@ struct BlockView: View {
         return blockName.replacingOccurrences(of: " ", with: "")
     }
     
-    func queryBlockAndDifficulty() async -> [String?] {
+    func queryBlockAndDifficulty() async -> [String] {
         let response = await dbManager.queryDB(userID: userID)
-        return [response["blockName"], response["questionDifficulty"]]
+        return [response["blockName"] ?? "", response["questionDifficulty"] ?? ""]
     }
     
-    func getDifficultiesValidMap(lastCompleted: [String?]) -> [String : Bool] {
+    func getDifficultiesValidMap(lastCompleted: [String]) -> [String : Bool] {
         var blockMap: [String : Bool] = [:]
-        var valid = true
-        let progressBlockVal = ProgressUtils.getValue(inputValue: [lastCompleted[0] ?? ""])
-        let progressDifficultyVal = ProgressUtils.getValue(inputValue: [lastCompleted[1] ?? ""])
+        let progressBlockVal = ProgressUtils.getValue(inputValue: [lastCompleted[0]])
+        let progressDifficultyVal = ProgressUtils.getValue(inputValue: [lastCompleted[1]])
         let thisBlockVal = ProgressUtils.getValue(inputValue: [blockName])
         
         blockMap["easy"] = true
-        blockMap["medium"] = progressDifficultyVal == 1 || progressBlockVal > thisBlockVal
-        blockMap["hard"] = progressDifficultyVal == 2 || progressBlockVal > thisBlockVal
+        blockMap["medium"] = progressDifficultyVal >= 1 && progressBlockVal == thisBlockVal || progressBlockVal > thisBlockVal
+        blockMap["hard"] = progressDifficultyVal >= 2 && progressBlockVal == thisBlockVal || progressBlockVal > thisBlockVal
 
         return blockMap
     }

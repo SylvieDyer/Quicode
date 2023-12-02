@@ -18,6 +18,7 @@ struct HomeView: View {
     @Environment (\.dismiss) var dismiss
     @State private var modulesValidMap: [String : Bool] = [:]
     @State private var userID: String = UserDefaults.standard.string(forKey: "id") ?? "ID"
+    @State private var lastCompleted : [String] = []
     
     var body: some View {
         // wraps app in navigation to switch to user-screen
@@ -84,8 +85,12 @@ struct HomeView: View {
                                                 Spacer()
                                                 ForEach(controller.getBlocks(name: moduleName), id: \.self) { blockName in
                                                     // TODO: Connect with user-status
-                                                    // if blockName associated with complete , "star.fill"
-                                                    Image(systemName: "star").foregroundColor(.black)
+                                                    if(ProgressUtils.getValue(inputValue: [blockName]) < ProgressUtils.getValue(inputValue: lastCompleted) + 10) {
+                                                        Image(systemName: "star.fill").foregroundColor(.black)
+                                                    }
+                                                    else {
+                                                        Image(systemName: "star").foregroundColor(.black)
+                                                    }
                                                 }
                                                 Spacer()
                                             }
@@ -114,7 +119,8 @@ struct HomeView: View {
                     .onAppear() {
                         Task{
                             do {
-                                modulesValidMap = getModulesValidMap(lastCompleted: await queryModuleAndBlock())
+                                lastCompleted =  await queryModuleAndBlock();
+                                modulesValidMap = getModulesValidMap(lastCompleted: lastCompleted);
                             }
                         }
                     }
@@ -124,9 +130,9 @@ struct HomeView: View {
         
     }
     
-    func queryModuleAndBlock() async -> [String?] {
+    func queryModuleAndBlock() async -> [String] {
         let response = await dbManager.queryDB(userID: userID)
-        return [response["moduleName"], response["blockName"]]
+        return [response["moduleName"] ?? "", response["blockName"] ?? ""]
     }
     
     func getModulesValidMap(lastCompleted: [String?]) -> [String : Bool] {
