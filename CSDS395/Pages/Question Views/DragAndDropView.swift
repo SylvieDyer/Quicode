@@ -37,12 +37,12 @@ struct DragAndDropView: View{
             .opacity(isShown ? 1.0 : 0.0)
             .fontWeight(.bold)
             .multilineTextAlignment(.center)
-            .padding(50)
+            .padding(80)
             .background(RoundedRectangle(cornerRadius: 40)
                 .foregroundColor(colorManager.getMidGreen()
                     .opacity(isShown ? 1.0 : 0.0))
                     .padding(50)
-                    .frame(width:400, height: 300))
+                    .frame(width:400, height: 500))
             
             Spacer()
             
