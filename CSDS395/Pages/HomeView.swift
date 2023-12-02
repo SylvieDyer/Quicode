@@ -72,7 +72,7 @@ struct HomeView: View {
                         
                         // iterate through list of modules
                         ForEach(controller.getModuleNames(), id: \.self) { moduleName in
-                            if (modulesValidMap[moduleName] ?? true) {
+                            if (moduleName == "CS Foundations" || modulesValidMap[moduleName] ?? true) {
                                     Section{
                                     // individual module
                                     NavigationLink(){

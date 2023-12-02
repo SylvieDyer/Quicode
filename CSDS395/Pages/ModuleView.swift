@@ -71,7 +71,7 @@ struct ModuleView: View {
                 Section {
                     // individual module
                     VStack{
-                        if (blocksValidMap[blockName] ?? true) {
+                        if (blockName == "Data Types and Variables" || blocksValidMap[blockName] ?? true) {
                             NavigationLink(destination: BlockView(moduleName: name, blockName: blockName, controller: controller)) {
                                 Text(blockName)
                                     .foregroundColor(Color.black)
