@@ -42,7 +42,7 @@ struct DragAndDropView: View{
                 .foregroundColor(colorManager.getMidGreen()
                     .opacity(isShown ? 1.0 : 0.0))
                     .padding(50)
-                    .frame(width:400, height: 500))
+                    .frame(width:400, height: 300))
             
             Spacer()
             
