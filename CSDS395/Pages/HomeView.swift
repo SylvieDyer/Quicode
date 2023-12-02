@@ -14,8 +14,10 @@ struct HomeView: View {
     @ObservedObject var controller: AppController
     let colorManager: ColorManager = ColorManager()
     let hardCodedLastCompletedModule: String = "CS Foundations"
+    let dbManager : DBManager = DBManager()
     @Environment (\.dismiss) var dismiss
     @State private var modulesValidMap: [String : Bool] = [:]
+    @State private var userID: String = UserDefaults.standard.string(forKey: "id") ?? "ID"
     
     var body: some View {
         // wraps app in navigation to switch to user-screen
@@ -110,20 +112,35 @@ struct HomeView: View {
                         
                     }.listStyle(InsetGroupedListStyle()) // (remove drop down option for list sectoins)
                     .onAppear() {
-                        modulesValidMap = getModulesValidMap(lastCompleted: hardCodedLastCompletedModule)
+                        Task{
+                            do {
+                                modulesValidMap = getModulesValidMap(lastCompleted: await queryModuleAndBlock())
+                            }
+                        }
                     }
                 }
             }
         }
         
     }
-    func getModulesValidMap(lastCompleted: String) -> [String : Bool] {
+    
+    func queryModuleAndBlock() async -> [String?] {
+        let response = await dbManager.queryDB(userID: userID)
+        return [response["moduleName"], response["blockName"]]
+    }
+    
+    func getModulesValidMap(lastCompleted: [String?]) -> [String : Bool] {
         var moduleMap: [String : Bool] = [:]
-        var valid = true
+        let progressModuleVal = ProgressUtils.getValue(inputValue: [lastCompleted[0] ?? ""])
+        let progressBlockVal = ProgressUtils.getValue(inputValue: [lastCompleted[1] ?? ""])
+        
         for moduleName in controller.getModuleNames(){
-            moduleMap[moduleName] = valid
-            if(ProgressUtils.getValue(inputValue: [moduleName]) > ProgressUtils.getValue(inputValue: [lastCompleted])) {
-                valid = false
+            let thisModuleVal = ProgressUtils.getValue(inputValue: [moduleName])
+            
+            if(thisModuleVal <= progressModuleVal || (thisModuleVal == progressModuleVal + 100 && ProgressUtils.isLastBlock(blockVal: progressBlockVal))) {
+                moduleMap[moduleName] = true
+            } else {
+                moduleMap[moduleName] = false
             }
         }
         return moduleMap

@@ -36,6 +36,11 @@ struct ProgressUtils {
         "medium" : 2,
         "hard" : 3
     ]
+    
+    static func isLastBlock(blockVal: Int) -> Bool {
+        return blockVal == 150 || blockVal == 250 || blockVal == 360 || blockVal == 420
+    }
+    
     static func getKey(inputValue : Int) -> [String : String]{
         var outputDict : [String : String] = [:]
         var blockVal = (inputValue/10) * 10
