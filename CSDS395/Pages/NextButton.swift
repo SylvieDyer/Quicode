@@ -10,10 +10,10 @@ import Swift
 class NextButton {
   
     static func validate(selected: [String], correct: [String], questionType: QuestionType) -> Bool {
-        print("VALIDATING QUESTION RESPONSE: ")
-        print(selected)
-        print(correct)
-        
+//        print("VALIDATING QUESTION RESPONSE: ")
+//        print(selected)
+//        print(correct)
+//        
         switch (questionType){
             // for drag and drop
         case .dragAndDrop:
@@ -23,7 +23,6 @@ class NextButton {
             }
             for index in 0...correct.count - 1{
                 if (selected[index] != correct[index]){
-                    print("returning false for DND")
                     return false
                 }
             }
@@ -33,7 +32,7 @@ class NextButton {
             if selected.isEmpty {
                 return false
             }
-            print("returning \(correct[0] == selected[0]) for multiple choice")
+//            print("returning \(correct[0] == selected[0]) for multiple choice")
             return correct[0] == selected[0]
             
         case .multiSelect:
@@ -43,7 +42,7 @@ class NextButton {
             for answer in selected {
                 // if correct doesn't contain option
                 if (!correct.contains(answer)){
-                    print("returning false for Multi Select")
+//                    print("returning false for Multi Select")
                     return false
                 }
             }

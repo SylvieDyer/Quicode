@@ -67,7 +67,6 @@ class AppController: NSObject, ObservableObject {
         do {
             if let jsonArray = try JSONSerialization.jsonObject(with: overviews, options : .allowFragments) as? [Dictionary<String,Any>]
             {
-//                print(jsonArray) // use the json here
                 dict = jsonArray
                 
             } else {

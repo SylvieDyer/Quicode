@@ -142,8 +142,8 @@ struct HomeView: View {
                                 .onAppear() {
                                     Task{
                                         do {
-                                            lastCompleted =  await queryModuleAndBlock();
-                                            lastCompletedDifficulty = await queryDifficulty();
+                                            lastCompleted =  await queryAll();
+                                            lastCompletedDifficulty = lastCompleted[2];
                                             modulesValidMap = getModulesValidMap(lastCompleted: lastCompleted);
                                         }
                                     }
@@ -154,9 +154,9 @@ struct HomeView: View {
         }
     }
     
-    func queryModuleAndBlock() async -> [String] {
+    func queryAll() async -> [String] {
         let response = await dbManager.queryDB(userID: userID)
-        return [response["moduleName"] ?? "", response["blockName"] ?? ""]
+        return [response["moduleName"] ?? "", response["blockName"] ?? "", response["questionDifficulty"] ?? ""]
     }
     
     func queryDifficulty() async -> String{

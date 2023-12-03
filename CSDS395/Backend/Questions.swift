@@ -88,7 +88,6 @@ public class QuestionList: Hashable{
     }
   
     func getCurrent() -> (Question)? {
-//        print("get current: " + String(currentPos))
         if(currentPos >= qlist.count) {
             return nil
         }
@@ -97,7 +96,6 @@ public class QuestionList: Hashable{
     
     // Returns nil if at last question
     func getNext() -> (Question)? {
-//        print(currentPos)
         currentPos += 1
         if (currentPos < qlist.count - 1) {
             return getCurrent()

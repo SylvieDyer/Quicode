@@ -24,19 +24,16 @@ struct AWSManager {
            bucket: bucket,
            key: filename
        )
-       print("Upload Request Created")
 
        do {
 
            try await s3.putObject(uploadRequest)
-           print("Object uploaded successfully!")
        } catch {
            print("Error uploading object: \(error)")
        }
         
         do {
             try client.syncShutdown()
-            print("SHUT DOWN UPLOAD")
         }
         catch {
             print("Error shutting down \(error)")

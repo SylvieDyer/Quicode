@@ -89,7 +89,6 @@ struct BlockView: View {
                                         self.questionList = questions
                                         self.currDifficulty = QuestionDifficulty.easy
                                         self.isNavigationActive = true
-                                        print("easy")
                                     }
                                 }
                             }
@@ -122,7 +121,6 @@ struct BlockView: View {
                                             self.questionList = questions
                                             self.currDifficulty = QuestionDifficulty.medium
                                             self.isNavigationActive = true
-                                            print("medium")
                                         }
                                     }
                                 }
@@ -162,7 +160,6 @@ struct BlockView: View {
                                             self.questionList = questions
                                             self.currDifficulty = QuestionDifficulty.hard
                                             self.isNavigationActive = true
-                                            print("hard")
                                         }
                                     }
                                 }
