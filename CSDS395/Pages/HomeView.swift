@@ -23,8 +23,6 @@ struct HomeView: View {
     @State private var qodQuestions: QuestionList = QuestionList(qlist: [])
     @State private var isQodNavigationActive = false
 
-    
-    
     var body: some View {
             // wraps app in navigation to switch to user-screen
             NavigationView{
@@ -69,23 +67,6 @@ struct HomeView: View {
                                 
                                 // "quick code" section
                                 Section{
-                                    //                            HStack{ // to center text
-                                    //                                Spacer()
-                                    //                                NavigationLink {
-                                    //                                    QuestionView(moduleName: "qod", blockName: "qod", questionDifficulty: QuestionDifficulty.easy, controller: controller, questionList: qodQuestions)
-                                    //                                }
-                                    //                                label: {
-                                    //                                    VStack{
-                                    //                                        Text("Question of the Day")
-                                    //                                            .foregroundColor(Color.black)
-                                    //                                            .font(.title3)
-                                    //                                            .fontWeight(.heavy)
-                                    //                                            .padding(20)
-                                    //                                    }
-                                    //                                }
-                                    //                                .padding(20)
-                                    //                                Spacer()
-                                    //                            }
                                     HStack{
                                         Button("Question of the Day", action: {
                                             Task.detached {
@@ -94,7 +75,6 @@ struct HomeView: View {
                                                     await MainActor.run {
                                                         self.qodQuestions = questions
                                                         self.isQodNavigationActive = true
-                                                        print("qod")
                                                     }
                                                 }
                                             }
@@ -108,17 +88,6 @@ struct HomeView: View {
                                     RoundedRectangle(cornerRadius: 40)
                                         .fill(Color.white)
                                 )
-                                //                        .onAppear() {
-                                //                            Task {
-                                //                                do {
-                                //                                    qodQuestions = await controller.getQuestions(name: "qod", difficulty: "")
-                                //                                    print("QOD QUESTIONS")
-                                //                                    print(qodQuestions.getCurrent()?.questionText)
-                                //                                }
-                                //                            }
-                                //                        }
-                                
-                                
                                 // iterate through list of modules
                                 ForEach(controller.getModuleNames(), id: \.self) { moduleName in
                                     if (moduleName == "CS Foundations" || modulesValidMap[moduleName] ?? true) {
