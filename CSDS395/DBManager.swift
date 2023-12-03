@@ -20,14 +20,11 @@ struct DBManager {
         let putItemInput = DynamoDB.PutItemInput(item: item, tableName: "quicode")
         do {
             let response = try await dynamoDB.putItem(putItemInput)
-            print("Added item to db: \(response)")
             
     } catch{
         print("Error adding item: \(error)")
     }
-    
             
-        print("Uploaded to table?")
         do {
             try client.syncShutdown()
         }
@@ -50,9 +47,6 @@ struct DBManager {
     } catch{
         print("Error updating item: \(error)")
     }
-    
-            
-        print("Updaated table?")
         do {
             try client.syncShutdown()
         }
@@ -101,7 +95,6 @@ struct DBManager {
             print("Error updating item: \(error)")
         }
         
-        print("Queried table")
         do {
             try await client.shutdown()
         }

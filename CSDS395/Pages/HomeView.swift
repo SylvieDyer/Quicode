@@ -90,8 +90,6 @@ struct HomeView: View {
                                                 Spacer()
                                                 ForEach(controller.getBlocks(name: moduleName), id: \.self) { blockName in
                                                     if(lastCompleted.count > 0) {
-//                                                        let v1 = ProgressUtils.getValue(inputValue: [blockName])
-//                                                        let v2 = ProgressUtils.getValue(inputValue: [lastCompleted[1]])
                                                         if(ProgressUtils.getValue(inputValue: [blockName]) < ProgressUtils.getValue(inputValue: [lastCompleted[1]])
                                                            || (ProgressUtils.getValue(inputValue: [blockName]) == ProgressUtils.getValue(inputValue: [lastCompleted[1]]) && ProgressUtils.getValue(inputValue: [lastCompletedDifficulty]) == 3)) {
                                                             Image(systemName: "star.fill").foregroundColor(.black)
@@ -128,8 +126,8 @@ struct HomeView: View {
                     .onAppear() {
                         Task{
                             do {
-                                lastCompleted =  await queryModuleAndBlock();
-                                lastCompletedDifficulty = await queryDifficulty();
+                                lastCompleted =  await queryAll();
+                                lastCompletedDifficulty = lastCompleted[2];
                                 modulesValidMap = getModulesValidMap(lastCompleted: lastCompleted);
                             }
                         }
@@ -140,9 +138,9 @@ struct HomeView: View {
         
     }
     
-    func queryModuleAndBlock() async -> [String] {
+    func queryAll() async -> [String] {
         let response = await dbManager.queryDB(userID: userID)
-        return [response["moduleName"] ?? "", response["blockName"] ?? ""]
+        return [response["moduleName"] ?? "", response["blockName"] ?? "", response["questionDifficulty"] ?? ""]
     }
     
     func queryDifficulty() async -> String{

@@ -6,10 +6,10 @@
        "questionAnswer": ["Hello"]
 	},
 	"q2": {
- 		"questionText": "If you want some code to run only if a variable, `a`, is even, what would you use?",
+ 		"questionText": "If you want some code to run only if a variable, `a`, is odd, what would you use?",
        "questionType": "multipleChoice",
-       "questionOptions": ["if (a == 2)", "if (a % 2 == 0)", "else if (a % 2 == 0)", "else (a % 2 == 0)"],
-       "questionAnswer": ["if(a % 2 == 0)"]
+       "questionOptions": ["if (a == 3)", "if (a % 2 == 1)", "else if (a % 2 == 1)", "else (a % 2 == 1)"],
+       "questionAnswer": ["if (a % 2 == 1)"]
 	},
 	"q3": {
  		"questionText": "Fill in the blanks that best match the behavior: \nif(a , 3) print \"a is smaller than 3\" \n,(a , 3) print \"a is equal to 3\" \n , print \"a is greater than 3\"",

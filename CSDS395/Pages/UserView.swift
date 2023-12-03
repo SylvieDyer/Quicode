@@ -23,7 +23,13 @@ import SwiftUI
 struct UserView: View {
     var controller: AppController
     var colorManager = ColorManager()
+    var dbManager = DBManager()
     
+    @State private var lastCompleted : [String] = []
+    @State private var userID: String = UserDefaults.standard.string(forKey: "id") ?? "ID"    
+    @State private var lastCompletedDifficulty : String = ""
+
+
     var body:some View {
         
         VStack{
@@ -62,7 +68,14 @@ struct UserView: View {
                 }.listRowBackground(
                     RoundedRectangle(cornerRadius: 50)
                         .fill(colorManager.getMidGreen().opacity(0.8)))
-          
+                .onAppear() {
+                    Task {
+                        do{
+                            lastCompleted =  await queryAll()
+                            lastCompletedDifficulty = lastCompleted[2]
+                        }
+                    }
+                }
                 //Progress Tracking Section
                 Section{
                     Text("Your Progress:").font(.title2).fontWeight(.heavy).foregroundColor(.black).opacity(0.8)
@@ -76,9 +89,15 @@ struct UserView: View {
                                 // progress Bar
                                 HStack{
                                     ForEach(controller.getBlocks(name: moduleName), id: \.self) { blockName in
-                                        // TODO: Connect with user-status
-                                        // if blockName associated with complete , "star.fill"
-                                        Image(systemName: "star").foregroundColor(.black)
+                                        if(lastCompleted.count > 0) {
+                                            if(ProgressUtils.getValue(inputValue: [blockName]) < ProgressUtils.getValue(inputValue: [lastCompleted[1]])
+                                               || (ProgressUtils.getValue(inputValue: [blockName]) == ProgressUtils.getValue(inputValue: [lastCompleted[1]]) && ProgressUtils.getValue(inputValue: [lastCompletedDifficulty]) == 3)) {
+                                                Image(systemName: "star.fill").foregroundColor(.black)
+                                            }
+                                            else {
+                                                Image(systemName: "star").foregroundColor(.black)
+                                            }
+                                        }
                                     }
                                     Spacer()
                                 }
@@ -94,13 +113,20 @@ struct UserView: View {
                 Button(action: {
                     UserDefaults.standard.set(false, forKey: "isLoggedIn")
                     controller.viewController.setAsLogIn()
-                    //                        TODO: implement log out functionality (core data, s3 saving progress, etc)
+                    // TODO: implement log out functionality (core data, s3 saving progress, etc)
                 }, label:{ Text("Logout").font(.title2).bold()})
             }.listStyle(InsetGroupedListStyle())
         }
     }
     
+    
+    func queryAll() async -> [String] {
+        let response = await dbManager.queryDB(userID: userID)
+        return [response["moduleName"] ?? "", response["blockName"] ?? "", response["questionDifficulty"] ?? ""]
+    }
 }
+
+
 
 
  
