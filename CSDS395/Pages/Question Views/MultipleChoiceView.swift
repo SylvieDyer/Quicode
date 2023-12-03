@@ -28,6 +28,19 @@ struct MultipleChoiceView: View {
     var body: some View {
         // use some sort of variable to track which option was selected (will have to higlight multiple if multi select
         VStack{
+                // header
+                HStack(alignment: .center, spacing:0){
+                    Text("QUICODE").font(.largeTitle).bold().padding(.leading, 15)
+                        .fontWidth(.expanded)
+                        .font(.callout)
+                    Spacer()
+                    Button(
+                        action: {
+                            controller.viewController.setAsUser()},
+                        label: {
+                            Image(systemName: "person").foregroundColor(.gray).padding(15)
+                        })
+                }.padding(0)
             // question
             Text(question.questionText).font(.title2).fontWeight(.bold)
                 .fixedSize(horizontal: false, vertical: true)

@@ -21,7 +21,21 @@ struct DragAndDropView: View{
     @State var isSelected: [String:Bool] = [:]
     
     var body: some View {
-        VStack{
+        
+        VStack{                
+            // header
+            HStack(alignment: .center, spacing:0){
+                Text("QUICODE").font(.largeTitle).bold().padding(.leading, 15)
+                    .fontWidth(.expanded)
+                    .font(.callout)
+                Spacer()
+                Button(
+                    action: {
+                        controller.viewController.setAsUser()},
+                    label: {
+                        Image(systemName: "person").foregroundColor(.gray).padding(15)
+                    })
+            }.padding(0)
             Spacer()
             VStack{
                 ForEach(Array(question.getQuestionTextArr().enumerated()), id: \.element) { index, element in

@@ -26,7 +26,7 @@ struct QuestionView: View {
             VStack {
                 
                 if(blockName == "qod"){
-                    Text("Nice! You've completed the question of the day, come back tomorrow!").font(.title2).bold()
+                    Text("Nice! You've completed the question of the day, come back tomorrow!").font(.title2).bold().padding(15)
                 }
                 else{
                     Text("You've completed").font(.title2).bold()

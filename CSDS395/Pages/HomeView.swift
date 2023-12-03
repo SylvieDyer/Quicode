@@ -28,7 +28,7 @@ struct HomeView: View {
             NavigationView{
                 if isQodNavigationActive {
                     NavigationLink(
-                        destination: QuestionView(moduleName: "qod", blockName: "qod", questionDifficulty: QuestionDifficulty.easy, controller: controller, questionList: qodQuestions),
+                        destination: QuestionView(moduleName: "qod", blockName: "qod", questionDifficulty: QuestionDifficulty.easy, controller: controller, questionList: qodQuestions).navigationBarBackButtonHidden(true),
                         isActive: $isQodNavigationActive
                     ) {
                         EmptyView()
@@ -37,29 +37,26 @@ struct HomeView: View {
                     .hidden()
                 } else {
                     VStack {
-                        // header
-                        HStack(alignment: .lastTextBaseline, spacing:0){
-                            Text("QUICODE").font(.largeTitle).bold().padding(.leading, 15)
-                                .fontWidth(.expanded)
-                                .font(.callout)
-                            Spacer()
-                            Button(
-                                action: {
-                                    controller.viewController.setAsUser()},
-                                label: {
-                                    Image(systemName: "person").foregroundColor(.gray).padding(25)
-                                })
-                        }
-                    
-                    // section to replace when navigating btwn modules
+                        // section to replace when navigating btwn modules
                         NavigationStack{
+                            // header
+                            HStack(alignment: .lastTextBaseline, spacing:0){
+                                Text("QUICODE").font(.largeTitle).bold().padding(.leading, 15)
+                                    .fontWidth(.expanded)
+                                    .font(.callout)
+                                Spacer()
+                                Button(
+                                    action: {
+                                        controller.viewController.setAsUser()},
+                                    label: {
+                                        Image(systemName: "person").foregroundColor(.gray).padding(.horizontal, 15)
+                                    })
+                            }.padding(.bottom, -5).padding(.top, 20)
                             List{
                                 // welcome section
                                 Section{
                                     // will be dynamic with user name -- Text("Welcome Back, \(user.name)
-                                    Text("Welcome Back, \(UserDefaults.standard.string(forKey: "firstname") ?? "User")").bold().font(.title2)
-                                    
-                                }
+                                    Text("Welcome Back, \(UserDefaults.standard.string(forKey: "firstname") ?? "User")").bold().font(.title2)        }
                                 .listRowBackground(
                                     Capsule()
                                         .fill(colorManager.getDarkGreen())
@@ -104,8 +101,6 @@ struct HomeView: View {
                                                         Spacer()
                                                         ForEach(controller.getBlocks(name: moduleName), id: \.self) { blockName in
                                                             if(lastCompleted.count > 0) {
-                                                                //                                                        let v1 = ProgressUtils.getValue(inputValue: [blockName])
-                                                                //                                                        let v2 = ProgressUtils.getValue(inputValue: [lastCompleted[1]])
                                                                 if(ProgressUtils.getValue(inputValue: [blockName]) < ProgressUtils.getValue(inputValue: [lastCompleted[1]])
                                                                    || (ProgressUtils.getValue(inputValue: [blockName]) == ProgressUtils.getValue(inputValue: [lastCompleted[1]]) && ProgressUtils.getValue(inputValue: [lastCompletedDifficulty]) == 3)) {
                                                                     Image(systemName: "star.fill").foregroundColor(.black)
