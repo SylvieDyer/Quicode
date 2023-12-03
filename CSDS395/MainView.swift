@@ -29,7 +29,7 @@ struct MainView: View {
                 if (!loadedModules){
                     VStack {
                         Text("Hello, \(UserDefaults.standard.string(forKey: "firstname") ?? "User") ").font(.title)
-                        Text("Welcome to Quiccode, are you ready for quick practice?")
+                        Text("Welcome to Quicode, are you ready for some quick practice?")
                             .font(.title2)
                             .padding(50).fontWeight(.bold).multilineTextAlignment(.center)
                         HStack{
