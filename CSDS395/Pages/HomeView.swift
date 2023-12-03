@@ -58,7 +58,8 @@ struct HomeView: View {
                             HStack{ // to center text
                                 Spacer()
                                 NavigationLink() {
-                                    QuestionView(moduleName: "qod", blockName: "qod", questionDifficulty: QuestionDifficulty.easy, controller: controller,  questionList: )
+                                    let questions = await controller.getQuestions(name: "qod", difficulty: "")
+                                    QuestionView(moduleName: "qod", blockName: "qod", questionDifficulty: QuestionDifficulty.easy, controller: controller,  questionList: questions)
                                 }
                                 label: {
                                     VStack{

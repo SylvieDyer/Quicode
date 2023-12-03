@@ -24,26 +24,35 @@ struct QuestionView: View {
         ZStack{
           
             VStack {
-                Text("You've completed").font(.title2).bold()
                 
-                Text("\(blockName)").font(.title).bold().multilineTextAlignment(.center)
-                Text("Difficulty: \(getStringQuestionDifficulty(questionDifficulty:questionDifficulty))").font(.title2).bold().multilineTextAlignment(.center)
-                    .padding([.bottom], 20)
-                
-                switch (questionDifficulty) {
-                case QuestionDifficulty.easy:
-                    Text("Let's try something a little harder!").font(.title3).padding([.bottom], 15)
-                case QuestionDifficulty.medium:
-                    Text("Time for a challenge!").font(.title3).padding([.bottom], 15)
-                case QuestionDifficulty.hard:
-                    Text("3 Stars!").font(.title3).padding([.bottom], 15)
+                if(blockName == "qod"){
+                    Text("Nice! You've completed the question of the day, come back tomorrow!").font(.title2).bold()
+                }
+                else{
+                    Text("You've completed").font(.title2).bold()
+                    
+                    Text("\(blockName)").font(.title).bold().multilineTextAlignment(.center)
+                    Text("Difficulty: \(getStringQuestionDifficulty(questionDifficulty:questionDifficulty))").font(.title2).bold().multilineTextAlignment(.center)
+                        .padding([.bottom], 20)
+                    
+                    
+                    switch (questionDifficulty) {
+                    case QuestionDifficulty.easy:
+                        Text("Let's try something a little harder!").font(.title3).padding([.bottom], 15)
+                    case QuestionDifficulty.medium:
+                        Text("Time for a challenge!").font(.title3).padding([.bottom], 15)
+                    case QuestionDifficulty.hard:
+                        Text("3 Stars!").font(.title3).padding([.bottom], 15)
+                    }
                 }
                 
                 
                 Button(
                     action: {
                         dismiss.callAsFunction();
-                        updateDB();
+                        if(blockName != "qod"){
+                            updateDB();
+                        }
                     }, label: {Text("Return to Modules") .fontWeight(.bold)
                         .background(RoundedRectangle(cornerRadius: 40)
                             .foregroundColor(colorManager.getLavendar())
