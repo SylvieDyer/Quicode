@@ -37,13 +37,14 @@ struct DragAndDropView: View{
             .opacity(isShown ? 1.0 : 0.0)
             .fontWeight(.bold)
             .multilineTextAlignment(.center)
-            .padding([.top, .bottom], 50)
-            .padding([.leading, .trailing], 50)
+            .padding(50)
             .background(RoundedRectangle(cornerRadius: 40)
                 .foregroundColor(colorManager.getMidGreen()
                     .opacity(isShown ? 1.0 : 0.0))
                     .padding(50)
+                    .offset(y: 75)
                     .frame(width:400, height: 500))
+            
             
             Spacer()
             
@@ -52,7 +53,7 @@ struct DragAndDropView: View{
                 DragTemplate(option: question.questionOptions[$0], isSelected: $isSelected)
             }.frame(height: 300)
                 .opacity(isShown ? 1.0 : 0.0)
-            
+                .offset(y: 75)
             
             Spacer()
             HStack{
@@ -136,7 +137,8 @@ struct DropTemplate: View, DropDelegate{
             VStack{
                 Spacer()
                 ForEach(items, id: \.self) { word in
-                    Text(word)
+                    Text(word).padding(7).background(RoundedRectangle(cornerRadius: 40)
+                        .foregroundColor(colorManager.getDarkGreen()))
                 }
                 .background(RoundedRectangle(cornerRadius: 25).foregroundColor(dragInProgress ? (colorManager.getDarkGreen()) : colorManager.getMidGreen()))
                 .onDrop(of: [UTType.plainText], delegate: self)
