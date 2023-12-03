@@ -94,14 +94,14 @@ struct LoginView: View {
         let defaults = UserDefaults.standard
         switch authResults.credential {
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
-            print("FULL NAME")
-            print(appleIdCredential.fullName!)
-            // appleIdCredential.user if the user's Sign In with Apple Credential Remains stable
-            print("USER")
-            print(appleIdCredential.user)
-            // create new user object
-            print("EMAIL")
-            print(appleIdCredential.email ?? "NO EMAIL GIVEN")
+//            print("FULL NAME")
+//            print(appleIdCredential.fullName!)
+//            // appleIdCredential.user if the user's Sign In with Apple Credential Remains stable
+//            print("USER")
+//            print(appleIdCredential.user)
+//            // create new user object
+//            print("EMAIL")
+//            print(appleIdCredential.email ?? "NO EMAIL GIVEN")
                             
             if appleIdCredential.email != nil{
                 defaults.set(appleIdCredential.email, forKey: "email")
@@ -148,7 +148,7 @@ struct LoginView: View {
         let firstname = user.firstname
         let lastname = user.lastname
         let id = user.id
-        print("id: \(id)")
+//        print("id: \(id)")
         let userJson = Users(id: id, email: email, firstname: firstname, lastname: lastname, newUser: user.newUser, isLoggedOut: user.isLoggedOut)
         
         do {
@@ -162,12 +162,10 @@ struct LoginView: View {
                 await dbManager.uploadToDB(item: ["userID": .s("\(user.id)")])
 
             }
-            print("after await")
         }
         catch {
             print("cannot upload user")
         }
-        print("leaving uploadUser")
     }
     
 }

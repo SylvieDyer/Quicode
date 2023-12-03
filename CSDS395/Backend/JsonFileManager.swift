@@ -13,7 +13,6 @@ struct JsonFileManager{
     static func writeJson<T: Encodable>(destPath: String, data: T) {
         let temporaryDirectory = FileManager.default.temporaryDirectory
         let fileURL = temporaryDirectory.appendingPathComponent(destPath)
-        print(temporaryDirectory)
         
         
         let jsonEncoder = JSONEncoder()
@@ -55,7 +54,6 @@ struct JsonFileManager{
         
         // Iterate through the JSON array and create Question objects
         for (key, value) in jsonFile {
-            print(key) // This will print the topic name
             if let questionData = value as? [String: Any],
                let questionTypeRaw = questionData["questionType"] as? String,
                let questionText = questionData["questionText"] as? String,
