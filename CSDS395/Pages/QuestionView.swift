@@ -49,8 +49,8 @@ struct QuestionView: View {
                 
                 Button(
                     action: {
-                        dismiss.callAsFunction();
                         if(blockName != "qod"){
+                            dismiss.callAsFunction();
                             updateDB();
                         }
                     }, label: {Text("Return to Modules") .fontWeight(.bold)
