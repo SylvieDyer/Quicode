@@ -57,12 +57,16 @@ struct HomeView: View {
                         Section{
                             HStack{ // to center text
                                 Spacer()
-                                NavigationLink{
-                                    ModuleView(name: "Quick Lesson", controller: controller)
-                                } label: {
+                                NavigationLink() {
+                                    QuestionView(moduleName: "qod", blockName: "qod", questionDifficulty: QuestionDifficulty.easy, controller: controller,  questionList: )
+                                }
+                                label: {
                                     VStack{
                                         Text("Question of the Day").foregroundColor(.black).font(.title3).fontWeight(.heavy)
-                                    }
+                                            .foregroundColor(Color.black)
+                                            .font(.title3)
+                                            .fontWeight(.heavy)
+                                            .padding(20)                                    }
                                 }
                                 .padding(20)
                                 Spacer()
