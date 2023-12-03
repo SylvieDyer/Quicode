@@ -20,6 +20,7 @@ struct HomeView: View {
     @State private var userID: String = UserDefaults.standard.string(forKey: "id") ?? "ID"
     @State private var lastCompleted : [String] = []
     @State private var lastCompletedDifficulty : String = ""
+    @State private var qodQuestions: QuestionList = QuestionList(qlist: [])
     
     var body: some View {
         // wraps app in navigation to switch to user-screen
@@ -58,8 +59,7 @@ struct HomeView: View {
                             HStack{ // to center text
                                 Spacer()
                                 NavigationLink() {
-                                    let questions = await controller.getQuestions(name: "qod", difficulty: "")
-                                    QuestionView(moduleName: "qod", blockName: "qod", questionDifficulty: QuestionDifficulty.easy, controller: controller,  questionList: questions)
+                                    QuestionView(moduleName: "qod", blockName: "qod", questionDifficulty: QuestionDifficulty.easy, controller: controller,  questionList: qodQuestions)
                                 }
                                 label: {
                                     VStack{
@@ -77,6 +77,13 @@ struct HomeView: View {
                             RoundedRectangle(cornerRadius: 40)
                                 .fill(Color.white)
                         )
+                        .onAppear() {
+                            Task {
+                                do {
+                                    qodQuestions = await controller.getQuestions(name: "qod", difficulty: "")
+                                }
+                            }
+                        }
                            
                         
                         // iterate through list of modules
