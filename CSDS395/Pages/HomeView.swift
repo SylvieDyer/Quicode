@@ -61,7 +61,7 @@ struct HomeView: View {
                                     ModuleView(name: "Quick Lesson", controller: controller)
                                 } label: {
                                     VStack{
-                                        Text("Today's Quick Lesson:").foregroundColor(.black).font(.title3).fontWeight(.heavy)
+                                        Text("Question of the Day").foregroundColor(.black).font(.title3).fontWeight(.heavy)
                                     }
                                 }
                                 .padding(20)
