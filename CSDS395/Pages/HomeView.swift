@@ -57,10 +57,14 @@ struct HomeView: View {
                         Section{
                             HStack{ // to center text
                                 Spacer()
-                                NavigationLink() {
+                                Button("Question of the Day", action: {
+                                    Task.detached {
+                                        do {
                                     let questions = await controller.getQuestions(name: "qod", difficulty: "")
-                                    QuestionView(moduleName: "qod", blockName: "qod", questionDifficulty: QuestionDifficulty.easy, controller: controller,  questionList: questions)
                                 }
+                                        QuestionView(moduleName: "qod", blockName: "qod", questionDifficulty: QuestionDifficulty.easy, controller: controller,  questionList: questions)
+                            }
+                        }
                                 label: {
                                     VStack{
                                         Text("Question of the Day").foregroundColor(.black).font(.title3).fontWeight(.heavy)
