@@ -139,15 +139,15 @@ struct HomeView: View {
                                 ) // color each list section
                                 
                             }.listStyle(InsetGroupedListStyle()) // (remove drop down option for list sectoins)
-                                .onAppear() {
-                                    Task{
-                                        do {
-                                            lastCompleted =  await queryAll();
-                                            lastCompletedDifficulty = lastCompleted[2];
-                                            modulesValidMap = getModulesValidMap(lastCompleted: lastCompleted);
-                                        }
+                            .onAppear() {
+                                Task{
+                                    do {
+                                        lastCompleted =  await queryAll();
+                                        lastCompletedDifficulty = lastCompleted[2];
+                                        modulesValidMap = getModulesValidMap(lastCompleted: lastCompleted);
                                     }
                                 }
+                            }
                         }
                 }
             }

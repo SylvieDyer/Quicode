@@ -55,14 +55,6 @@ struct ModuleView: View {
                 }
                     
             }.listRowBackground(RoundedRectangle(cornerRadius: 40).fill(colorManager.getLavendar()))
-            .onAppear() {
-                Task{
-                    do {
-                        lastCompleted =  await queryBlockAndDifficulty()
-                        blocksValidMap = getBlocksValidMap(lastCompleted: lastCompleted)
-                    }
-                }
-            }
             
         
             
@@ -71,7 +63,8 @@ struct ModuleView: View {
                 Section {
                     // individual module
                     VStack{
-                        if (blockName == "Data Types and Variables" || blocksValidMap[blockName] ?? true) {
+                        let blockVal = ProgressUtils.getValue(inputValue: [blockName])
+                        if (ProgressUtils.isFirstBlock(blockVal: blockVal) || blocksValidMap[blockName] ?? true) {
                             NavigationLink(destination: BlockView(moduleName: name, blockName: blockName, controller: controller)) {
                                 Text(blockName)
                                     .foregroundColor(Color.black)
@@ -104,6 +97,14 @@ struct ModuleView: View {
             .listRowBackground(RoundedRectangle(cornerRadius: 40).fill(colorManager.getLightLavendar()))// color each list section
             
         }.listStyle(InsetGroupedListStyle())
+        .onAppear() {
+            Task{
+                do {
+                    lastCompleted =  await queryBlockAndDifficulty()
+                    blocksValidMap = getBlocksValidMap(lastCompleted: lastCompleted)
+                }
+            }
+        }
     }
    
     func getBlocksValidMap(lastCompleted: [String?]) -> [String : Bool] {
