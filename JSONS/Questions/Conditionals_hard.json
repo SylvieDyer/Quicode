@@ -11,14 +11,14 @@
        "questionOptions": ["if (a == 3)", "if (a % 2 == 1)", "else if (a % 2 == 1)", "else (a % 2 == 1)"],
        "questionAnswer": ["if (a % 2 == 1)"]
 	},
-	"q3": {
- 		"questionText": "Fill in the blanks that best match the behavior: \nif(a , 3) print \"a is smaller than 3\" \n,(a , 3) print \"a is equal to 3\" \n , print \"a is greater than 3\".",
-       "questionType": "dragAndDrop",
-       "questionOptions": ["!=", "==", "<=", "<", ">", "if", "else if", "else"],
-       "questionAnswer": ["<", "else if", "==", "else"]
-	},
+       "q3": {
+              "questionText": "Fill in the blanks that best match the behavior: \nif , print \"a is smaller than 3\" \n else if , print \"a is equal to 3\" \n else print \"a is greater than 3\".",
+      "questionType": "dragAndDrop",
+      "questionOptions": ["a == 3", "a < 3", "a > 3", "a != 3", "a >= 3"],
+      "questionAnswer": ["a < 3", "a == 3"]
+      },
 	"q4": {
- 		"questionText": "For the following: \nif (a) print \"Hello\" \nelse if (!a) print \"Goodbye\"\n \"Goodbye\" will print if a == ,.",
+ 		"questionText": "For the following: \nif (a) print \"Hello\" \nelse if (!a) print \"Goodbye\"\n \"Goodbye\" will print if a is ,.",
        "questionType": "dragAndDrop",
        "questionOptions": ["3", "Goodbye", "True", "False"],
        "questionAnswer": ["False"]
