@@ -76,6 +76,17 @@ struct UserView: View {
                         }
                     }
                 }
+                
+                Section{
+                    HStack{
+                        Image(systemName: "star.fill").foregroundColor(.black)
+                        if(lastCompleted.count > 0) {
+                            Text("You've earned \(String(ProgressUtils.getPoints(blockName: lastCompleted[1], difficulty: lastCompleted[2]))) total stars!").font(.title3).foregroundColor(.black).opacity(0.8)
+                        }
+                        Image(systemName: "star.fill").foregroundColor(.black)
+                    }
+                }.listRowBackground( RoundedRectangle(cornerRadius: 50).fill(colorManager.getMidGreen().opacity(0.8)))
+                
                 //Progress Tracking Section
                 Section{
                     Text("Your Progress:").font(.title2).fontWeight(.heavy).foregroundColor(.black).opacity(0.8)
