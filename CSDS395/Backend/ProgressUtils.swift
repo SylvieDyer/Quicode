@@ -36,6 +36,19 @@ struct ProgressUtils {
         "medium" : 2,
         "hard" : 3
     ]
+    static private let numBlocksWithModule : [Int : Int] = [
+        0: 0,
+        100 : 5,
+        200 : 10,
+        300 : 16,
+        400 : 18,
+    ]
+    
+    static func getPoints(blockName: String, difficulty: String) -> Int {
+        let blockVal = getValue(inputValue: [blockName])
+        let moduleVal = blockVal / 100 * 100
+        return (numBlocksWithModule[moduleVal - 100] ?? 0)*3 + ((blockVal%100-1)/10)*3 + getValue(inputValue: [difficulty])
+    }
     
     static func isLastBlock(blockVal: Int) -> Bool {
         return blockVal == 150 || blockVal == 250 || blockVal == 360 || blockVal == 420
