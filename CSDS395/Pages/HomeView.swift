@@ -56,7 +56,15 @@ struct HomeView: View {
                                 // welcome section
                                 Section{
                                     // will be dynamic with user name -- Text("Welcome Back, \(user.name)
-                                    Text("Welcome Back, \(UserDefaults.standard.string(forKey: "firstname") ?? "User")").bold().font(.title2)        }
+                                    HStack {
+                                        Text("Hi \(UserDefaults.standard.string(forKey: "firstname") ?? "User")!").bold().font(.title2)
+                                        Spacer()
+                                        Image(systemName: "star.fill").foregroundColor(.black)
+                                        if(lastCompleted.count == 3) {
+                                            Text(String(ProgressUtils.getPoints(blockName: lastCompleted[1], difficulty: lastCompleted[2])))
+                                        }
+                                    }
+                                }
                                 .listRowBackground(
                                     Capsule()
                                         .fill(colorManager.getDarkGreen())

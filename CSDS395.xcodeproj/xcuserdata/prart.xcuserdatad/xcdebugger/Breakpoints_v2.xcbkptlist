@@ -1013,8 +1013,8 @@
             filePath = "CSDS395/Pages/HomeView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -1077,6 +1077,54 @@
                   startingLineNumber = "84"
                   endingLineNumber = "84"
                   offsetFromSymbolStart = "124">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B84A92A4-212D-4B8D-9305-976AA3CD9CBF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CSDS395/Backend/ProgressUtils.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "getPoints(blockName:difficulty:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B84A92A4-212D-4B8D-9305-976AA3CD9CBF - ee16d3a43bbe1d4d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static CSDS395.ProgressUtils.getPoints(blockName: Swift.String, difficulty: Swift.String) -&gt; Swift.Int"
+                  moduleName = "CSDS395"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prart/Library/CloudStorage/OneDrive-Personal/Documents/2023Fall/senior_proj/SeniorProject/CSDS395/Backend/ProgressUtils.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "144">
+               </Location>
+               <Location
+                  uuid = "B84A92A4-212D-4B8D-9305-976AA3CD9CBF - ee16d3a43bbe1d4d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static CSDS395.ProgressUtils.getPoints(blockName: Swift.String, difficulty: Swift.String) -&gt; Swift.Int"
+                  moduleName = "CSDS395"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prart/Library/CloudStorage/OneDrive-Personal/Documents/2023Fall/senior_proj/SeniorProject/CSDS395/Backend/ProgressUtils.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "168">
                </Location>
             </Locations>
          </BreakpointContent>
