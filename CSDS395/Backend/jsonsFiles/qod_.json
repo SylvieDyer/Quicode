@@ -1,20 +1,8 @@
 {
-    "Data Types and Variables": {
-        "questionText": "This is a Data Types and Variables hard",
-        "questionType": "multiSelect",
-        "questionOptions": ["Option 1", "Option 2", "Option 3", "Option 4"],
-        "questionAnswer": ["Option 1", "Option 2"],
-    },
-    "Data Types and Variables 2": {
-        "questionText": "A hard,is a,.",
-        "questionType": "dragAndDrop",
-        "questionOptions": ["Option 1", "Option 2", "Option 3", "Option 4","Option 5","Option 6"],
-        "questionAnswer": ["Option 1", "Option 2"]
-    },
-    "Data Types and Variables 3": {
-        "questionText": "This is a Data Types and Variables hard",
-        "questionType": "multipleChoice",
-        "questionOptions": ["Option 1", "Option 2", "Option 3", "Option 4"],
-        "questionAnswer": ["Option 4"],
+    "q1": {
+        "questionText": "The \"condition\" inside an if statement needs to evaluate to:",
+       "questionType": "multipleChoice",
+       "questionOptions": ["a number", "a string", "any value", "a boolean"],
+       "questionAnswer": ["a boolean"]
     }
 }
