@@ -148,7 +148,7 @@ _5.1.9 Apple UserDefaults_
 
 Saves user information between sessions to keep users logged in and pick up where they left off.
 
-_5.1.10 Sign in with Apple _
+_5.1.10 Sign in with Apple_
 
 Streamlined user login and authentication. 
 
